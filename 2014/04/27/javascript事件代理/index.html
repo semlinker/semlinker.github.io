@@ -8,11 +8,13 @@
   <meta content="article" property="og:type">
 <meta content="Javascript事件代理" property="og:title">
 <meta content="http://yoursite.com/2014/04/27/javascript事件代理/" property="og:url">
-<meta property="og:image">
+<meta content="/Users/kakutcho/GitRepositories/semlinker.github.io/source/_img/140430/Dom_Event.jpg" property="og:image">
 <meta content="Sem's Coder Life" property="og:site_name">
 <meta content="一、什么是事件代理
 事件代理，也有人翻译为”事件委托”，是一种利用javascript事件冒泡特性的高级方法。当有多个子元素或者子元素经常变化时，通过事件代理可以只监听父级元素事件，这样就避免了把事件处理器添加到多个子级元素上。一般情况下这样做的效率更高，而且代码机构更加清晰，易于后续操作和管理。
-二、事件代理的应用" property="og:description">
+二、事件代理的应用
+假设有以下导航菜单，它由一个ul父节点和多个li子节点组成。  
+&lt;ul" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
@@ -92,11 +94,51 @@
         <h4 id="一、什么是事件代理">一、什么是事件代理</h4>
 <p>事件代理，也有人翻译为”事件委托”，是一种利用javascript事件冒泡特性的高级方法。当有多个子元素或者子元素经常变化时，通过事件代理可以只监听父级元素事件，这样就避免了把事件处理器添加到多个子级元素上。一般情况下这样做的效率更高，而且代码机构更加清晰，易于后续操作和管理。</p>
 <h4 id="二、事件代理的应用">二、事件代理的应用</h4>
+<p>假设有以下导航菜单，它由一个ul父节点和多个li子节点组成。  </p>
+<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"nav"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 4<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 5<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+</code></pre><p>当我们鼠标移动到li的时候，需要获取此li的相关信息并以悬浮框的形式显示详细信息，或者当li被点击的时候需要触发相应的处理事件。我们通常的做法是为每个li都添加一个onMouseOver或者onClick之类的事件监听()。  </p>
+<pre><code><span class="keyword">function</span> addListeners4Li(liNode){
+  liNode.onclick = <span class="keyword">function</span> clickHandler(){<span class="keyword">...</span>};
+  liNode.onmouseover = <span class="keyword">function</span> mouseOverHandler(){<span class="keyword">...</span>}
+}
+
+window.onload = <span class="keyword">function</span>(){
+  var ulNode = document.getElementById(<span class="string">"nav"</span>);
+  var liNodes = ulNode.getElementByTagName(<span class="string">"li"</span>);
+  <span class="keyword">for</span>(var i=<span class="number">0</span>, l = liNodes.length; i &lt; l; i++){
+    addListeners4Li(liNodes[i]);
+  }   
+}  
+</code></pre><p>如果该ul中的子元素li会频繁地添加或者删除，我们就需要在每次添加li的时候都调用addListeners4Li方法来为对应的li节点添加事件处理函数，这样就增加了工作的繁琐性和出错的可能性。<br>那我们该使用什么办法来解决这个问题呢?更简单的方式就是使用事件代理机制，当事件传递上层父节点的时候，我们通过检查事件的目标对象来判断并获取事件源li。具体代码如下:  </p>
+<pre><code><span class="comment">// 获取父节点，并为它添加一个click事件</span>
+document.getElementById(<span class="string">"nav"</span>).addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+<span class="comment">// 检查事件源e.targe是否为Li</span>
+<span class="keyword">if</span>(e.target &amp;&amp; e.target.nodeName.toLowerCase() == <span class="string">"li"</span>) {
+<span class="comment">// 真正的处理过程在这里</span>
+    handle4Click();
+  }
+});  
+</code></pre><p>为父节点ul添加一个click事件，当子节点被点击的时候，click事件会从子节点开始向上冒泡。父节点捕获到事件之后，通过判断e.target.nodeName来判断是否为我们需要处理的节点，并且通过e.target拿到了被点击的li节点。从而可以获取到相应的信息，并作处理。</p>
+<h4 id="三、事件冒泡及捕获">三、事件冒泡及捕获</h4>
+<p>DOM2.0模型将事件处理流程分为三个阶段：一、事件捕获阶段，二、事件目标阶段，三、事件起泡阶段。如图：<br><img src="/Users/kakutcho/GitRepositories/semlinker.github.io/source/_img/140430/Dom_Event.jpg" alt="image">  </p>
+<p>事件捕获：当某个元素触发某个事件（如onclick），顶层对象document就会发出一个事件流，随着DOM树的节点向目标元素节点流去，直到到达事件真正发生的目标元素。在这个过程中，事件相应的监听函数是不会被触发的。</p>
+<p>事件目标：当到达目标元素之后，执行目标元素该事件相应的处理函数。如果没有绑定监听函数，那就不执行。</p>
+<p>事件冒泡：从目标元素开始，往顶层元素传播。途中如果有节点绑定了相应的事件处理函数，这些函数都会被一次触发。如果想阻止事件起泡，可以使用e.stopPropagation()（Firefox）或者e.cancelBubble=true（IE）来组织事件的冒泡传播。</p>
+<h4 id="四、事件代理的优点">四、事件代理的优点</h4>
+<p>1、当遇到子元素非常多时，使用事件代理无疑大大的减少了浏览器在内存中创建的事件监听处理器，提高了性能，降低了内存消耗；</p>
+<p>2、当子元素可能会不断地被增加、删除或者替换时，使用事件代理就避免出现某些元素的事件没有被移除，造成内存泄露的风险；</p>
+<p>3、代码管理更加清晰，外层做统一的事件管理，易于修改和扩展。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="6qxkk48epk2dbr05" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="u3vabrxlo2jzczma" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +183,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -151,6 +193,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/04/28/jquery插件设计模式/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2014/04/27/玩转Emmet/">玩转Emmet</a>
