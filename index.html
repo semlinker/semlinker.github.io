@@ -63,6 +63,126 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-戏说json与jsonp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/30/戏说json与jsonp/" class="article-date">
+  <time datetime="2014-04-30T09:56:52.000Z" itemprop="datePublished">4月 30 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/30/戏说json与jsonp/">戏说JSON与JSONP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、什么是JSON">一、什么是JSON</h4>
+<ul>
+<li>JSON指的是Javascript对象表示法(Javascript Object Notation)</li>
+<li>JSON是轻量级的文本数据交换格式或数据描述格式</li>
+<li>JSON使用javascript语法来描述对象，但JSON仍然独立于语言和平台  </li>
+<li>JSON和文字对象唯一的语法差异在于，在JSON中，属性名称需要包装在引号中才能称为合法的JSON。而对象字面量中，仅当属性名称不是有效的标识符时才会需要引号。比如，字符之间有空格{“first name”,”Sem”}</li>
+</ul>
+<h4 id="二、JSON的优点">二、JSON的优点</h4>
+<ul>
+<li>基于纯文本，便于跨平台传递；</li>
+<li>Javascript原生支持，后台语言几乎全部支持；</li>
+<li>轻量级数据格式，占用字符数量极少，适合网络传输；</li>
+<li>容易编写和解析，格式化处理后可读性较强</li>
+</ul>
+<h4 id="三、使用JSON">三、使用JSON</h4>
+<pre><code><span class="number">1</span>、定义及使用
+<span class="comment">//描述一个人</span>
+<span class="keyword">var</span> person = {
+    <span class="string">"name"</span> : <span class="string">"Semlinker"</span>,
+    <span class="string">"age"</span> : <span class="string">"28"</span>    
+}
+<span class="comment">//获取这个人的姓名</span>
+<span class="keyword">var</span> name = person.name;
+<span class="number">2</span>、常用操作
+<span class="comment">//字符串转JSON</span>
+<span class="keyword">var</span> jsStr = <span class="string">'{"mykey" : "my value"}'</span>;
+<span class="keyword">var</span> data = <span class="built_in">JSON</span>.parse(jsStr);
+<span class="comment">//序列化为一个JSON字符串</span>
+<span class="keyword">var</span> mycar = {
+    name : <span class="string">"ferrari"</span>,
+    color : <span class="string">"yellow"</span>
+};
+<span class="keyword">var</span> jsonstr = <span class="built_in">JSON</span>.stringify(mycar);
+</code></pre><h4 id="四、什么是JSONP">四、什么是JSONP</h4>
+<ul>
+<li>Javascript出于安全方面的考虑，不允许跨域调用其他页面的对象</li>
+<li>Web中含有src属性的组件，都拥有跨域的能力，比如script、img、iframe组件</li>
+<li>当前阶段如果想通过纯web端跨域访问数据只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，以便供客户端进一步调用和处理</li>
+<li>恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据</li>
+<li>这样一来解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件，显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去</li>
+<li>客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样</li>
+<li>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了</li>
+</ul>
+<h4 id="五、JSONP的实现">五、JSONP的实现</h4>
+<pre><code>一、客户端实现
+<span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"zh-cn"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"X-UA-Compatible"</span> <span class="attribute">content</span>=<span class="value">"IE=edge,chrome=1"</span>/&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+        <span class="comment">// 获取航班信息查询结果后的回调函数</span>
+        <span class="keyword">var</span> flightHandler = <span class="function"><span class="keyword">function</span><span class="params">(data)</span>{</span>
+        console.info(<span class="string">'你查询的航班结果是：票价 '</span> + data.price + <span class="string">' 元，'</span> + <span class="string">'余票 '</span> + data.ticket + <span class="string">' 张。'</span>);
+        };
+        <span class="comment">// 提供jsonp服务的url地址（不管是什么类型的地址，最终的返回值都是一段javascript代码）</span>
+       <span class="keyword">var</span> url = <span class="string">"http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler"</span>;
+        <span class="comment">// 创建script标签，设置其属性</span>
+        <span class="keyword">var</span> script = document.createElement(<span class="string">'script'</span>);
+        script.setAttribute(<span class="string">'src'</span>, url);
+        <span class="comment">// 把script标签加入head，此时调用开始</span>
+       document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script); 
+   </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">body</span>&gt;</span><span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+二、服务端实现
+flightHandler({
+  "code": "CA1998",
+  "price": 1780,
+  "tickets": 5
+});
+</code></pre><h4 id="六、ajax与jsonp的区别">六、ajax与jsonp的区别</h4>
+<ul>
+<li>ajax和jsonp这两种技术在调用方式上很相似，都是请求一个url，然后对服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装</li>
+<li>ajax和jsonp其实本质上是不同的东西。ajax的核心是通过XmlHttpRequest获取远程内容，而jsonp的核心则是动态添加script标签来调用服务器提供的js脚本</li>
+<li>ajax与jsonp的区别不在于是否支持跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取</li>
+<li>jsonp是一种方式或者说非强制性协议，如同ajax一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用jsonp提供公开服务</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="yo5shnpqdhp6s3sa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jquery插件设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/04/28/jquery插件设计模式/" class="article-date">
@@ -97,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="z9gtv0alzbv2o9ib" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="mj7a3swha4a5xci5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +329,7 @@ jsbin.com/">马上试试</a></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/玩转Emmet/" data-id="okgb6xup2ck8q11b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/玩转Emmet/" data-id="u85whi7hiqnixkd8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +412,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="ilnaaj78i1sikchl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="7weigq6237s6wujt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +431,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -324,7 +444,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -334,6 +454,10 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/04/30/戏说json与jsonp/">戏说JSON与JSONP</a>
+          </li>
         
           <li>
             <a href="/2014/04/28/jquery插件设计模式/">jQuery插件设计模式</a>
