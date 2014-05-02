@@ -63,6 +63,188 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javascript中类型检测" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/02/javascript中类型检测/" class="article-date">
+  <time datetime="2014-05-02T09:04:30.000Z" itemprop="datePublished">5月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/02/javascript中类型检测/">javascript中类型检测</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、Javascript语言定义的5种原始类型及6种基本数据类型">一、Javascript语言定义的5种原始类型及6种基本数据类型</h4>
+<p>1、javascript中定义的5种原始类型分别为:<br>   null、undefined、number、string、boolean<br>2、javascript中定义的6种基本数据类型分别为:<br>null、undefined、number、string、boolean、object  </p>
+<h4 id="二、检测原始值">二、检测原始值</h4>
+<p>如果你希望一个值是字符串、数字、布尔值或undefined，最佳选择是使用typeof运算符。typeof运算符会返回一个表示值的类型的字符串。  </p>
+<ul>
+<li>对于字符串，typeof返回”string”</li>
+<li>对于数字，typeof返回”number”</li>
+<li>对于布尔值，typeof返回”boolean”</li>
+<li>对于undefined，typeof返回”undefined”  </li>
+</ul>
+<p>typeof的基本语法是:<br>typeof variable<br>你也可以这样使用typeof:<br>typeof(variable)<br>尽管这是合法的javascript语法，但这种方法让typeof看起来像一个函数而非运算符。鉴于此，我们推荐无括号的写法。<br>使用typeof来检测以下4种原始值类型是非常安全的做法。  </p>
+<pre><code><span class="comment">//检测字符串</span>
+<span class="keyword">if</span>(<span class="keyword">typeof</span> name === <span class="string">"string"</span>){
+    anotherName = name.substring(<span class="number">3</span>);
+}
+
+<span class="comment">//检测数字</span>
+<span class="keyword">if</span>(<span class="keyword">typeof</span> count === <span class="string">"number"</span>){
+    updateCount(count);
+}
+
+<span class="comment">//检测布尔值</span>
+<span class="keyword">if</span>(<span class="keyword">typeof</span> found === <span class="string">"boolean"</span> &amp;&amp; found){
+    console.info(<span class="string">"Found!"</span>);
+}
+
+<span class="comment">//检测undefined</span>
+<span class="keyword">if</span>(<span class="keyword">typeof</span> MyApp === <span class="string">"undefined"</span>){
+    MyApp = {
+        <span class="comment">//相关代码</span>
+    };
+}  
+</code></pre><p>typeof运算符的独特之处在于，将其用于一个未声明的变量也不会报错。未定义的变量和值为undefined的变量通过typeof都将返回”undefined”。运行typeof null则返回”object”,这是一种低效的判断null的方法。如果需要检测null，则直接使用恒等运算(===)或非恒等运算(!==)。   </p>
+<h4 id="三、检测引用值">三、检测引用值</h4>
+<p>引用值也称作对象(object)。在Javascript中除了原始值之外的值都是引用。有以下几种内置的引用类型:Object、Array、Date、Error等。使用typeof运算符在判断这些引用类型时则会显得力不从心，因为所有对象都会返回”object”。typeof另外一种不推荐的用法是当检测null的类型时，typeof运算符用于null时将会返回”object”。<br>检测某个引用值的类型的最好方法是使用instanceof运算符。<br>instanceof的基本语法是:<br>value instanceof constructor  </p>
+<pre><code><span class="comment">//检测日期</span>
+<span class="keyword">if</span>(<span class="keyword">value</span> instanceof Date){
+    console.log(<span class="keyword">value</span>.getFullYear());
+}
+
+<span class="comment">//检测正则表达式</span>
+<span class="keyword">if</span>(<span class="keyword">value</span> instanceof RegExp){
+    <span class="keyword">if</span>(<span class="keyword">value</span>.test(anotherValue)){
+        console.log(<span class="string">"Matches"</span>);
+    }
+}  
+
+<span class="comment">//检测Error</span>
+<span class="keyword">if</span>(<span class="keyword">value</span> instanceof Error){
+    <span class="keyword">throw</span> <span class="keyword">value</span>;
+}  
+</code></pre><p>instanceof的一个特性是它不仅检测构造这个对象的构造器，还检测原型链。原型链包含了很多信息，包括定义对象所采用的继承模式。比如，默认情况下，每个对象都继承自Object，因此每个对象的value instanceof Object都会返回true。比如:  </p>
+<pre><code><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();
+console.log(now <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span>
+console.log(now <span class="keyword">instanceof</span> <span class="built_in">Date</span>);<span class="comment">//true</span>
+</code></pre><p>因此使用instanceof来判断对象是否属于某个特定类型的做法并非最佳选择。<br>instanceof运算符也可以检测自定义类型，比如:  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">(name)</span>{</span>
+    <span class="keyword">this</span>.name = name;
+} 
+<span class="keyword">var</span> me = <span class="keyword">new</span> Person(<span class="string">"sem"</span>);
+console.log(me <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span>
+console.log(me <span class="keyword">instanceof</span> Person);<span class="comment">//true  </span>
+</code></pre><p>在Javascript中检测自定义类型时，最好的做法就是使用instanceof运算符，这也是唯一的办法。假设一个浏览器帧(frame A)里的一个对象被传入到另一个帧(frame B)中。两个帧都定义了构造函数Person。如果来自帧A的对象是帧A的Person的实例。则如下规则成立。  </p>
+<pre><code><span class="comment">//true</span>
+frameAPersonInstance <span class="keyword">instanceof</span> frameAPerson
+
+<span class="comment">//false</span>
+frameAPersonInstance <span class="keyword">instanceof</span> frameBPerson  
+</code></pre><p>因为每个帧(frame)都拥有Person的一份拷贝，它被认为是该帧(frame)中的Person的拷贝的实例。  </p>
+<h4 id="四、检测函数">四、检测函数</h4>
+<p>从技术上讲，Javascript中的函数是引用类型，同样存在Function构造函数，每个函数都是实例，比如:  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span><span class="params">()</span>{</span>}
+<span class="comment">//不好的写法</span>
+console.log(myFunc <span class="keyword">instanceof</span> <span class="function"><span class="keyword">Function</span>);</span><span class="comment">//true</span>
+</code></pre><p>然而，这个方法不能跨帧使用，每个帧都有各自的Function构造函数。好在typeof运算符可以用于函数，返回”function”。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span><span class="params">()</span>{</span>}
+<span class="comment">//好的写法</span>
+console.log(<span class="keyword">typeof</span> myFunc === <span class="string">"function"</span>);<span class="comment">//true  </span>
+</code></pre><p>检测函数最好的方法是使用typeof，因为它可以跨帧使用。用typeof来检测函数有一个限制。在IE8和更早版本的IE浏览器中，使用typeof来检测DOM节点(比如document.getElementById())中的函数都返回”object”而不是”function”。<br>之所以出现这种怪异的现象是因为浏览器对DOM的实现有差异。简而言之，这些早期版本的IE并没有将DOM实现为内置的Javascript方法，导致内置的typeof运算符将这些函数标识为对象。开发者往往通过in运算符来检测DOM的方法，比如:  </p>
+<pre><code><span class="regexp">//</span>检测DOM方法
+<span class="keyword">if</span>(<span class="string">"querySelectorAll"</span> <span class="keyword">in</span> <span class="built_in">document</span>){
+    images = <span class="built_in">document</span>.querySelectorAll(<span class="string">"img"</span>);
+}
+</code></pre><p>在其他所有的情形中，typeof运算符是检测javascript函数的最佳选择。  </p>
+<h4 id="五、检测数组">五、检测数组</h4>
+<p>关于如何在Javascript中检测数组类型已经有很多研究了，最终Kangax给出了一种优雅的解决方案。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">isArray</span><span class="params">(value)</span>{</span>
+    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>;
+}
+</code></pre><p>Kangax发现调用某个值的内置toString()方法在所有浏览器中都会返回标准的字符串结果。对于数组来说，返回的字符串为”[object Array]”，也不用考虑数组实例是在哪个帧中被构造出来。这种方法在识别内置对象时往往十分有用，但对于自定义对象请不要用这种方法。  </p>
+<h4 id="六、检测属性">六、检测属性</h4>
+<p>另外一种用到null(以及undefined)的场景是当检测一个属性是否在对象中存在时，比如:  </p>
+<pre><code><span class="comment">//不好的写法:检测假值</span>
+<span class="keyword">if</span>(<span class="keyword">object</span>[propertyName]){
+    <span class="comment">//一些代码</span>
+}
+
+<span class="comment">//不好的写法:和null相比较</span>
+<span class="keyword">if</span>(<span class="keyword">object</span>[propertyName] != <span class="keyword">null</span>){
+    <span class="comment">//一些代码</span>
+}
+
+<span class="comment">//不好的写法:和undefined比较</span>
+<span class="keyword">if</span>(<span class="keyword">object</span>[propertyName] != undefined){
+    <span class="comment">//一些代码</span>
+}
+</code></pre><p>以上这段代码里的每个判断，实际上是通过给定的名字来检查属性的值，而非判断给定的名字所指的属性是否存在，因为当属性值为假值结果会出错，比如0、””、false、null、undefined。比如如果属性记录了一个数字，则这个值可以是零。这样的话，上段代码第一个判断就会导致错误。以此类推，如果属性值为null或者undefined时，三个判断都会导致错误。<br>判断属性是否存在最好的方法是使用in运算符。in运算符仅仅会简单地判断属性是否存在，而不会去读取属性的值，这样就避免了前文提到的有歧义的语句。如果实例对象的属性存在、或者继承自对象原型，in运算符都会返回true。比如:  </p>
+<pre><code><span class="keyword">var</span> <span class="keyword">object</span> = {
+    count:<span class="number">0</span>,
+    related : <span class="keyword">null</span>
+};
+
+<span class="comment">//好的写法</span>
+<span class="keyword">if</span>(<span class="string">"count"</span> <span class="keyword">in</span> <span class="keyword">object</span>){
+    <span class="comment">//这里的代码会执行</span>
+}
+
+<span class="comment">//不好的写法:检测假值</span>
+<span class="keyword">if</span>(<span class="keyword">object</span>[<span class="string">"count"</span>]){
+    <span class="comment">//这里的代码不会执行</span>
+}
+
+<span class="comment">//好的写法</span>
+<span class="keyword">if</span>(<span class="string">"related"</span> <span class="keyword">in</span> <span class="keyword">object</span>){
+    <span class="comment">//这里代码会执行</span>
+}
+
+<span class="comment">//不好的写法:检测是否为null</span>
+<span class="keyword">if</span>(<span class="keyword">object</span>[<span class="string">"related"</span>] != <span class="keyword">null</span>){
+    <span class="comment">//这里代码不会执行</span>
+}
+</code></pre><p>如果你只想检查实例对象的某个属性是否存在，则使用hasOwnProperty()方法。所有继承自Object的Javascript对象都有这个方法，如果实例中存在这个属性则返回true(如果这个属性只存在原型里，则返回false)。需要注意的是，在IE8以及更早版本的IE中，DOM对象并非继承自Object，因此也不会包含这个方法。也就是说，你在调用DOM对象的hasOwnProperty()方法之前应当先检测其是否存在。  </p>
+<pre><code><span class="comment">//对于所有非DOM对象来说，这是好的写法</span>
+<span class="keyword">if</span>(Object.hasOwnProperty(<span class="string">"related"</span>)){
+    <span class="comment">//执行这里的代码</span>
+}  
+
+<span class="comment">//如果你不确定为DOM对象，则这样来写</span>
+<span class="keyword">if</span>(<span class="string">"hasOwnProperty"</span> <span class="keyword">in</span> <span class="keyword">object</span> &amp;&amp; <span class="keyword">object</span>.hasOwnProperty(<span class="string">"related"</span>)){
+    <span class="comment">//执行这里的代码</span>
+}  
+</code></pre><p>不管你什么时候需要检测属性的存在性，请使用in运算符或者hasOwnProperty()，这样做可以避免很多Bug。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="u8u6q2bwctc9dgns" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript函数调用的四种方式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/05/02/javascript函数调用的四种方式/" class="article-date">
@@ -161,7 +343,7 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="hfe8vgkh5u59atex" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="16ej0jcuv3qedt7s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -281,7 +463,7 @@ flightHandler({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="ncec42yrecgofi7r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="dyfkqxdowq3c8z7e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +507,7 @@ flightHandler({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="5cv0xx8q4lo8eg9b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="ebwlt4tkdrhodrrp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,7 +590,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="1p2ufvkzn91hjyp0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="1utlsrw987h7b4z3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -427,7 +609,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -440,7 +622,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -450,6 +632,10 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/05/02/javascript中类型检测/">javascript中类型检测</a>
+          </li>
         
           <li>
             <a href="/2014/05/02/javascript函数调用的四种方式/">Javascript函数调用的四种方式</a>
@@ -465,10 +651,6 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
         
           <li>
             <a href="/2014/04/27/玩转Emmet/">玩转Emmet</a>
-          </li>
-        
-          <li>
-            <a href="/2014/04/27/javascript事件代理/">Javascript事件代理</a>
           </li>
         
       </ul>
