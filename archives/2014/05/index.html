@@ -63,6 +63,235 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-变量对象" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/06/变量对象/" class="article-date">
+  <time datetime="2014-05-06T14:36:35.000Z" itemprop="datePublished">5月 6 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/06/变量对象/">变量对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、概要">一、概要</h4>
+<p>在构建系统过程中，我们会在程序中定义一些变量和函数。然而对于解释器来说，它是如何获取这些数据的?当引用一个对象的时候，在解释器内部又发生什么?<br>许多ECMAScript程序都知道，变量和执行上下文是密切相关的:  </p>
+<pre><code>    <span class="keyword">var</span> a = <span class="number">10</span>;<span class="comment">//全局上下文中的变量</span>
+    (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">var</span> b = <span class="number">20</span>;<span class="comment">//函数上下文中的局部变量</span>
+    })();
+
+    alert(a);<span class="comment">// 10</span>
+    alert(b);<span class="comment">// b is not defined  </span>
+</code></pre><p>不仅如此，许多程序员也都知道，ECMAScript标准中指出独立的作用域只有通过”函数代码”才能创建。与C/C++不同的是，ECMAScript中的for循环代码块是无法创建本地上下文的:  </p>
+<pre><code>    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> {a:<span class="number">1</span>,b:<span class="number">2</span>}){
+        alert(k);
+    }
+
+    alert(k);<span class="comment">//尽管循环已经结束，但是变量"k"仍然在作用域中</span>
+</code></pre><h4 id="二、数据声明">二、数据声明</h4>
+<p>既然变量和执行上下文有关，那么它就该知道数据存储在哪里以及如何获取。这种机制就称作变量对象:<br>变量对象是一个特殊的对象，它与执行上下文息息相关。变量对象主要存储变量、函数声明、函数入参等<br>举个例子，可以用ECMAScript的对象来表示变量对象:  VO = {};<br>VO同时也是一个执行上下文的属性:  </p>
+<pre><code><span class="attribute">    activeExecutionContext </span>=<span class="string"> {
+        VO : {
+            //上下文中的数据(变量声明、函数声明、函数形参)
+        }
+    }  </span>
+</code></pre><p>声明新的变量和函数的过程其实就是在VO中创建新的变量以及函数名对应的属性和属性值的过程。<br>如下所示:  </p>
+<pre><code>    <span class="keyword">var</span> a = <span class="number">10</span>;
+
+    <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(x)</span>{</span>
+        <span class="keyword">var</span> b = <span class="number">20</span>;
+    }
+
+    test(<span class="number">30</span>);  
+</code></pre><p>上述代码对应的变量对象:  </p>
+<pre><code>      <span class="comment">//全局上下文中的变量对象</span>
+      VO(globalContext) = {
+          a : <span class="number">10</span>,
+          test : 
+      }  
+
+      <span class="comment">//test函数上下文中的变量对象</span>
+      VO(test functionContext) = {
+          x : <span class="number">30</span>,
+          b : <span class="number">20</span>
+      };
+</code></pre><p>但是，在实现层，变量对象只是一个抽象的概念。在实际执行上下文中，VO可能完全不叫VO，并且初始的结构也可能完全不同。  </p>
+<h4 id="三、全局上下文的变量对象">三、全局上下文的变量对象</h4>
+<p>全局对象是一个在进入任何执行上下文前就创建出来的对象，此对象以单例形式存在；它的属性在程序任何地方都可以访问，其声明周期随着程序的结束而终止。<br>全局对象在创建的时候，诸如Math、String、Date、parseInt等等属性也会被初始化，同时，其中一些对象会指向全局对象本身。比如，DOM中，全局对象上的window属性就是指向了全局对象。  </p>
+<pre><code> global = {
+     Math:&lt;<span class="keyword">...</span>&gt;,
+     String:&lt;<span class="keyword">...</span>&gt;
+     <span class="keyword">...</span>
+     <span class="keyword">...</span>
+     window: global
+ };  
+</code></pre><p>在引用全局对象的属性时，前缀通常可以省略，因为全局对象是不能通过名字直接访问的。然而，通过全局对象上的this值，以及通过如DOM中的window对象这样递归引用的方式都可以访问到全局对象。  </p>
+<pre><code>    <span class="built_in">String</span>(<span class="number">10</span>);<span class="comment">//等同于 global.String(10);</span>
+
+    <span class="comment">//带前缀</span>
+    window.a = <span class="number">10</span>;<span class="comment">//global.window.a = 10 = global.a = 10;</span>
+    <span class="keyword">this</span>.b = <span class="number">20</span>;<span class="comment">//global.b = 20;</span>
+
+    <span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'test'</span>);
+
+    alert(a);<span class="comment">//直接访问，通过VO(globalContext)访问</span>
+
+    alert(window[<span class="string">'a'</span>]);<span class="comment">//间接访问</span>
+    alert(a === <span class="keyword">this</span>.a);<span class="comment">//true  </span>
+</code></pre><h4 id="四、函数上下文中的变量对象">四、函数上下文中的变量对象</h4>
+<p>在函数的执行上下文中，VO是不能直接访问的。它主要扮演被称作活跃对象(activation object)的角色。<br>VO(functionContext) === AO;<br>活跃对象会在进入函数上下文的时候创建出来，初始化的时候会创建一个argument属性，其值就是Argument对象:<br>Argument对象是活跃对象上的属性，它包含了如下属性:  </p>
+<ul>
+<li>callee—对当前函数的引用</li>
+<li>length—实参的个数</li>
+<li><p>argument对象的properties-index的值与当前(实际传递的)形参是共享的</p>
+<pre><code>  <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(x,y,z)</span>{</span>
+      <span class="comment">//定义的函数的参数个数</span>
+      alert(<span class="transposed_variable">foo.</span><span class="built_in">length</span>);<span class="comment">//3</span>
+
+      <span class="comment">//实际传递参数的个数</span>
+      alert(<span class="transposed_variable">argument.</span><span class="built_in">length</span>);<span class="comment">//2</span>
+
+      <span class="comment">//引用函数自身</span>
+      alert(<span class="transposed_variable">argument.</span>callee === foo);<span class="comment">//true</span>
+
+      <span class="comment">//参数共享</span>
+      alert(x === argument<span class="matrix">[<span class="number">0</span>]</span>);true
+      alert(x);<span class="comment">//10</span>
+
+      argument<span class="matrix">[<span class="number">0</span>]</span> = <span class="number">20</span>;
+      alert(x);<span class="comment">// 20</span>
+
+      x = <span class="number">30</span>;
+      alert(argument<span class="matrix">[<span class="number">0</span>]</span>);<span class="comment">//30</span>
+
+      <span class="comment">//然而对于没有传递的参数z</span>
+      <span class="comment">//相关的argument对象的properties-index是不共享的</span>
+
+      z = <span class="number">40</span>;
+      alert(argument<span class="matrix">[<span class="number">2</span>]</span>);<span class="comment">//undefined</span>
+
+      argument<span class="matrix">[<span class="number">2</span>]</span> = <span class="number">50</span>;
+      alert(z);<span class="comment">//40</span>
+  }  
+</code></pre></li>
+</ul>
+<p>处理上下文代码的几个阶段:<br>1、进入执行上下文<br>一旦进入执行上下文(在执行代码之前)，VO就会被一些属性填充:  </p>
+<ul>
+<li>函数的形参—-变量对象的属性，其属性名就是形参的名字，其值就是实参的值，对于没有传递的参数，其值为undefined</li>
+<li>函数声明—-变量对象的属性，其属性名和值都是函数对象创建出来的，如果变量对象已经包含了相同名字的属性，则进行替换  </li>
+<li><p>变量声明—-变量对象的一个属性，其属性名为变量名，其值为undefined，如果变量名和已声明的函数名或者函数参数名相同，则不会影响已存在的属性。  </p>
+<pre><code>   <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(a,b)</span>{</span>
+       <span class="keyword">var</span> c = <span class="number">10</span>;
+       <span class="function"><span class="keyword">function</span> <span class="title">d</span><span class="params">()</span>{</span>}
+       <span class="keyword">var</span> e = <span class="function"><span class="keyword">function</span> <span class="title">_e</span><span class="params">()</span>{</span>};
+       (<span class="function"><span class="keyword">function</span> <span class="title">x</span><span class="params">()</span>{</span>});
+   }
+
+   test(<span class="number">10</span>);<span class="comment">//函数调用</span>
+</code></pre><p>当以10为参数进入test函数上下文的时候，对应的AO如下所示:  </p>
+<pre><code>    A0(test) = {
+        a : <span class="number">10</span>,
+        b : <span class="literal">undefined</span>,
+        c : <span class="literal">undefined</span>,
+        e : <span class="literal">undefined</span>,
+        d : &lt;reference to FunctionDeclaration <span class="string">"d"</span>&gt;
+    }  
+</code></pre><p>上面的AO中并不包含函数x，这是因为这里的x并不是函数声明，而是函数表达式，函数表达式不会对VO造成影响。</p>
+</li>
+</ul>
+<p>2、执行代码<br>此时，AO/VO的属性已经填充好了。(尽管大部分的属性都还没有赋予真正的值，都只是初始化时候的undefined值)<br>继续以上面的例子为例，到了执行代码阶段，AO/VO就会修改成如下形式:  </p>
+<pre><code>    AO[<span class="string">'c'</span>] = <span class="number">10</span>;
+    AO[<span class="string">'e'</span>] = &lt;<span class="keyword">reference</span> <span class="keyword">to</span> FunctionExpress&gt;  
+</code></pre><p>以下是更加典型的例子:  </p>
+<pre><code>    alert(x);<span class="comment">//function</span>
+
+    <span class="keyword">var</span> x = <span class="number">10</span>;
+    alert(x);<span class="comment">// 10</span>
+
+    x = <span class="number">20</span>;
+
+    <span class="function"><span class="keyword">function</span> <span class="title">x</span><span class="params">()</span><span class="comment">{}</span>
+
+    <span class="title">alert</span><span class="params">(x)</span>;</span><span class="comment">// 20  </span>
+</code></pre><p>正如此前提到的，变量声明是在函数声明和函数形参之后，并且变量声明不会对已存在的同名的函数声明和函数形参发生冲突，因此，在进入上下文阶段，VO填充如下形式:  </p>
+<pre><code>    VO = {};
+
+    VO[<span class="attribute">'x</span>'] = &lt;reference <span class="keyword">to</span> FunctionDeclaration <span class="string">"x"</span>&gt;
+
+    <span class="comment">//发现var x = 10;</span>
+    <span class="comment">//如果函数"x"还未定义</span>
+    <span class="comment">//但是在我们的例子中变量声明并不会影响同名的函数值</span>
+
+    VO[<span class="attribute">'x</span>'] = &lt;值不受影响，仍是函数引用&gt;
+</code></pre><h4 id="关于变量">关于变量</h4>
+<p>大多数讲Javascript的文章甚至Javascript的书通常都会这么说:声明全局变量的方式有两种，一种是使用var关键字，另外一种是不用var关键字，而这样的描述是错误。要记住的是:使用var关键字是声明变量的唯一方式。<br>如下赋值语句:a = 10;仅仅只是在全局对象上创建了新的属性(而不是变量)。<br>不同点如下:  </p>
+<pre><code>    alert(a);<span class="regexp">//undefined</span>
+    alert(b);<span class="regexp">//</span><span class="string">"b"</span> is <span class="keyword">not</span> <span class="keyword">defined</span>
+
+    b = <span class="number">10</span>;
+    var a = <span class="number">20</span>;  
+</code></pre><p>接下来要谈到VO和不同阶段对VO的修改(进入上下文阶段和代码执行阶段):<br>进入上下文:  </p>
+<pre><code><span class="attribute">      VO </span>=<span class="string"> {
+          a : undefined
+      };</span>
+</code></pre><p>我们看到，这个阶段并没有任何”b”，因为它不是变量，b在执行阶段出现。<br>将上述代码稍作改动:  </p>
+<pre><code>    alert(a);<span class="comment">//undefined</span>
+
+    b = <span class="number">10</span>;
+    alert(b);<span class="comment">//10,代码执行阶段建立</span>
+
+    <span class="keyword">var</span> a = <span class="number">20</span>;
+    alert(a);<span class="comment">//20，代码执行阶段赋值   </span>
+</code></pre><p>关于变量还有非常重要的一点是:与简单属性不同的是，变量是不能删除的，这意味着想要通过delete操作符来删除一个变量是不可能的。  </p>
+<pre><code>    a = <span class="number">10</span>;
+    alert(<span class="keyword">window</span>.a);<span class="comment">// 10</span>
+    alert(<span class="keyword">delete</span> a);<span class="comment">//true</span>
+
+    alert(<span class="keyword">window</span>.a);<span class="comment">//undefined</span>
+
+    var b = <span class="number">20</span>;
+    alert(<span class="keyword">window</span>.b);<span class="comment">//20</span>
+
+    alert(<span class="keyword">delete</span> b);<span class="comment">//false</span>
+
+    alert(<span class="keyword">window</span>.b);<span class="comment">//仍然是20</span>
+</code></pre><p>但是，这里有一个例外，就是在eval执行上下文中，是可以删除变量的。  </p>
+<pre><code>    <span class="keyword">eval</span>(<span class="string">'var a = 10'</span>);
+    alert(<span class="keyword">window</span>.a); <span class="comment">// 10</span>
+
+    alert(<span class="keyword">delete</span> a); <span class="comment">// true</span>
+
+    alert(<span class="keyword">window</span>.a); <span class="comment">// undefined</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/06/变量对象/" data-id="c5umxe5equhpe7x1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/05/06/javascript函数/" class="article-date">
@@ -177,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="21apr5xbmldsnlft" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="gzwarjw312qdeghu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +588,7 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="1c08bmpsky64wv3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="son89vg07tb4tixs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +696,7 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="k9a8jhezzm9upbtu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="rvqpywkpmbddev0z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +715,7 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -499,7 +728,7 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -509,6 +738,10 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/05/06/变量对象/">变量对象</a>
+          </li>
         
           <li>
             <a href="/2014/05/06/javascript函数/">Javascript函数</a>
@@ -524,10 +757,6 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
         
           <li>
             <a href="/2014/04/30/戏说json与jsonp/">戏说JSON与JSONP</a>
-          </li>
-        
-          <li>
-            <a href="/2014/04/28/jquery插件设计模式/">jQuery插件设计模式</a>
           </li>
         
       </ul>
