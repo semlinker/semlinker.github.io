@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>柯里化与偏应用 | Sem&#39;s Coder Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="article" property="og:type">
+<meta content="柯里化与偏应用" property="og:title">
+<meta content="http://yoursite.com/2014/05/11/柯里化与偏应用/" property="og:url">
+<meta property="og:image">
+<meta content="Sem's Coder Life" property="og:site_name">
+<meta content="一、函数参数的个数
+函数定义时会写明它所接收的参数个数。”一元参数”接收一个参数，”多元函数”接收多个参数。有些函数能够接收不定数量的参数，我们称之为”可变参数函数”。
+二、偏应用
+作为铺垫，我们首先实现一个map函数，用来将某个函数应用到数组的每个元素上:  
+    var _map = [].map;
+
+    function map(list,unaryFn){
+        retu" property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sem&#39;s Coder Life</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">程序是写给人读的，只是偶尔让计算机执行一下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-柯里化与偏应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/11/柯里化与偏应用/" class="article-date">
+  <time datetime="2014-05-10T16:08:15.000Z" itemprop="datePublished">5月 11 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      柯里化与偏应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、函数参数的个数">一、函数参数的个数</h4>
+<p>函数定义时会写明它所接收的参数个数。”一元参数”接收一个参数，”多元函数”接收多个参数。有些函数能够接收不定数量的参数，我们称之为”可变参数函数”。</p>
+<h4 id="二、偏应用">二、偏应用</h4>
+<p>作为铺垫，我们首先实现一个<strong>map</strong>函数，用来将某个函数应用到数组的每个元素上:  </p>
+<pre><code>    <span class="keyword">var</span> _map = [].map;
+
+    <span class="function"><span class="keyword">function</span> <span class="title">map</span><span class="params">(list,unaryFn)</span>{</span>
+        <span class="keyword">return</span> _map.call(<span class="keyword">list</span>,unaryFn);
+    }
+
+    <span class="function"><span class="keyword">function</span> <span class="title">square</span><span class="params">(n)</span>{</span>
+        <span class="keyword">return</span> n*n;
+    }
+
+    map([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],square);
+    <span class="comment">//=&gt; [1,4,9] </span>
+</code></pre><p>显然，map是二元函数，square是一元函数。当我们使用[1,2,3]和square作为参数调用map时，我们是将这两个参数应用到map函数，并获得结果。<br>由于map函数接收两个参数，我们也提供了两个参数，所以说这是一次完整的应用。那何谓偏应用(或部分应用)呢?其实就是提供少于指定数量的参数。如仅提供一个参数来调用map函数。<br>如果我们只提供一个函数来调用map会怎么样?我们无法得到所要的结果，只能得到一个新的一元函数，通过调用这个函数并传递缺失的参数后，才能获得结果。<br>假设现在我们只提供一个参数给map，这个参数是unaryFn。我们从后往前逐步实现，首先map函数创建一个包装函数*  </p>
+<pre><code>    <span class="built_in">var</span> mapWrapper(<span class="built_in">list</span>,unaryFn){
+        <span class="keyword">return</span> <span class="built_in">map</span>(<span class="built_in">list</span>,unaryFn);
+    }
+</code></pre><p>然后，我们将这个二元函数分割成两个嵌套的一元函数:  </p>
+<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">mapWrapper</span><span class="params">(unaryFn)</span>{</span>
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(list)</span>{</span>
+            <span class="keyword">return</span> map(<span class="keyword">list</span>,unaryFn);
+        }
+    }  
+</code></pre><p>这样一来，我们就能每次传递一个参数来进行调用:  </p>
+<pre><code>    <span class="function">mapWrapper(square)</span>(<span class="attr_selector">[1,2,3]</span>);
+    <span class="comment">//=&gt;[1,4,9]</span>
+</code></pre><p>和之前的map函数相较，新的函数mapWrapper是一元函数，它的返回值是另一个一元函数，需要再次调用它才能获得返回值。那么偏应用要从何体现?让我们从第二个一元函数着手:  </p>
+<pre><code>    <span class="reserved">var</span> squareAll = mapWrapper(square);
+    <span class="regexp">//</span><span class="function">=&gt;</span>[<span class="reserved">function</span>]
+
+    squareAll([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);
+    <span class="regexp">//</span><span class="function">=&gt;</span>[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>]  
+</code></pre><p>我们首先将square这个参数部分应用到了map函数，并获得一个一元函数squareAll,它能实现我们需要的功能。如果每次想要使用偏应用都需要手动编写这样一个包装函数，显然我们希望能自动化实现它。这就是下一节的内容:柯里化。  </p>
+<h4 id="三、柯里化">三、柯里化</h4>
+<p>首先，我们可以编写一个函数来返回包装器。我们仍以二元函数为例:  </p>
+<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">wrapper</span><span class="params">(unaryFn)</span>{</span>
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(list)</span>{</span>
+            <span class="keyword">return</span> map(<span class="keyword">list</span>,unaryFn);
+        }
+    }  
+</code></pre><p>将函数map和参数名称替换掉  </p>
+<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">wrapper</span><span class="params">(secondArg)</span>{</span>
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(firstArg)</span>{</span>
+            <span class="keyword">return</span> binaryFn(firstArg,secondArg);
+        }
+    }  
+</code></pre><p>最后，我们再包装一层:  </p>
+<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">rightmostCurry</span><span class="params">(binaryFn)</span>{</span>
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(secondArg)</span>{</span>
+            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(firstArg)</span>{</span>
+                <span class="keyword">return</span> binaryFn(firstArg,secondArg);
+            }
+        }
+    }  
+</code></pre><p>这样一来，我们之前使用的模式就抽象出来了。这个函数的用法是:  </p>
+<pre><code>    <span class="keyword">var</span> rightmostCurriedMap = rightmostCurry(<span class="keyword">map</span>);
+    <span class="keyword">var</span> squareAll = rightmostCurriedMap(square);
+
+    squareAll(<span class="number">[1</span><span class="number">,4</span><span class="number">,9</span>]);
+    <span class="comment">//=&gt;[1,4,9]  </span>
+</code></pre><p>将一个多元函数转换成一系列一元函数的嵌套调用，这种转换称之为柯里化。  </p>
+<h4 id="四、柯里化和偏应用的区别">四、柯里化和偏应用的区别</h4>
+<p>1、柯里化是将一个多元函数分解为一系列嵌套调用的一元函数。分解后，你可以部分应用一个或多个参数。柯里化过程不会向函数传递参数。  </p>
+<p>2、偏应用是为一个多元函数提供部分参数，从而在调用时可以省略这些参数。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/11/柯里化与偏应用/" data-id="m82jcjnbc6cqlwqg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/05/11/javascript-array对象详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript Array对象详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/06/变量对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">变量对象</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/05/11/javascript-array对象详解/">Javascript Array对象详解</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/11/柯里化与偏应用/">柯里化与偏应用</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/06/变量对象/">变量对象</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/06/javascript函数/">Javascript函数</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/02/javascript中类型检测/">javascript中类型检测</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 semlinker<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+  <a href="https://github.com/semlinker"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:100;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+</body>
+</html>
