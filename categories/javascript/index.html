@@ -63,48 +63,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-pro-javascript-performance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/06/02/pro-javascript-performance/" class="article-date">
-  <time datetime="2014-06-02T13:30:52.000Z" itemprop="datePublished">6月 2 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Pro_Javascript_Performance">Pro Javascript Performance</h4>
-<p>Web Performance<br>影响网络性能的因素有很多，如网络延迟。当请求一个网页或网页相关的资源，浏览器新建一个线程发起请求和初始化DNS Server，DNS查找。建立TCP/IP连接的时候，需要进行三次握手。TCP握手，像通信协议一样，只是使用标准化方式定义不同部分的交流方式。<br>造成网络延迟的另一原因是加载网页所需组件所需的HTTP请求数。页面所需的资源如图片、外部CSS、Javascript文件，都需要从服务器端加载。每次请求将新起一个线程，每次请求过程都包括DNS lookup、TCP连接、HTTP请求和响应。<br>浏览器解析和渲染页面也是影响网络性能的另一个因素。大多数的现代浏览器拥有以下架构:地址栏、历史操作、渲染引擎、Javascript引擎和用于处理HTTP请求的网络层。<br>Javascript压缩:<br>1、Minify  2、YUI Compressor 3、Closure Compiler</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/pro-javascript-performance/" data-id="z1updwnzb5qdn7hp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-高性能javascript之响应接口" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/06/02/高性能javascript之响应接口/" class="article-date">
@@ -149,17 +107,11 @@
 <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
  <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre><p>当例子中按钮被点击时，它触发UI线程创建两个任务并添加到队列中。第一个任务是按钮UI更新，它需要做出相应的改变以指示它被按下了；第二个任务是Javascript运行任务，包含handleClick()的代码。假设UI线程空闲，第一个任务被检查并运行以更新按钮外观，然后Javascript任务被检查和运行。在运行过程中handleClick()创建了一个新的div元素，并追加到body元素上，其效果是引发另一次UI界面改变，也就是说在Javascript运行过程中，一个新的UI更新任务被添加队列中，当Javascript运行完后，UI还会再更新一次。<br>当所有UI线程任务执行之后，进程进入空闲状态，并等待更多任务添加到队列中。空闲状态是理想的。因为所有用户操作会立刻引发一次UI更新。<br>浏览器在Javascript运行时间上采取了限制，确保恶意代码编写者不能通过无尽的密集操作锁定用户和计算机。此类限制有两个:调用栈尺寸限制和长时间脚本限制。长运行脚本限制有时被称作长运行脚本定时器或者失控脚本控制器，但其基本思想是浏览器记录一个脚本的运行时间，一旦到达一定限度就终止它。   </p>
-<p>CSS Performance<br>1、Complex element selectors are slow<br>When possible<br>Use class or ID-based selectors<br>Make element selectors as simple as possiable<br>Use child instead of descendent selectors<br>Do not mix RTL and LTR styles  </p>
-<pre><code><span class="tag">table</span> <span class="tag">tr</span> <span class="tag">td</span> <span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;<span class="rule">}</span></span>
-<span class="tag">li</span><span class="id">#pass</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;<span class="rule">}</span></span>
 
-<span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">purple</span></span>;<span class="rule">}</span></span>
-<span class="tag">ul</span> &gt; <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> purple</span></span>;<span class="rule">}</span></span>  
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" data-id="douvgimqfjdtz5v6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" data-id="gjsnu7gajyf3fk5p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +220,7 @@ el.style.padding = <span class="string">'5px'</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之dom编程/" data-id="2te7fu75jtxcrm8g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之dom编程/" data-id="elz2balmsztguudf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -363,7 +315,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/高性能javascirpt/" data-id="jenvdis7j4jh8ure" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascirpt/" data-id="m4o705lqy5znn4ri" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +363,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/30/jquery内核详解和实战/" data-id="mntxrekrb16cn0wp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/30/jquery内核详解和实战/" data-id="jrsplg5ejpe48azy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -650,7 +602,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/11/javascript-array对象详解/" data-id="pdcv6en07al76mof" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/11/javascript-array对象详解/" data-id="6ib65r01jreastzn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -757,7 +709,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/11/柯里化与偏应用/" data-id="3mqxty0lp7ic2mm8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/11/柯里化与偏应用/" data-id="3ubosfkrtzm91bc2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -986,7 +938,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/变量对象/" data-id="m1jilew4slxcofsa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/06/变量对象/" data-id="y1jc7tyljk9xa1dh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1110,7 +1062,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="dclsvd308ddj0ve6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="rt1h8rxhxpvc6zc7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1292,7 +1244,115 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="p0o6e0psgypczomw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="9tsnr26ge9q9v5j2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javascript函数调用的四种方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/02/javascript函数调用的四种方式/" class="article-date">
+  <time datetime="2014-05-02T05:40:57.000Z" itemprop="datePublished">5月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/02/javascript函数调用的四种方式/">Javascript函数调用的四种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、Javascript函数的特点">一、Javascript函数的特点</h4>
+<p>Javascript中函数有两个主要特点使其显得比较特殊。第一个特点在于函数是第一类对象，第二个特点在于它们可以提供作用域。函数就是对象，其表现如下:  </p>
+<ul>
+<li>函数可以在运行时动态创建，还可以在程序执行过程中创建</li>
+<li>函数可以分配给变量，可以将它们的引用复制到其他变量，可以被扩展，此外除了少数特殊情况外，函数还可以被删除</li>
+<li>可以作为参数传递给其他函数，并且还可以由其他函数返回</li>
+<li>函数可以有自己的属性和方法</li>
+</ul>
+<h4 id="二、Javascript中函数定义方式">二、Javascript中函数定义方式</h4>
+<pre><code>方式一:
+<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数表达式</span>
+    <span class="keyword">return</span> a + b;
+};
+方式二:
+<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数声明</span>
+    <span class="keyword">return</span> a + b;
+}
+方式三:
+<span class="keyword">var</span> add = <span class="keyword">new</span> <span class="function"><span class="keyword">Function</span><span class="params">(<span class="string">'a,b'</span>,<span class="string">'return a + b'</span>)</span>;</span><span class="comment">//不推荐使用  </span>
+</code></pre><p>Javascript是一种解释性的语言，函数声明会在Javascript代码加载后、执行前被解释，而函数表达式只有在执行到这一行代码时才会被解释。函数声明中不需要分号结尾，但在函数表达式中需要分号，并且应该总是使用分号。  </p>
+<p>函数表达式VS函数声明:名称和变量声明提升  </p>
+<pre><code>alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//正常调用</span>
+<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span><span class="comment">{
+    return a + b;
+}</span>
+以上代码可以正常运行。因为在代码开始执行之前，解析器就已经读取函数声明并将其添加到执行环境中。  
+若下面例子所示，把上面的函数声明改为使用函数表达式方式，就会在执行期间导致错误:</span>  
+alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));  
+<span class="keyword">var</span> <span class="keyword">add</span> = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span><span class="comment">{
+    return a + b ;
+}</span>;</span>  
+</code></pre><h4 id="三、Javascript中四种调用方式">三、Javascript中四种调用方式</h4>
+<p>1、方法调用模式<br>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。如果调用表达式包含一个提取属性的动作(即包含一个.或[subscript]下标表达式)，那么它就当做一个方法来调用。  </p>
+<pre><code><span class="keyword">var</span> myObject = {
+    value : <span class="number">0</span>,
+    increment:<span class="function"><span class="keyword">function</span><span class="params">(inc)</span>{</span>
+        <span class="keyword">this</span>.value += <span class="keyword">typeof</span> inc === <span class="string">'number'</span> ? inc : <span class="number">1</span>;
+        console.log(inc);
+    }
+ }  
+</code></pre><p>方法可以使用this访问自己所属的对象，所以它能从对象中取值或对对象进行修改。this到对象的绑定发生在调用的时候。这个延时绑定使得函数可以对this高度复用。<br>2、函数调用模式<br>当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用:<br>var sum = add(3,4);<br>以此模式调用函数时，this被绑定到全局对象。这是语言设计上的一个错误，倘若语言设计正确，那么当内部函数被调用时，this应该仍然绑定到外部函数的this变量。这个设计错误的后果就是方法不能利用内部函数来帮助它工作，因为内部函数的this被绑定了错误的值，所以不能共享方法对对象的访问权。如果该方法定义一个变量并给它赋值为this，那么内部函数就可以通过那个变量访问到this。按照约定我们把那个变量命名为that:  </p>
+<pre><code>myObject.double = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span><span class="comment">//给myObject增加一个double方法  </span>
+    <span class="keyword">var</span> that = <span class="keyword">this</span>;
+    <span class="keyword">var</span> helper = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
+        that.value = add(that.value,that.value);
+        console.log(<span class="keyword">this</span>);
+    };
+    helper();<span class="comment">//以函数的形式调用helper</span>
+};
+myObject.double();<span class="comment">//以方法的形式调用double  </span>
+</code></pre><p>3、构造器调用模式<br>当以new操作符调用构造函数时，函数内部将会发生以下情况:  </p>
+<ul>
+<li>创建一个空对象并且this变量引用了该对象，同时还继承了该函数的原型</li>
+<li>属性和方法被加入到this引用的对象中</li>
+<li><p>新创建的对象由this所引用，并且最后隐式地返回this(如果没有显式地返回其他对象)<br>以上情况看起来就像是在后台发生了如下事情:  </p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">(name)</span>{</span>
+    <span class="comment">//使用对象字面量创建一个新对象</span>
+    <span class="comment">//var this = {};          </span>
+    <span class="comment">//向this添加属性和方法</span>
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.name;
+    };
+    <span class="comment">//return this;          </span>
+}      
+</code></pre><p>4、Apply调用模式<br>因为Javascript是一门函数式的面向对象编程语言，所以函数可以拥有方法。apply方法让我们构建一个参数数组传递给调用函数，它允许我们选择this的值。apply方法接收两个参数，第一个要绑定给this的值，第二个就是参数数组。<br>对于apply和call两者作用上是相同的，但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数:apply传入的是一个参数数组，也就是将多个参数组合成一个数组传入，而call则作为call的参数传入(从第二个参数开始)。<br>如func.call(func1,var1,var2,var3)对应的apply写法为:func.apply(func1,[var1,var2,var3]); </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="kchsenncm7j3i9tl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1315,7 +1375,7 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/resume/">resume</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/resume/">resume</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1328,7 +1388,7 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1344,10 +1404,6 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
           </li>
         
           <li>
-            <a href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
-          </li>
-        
-          <li>
             <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
           </li>
         
@@ -1357,6 +1413,10 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
         
           <li>
             <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
           </li>
         
       </ul>

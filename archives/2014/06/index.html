@@ -95,49 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/07/sems-resume-for-front-end-develop/" data-id="b2pvlt3l280rglxu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-pro-javascript-performance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/06/02/pro-javascript-performance/" class="article-date">
-  <time datetime="2014-06-02T13:30:52.000Z" itemprop="datePublished">6月 2 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Pro_Javascript_Performance">Pro Javascript Performance</h4>
-<p>Web Performance<br>影响网络性能的因素有很多，如网络延迟。当请求一个网页或网页相关的资源，浏览器新建一个线程发起请求和初始化DNS Server，DNS查找。建立TCP/IP连接的时候，需要进行三次握手。TCP握手，像通信协议一样，只是使用标准化方式定义不同部分的交流方式。<br>造成网络延迟的另一原因是加载网页所需组件所需的HTTP请求数。页面所需的资源如图片、外部CSS、Javascript文件，都需要从服务器端加载。每次请求将新起一个线程，每次请求过程都包括DNS lookup、TCP连接、HTTP请求和响应。<br>浏览器解析和渲染页面也是影响网络性能的另一个因素。大多数的现代浏览器拥有以下架构:地址栏、历史操作、渲染引擎、Javascript引擎和用于处理HTTP请求的网络层。<br>Javascript压缩:<br>1、Minify  2、YUI Compressor 3、Closure Compiler</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/pro-javascript-performance/" data-id="z1updwnzb5qdn7hp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/07/sems-resume-for-front-end-develop/" data-id="se9rmh93blyft2p2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,17 +149,11 @@
 <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
  <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
 </code></pre><p>当例子中按钮被点击时，它触发UI线程创建两个任务并添加到队列中。第一个任务是按钮UI更新，它需要做出相应的改变以指示它被按下了；第二个任务是Javascript运行任务，包含handleClick()的代码。假设UI线程空闲，第一个任务被检查并运行以更新按钮外观，然后Javascript任务被检查和运行。在运行过程中handleClick()创建了一个新的div元素，并追加到body元素上，其效果是引发另一次UI界面改变，也就是说在Javascript运行过程中，一个新的UI更新任务被添加队列中，当Javascript运行完后，UI还会再更新一次。<br>当所有UI线程任务执行之后，进程进入空闲状态，并等待更多任务添加到队列中。空闲状态是理想的。因为所有用户操作会立刻引发一次UI更新。<br>浏览器在Javascript运行时间上采取了限制，确保恶意代码编写者不能通过无尽的密集操作锁定用户和计算机。此类限制有两个:调用栈尺寸限制和长时间脚本限制。长运行脚本限制有时被称作长运行脚本定时器或者失控脚本控制器，但其基本思想是浏览器记录一个脚本的运行时间，一旦到达一定限度就终止它。   </p>
-<p>CSS Performance<br>1、Complex element selectors are slow<br>When possible<br>Use class or ID-based selectors<br>Make element selectors as simple as possiable<br>Use child instead of descendent selectors<br>Do not mix RTL and LTR styles  </p>
-<pre><code><span class="tag">table</span> <span class="tag">tr</span> <span class="tag">td</span> <span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;<span class="rule">}</span></span>
-<span class="tag">li</span><span class="id">#pass</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;<span class="rule">}</span></span>
 
-<span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">purple</span></span>;<span class="rule">}</span></span>
-<span class="tag">ul</span> &gt; <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> purple</span></span>;<span class="rule">}</span></span>  
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" data-id="douvgimqfjdtz5v6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" data-id="gjsnu7gajyf3fk5p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +262,7 @@ el.style.padding = <span class="string">'5px'</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之dom编程/" data-id="2te7fu75jtxcrm8g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之dom编程/" data-id="elz2balmsztguudf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +357,7 @@ update(links[i++]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/02/高性能javascirpt/" data-id="jenvdis7j4jh8ure" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascirpt/" data-id="m4o705lqy5znn4ri" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,7 +376,7 @@ update(links[i++]);
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/resume/">resume</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/resume/">resume</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -437,7 +389,7 @@ update(links[i++]);
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -453,10 +405,6 @@ update(links[i++]);
           </li>
         
           <li>
-            <a href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
-          </li>
-        
-          <li>
             <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
           </li>
         
@@ -466,6 +414,10 @@ update(links[i++]);
         
           <li>
             <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
           </li>
         
       </ul>
