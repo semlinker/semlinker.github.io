@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014/4 | Sem&#39;s Coder Life</title>
+  <title>Category: javascript | Sem&#39;s Coder Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta content="website" property="og:type">
 <meta content="Sem's Coder Life" property="og:title">
-<meta content="http://yoursite.com/archives/2014/04/" property="og:url">
+<meta content="http://yoursite.com/categories/javascript/page/2/" property="og:url">
 <meta property="og:image">
 <meta content="Sem's Coder Life" property="og:site_name">
 <meta property="og:description">
@@ -62,6 +62,114 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-javascript函数调用的四种方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/02/javascript函数调用的四种方式/" class="article-date">
+  <time datetime="2014-05-02T05:40:57.000Z" itemprop="datePublished">5月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/02/javascript函数调用的四种方式/">Javascript函数调用的四种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、Javascript函数的特点">一、Javascript函数的特点</h4>
+<p>Javascript中函数有两个主要特点使其显得比较特殊。第一个特点在于函数是第一类对象，第二个特点在于它们可以提供作用域。函数就是对象，其表现如下:  </p>
+<ul>
+<li>函数可以在运行时动态创建，还可以在程序执行过程中创建</li>
+<li>函数可以分配给变量，可以将它们的引用复制到其他变量，可以被扩展，此外除了少数特殊情况外，函数还可以被删除</li>
+<li>可以作为参数传递给其他函数，并且还可以由其他函数返回</li>
+<li>函数可以有自己的属性和方法</li>
+</ul>
+<h4 id="二、Javascript中函数定义方式">二、Javascript中函数定义方式</h4>
+<pre><code>方式一:
+<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数表达式</span>
+    <span class="keyword">return</span> a + b;
+};
+方式二:
+<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数声明</span>
+    <span class="keyword">return</span> a + b;
+}
+方式三:
+<span class="keyword">var</span> add = <span class="keyword">new</span> <span class="function"><span class="keyword">Function</span><span class="params">(<span class="string">'a,b'</span>,<span class="string">'return a + b'</span>)</span>;</span><span class="comment">//不推荐使用  </span>
+</code></pre><p>Javascript是一种解释性的语言，函数声明会在Javascript代码加载后、执行前被解释，而函数表达式只有在执行到这一行代码时才会被解释。函数声明中不需要分号结尾，但在函数表达式中需要分号，并且应该总是使用分号。  </p>
+<p>函数表达式VS函数声明:名称和变量声明提升  </p>
+<pre><code>alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//正常调用</span>
+<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span><span class="comment">{
+    return a + b;
+}</span>
+以上代码可以正常运行。因为在代码开始执行之前，解析器就已经读取函数声明并将其添加到执行环境中。  
+若下面例子所示，把上面的函数声明改为使用函数表达式方式，就会在执行期间导致错误:</span>  
+alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));  
+<span class="keyword">var</span> <span class="keyword">add</span> = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span><span class="comment">{
+    return a + b ;
+}</span>;</span>  
+</code></pre><h4 id="三、Javascript中四种调用方式">三、Javascript中四种调用方式</h4>
+<p>1、方法调用模式<br>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。如果调用表达式包含一个提取属性的动作(即包含一个.或[subscript]下标表达式)，那么它就当做一个方法来调用。  </p>
+<pre><code><span class="keyword">var</span> myObject = {
+    value : <span class="number">0</span>,
+    increment:<span class="function"><span class="keyword">function</span><span class="params">(inc)</span>{</span>
+        <span class="keyword">this</span>.value += <span class="keyword">typeof</span> inc === <span class="string">'number'</span> ? inc : <span class="number">1</span>;
+        console.log(inc);
+    }
+ }  
+</code></pre><p>方法可以使用this访问自己所属的对象，所以它能从对象中取值或对对象进行修改。this到对象的绑定发生在调用的时候。这个延时绑定使得函数可以对this高度复用。<br>2、函数调用模式<br>当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用:<br>var sum = add(3,4);<br>以此模式调用函数时，this被绑定到全局对象。这是语言设计上的一个错误，倘若语言设计正确，那么当内部函数被调用时，this应该仍然绑定到外部函数的this变量。这个设计错误的后果就是方法不能利用内部函数来帮助它工作，因为内部函数的this被绑定了错误的值，所以不能共享方法对对象的访问权。如果该方法定义一个变量并给它赋值为this，那么内部函数就可以通过那个变量访问到this。按照约定我们把那个变量命名为that:  </p>
+<pre><code>myObject.double = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span><span class="comment">//给myObject增加一个double方法  </span>
+    <span class="keyword">var</span> that = <span class="keyword">this</span>;
+    <span class="keyword">var</span> helper = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
+        that.value = add(that.value,that.value);
+        console.log(<span class="keyword">this</span>);
+    };
+    helper();<span class="comment">//以函数的形式调用helper</span>
+};
+myObject.double();<span class="comment">//以方法的形式调用double  </span>
+</code></pre><p>3、构造器调用模式<br>当以new操作符调用构造函数时，函数内部将会发生以下情况:  </p>
+<ul>
+<li>创建一个空对象并且this变量引用了该对象，同时还继承了该函数的原型</li>
+<li>属性和方法被加入到this引用的对象中</li>
+<li><p>新创建的对象由this所引用，并且最后隐式地返回this(如果没有显式地返回其他对象)<br>以上情况看起来就像是在后台发生了如下事情:  </p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">(name)</span>{</span>
+    <span class="comment">//使用对象字面量创建一个新对象</span>
+    <span class="comment">//var this = {};          </span>
+    <span class="comment">//向this添加属性和方法</span>
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.name;
+    };
+    <span class="comment">//return this;          </span>
+}      
+</code></pre><p>4、Apply调用模式<br>因为Javascript是一门函数式的面向对象编程语言，所以函数可以拥有方法。apply方法让我们构建一个参数数组传递给调用函数，它允许我们选择this的值。apply方法接收两个参数，第一个要绑定给this的值，第二个就是参数数组。<br>对于apply和call两者作用上是相同的，但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数:apply传入的是一个参数数组，也就是将多个参数组合成一个数组传入，而call则作为call的参数传入(从第二个参数开始)。<br>如func.call(func1,var1,var2,var3)对应的apply写法为:func.apply(func1,[var1,var2,var3]); </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="k81mc0hxpz89ga1e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-戏说json与jsonp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -227,118 +335,6 @@ flightHandler({
 
 
   
-    <article id="post-玩转Emmet" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/27/玩转Emmet/" class="article-date">
-  <time datetime="2014-04-27T10:17:31.000Z" itemprop="datePublished">4月 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tools skill/">tools skill</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/27/玩转Emmet/">玩转Emmet</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、Emmet是什么">一、Emmet是什么</h4>
-<p>Emmet是一组用于快速编写<strong>HTML</strong>和<strong>CSS</strong>的工具，它由两个核心组件组成:缩写扩展器和与上下文无关的HTML标签对匹配器。</p>
-<h4 id="二、Emmet能干嘛">二、Emmet能干嘛</h4>
-<p>亲，难道你是传说中的”闪电手”，编写下面这个HTML结构，你需要多长时间，一分钟 ? 两分钟 ? <a href="http://
-jsbin.com/">马上试试</a></p>
-<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"page"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"logo"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"navigation"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 4<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 5<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>  
-</code></pre><p>努力地敲着键盘…..<br>见证奇迹的时刻到了，请睁大你的双眼，抬起你那高贵的双手，轻轻地键入</p>
-<pre><code><span class="symbol">#page</span>&gt;div.logo+ul<span class="symbol">#navigation</span>&gt;li*<span class="number">5</span>&gt;a{<span class="class">Item</span> <span class="char">$}</span>   ---------》革命尚未成功，请你迅速你按下<span class="class">Tab</span>键
-</code></pre><p>怎么样是不是已经有了恋爱的冲动，爱它就赶快行动吧    ——————-&gt; 继续往下看</p>
-<h4 id="三、更多示例">三、更多示例</h4>
-<pre><code>示例1:
-输入: div#header&gt;ul#nav&gt;li*4&gt;a
-输出:
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"nav"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-
-示例2:
-输入:div.item$*3
-输出:
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-
-示例3:
-输入:div#i$-test.class$$$*3
-输出:
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"i1-test"</span> <span class="attribute">class</span>=<span class="value">"class001"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"i2-test"</span> <span class="attribute">class</span>=<span class="value">"class002"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"i3-test"</span> <span class="attribute">class</span>=<span class="value">"class003"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-</code></pre><h4 id="四、常用缩写">四、常用缩写</h4>
-<ul>
-<li>html:5    (html5结构)</li>
-<li>link:css    (引入css)</li>
-<li>script:src    (引入js)    </li>
-<li>script    (html中插入js)</li>
-<li>ul+    (ul及一个li)</li>
-<li>a:link    (插入a标签)</li>
-<li>form:get    (get表单)</li>
-<li>input:hidden    (hidden输入框)</li>
-<li>div#name    (id:name)</li>
-<li>div.name    (class:name)</li>
-<li>head&gt;link:css    (head添加link)</li>
-<li>p+p    (添加2个p)</li>
-<li>p*3    (添加3个p)</li>
-<li>ul&gt;li.item$*6     (创建ul下有个li同时class分别为item1，item2)</li>
-</ul>
-<h4 id="五、展开缩写说明">五、展开缩写说明</h4>
-<p>展开缩写功能将类似CSS的选择器转换为XHTML代码。<br>以下是支持的属性和操作符列表  </p>
-<ul>
-<li>E (元素名称 div,p)</li>
-<li>E#id(使用id的元素div#content,p#intro)</li>
-<li>E.class(使用类的元素div.header)</li>
-<li>E &gt; N(子代元素div&gt;p)</li>
-<li>E + N(兄弟元素h1+p)</li>
-<li>E <em> N(元素倍增ul#nav&gt;li</em>5&gt;a)</li>
-<li>E$ * N(条目编号)</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/玩转Emmet/" data-id="6xdw7qgois3xee2k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-javascript事件代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/04/27/javascript事件代理/" class="article-date">
@@ -422,6 +418,10 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
 
 
   
+  
+    <nav id="page-nav">
+      <a class="extend prev" href="/categories/javascript/">&laquo; Prev</a><a class="page-number" href="/categories/javascript/">1</a><span class="page-number current">2</span>
+    </nav>
   
 </section>
         

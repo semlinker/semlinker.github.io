@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>高性能javascript之响应接口 | Sem&#39;s Coder Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="article" property="og:type">
+<meta content="高性能javascript之响应接口" property="og:title">
+<meta content="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" property="og:url">
+<meta property="og:image">
+<meta content="Sem's Coder Life" property="og:site_name">
+<meta content="响应接口
+大多数浏览器有一个单独的处理进程，它由两个任务共享:Javascript任务和用户界面更新任务。每个时刻只有其中一个操作得以执行，也就是说当Javascript代码运行时用户界面不能对输入产生反应，反之亦然，当Javascript运行时，用户界面就被锁定了。  
+浏览器UI线程JavaScript和UI更新共享的进程通常被称为浏览器UI线程。此UI线程维护着一个简单的队列系统，任务被保存" property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sem&#39;s Coder Life</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">程序是写给人读的，只是偶尔让计算机执行一下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-高性能javascript之响应接口" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/02/高性能javascript之响应接口/" class="article-date">
+  <time datetime="2014-06-02T09:43:22.000Z" itemprop="datePublished">6月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      高性能javascript之响应接口
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="响应接口">响应接口</h4>
+<p>大多数浏览器有一个单独的处理进程，它由两个任务共享:Javascript任务和用户界面更新任务。每个时刻只有其中一个操作得以执行，也就是说当Javascript代码运行时用户界面不能对输入产生反应，反之亦然，当Javascript运行时，用户界面就被锁定了。  </p>
+<p>浏览器UI线程<br>JavaScript和UI更新共享的进程通常被称为浏览器UI线程。此UI线程维护着一个简单的队列系统，任务被保存到队列中直至进程空闲。一旦空闲，队列中的下一个任务将被检索和运行。这些任务不是运行Javascript代码就是执行UI更新，包括重绘和重排版。此进程中最令人感兴趣的部分是每次输入均导致一个或多个任务被加入。  </p>
+<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span>Browser UI Thread Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"handleClick()"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">button</span>&gt;</span> <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+    <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> div = document.createElement(<span class="string">"div"</span>); 
+    div.innerHTML = <span class="string">"Clicked!"</span>;     
+     document.body.appendChild(div);
+} 
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>当例子中按钮被点击时，它触发UI线程创建两个任务并添加到队列中。第一个任务是按钮UI更新，它需要做出相应的改变以指示它被按下了；第二个任务是Javascript运行任务，包含handleClick()的代码。假设UI线程空闲，第一个任务被检查并运行以更新按钮外观，然后Javascript任务被检查和运行。在运行过程中handleClick()创建了一个新的div元素，并追加到body元素上，其效果是引发另一次UI界面改变，也就是说在Javascript运行过程中，一个新的UI更新任务被添加队列中，当Javascript运行完后，UI还会再更新一次。<br>当所有UI线程任务执行之后，进程进入空闲状态，并等待更多任务添加到队列中。空闲状态是理想的。因为所有用户操作会立刻引发一次UI更新。<br>浏览器在Javascript运行时间上采取了限制，确保恶意代码编写者不能通过无尽的密集操作锁定用户和计算机。此类限制有两个:调用栈尺寸限制和长时间脚本限制。长运行脚本限制有时被称作长运行脚本定时器或者失控脚本控制器，但其基本思想是浏览器记录一个脚本的运行时间，一旦到达一定限度就终止它。   </p>
+<p>CSS Performance<br>1、Complex element selectors are slow<br>When possible<br>Use class or ID-based selectors<br>Make element selectors as simple as possiable<br>Use child instead of descendent selectors<br>Do not mix RTL and LTR styles  </p>
+<pre><code><span class="tag">table</span> <span class="tag">tr</span> <span class="tag">td</span> <span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;<span class="rule">}</span></span>
+<span class="tag">li</span><span class="id">#pass</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;<span class="rule">}</span></span>
+
+<span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">purple</span></span>;<span class="rule">}</span></span>
+<span class="tag">ul</span> &gt; <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> purple</span></span>;<span class="rule">}</span></span>  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" data-id="b9mw7d69gvct1ycy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/02/pro-javascript-performance/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Pro Javascript Performance
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/02/高性能javascript之dom编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">高性能javascript之DOM编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之dom编程/">高性能javascript之DOM编程</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 semlinker<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+  <a href="https://github.com/semlinker"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:100;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+</body>
+</html>

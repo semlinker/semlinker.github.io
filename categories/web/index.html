@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Category: web | Sem&#39;s Coder Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="website" property="og:type">
+<meta content="Sem's Coder Life" property="og:title">
+<meta content="http://yoursite.com/categories/web/" property="og:url">
+<meta property="og:image">
+<meta content="Sem's Coder Life" property="og:site_name">
+<meta property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sem&#39;s Coder Life</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">程序是写给人读的，只是偶尔让计算机执行一下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-软件架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/18/软件架构/" class="article-date">
+  <time datetime="2014-05-18T01:51:22.000Z" itemprop="datePublished">5月 18 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/18/软件架构/">软件架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、软件架构">一、软件架构</h4>
+<p><strong>1.1运行时抽象</strong><br>一个软件架构是一个软件系统在其操作的某个阶段的运行时元素的抽象。一个系统有可能由很多层抽象和很多个操作阶段组成，每个抽象和操作阶段都有自己的软件架构。<br>软件架构的核心是抽象原则:通过封装来隐藏系统的一些细节，从而更好地识别和支持系统的属性。一个复杂的系统包含有多层的抽象，每一层抽象都有自己的架构。架构代表了在某层次上系统行为的抽象，架构的元素被描述为提供给同层的其他元素的抽象接口。<br>除了架构层次，软件系统通常拥有多个操作阶段，例如启动、初始化、正常处理、重新初始化和停止。每个操作阶段都有自己的架构。例如，配置文件在启动阶段会被当做架构的一个数据元素来处理，但是在正常处理阶段则不会当做一个架构元素，因为在这个阶段这些信息已经分布到系统的各处。<br>组件是运行时执行某种功能的软件单元。这样的例子有程序、对象、进程、过滤器。软件架构是软件系统在运行时的抽象，而软件结构则是静态源代码的属性。<br>一个软件架构由一些架构元素(组件、连接器和数据)的配置来定义，这些元素之间的关系受到约束，以获得想要得到的一组架构属性。处理元素(组件)是执行数据转换的元素，数据元素是包含被使用和被转换的信息元素，连接元素(连接器)是将架构的不同部分结合在一起的粘合剂。<br><strong>1.2组件</strong><br>一个组件是软件指令和内部状态的一个抽象单元，通过其接口提供对于数据的转换。组件是软件指令和内部状态的一个抽象单元，通过其接口提供对于数据的转换。转换的例子包括从二级存储将数据加载到内存、执行一些运算、转换为另外一种格式、使用其他数据来封装等等。<br><strong>1.3连接器</strong><br>一个连接器是对于组件之间的通讯、协调或者合作进行仲裁的一种抽象机制。连接器的例子包括共享的表述、远程过程调用、消息传递协议和数据流。也许理解连接器的最佳方式是将它们与组件加以对比。连接器通过将数据元素从它的一个接口转移到另一个接口而不改变数据，来支持组件之间的通讯。在其内部，一个连接器可以包含一个由组件组成的子系统，为了转移的目的对数据进行某种转换、执行转移、然后做相反的转换并交付与原始数据相同的结果。<br><strong>1.4数据</strong><br>一个数据是组件通过一个连接器接收或发送的信息元素。数据的例子包括字节序列、消息、编码过的参数、以及序列化过的对象，但是不包括那些永久驻留或隐藏在组件中的信息。<br><strong>1.5配置</strong><br>一个配置是系统在运行期间组件、连接器和数据之间的架构关系的结构。 组件-计算的所在地；连接器-定义组件之间的交互；配置-相互交互的组件和连接器的集合。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/18/软件架构/" data-id="qs4k23n86chmwh1j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-大话socket" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/14/大话socket/" class="article-date">
+  <time datetime="2014-05-14T05:26:07.000Z" itemprop="datePublished">5月 14 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/14/大话socket/">大话socket</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、网络中进程之间如何通信?">一、网络中进程之间如何通信?</h4>
+<p>本地进程间通信(IPC)有多种方式，但主要分为以下4类:   </p>
+<ul>
+<li>消息传递(管道、FIFO、消息队列)</li>
+<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）</li>
+<li>共享内存</li>
+<li>远程过程调用(RPC)  </li>
+</ul>
+<p>在本地可以通过进程PID来唯一标识一个进程，但是在网络中这是行不通的。其实TCP/IP协议族已经帮我们解决了这个问题，网络层的“ip地址”可以唯一标识网络中的主机，而传输层的“协议+端口”可以唯一标识主机中的应用程序（进程）。这样利用三元组（ip地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。  </p>
+<h4 id="二、什么是Socket">二、什么是Socket</h4>
+<p>我们已经知道网络中的进程是通过socket来通信的，那什么是socket呢？我们经常把socket翻译为套接字，socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口，供应用层调用已实现进程在网络中通信。<br>socket起源于Unix，而Unix/Linux基本哲学之一就是<strong>“一切皆文件”</strong>，都可以用”<strong>打开open</strong> –&gt; <strong>读写write/read</strong> –&gt; <strong>关闭close</strong>“模式来操作。我们可以这样理解，Socket就是该模式的一个实现，socket即是一种特殊的文件，一些socket函数就是对其进行的操作（读/写IO、打开、关闭)。<br><img src="../socket.jpg" alt="image">  </p>
+<h4 id="三、Socket通信流程">三、Socket通信流程</h4>
+<p>Socket是”打开—读/写—关闭”模式的实现，以使用TCP协议通讯的socket为例，其交互流程如下:<br><img src="../socket-flow.png" alt="image">   </p>
+<h4 id="四、TCP三次握手建立一个可靠的连接">四、TCP三次握手建立一个可靠的连接</h4>
+<p><img src="../tcp.jpg" alt="image">  </p>
+<p><strong>第一次握手：</strong>客户端尝试连接服务器，向服务器发送syn包（同步序列编号Synchronize Sequence Numbers），syn=j，客户端进入SYN_SEND状态等待服务器确认</p>
+<p><strong>第二次握手：</strong>服务器接收客户端syn包并确认（ack=j+1），同时向客户端发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态</p>
+<p><strong>第三次握手：</strong>客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/14/大话socket/" data-id="z6jison4acjt39e7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-乱弹同步与异步，阻塞与非阻塞" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" class="article-date">
+  <time datetime="2014-05-13T07:01:56.000Z" itemprop="datePublished">5月 13 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/13/乱弹同步与异步，阻塞与非阻塞/">乱弹同步与异步，阻塞与非阻塞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="同步VS异步">同步VS异步</h4>
+<p>同步(synchronous)和异步(asynchronous)其实是针对消息的发送和接受的次序而言的（在通信中就是消息的发送和接收，在IO中就是数据的读和写）<br><strong>同步:</strong>就是消息的发送和接收是有序的，即接收和发送第二个包一定在第一个包之后第三个包之前，而不是乱序的<br><strong>异步:</strong>就是消息的发送和接收是可以乱序的，第一个包没发完可以直接发第二个包  </p>
+<h4 id="阻塞VS非阻塞">阻塞VS非阻塞</h4>
+<p>阻塞（block）和非阻塞（non-block）其实描述的是进程或线程进行等待时的一种方式<br><strong>阻塞:</strong>是等待时进程或线程需要挂起<br><strong>非阻塞:</strong>则是等待时线程或进程不需要被挂起，不影响线程的执行，这时线程或进程可以继续处理其它事物，不因为这个等待而受到影响（当然它仍然在等待这个消息，只不过可能会在线程或进程执行周期的某一个地方去查看消息的通知，而不是立即在原地等待）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" data-id="qfbndgln42b5igmt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之dom编程/">高性能javascript之DOM编程</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 semlinker<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+  <a href="https://github.com/semlinker"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:100;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+</body>
+</html>

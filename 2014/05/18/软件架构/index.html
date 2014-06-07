@@ -3,17 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery插件设计模式 | Sem&#39;s Coder Life</title>
+  <title>软件架构 | Sem&#39;s Coder Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta content="article" property="og:type">
-<meta content="jQuery插件设计模式" property="og:title">
-<meta content="http://yoursite.com/2014/04/28/jquery插件设计模式/" property="og:url">
+<meta content="软件架构" property="og:title">
+<meta content="http://yoursite.com/2014/05/18/软件架构/" property="og:url">
 <meta property="og:image">
 <meta content="Sem's Coder Life" property="og:site_name">
-<meta content="引言
-码农A:小C，你有用过jquery插件么？小C:有，从工作到现在用过挺多的，如jQuery插件
-一、插件模式
-定义jQuery插件有多种多样的方法,最简单的方式是为" property="og:description">
+<meta content="一、软件架构
+1.1运行时抽象一个软件架构是一个软件系统在其操作的某个阶段的运行时元素的抽象。一个系统有可能由很多层抽象和很多个操作阶段组成，每个抽象和操作阶段都有自己的软件架构。软件架构的核心是抽象原则:通过封装来隐藏系统的一些细节，从而更好地识别和支持系统的属性。一个复杂的系统包含有多层的抽象，每一层抽象都有自己的架构。架构代表了在某层次上系统行为的抽象，架构的元素被描述为提供给同层的其他元素" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
@@ -64,14 +62,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jquery插件设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-软件架构" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/04/28/jquery插件设计模式/" class="article-date">
-  <time datetime="2014-04-28T09:26:54.000Z" itemprop="datePublished">4月 28 2014</time>
+    <a href="/2014/05/18/软件架构/" class="article-date">
+  <time datetime="2014-05-18T01:51:22.000Z" itemprop="datePublished">5月 18 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/web/">web</a>
   </div>
 
   </div>
@@ -82,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery插件设计模式
+      软件架构
     </h1>
   
 
@@ -90,15 +88,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="引言">引言</h4>
-<p>码农A:小C，你有用过jquery插件么？<br>小C:有，从工作到现在用过挺多的，如<br>jQuery插件</p>
-<h4 id="一、插件模式">一、插件模式</h4>
-<p>定义jQuery插件有多种多样的方法,最简单的方式是为</p>
+        <h4 id="一、软件架构">一、软件架构</h4>
+<p><strong>1.1运行时抽象</strong><br>一个软件架构是一个软件系统在其操作的某个阶段的运行时元素的抽象。一个系统有可能由很多层抽象和很多个操作阶段组成，每个抽象和操作阶段都有自己的软件架构。<br>软件架构的核心是抽象原则:通过封装来隐藏系统的一些细节，从而更好地识别和支持系统的属性。一个复杂的系统包含有多层的抽象，每一层抽象都有自己的架构。架构代表了在某层次上系统行为的抽象，架构的元素被描述为提供给同层的其他元素的抽象接口。<br>除了架构层次，软件系统通常拥有多个操作阶段，例如启动、初始化、正常处理、重新初始化和停止。每个操作阶段都有自己的架构。例如，配置文件在启动阶段会被当做架构的一个数据元素来处理，但是在正常处理阶段则不会当做一个架构元素，因为在这个阶段这些信息已经分布到系统的各处。<br>组件是运行时执行某种功能的软件单元。这样的例子有程序、对象、进程、过滤器。软件架构是软件系统在运行时的抽象，而软件结构则是静态源代码的属性。<br>一个软件架构由一些架构元素(组件、连接器和数据)的配置来定义，这些元素之间的关系受到约束，以获得想要得到的一组架构属性。处理元素(组件)是执行数据转换的元素，数据元素是包含被使用和被转换的信息元素，连接元素(连接器)是将架构的不同部分结合在一起的粘合剂。<br><strong>1.2组件</strong><br>一个组件是软件指令和内部状态的一个抽象单元，通过其接口提供对于数据的转换。组件是软件指令和内部状态的一个抽象单元，通过其接口提供对于数据的转换。转换的例子包括从二级存储将数据加载到内存、执行一些运算、转换为另外一种格式、使用其他数据来封装等等。<br><strong>1.3连接器</strong><br>一个连接器是对于组件之间的通讯、协调或者合作进行仲裁的一种抽象机制。连接器的例子包括共享的表述、远程过程调用、消息传递协议和数据流。也许理解连接器的最佳方式是将它们与组件加以对比。连接器通过将数据元素从它的一个接口转移到另一个接口而不改变数据，来支持组件之间的通讯。在其内部，一个连接器可以包含一个由组件组成的子系统，为了转移的目的对数据进行某种转换、执行转移、然后做相反的转换并交付与原始数据相同的结果。<br><strong>1.4数据</strong><br>一个数据是组件通过一个连接器接收或发送的信息元素。数据的例子包括字节序列、消息、编码过的参数、以及序列化过的对象，但是不包括那些永久驻留或隐藏在组件中的信息。<br><strong>1.5配置</strong><br>一个配置是系统在运行期间组件、连接器和数据之间的架构关系的结构。 组件-计算的所在地；连接器-定义组件之间的交互；配置-相互交互的组件和连接器的集合。 </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="61ax1oo45pt67ro2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/18/软件架构/" data-id="qs4k23n86chmwh1j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,19 +103,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/04/30/戏说json与jsonp/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/05/30/jquery内核详解和实战/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          戏说JSON与JSONP
+          jQuery内核详解和实战
         
       </div>
     </a>
   
   
-    <a href="/2014/04/27/玩转Emmet/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/14/大话socket/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">玩转Emmet</div>
+      <div class="article-nav-title">大话socket</div>
     </a>
   
 </nav>

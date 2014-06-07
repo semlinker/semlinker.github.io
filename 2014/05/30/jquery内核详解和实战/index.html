@@ -3,17 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery插件设计模式 | Sem&#39;s Coder Life</title>
+  <title>jQuery内核详解和实战 | Sem&#39;s Coder Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta content="article" property="og:type">
-<meta content="jQuery插件设计模式" property="og:title">
-<meta content="http://yoursite.com/2014/04/28/jquery插件设计模式/" property="og:url">
+<meta content="jQuery内核详解和实战" property="og:title">
+<meta content="http://yoursite.com/2014/05/30/jquery内核详解和实战/" property="og:url">
 <meta property="og:image">
 <meta content="Sem's Coder Life" property="og:site_name">
-<meta content="引言
-码农A:小C，你有用过jquery插件么？小C:有，从工作到现在用过挺多的，如jQuery插件
-一、插件模式
-定义jQuery插件有多种多样的方法,最简单的方式是为" property="og:description">
+<meta content="一、使用jQuery选择器应该注意的问题
+1、多用ID选择器:2、少直接使用Class选择器3、多用父子关系，少用嵌套关系(使用parent&gt;child替代parent child)4、缓存jQuery对象5、选择器分类:基本选择器、组合选择器、属性选择器、伪类选择器、用户界面选择器、结构性选择器、其他选择器6、jQuery选择器返回的永远是一个数组对象，但是若没有找到指定的元素，则会返回一" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
@@ -64,10 +62,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jquery插件设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jquery内核详解和实战" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/04/28/jquery插件设计模式/" class="article-date">
-  <time datetime="2014-04-28T09:26:54.000Z" itemprop="datePublished">4月 28 2014</time>
+    <a href="/2014/05/30/jquery内核详解和实战/" class="article-date">
+  <time datetime="2014-05-30T02:54:29.000Z" itemprop="datePublished">5月 30 2014</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery插件设计模式
+      jQuery内核详解和实战
     </h1>
   
 
@@ -90,15 +88,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="引言">引言</h4>
-<p>码农A:小C，你有用过jquery插件么？<br>小C:有，从工作到现在用过挺多的，如<br>jQuery插件</p>
-<h4 id="一、插件模式">一、插件模式</h4>
-<p>定义jQuery插件有多种多样的方法,最简单的方式是为</p>
+        <h4 id="一、使用jQuery选择器应该注意的问题">一、使用jQuery选择器应该注意的问题</h4>
+<p>1、多用ID选择器:<br>2、少直接使用Class选择器<br>3、多用父子关系，少用嵌套关系(使用parent&gt;child替代parent child)<br>4、缓存jQuery对象<br>5、选择器分类:基本选择器、组合选择器、属性选择器、伪类选择器、用户界面选择器、结构性选择器、其他选择器<br>6、jQuery选择器返回的永远是一个数组对象，但是若没有找到指定的元素，则会返回一个空的数组对象。因此判断一个jQuery对象是否存在，不能使用如下语句if($(“tr”)){//code}<br>7、getElementsByTagName返回数组</p>
+<h4 id="二、类数组(Array-Like)">二、类数组(Array-Like)</h4>
+<p>1、get(index)方法读取集合中的元素，它与直接通过[i]来读取元素的方法是完全相同的<br>2、eq(index)方法克隆集合中的元素，也就是说不修改数组元素</p>
+<h4 id="三、this">三、this</h4>
+<p>1、this绑定与函数声明无关，与函数的调用方式有关<br>2、函数调用的this指向全局对象，若使用”use strict”的话，this将被设置为undefined<br>3、典型使用硬绑定的方式var bar = function(){ return foo.apply(obj,arguments);};<br>4、var bar = new foo();//this-&gt;constructed object<br>5、var bar = foo.call(obj2);//this-&gt;obj2<br>6、var bar = obj1.foo();//this-&gt;obj1<br>7、var bar = foo();//this指向全局对象</p>
+<h4 id="四、Javascript之OOP">四、Javascript之OOP</h4>
+<p>1、在Javascript面向对象编程中存在许多层:简单对象、对象原型链、构造函数、构造器的继承<br>2、删除操作只针对与当前对象</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="61ax1oo45pt67ro2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/30/jquery内核详解和实战/" data-id="ukt1fcizohjft3ue" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,19 +109,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/04/30/戏说json与jsonp/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/06/02/高性能javascirpt/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          戏说JSON与JSONP
+          高性能Javascirpt之数据访问
         
       </div>
     </a>
   
   
-    <a href="/2014/04/27/玩转Emmet/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/18/软件架构/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">玩转Emmet</div>
+      <div class="article-nav-title">软件架构</div>
     </a>
   
 </nav>

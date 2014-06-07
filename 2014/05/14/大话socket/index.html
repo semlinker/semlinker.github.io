@@ -3,17 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery插件设计模式 | Sem&#39;s Coder Life</title>
+  <title>大话socket | Sem&#39;s Coder Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta content="article" property="og:type">
-<meta content="jQuery插件设计模式" property="og:title">
-<meta content="http://yoursite.com/2014/04/28/jquery插件设计模式/" property="og:url">
-<meta property="og:image">
+<meta content="大话socket" property="og:title">
+<meta content="http://yoursite.com/2014/05/14/大话socket/" property="og:url">
+<meta content="../socket.jpg" property="og:image">
 <meta content="Sem's Coder Life" property="og:site_name">
-<meta content="引言
-码农A:小C，你有用过jquery插件么？小C:有，从工作到现在用过挺多的，如jQuery插件
-一、插件模式
-定义jQuery插件有多种多样的方法,最简单的方式是为" property="og:description">
+<meta content="一、网络中进程之间如何通信?
+本地进程间通信(IPC)有多种方式，但主要分为以下4类:   
+
+消息传递(管道、FIFO、消息队列)
+同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）
+共享内存
+远程过程调用(RPC)  
+
+在本地可以通过进程PID来唯一标识一个进程，但是在网络中这是行不通的。其实TCP/IP协议族已经帮我们解决了这个问题，网络层的“ip地址”可以唯一标识网络中的主机，而传" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
@@ -64,14 +69,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jquery插件设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-大话socket" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/04/28/jquery插件设计模式/" class="article-date">
-  <time datetime="2014-04-28T09:26:54.000Z" itemprop="datePublished">4月 28 2014</time>
+    <a href="/2014/05/14/大话socket/" class="article-date">
+  <time datetime="2014-05-14T05:26:07.000Z" itemprop="datePublished">5月 14 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/web/">web</a>
   </div>
 
   </div>
@@ -82,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery插件设计模式
+      大话socket
     </h1>
   
 
@@ -90,15 +95,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="引言">引言</h4>
-<p>码农A:小C，你有用过jquery插件么？<br>小C:有，从工作到现在用过挺多的，如<br>jQuery插件</p>
-<h4 id="一、插件模式">一、插件模式</h4>
-<p>定义jQuery插件有多种多样的方法,最简单的方式是为</p>
+        <h4 id="一、网络中进程之间如何通信?">一、网络中进程之间如何通信?</h4>
+<p>本地进程间通信(IPC)有多种方式，但主要分为以下4类:   </p>
+<ul>
+<li>消息传递(管道、FIFO、消息队列)</li>
+<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）</li>
+<li>共享内存</li>
+<li>远程过程调用(RPC)  </li>
+</ul>
+<p>在本地可以通过进程PID来唯一标识一个进程，但是在网络中这是行不通的。其实TCP/IP协议族已经帮我们解决了这个问题，网络层的“ip地址”可以唯一标识网络中的主机，而传输层的“协议+端口”可以唯一标识主机中的应用程序（进程）。这样利用三元组（ip地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。  </p>
+<h4 id="二、什么是Socket">二、什么是Socket</h4>
+<p>我们已经知道网络中的进程是通过socket来通信的，那什么是socket呢？我们经常把socket翻译为套接字，socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口，供应用层调用已实现进程在网络中通信。<br>socket起源于Unix，而Unix/Linux基本哲学之一就是<strong>“一切皆文件”</strong>，都可以用”<strong>打开open</strong> –&gt; <strong>读写write/read</strong> –&gt; <strong>关闭close</strong>“模式来操作。我们可以这样理解，Socket就是该模式的一个实现，socket即是一种特殊的文件，一些socket函数就是对其进行的操作（读/写IO、打开、关闭)。<br><img src="../socket.jpg" alt="image">  </p>
+<h4 id="三、Socket通信流程">三、Socket通信流程</h4>
+<p>Socket是”打开—读/写—关闭”模式的实现，以使用TCP协议通讯的socket为例，其交互流程如下:<br><img src="../socket-flow.png" alt="image">   </p>
+<h4 id="四、TCP三次握手建立一个可靠的连接">四、TCP三次握手建立一个可靠的连接</h4>
+<p><img src="../tcp.jpg" alt="image">  </p>
+<p><strong>第一次握手：</strong>客户端尝试连接服务器，向服务器发送syn包（同步序列编号Synchronize Sequence Numbers），syn=j，客户端进入SYN_SEND状态等待服务器确认</p>
+<p><strong>第二次握手：</strong>服务器接收客户端syn包并确认（ack=j+1），同时向客户端发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态</p>
+<p><strong>第三次握手：</strong>客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="61ax1oo45pt67ro2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/14/大话socket/" data-id="z6jison4acjt39e7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,19 +126,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/04/30/戏说json与jsonp/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/05/18/软件架构/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          戏说JSON与JSONP
+          软件架构
         
       </div>
     </a>
   
   
-    <a href="/2014/04/27/玩转Emmet/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">玩转Emmet</div>
+      <div class="article-nav-title">乱弹同步与异步，阻塞与非阻塞</div>
     </a>
   
 </nav>

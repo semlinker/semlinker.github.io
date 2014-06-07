@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery插件设计模式 | Sem&#39;s Coder Life</title>
+  <title>乱弹同步与异步，阻塞与非阻塞 | Sem&#39;s Coder Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta content="article" property="og:type">
-<meta content="jQuery插件设计模式" property="og:title">
-<meta content="http://yoursite.com/2014/04/28/jquery插件设计模式/" property="og:url">
+<meta content="乱弹同步与异步，阻塞与非阻塞" property="og:title">
+<meta content="http://yoursite.com/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" property="og:url">
 <meta property="og:image">
 <meta content="Sem's Coder Life" property="og:site_name">
-<meta content="引言
-码农A:小C，你有用过jquery插件么？小C:有，从工作到现在用过挺多的，如jQuery插件
-一、插件模式
-定义jQuery插件有多种多样的方法,最简单的方式是为" property="og:description">
+<meta content="同步VS异步
+同步(synchronous)和异步(asynchronous)其实是针对消息的发送和接受的次序而言的（在通信中就是消息的发送和接收，在IO中就是数据的读和写）同步:就是消息的发送和接收是有序的，即接收和发送第二个包一定在第一个包之后第三个包之前，而不是乱序的异步:就是消息的发送和接收是可以乱序的，第一个包没发完可以直接发第二个包  
+阻塞VS非阻塞
+阻塞（block）和非阻塞（no" property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
@@ -64,14 +64,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jquery插件设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-乱弹同步与异步，阻塞与非阻塞" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/04/28/jquery插件设计模式/" class="article-date">
-  <time datetime="2014-04-28T09:26:54.000Z" itemprop="datePublished">4月 28 2014</time>
+    <a href="/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" class="article-date">
+  <time datetime="2014-05-13T07:01:56.000Z" itemprop="datePublished">5月 13 2014</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    <a class="article-category-link" href="/categories/web/">web</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery插件设计模式
+      乱弹同步与异步，阻塞与非阻塞
     </h1>
   
 
@@ -90,15 +90,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="引言">引言</h4>
-<p>码农A:小C，你有用过jquery插件么？<br>小C:有，从工作到现在用过挺多的，如<br>jQuery插件</p>
-<h4 id="一、插件模式">一、插件模式</h4>
-<p>定义jQuery插件有多种多样的方法,最简单的方式是为</p>
+        <h4 id="同步VS异步">同步VS异步</h4>
+<p>同步(synchronous)和异步(asynchronous)其实是针对消息的发送和接受的次序而言的（在通信中就是消息的发送和接收，在IO中就是数据的读和写）<br><strong>同步:</strong>就是消息的发送和接收是有序的，即接收和发送第二个包一定在第一个包之后第三个包之前，而不是乱序的<br><strong>异步:</strong>就是消息的发送和接收是可以乱序的，第一个包没发完可以直接发第二个包  </p>
+<h4 id="阻塞VS非阻塞">阻塞VS非阻塞</h4>
+<p>阻塞（block）和非阻塞（non-block）其实描述的是进程或线程进行等待时的一种方式<br><strong>阻塞:</strong>是等待时进程或线程需要挂起<br><strong>非阻塞:</strong>则是等待时线程或进程不需要被挂起，不影响线程的执行，这时线程或进程可以继续处理其它事物，不因为这个等待而受到影响（当然它仍然在等待这个消息，只不过可能会在线程或进程执行周期的某一个地方去查看消息的通知，而不是立即在原地等待）</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="61ax1oo45pt67ro2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" data-id="qfbndgln42b5igmt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,19 +107,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/04/30/戏说json与jsonp/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/05/14/大话socket/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          戏说JSON与JSONP
+          大话socket
         
       </div>
     </a>
   
   
-    <a href="/2014/04/27/玩转Emmet/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/11/javascript-array对象详解/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">玩转Emmet</div>
+      <div class="article-nav-title">Javascript Array对象详解</div>
     </a>
   
 </nav>

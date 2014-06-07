@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>高性能Javascirpt之数据访问 | Sem&#39;s Coder Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="article" property="og:type">
+<meta content="高性能Javascirpt之数据访问" property="og:title">
+<meta content="http://yoursite.com/2014/06/02/高性能javascirpt/" property="og:url">
+<meta property="og:image">
+<meta content="Sem's Coder Life" property="og:site_name">
+<meta content="第二章:数据访问
+在Javascript中有四种基本的数据位置:直接量、变量、数组项、对象成员，对一种数据存储位置都具有特定的读写操作负担。总的来说，对直接量和局部变量的访问速度要快于数组项和对象成员的访问速度。作用域链和标识符解析函数内部的[[Scope]]属性包含了一个函数被创建的作用域中对象的集合。此集合称为函数的作用域链，它决定哪些数据可由函数访问。此函数作用域链中的每个对象被称为一个可变" property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sem&#39;s Coder Life</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">程序是写给人读的，只是偶尔让计算机执行一下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-高性能javascirpt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/02/高性能javascirpt/" class="article-date">
+  <time datetime="2014-06-02T06:53:31.000Z" itemprop="datePublished">6月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      高性能Javascirpt之数据访问
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="第二章:数据访问">第二章:数据访问</h4>
+<p>在Javascript中有四种基本的数据位置:直接量、变量、数组项、对象成员，对一种数据存储位置都具有特定的读写操作负担。总的来说，对直接量和局部变量的访问速度要快于数组项和对象成员的访问速度。<br>作用域链和标识符解析<br>函数内部的[[Scope]]属性包含了一个函数被创建的作用域中对象的集合。此集合称为函数的作用域链，它决定哪些数据可由函数访问。此函数作用域链中的每个对象被称为一个可变对象。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(num1,num2)</span>{</span>
+    var <span class="built_in">sum</span> = num1 + num2;
+    <span class="keyword">return</span> <span class="built_in">sum</span>;
+}   
+</code></pre><p>当add()函数创建后，它的作用域链中填入了一个单独的可变对象，此全局对象代表了所有全局范围定义的变量。此全局变量包含了诸如窗口、浏览器和文档之类的访问接口。<br>函数作用域链将在运行时用到。如 var total = add(5,10);运行此add函数时，建立一个内部对象，称作”运行期上下文”。一个运行期上下文定义了一个函数运行时的环境。对函数的每次运行而言，每个运行时的上下文都是独一的，所以多次调用同一个函数就会导致多次创建运行期上下文。当函数执行完毕，运行期上下文就会被销毁。  </p>
+<p>一个运行期上下文有它自己的作用域链，用于标识符解析。当运行期上下文被创建时，它的作用域链被初始化，连同运行函数的[[Scope]]属性中所包含的对象。这些值按照它们出现在函数中的顺序，被复制到运行期上下文的作用域链中。这项工作一旦完成，一个被称作”激活对象”的新对象就为运行期上下文创建好了。<br>在函数运行过程中，每遇到一个变量，标识符识别过程要决定从哪里获得或者存储数据，此过程搜索运行期上下文的作用域链，查找同名的标识符。搜索工作从运行函数的激活目标之作用域链的前端开始。如果找到后，直接返回，若没有找到则进入作用域链的下一个对象。<br>在运行期上下文的作用域链中，一个标识符所处的位置越深，它的读写速度就越慢。所以，函数中局部变量的访问速度总是最快的，而全局变量的访问通常是最慢的。全局变量总是处于运行期上下文作用域链的最后一个位置。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">initUI</span><span class="params">()</span>{</span>
+<span class="keyword">var</span> bd = document.body,
+links = document.getElementsByTagName_r(<span class="string">"a"</span>),
+ i = <span class="number">0</span>,
+len = links.length;
+<span class="keyword">while</span>(i &lt; len){
+update(links[i++]); }
+    document.getElementById(<span class="string">"go-btn"</span>).onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span> start();
+};
+bd.className = <span class="string">"active"</span>; 
+}  
+</code></pre><p>此函数包含三个对document的引用，document是一个全局对象、搜素此变量，必须遍历整个作用域链，直到最后在全局变量对象中找到它。你可以通过这种方法减轻重复的全局变量访问对象性能的影响:首先将全局变量的引用存储在一个局部变量中，然后使用整个局部变量代替全局变量。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">initUI</span><span class="params">()</span>{</span>
+<span class="keyword">var</span> doc = document,
+bd = doc.body,
+links = doc.getElementsByTagName_r(<span class="string">"a"</span>),
+i = <span class="number">0</span>,
+len = links.length; <span class="keyword">while</span>(i &lt; len){
+update(links[i++]); 
+}
+    doc.getElementById(<span class="string">"go-btn"</span>).onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span> start();
+};
+    bd.className = <span class="string">"active"</span>; 
+}  
+</code></pre><p>改变作用域链<br>一般来说，一个运行期上下文的作用域链不会被改变。但是，有两种表达式可以在运行期临时改变运行期的上下文作用域链。第一个是with表达式。<br>with表达式为所有对象属性创建一个默认操作变量。在其他语言中通常用来避免书写一些重复代码。当代码流执行到一个with表达式时，运行期上下文的作用域链被临时改变了。一个新的可变对象将创建，它包含指定对象的所有属性。此对象被插入到作用域链的前端，意味着现在函数的所有局部变量都被推入第二个作用域链对象中，所以访问代价更高了。<br>在Javascript中不只是with表达式人为地改变运行期上下文的作用域链，try-catch表达式的catch子句具有相同的效果。当try块发生错误时，程序流程自动转入catch块，并将异常对象推入作用域链前端的一个可变对象中。在catch块中，函数的所有局部变量现在被放在第二个作用域链对象中。例如:  </p>
+<pre><code><span class="keyword">try</span> <span class="cell">{ 
+    methodThatMightCauseAnError();
+}</span> <span class="keyword">catch</span> (ex)<span class="cell">{
+    alert(ex.message); //scope chain is augmented here
+}</span>
+</code></pre><p>只要catch子句执行完毕，作用域链就会返回到原来的状态。在程序中可以通过精简代码的办法最小化catch子句对性能的影响。一个很好的模式是将错误交给一个专用函数来处理。例子如下:  </p>
+<pre><code><span class="keyword">try</span> <span class="cell">{ 
+    methodThatMightCauseAnError();
+}</span> <span class="keyword">catch</span> (ex)<span class="cell">{
+    handleError(ex);//delegate to handler method
+}</span>  
+</code></pre><p>handleError()函数是catch子句中运行的唯一代码。此函数以适当的方法自由地处理错误，并接收由错误产生的异常对象。由于只有一条语句，没有局部变量访问，作用域链临时改变就不会影响代码的性能。  </p>
+<p>动态作用域<br>无论是with表达式还是try-catch表达式的catch子句，以及包含()的函数，都被认为是动态作用域。一个动态作用域只因代码运行而存在，因此无法通过静态分析(查看代码结构)来确定。  </p>
+<p>闭包、作用域和内存<br>闭包是Javascript最强大的一个方面，它允许函数访问局部变量之外的数据。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">assignEvents</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> id = <span class="string">"xdi9592"</span>;
+    document.getElementById(<span class="string">"save-btn"</span>).onclick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span>{</span>
+       saveDocument(id); 
+    };
+}   
+</code></pre><p>assignEvents函数为一个DOM元素指定了一个事件处理句柄。此事件句柄是一个闭包，当assignEvents()执行时创建，可以访问其范围内部的id变量。用这种方法封闭了对id变量的访问，必须创建一个特殊的作用域链。<br>在assignEvents()被执行时，一个激活对象被创建，并包含了一些应有的内容，其中包含id变量。它将成为运行期上下文作用域链上的第一个对象，全局对象是第二个。当闭包创建时，[[Scope]]属性与这些对象一起被初始化。<br>由于闭包的[[Scope]]属性包含与运行期上下文作用域链相同的对象引用，会产生副作用。通常，一个函数的激活对象与运行期上下文一起销毁。当涉及闭包时，激活对象就无法销毁，因为引用仍存在与闭包的[[Scope]]属性中。这意味着脚本中的闭包和非闭包函数相比，需要更多的内存开销。<br>当闭包被执行时，一个运行期上下文被创建，它的作用域链与[[Scope]]中引用的两个相同的作用域链同时被初始化，然后一个新的激活对象为闭包自身被创建。  </p>
+<p>对象成员<br>对象可以有两种类型的成员:实例成员和原形成员。实例成员直接存于实例自身，而原形成员则从对象原形继承。<br>一般来说，如果在同一个函数中你要多次读取同一个对象属性，最好将它存入一个局部变量。以局部变量替代属性，避免多余的属性查找带来性能开销。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascirpt/" data-id="mp55niqmvqjtc9rf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/02/高性能javascript之dom编程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          高性能javascript之DOM编程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/30/jquery内核详解和实战/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jQuery内核详解和实战</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之dom编程/">高性能javascript之DOM编程</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 semlinker<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+  <a href="https://github.com/semlinker"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:100;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+</body>
+</html>

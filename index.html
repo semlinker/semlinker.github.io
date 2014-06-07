@@ -63,6 +63,508 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pro-javascript-performance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/02/pro-javascript-performance/" class="article-date">
+  <time datetime="2014-06-02T13:30:52.000Z" itemprop="datePublished">6月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Pro_Javascript_Performance">Pro Javascript Performance</h4>
+<p>Web Performance<br>影响网络性能的因素有很多，如网络延迟。当请求一个网页或网页相关的资源，浏览器新建一个线程发起请求和初始化DNS Server，DNS查找。建立TCP/IP连接的时候，需要进行三次握手。TCP握手，像通信协议一样，只是使用标准化方式定义不同部分的交流方式。<br>造成网络延迟的另一原因是加载网页所需组件所需的HTTP请求数。页面所需的资源如图片、外部CSS、Javascript文件，都需要从服务器端加载。每次请求将新起一个线程，每次请求过程都包括DNS lookup、TCP连接、HTTP请求和响应。<br>浏览器解析和渲染页面也是影响网络性能的另一个因素。大多数的现代浏览器拥有以下架构:地址栏、历史操作、渲染引擎、Javascript引擎和用于处理HTTP请求的网络层。<br>Javascript压缩:<br>1、Minify  2、YUI Compressor 3、Closure Compiler</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/02/pro-javascript-performance/" data-id="zvtubaunr41k6kzf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-高性能javascript之响应接口" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/02/高性能javascript之响应接口/" class="article-date">
+  <time datetime="2014-06-02T09:43:22.000Z" itemprop="datePublished">6月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="响应接口">响应接口</h4>
+<p>大多数浏览器有一个单独的处理进程，它由两个任务共享:Javascript任务和用户界面更新任务。每个时刻只有其中一个操作得以执行，也就是说当Javascript代码运行时用户界面不能对输入产生反应，反之亦然，当Javascript运行时，用户界面就被锁定了。  </p>
+<p>浏览器UI线程<br>JavaScript和UI更新共享的进程通常被称为浏览器UI线程。此UI线程维护着一个简单的队列系统，任务被保存到队列中直至进程空闲。一旦空闲，队列中的下一个任务将被检索和运行。这些任务不是运行Javascript代码就是执行UI更新，包括重绘和重排版。此进程中最令人感兴趣的部分是每次输入均导致一个或多个任务被加入。  </p>
+<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span>Browser UI Thread Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;<span class="title">button</span> <span class="attribute">onclick</span>=<span class="value">"handleClick()"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">button</span>&gt;</span> <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+    <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> div = document.createElement(<span class="string">"div"</span>); 
+    div.innerHTML = <span class="string">"Clicked!"</span>;     
+     document.body.appendChild(div);
+} 
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>当例子中按钮被点击时，它触发UI线程创建两个任务并添加到队列中。第一个任务是按钮UI更新，它需要做出相应的改变以指示它被按下了；第二个任务是Javascript运行任务，包含handleClick()的代码。假设UI线程空闲，第一个任务被检查并运行以更新按钮外观，然后Javascript任务被检查和运行。在运行过程中handleClick()创建了一个新的div元素，并追加到body元素上，其效果是引发另一次UI界面改变，也就是说在Javascript运行过程中，一个新的UI更新任务被添加队列中，当Javascript运行完后，UI还会再更新一次。<br>当所有UI线程任务执行之后，进程进入空闲状态，并等待更多任务添加到队列中。空闲状态是理想的。因为所有用户操作会立刻引发一次UI更新。<br>浏览器在Javascript运行时间上采取了限制，确保恶意代码编写者不能通过无尽的密集操作锁定用户和计算机。此类限制有两个:调用栈尺寸限制和长时间脚本限制。长运行脚本限制有时被称作长运行脚本定时器或者失控脚本控制器，但其基本思想是浏览器记录一个脚本的运行时间，一旦到达一定限度就终止它。   </p>
+<p>CSS Performance<br>1、Complex element selectors are slow<br>When possible<br>Use class or ID-based selectors<br>Make element selectors as simple as possiable<br>Use child instead of descendent selectors<br>Do not mix RTL and LTR styles  </p>
+<pre><code><span class="tag">table</span> <span class="tag">tr</span> <span class="tag">td</span> <span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;<span class="rule">}</span></span>
+<span class="tag">li</span><span class="id">#pass</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">green</span></span>;<span class="rule">}</span></span>
+
+<span class="tag">ul</span> <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">purple</span></span>;<span class="rule">}</span></span>
+<span class="tag">ul</span> &gt; <span class="tag">li</span> <span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value"> purple</span></span>;<span class="rule">}</span></span>  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之响应接口/" data-id="b9mw7d69gvct1ycy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-高性能javascript之dom编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/02/高性能javascript之dom编程/" class="article-date">
+  <time datetime="2014-06-02T08:08:14.000Z" itemprop="datePublished">6月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/02/高性能javascript之dom编程/">高性能javascript之DOM编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="DOM编程">DOM编程</h4>
+<p>对DOM操作代价昂贵，在富应用中通常是一个性能瓶颈。<br>文档对象模型(DOM)是一个独立于语言，使用XML和HTML文档操作的应用程序接口。在浏览器中，主要与HTML打交道，在网页应用中检索XML文档也很常见。DOM APIs主要用于访问这些文档中数据。<br>浏览器通常要求DOM实现和Javascript实现保持相互独立，例如在IE中，被称为JScript的Javascript实现位于库文件jscript.dll中，而DOM实现位于另一个库mshtml中。这样导致的问题是:简单来说，两个独立的部分以功能接口连接就会带来性能损耗。一个很形象的比喻是把DOM看成一个岛屿，把javascript看成另一个岛屿，两者之间以一座收费桥连接。每次ECMAScript需要访问DOM时，你需要过桥，交一次过桥费。你操作DOM次数越多，费用就越高。<br>简单来说，正如前面所讨论的那样，访问一个DOM元素的代价就是交一次过桥费。修改元素的费用可能更贵，因为它经常导致浏览器重新计算页面的几何变化。<br>为了给你一个关于DOM操作问题的量化印象，考虑下面的例子:  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLoop</span><span class="params">()</span>{</span>
+    <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>;count &lt;= <span class="number">15000</span>; count++){
+        document.getElementById(<span class="string">'here'</span>).innerHTML += <span class="string">'a'</span>;
+    }
+} 
+</code></pre><p>此函数在循环中更新页面内容。这段代码的问题是，在每次循环单元中都对DOM元素访问两次:一次是读取innerHTML属性内容，另一次写入它。<br>一个更有效率版本是将使用局部变量存储更新后的内容，在循环结束后一次性写入:  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">innerHTMLLoop2</span><span class="params">()</span>{</span>
+   <span class="keyword">var</span> content = <span class="string">''</span>;
+   <span class="keyword">for</span>(<span class="keyword">var</span> count = <span class="number">0</span>;count &lt;= <span class="number">15000</span>; count++){
+        content += <span class="string">'a'</span>;
+    }
+    document.getElementById(<span class="string">'here'</span>).innerHTML += content;
+
+}
+</code></pre><p>HTML集合  </p>
+<pre><code><span class="comment">//无效的死循环</span>
+<span class="keyword">var</span> alldivs = document.getElementsByTagName(<span class="string">'div'</span>); 
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; alldivs.length; i++) {
+  document.body.appendChild(document.createElement(<span class="string">'div'</span>));
+}  
+
+<span class="comment">//slow</span>
+<span class="function"><span class="keyword">function</span> <span class="title">collectionGlobal</span><span class="params">()</span> {</span>
+<span class="keyword">var</span> coll = document.getElementsByTagName(<span class="string">'div'</span>), 
+len = coll.length,
+name = <span class="string">''</span>;
+<span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; len; count++) {
+ name = document.getElementsByTagName(<span class="string">'div'</span>)[count].nodeName; 
+ name = document.getElementsByTagName_r(<span class="string">'div'</span>)[count].nodeType; 
+ name = document.getElementsByTagName_r(<span class="string">'div'</span>)[count].tagName;
+}
+ <span class="keyword">return</span> name; 
+};
+
+<span class="comment">// faster</span>
+<span class="function"><span class="keyword">function</span> <span class="title">collectionLocal</span><span class="params">()</span> {</span>
+<span class="keyword">var</span> coll = document.getElementsByTagName(<span class="string">'div'</span>), len = coll.length,
+name = <span class="string">''</span>;
+<span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; len; count++) {
+name = coll[count].nodeName; name = coll[count].nodeType; name = coll[count].tagName;
+}
+<span class="keyword">return</span> name;
+};
+
+<span class="comment">//fastest</span>
+<span class="function"><span class="keyword">function</span> <span class="title">collectionNodesLocal</span><span class="params">()</span> {</span>
+<span class="keyword">var</span> coll = document.getElementsByTagName_r(<span class="string">'div'</span>), len = coll.length,
+name = <span class="string">''</span>,
+el = <span class="literal">null</span>;
+<span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; len; count++) {
+el = coll[count]; name = el.nodeName; name = el.nodeType; name = el.tagName;
+}
+ <span class="keyword">return</span> name;
+};  
+</code></pre><p>重绘和重排版<br>当浏览器下载完所有HTML标记，javascript、css，图片之后，它解析文件并创建两个内部数据结构:一个DOM树表示页面结构和一颗渲染树表示DOM节点如何显示。渲染树中为每个需要显示的DOM树节点存放至少一个节点。渲染树的节点称为”框”或者”盒”，符合CSS模型定义，将页面元素看作一个具有填充、边距、边框和位置的盒子。一旦DOM树和渲染数构造完毕，浏览器就可以显示(绘制)页面上的元素了。<br>当DOM改变影响到元素的几何属性(宽和高)-例如改变了边框高度或者在段落中添加文字，将发生一系列后续动作。浏览器需要重新计算元素的几何属性，而且其他元素的几何属性和位置也会因此改变受到影响。浏览器是渲染数上受到影响的部分失效，然后重构渲染数。这个过程称为重排版，重排版完成时，浏览器在一个重绘进程中重新绘制屏幕上受到影响的部分。<br>不是所有的DOM改变都会影响几何尺寸。例如，改变一个元素的背景颜色不会影响它的宽度和高度。在这种情况下，只需重绘不需要重排版，因为元素的布局没有改变。<br>重绘和重排版是负担很重的操作，可能导致网页应用的用户界面失去响应。  </p>
+<p>以下操作会发生重排版:<br>添加、删除可见的DOM元素、元素位置改变、元素尺寸改变(边距、填充、边框高度等属性改变)、内容改变、浏览器窗口尺寸改变<br>因为计算量与每次重排版有关，大多数浏览器通过队列化修改和批量显示优化重排版过程。然后获取布局信息的操作将导致刷新队列的动作。offsetTop、offsetLeft、offsetWidth、offsetHeight、scrollTop、clientTop。改变风格时最好不用使用这些属性。任何一个访问都将刷新渲染队列。  </p>
+<p>最小化重绘和重排版  </p>
+<pre><code><span class="comment">//改变风格</span>
+<span class="keyword">var</span> el = document.getElementById(<span class="string">'mydiv'</span>); 
+el.style.borderLeft = <span class="string">'1px'</span>; 
+el.style.borderRight = <span class="string">'2px'</span>;
+el.style.padding = <span class="string">'5px'</span>;
+</code></pre><p>这里改变了三个风格属性，每次改变都影响到元素的几何属性。在这个例子中，它导致浏览器chong排版了三次。一个达到同样效果而效率更高的方法是:将所有改变合并在一起执行，只修改DOM一次。可以通过使用cssText属性实现:  </p>
+<pre><code> <span class="reserved">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'mydiv'</span>);
+ el.style.cssText = <span class="string">'border-left: 1px; border-right: 2px; padding: 5px;'</span>;
+</code></pre><p>另一个一次性改变风格的方法是修改css的类名称，而不是改变内联风格代码。  </p>
+<p>批量修改DOM<br>有三种基本方法可以将DOM元素从文档中摘除:<br>1、隐藏元素，进行修改，然后再显示它<br>2、使用一个文档片段在已存在DOM元素之外创建一个子数，然后将它拷贝到文档中。<br>3、将原始元素拷贝到一个脱离文档的节点中，修改副本，然后覆盖原始元素。    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascript之dom编程/" data-id="iyjy1jromwtmnghb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-高性能javascirpt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/02/高性能javascirpt/" class="article-date">
+  <time datetime="2014-06-02T06:53:31.000Z" itemprop="datePublished">6月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="第二章:数据访问">第二章:数据访问</h4>
+<p>在Javascript中有四种基本的数据位置:直接量、变量、数组项、对象成员，对一种数据存储位置都具有特定的读写操作负担。总的来说，对直接量和局部变量的访问速度要快于数组项和对象成员的访问速度。<br>作用域链和标识符解析<br>函数内部的[[Scope]]属性包含了一个函数被创建的作用域中对象的集合。此集合称为函数的作用域链，它决定哪些数据可由函数访问。此函数作用域链中的每个对象被称为一个可变对象。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(num1,num2)</span>{</span>
+    var <span class="built_in">sum</span> = num1 + num2;
+    <span class="keyword">return</span> <span class="built_in">sum</span>;
+}   
+</code></pre><p>当add()函数创建后，它的作用域链中填入了一个单独的可变对象，此全局对象代表了所有全局范围定义的变量。此全局变量包含了诸如窗口、浏览器和文档之类的访问接口。<br>函数作用域链将在运行时用到。如 var total = add(5,10);运行此add函数时，建立一个内部对象，称作”运行期上下文”。一个运行期上下文定义了一个函数运行时的环境。对函数的每次运行而言，每个运行时的上下文都是独一的，所以多次调用同一个函数就会导致多次创建运行期上下文。当函数执行完毕，运行期上下文就会被销毁。  </p>
+<p>一个运行期上下文有它自己的作用域链，用于标识符解析。当运行期上下文被创建时，它的作用域链被初始化，连同运行函数的[[Scope]]属性中所包含的对象。这些值按照它们出现在函数中的顺序，被复制到运行期上下文的作用域链中。这项工作一旦完成，一个被称作”激活对象”的新对象就为运行期上下文创建好了。<br>在函数运行过程中，每遇到一个变量，标识符识别过程要决定从哪里获得或者存储数据，此过程搜索运行期上下文的作用域链，查找同名的标识符。搜索工作从运行函数的激活目标之作用域链的前端开始。如果找到后，直接返回，若没有找到则进入作用域链的下一个对象。<br>在运行期上下文的作用域链中，一个标识符所处的位置越深，它的读写速度就越慢。所以，函数中局部变量的访问速度总是最快的，而全局变量的访问通常是最慢的。全局变量总是处于运行期上下文作用域链的最后一个位置。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">initUI</span><span class="params">()</span>{</span>
+<span class="keyword">var</span> bd = document.body,
+links = document.getElementsByTagName_r(<span class="string">"a"</span>),
+ i = <span class="number">0</span>,
+len = links.length;
+<span class="keyword">while</span>(i &lt; len){
+update(links[i++]); }
+    document.getElementById(<span class="string">"go-btn"</span>).onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span> start();
+};
+bd.className = <span class="string">"active"</span>; 
+}  
+</code></pre><p>此函数包含三个对document的引用，document是一个全局对象、搜素此变量，必须遍历整个作用域链，直到最后在全局变量对象中找到它。你可以通过这种方法减轻重复的全局变量访问对象性能的影响:首先将全局变量的引用存储在一个局部变量中，然后使用整个局部变量代替全局变量。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">initUI</span><span class="params">()</span>{</span>
+<span class="keyword">var</span> doc = document,
+bd = doc.body,
+links = doc.getElementsByTagName_r(<span class="string">"a"</span>),
+i = <span class="number">0</span>,
+len = links.length; <span class="keyword">while</span>(i &lt; len){
+update(links[i++]); 
+}
+    doc.getElementById(<span class="string">"go-btn"</span>).onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span> start();
+};
+    bd.className = <span class="string">"active"</span>; 
+}  
+</code></pre><p>改变作用域链<br>一般来说，一个运行期上下文的作用域链不会被改变。但是，有两种表达式可以在运行期临时改变运行期的上下文作用域链。第一个是with表达式。<br>with表达式为所有对象属性创建一个默认操作变量。在其他语言中通常用来避免书写一些重复代码。当代码流执行到一个with表达式时，运行期上下文的作用域链被临时改变了。一个新的可变对象将创建，它包含指定对象的所有属性。此对象被插入到作用域链的前端，意味着现在函数的所有局部变量都被推入第二个作用域链对象中，所以访问代价更高了。<br>在Javascript中不只是with表达式人为地改变运行期上下文的作用域链，try-catch表达式的catch子句具有相同的效果。当try块发生错误时，程序流程自动转入catch块，并将异常对象推入作用域链前端的一个可变对象中。在catch块中，函数的所有局部变量现在被放在第二个作用域链对象中。例如:  </p>
+<pre><code><span class="keyword">try</span> <span class="cell">{ 
+    methodThatMightCauseAnError();
+}</span> <span class="keyword">catch</span> (ex)<span class="cell">{
+    alert(ex.message); //scope chain is augmented here
+}</span>
+</code></pre><p>只要catch子句执行完毕，作用域链就会返回到原来的状态。在程序中可以通过精简代码的办法最小化catch子句对性能的影响。一个很好的模式是将错误交给一个专用函数来处理。例子如下:  </p>
+<pre><code><span class="keyword">try</span> <span class="cell">{ 
+    methodThatMightCauseAnError();
+}</span> <span class="keyword">catch</span> (ex)<span class="cell">{
+    handleError(ex);//delegate to handler method
+}</span>  
+</code></pre><p>handleError()函数是catch子句中运行的唯一代码。此函数以适当的方法自由地处理错误，并接收由错误产生的异常对象。由于只有一条语句，没有局部变量访问，作用域链临时改变就不会影响代码的性能。  </p>
+<p>动态作用域<br>无论是with表达式还是try-catch表达式的catch子句，以及包含()的函数，都被认为是动态作用域。一个动态作用域只因代码运行而存在，因此无法通过静态分析(查看代码结构)来确定。  </p>
+<p>闭包、作用域和内存<br>闭包是Javascript最强大的一个方面，它允许函数访问局部变量之外的数据。  </p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">assignEvents</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> id = <span class="string">"xdi9592"</span>;
+    document.getElementById(<span class="string">"save-btn"</span>).onclick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span>{</span>
+       saveDocument(id); 
+    };
+}   
+</code></pre><p>assignEvents函数为一个DOM元素指定了一个事件处理句柄。此事件句柄是一个闭包，当assignEvents()执行时创建，可以访问其范围内部的id变量。用这种方法封闭了对id变量的访问，必须创建一个特殊的作用域链。<br>在assignEvents()被执行时，一个激活对象被创建，并包含了一些应有的内容，其中包含id变量。它将成为运行期上下文作用域链上的第一个对象，全局对象是第二个。当闭包创建时，[[Scope]]属性与这些对象一起被初始化。<br>由于闭包的[[Scope]]属性包含与运行期上下文作用域链相同的对象引用，会产生副作用。通常，一个函数的激活对象与运行期上下文一起销毁。当涉及闭包时，激活对象就无法销毁，因为引用仍存在与闭包的[[Scope]]属性中。这意味着脚本中的闭包和非闭包函数相比，需要更多的内存开销。<br>当闭包被执行时，一个运行期上下文被创建，它的作用域链与[[Scope]]中引用的两个相同的作用域链同时被初始化，然后一个新的激活对象为闭包自身被创建。  </p>
+<p>对象成员<br>对象可以有两种类型的成员:实例成员和原形成员。实例成员直接存于实例自身，而原形成员则从对象原形继承。<br>一般来说，如果在同一个函数中你要多次读取同一个对象属性，最好将它存入一个局部变量。以局部变量替代属性，避免多余的属性查找带来性能开销。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/02/高性能javascirpt/" data-id="mp55niqmvqjtc9rf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jquery内核详解和实战" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/30/jquery内核详解和实战/" class="article-date">
+  <time datetime="2014-05-30T02:54:29.000Z" itemprop="datePublished">5月 30 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、使用jQuery选择器应该注意的问题">一、使用jQuery选择器应该注意的问题</h4>
+<p>1、多用ID选择器:<br>2、少直接使用Class选择器<br>3、多用父子关系，少用嵌套关系(使用parent&gt;child替代parent child)<br>4、缓存jQuery对象<br>5、选择器分类:基本选择器、组合选择器、属性选择器、伪类选择器、用户界面选择器、结构性选择器、其他选择器<br>6、jQuery选择器返回的永远是一个数组对象，但是若没有找到指定的元素，则会返回一个空的数组对象。因此判断一个jQuery对象是否存在，不能使用如下语句if($(“tr”)){//code}<br>7、getElementsByTagName返回数组</p>
+<h4 id="二、类数组(Array-Like)">二、类数组(Array-Like)</h4>
+<p>1、get(index)方法读取集合中的元素，它与直接通过[i]来读取元素的方法是完全相同的<br>2、eq(index)方法克隆集合中的元素，也就是说不修改数组元素</p>
+<h4 id="三、this">三、this</h4>
+<p>1、this绑定与函数声明无关，与函数的调用方式有关<br>2、函数调用的this指向全局对象，若使用”use strict”的话，this将被设置为undefined<br>3、典型使用硬绑定的方式var bar = function(){ return foo.apply(obj,arguments);};<br>4、var bar = new foo();//this-&gt;constructed object<br>5、var bar = foo.call(obj2);//this-&gt;obj2<br>6、var bar = obj1.foo();//this-&gt;obj1<br>7、var bar = foo();//this指向全局对象</p>
+<h4 id="四、Javascript之OOP">四、Javascript之OOP</h4>
+<p>1、在Javascript面向对象编程中存在许多层:简单对象、对象原型链、构造函数、构造器的继承<br>2、删除操作只针对与当前对象</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/30/jquery内核详解和实战/" data-id="ukt1fcizohjft3ue" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-软件架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/18/软件架构/" class="article-date">
+  <time datetime="2014-05-18T01:51:22.000Z" itemprop="datePublished">5月 18 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/18/软件架构/">软件架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、软件架构">一、软件架构</h4>
+<p><strong>1.1运行时抽象</strong><br>一个软件架构是一个软件系统在其操作的某个阶段的运行时元素的抽象。一个系统有可能由很多层抽象和很多个操作阶段组成，每个抽象和操作阶段都有自己的软件架构。<br>软件架构的核心是抽象原则:通过封装来隐藏系统的一些细节，从而更好地识别和支持系统的属性。一个复杂的系统包含有多层的抽象，每一层抽象都有自己的架构。架构代表了在某层次上系统行为的抽象，架构的元素被描述为提供给同层的其他元素的抽象接口。<br>除了架构层次，软件系统通常拥有多个操作阶段，例如启动、初始化、正常处理、重新初始化和停止。每个操作阶段都有自己的架构。例如，配置文件在启动阶段会被当做架构的一个数据元素来处理，但是在正常处理阶段则不会当做一个架构元素，因为在这个阶段这些信息已经分布到系统的各处。<br>组件是运行时执行某种功能的软件单元。这样的例子有程序、对象、进程、过滤器。软件架构是软件系统在运行时的抽象，而软件结构则是静态源代码的属性。<br>一个软件架构由一些架构元素(组件、连接器和数据)的配置来定义，这些元素之间的关系受到约束，以获得想要得到的一组架构属性。处理元素(组件)是执行数据转换的元素，数据元素是包含被使用和被转换的信息元素，连接元素(连接器)是将架构的不同部分结合在一起的粘合剂。<br><strong>1.2组件</strong><br>一个组件是软件指令和内部状态的一个抽象单元，通过其接口提供对于数据的转换。组件是软件指令和内部状态的一个抽象单元，通过其接口提供对于数据的转换。转换的例子包括从二级存储将数据加载到内存、执行一些运算、转换为另外一种格式、使用其他数据来封装等等。<br><strong>1.3连接器</strong><br>一个连接器是对于组件之间的通讯、协调或者合作进行仲裁的一种抽象机制。连接器的例子包括共享的表述、远程过程调用、消息传递协议和数据流。也许理解连接器的最佳方式是将它们与组件加以对比。连接器通过将数据元素从它的一个接口转移到另一个接口而不改变数据，来支持组件之间的通讯。在其内部，一个连接器可以包含一个由组件组成的子系统，为了转移的目的对数据进行某种转换、执行转移、然后做相反的转换并交付与原始数据相同的结果。<br><strong>1.4数据</strong><br>一个数据是组件通过一个连接器接收或发送的信息元素。数据的例子包括字节序列、消息、编码过的参数、以及序列化过的对象，但是不包括那些永久驻留或隐藏在组件中的信息。<br><strong>1.5配置</strong><br>一个配置是系统在运行期间组件、连接器和数据之间的架构关系的结构。 组件-计算的所在地；连接器-定义组件之间的交互；配置-相互交互的组件和连接器的集合。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/18/软件架构/" data-id="qs4k23n86chmwh1j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-大话socket" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/14/大话socket/" class="article-date">
+  <time datetime="2014-05-14T05:26:07.000Z" itemprop="datePublished">5月 14 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/14/大话socket/">大话socket</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、网络中进程之间如何通信?">一、网络中进程之间如何通信?</h4>
+<p>本地进程间通信(IPC)有多种方式，但主要分为以下4类:   </p>
+<ul>
+<li>消息传递(管道、FIFO、消息队列)</li>
+<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）</li>
+<li>共享内存</li>
+<li>远程过程调用(RPC)  </li>
+</ul>
+<p>在本地可以通过进程PID来唯一标识一个进程，但是在网络中这是行不通的。其实TCP/IP协议族已经帮我们解决了这个问题，网络层的“ip地址”可以唯一标识网络中的主机，而传输层的“协议+端口”可以唯一标识主机中的应用程序（进程）。这样利用三元组（ip地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。  </p>
+<h4 id="二、什么是Socket">二、什么是Socket</h4>
+<p>我们已经知道网络中的进程是通过socket来通信的，那什么是socket呢？我们经常把socket翻译为套接字，socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口，供应用层调用已实现进程在网络中通信。<br>socket起源于Unix，而Unix/Linux基本哲学之一就是<strong>“一切皆文件”</strong>，都可以用”<strong>打开open</strong> –&gt; <strong>读写write/read</strong> –&gt; <strong>关闭close</strong>“模式来操作。我们可以这样理解，Socket就是该模式的一个实现，socket即是一种特殊的文件，一些socket函数就是对其进行的操作（读/写IO、打开、关闭)。<br><img src="../socket.jpg" alt="image">  </p>
+<h4 id="三、Socket通信流程">三、Socket通信流程</h4>
+<p>Socket是”打开—读/写—关闭”模式的实现，以使用TCP协议通讯的socket为例，其交互流程如下:<br><img src="../socket-flow.png" alt="image">   </p>
+<h4 id="四、TCP三次握手建立一个可靠的连接">四、TCP三次握手建立一个可靠的连接</h4>
+<p><img src="../tcp.jpg" alt="image">  </p>
+<p><strong>第一次握手：</strong>客户端尝试连接服务器，向服务器发送syn包（同步序列编号Synchronize Sequence Numbers），syn=j，客户端进入SYN_SEND状态等待服务器确认</p>
+<p><strong>第二次握手：</strong>服务器接收客户端syn包并确认（ack=j+1），同时向客户端发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态</p>
+<p><strong>第三次握手：</strong>客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/14/大话socket/" data-id="z6jison4acjt39e7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-乱弹同步与异步，阻塞与非阻塞" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" class="article-date">
+  <time datetime="2014-05-13T07:01:56.000Z" itemprop="datePublished">5月 13 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/13/乱弹同步与异步，阻塞与非阻塞/">乱弹同步与异步，阻塞与非阻塞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="同步VS异步">同步VS异步</h4>
+<p>同步(synchronous)和异步(asynchronous)其实是针对消息的发送和接受的次序而言的（在通信中就是消息的发送和接收，在IO中就是数据的读和写）<br><strong>同步:</strong>就是消息的发送和接收是有序的，即接收和发送第二个包一定在第一个包之后第三个包之前，而不是乱序的<br><strong>异步:</strong>就是消息的发送和接收是可以乱序的，第一个包没发完可以直接发第二个包  </p>
+<h4 id="阻塞VS非阻塞">阻塞VS非阻塞</h4>
+<p>阻塞（block）和非阻塞（non-block）其实描述的是进程或线程进行等待时的一种方式<br><strong>阻塞:</strong>是等待时进程或线程需要挂起<br><strong>非阻塞:</strong>则是等待时线程或进程不需要被挂起，不影响线程的执行，这时线程或进程可以继续处理其它事物，不因为这个等待而受到影响（当然它仍然在等待这个消息，只不过可能会在线程或进程执行周期的某一个地方去查看消息的通知，而不是立即在原地等待）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/13/乱弹同步与异步，阻塞与非阻塞/" data-id="qfbndgln42b5igmt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript-array对象详解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/05/11/javascript-array对象详解/" class="article-date">
@@ -292,7 +794,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/11/javascript-array对象详解/" data-id="n5wv7x2z5gzb5nmp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/11/javascript-array对象详解/" data-id="mfrou4fsv4ct3lzk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +901,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/11/柯里化与偏应用/" data-id="m82jcjnbc6cqlwqg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/11/柯里化与偏应用/" data-id="lmhy2fimhzz1sc0n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,1008 +911,10 @@
 
 
   
-    <article id="post-变量对象" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/06/变量对象/" class="article-date">
-  <time datetime="2014-05-06T14:36:35.000Z" itemprop="datePublished">5月 6 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/06/变量对象/">变量对象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、概要">一、概要</h4>
-<p>在构建系统过程中，我们会在程序中定义一些变量和函数。然而对于解释器来说，它是如何获取这些数据的?当引用一个对象的时候，在解释器内部又发生什么?<br>许多ECMAScript程序都知道，变量和执行上下文是密切相关的:  </p>
-<pre><code>    <span class="keyword">var</span> a = <span class="number">10</span>;<span class="comment">//全局上下文中的变量</span>
-    (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">var</span> b = <span class="number">20</span>;<span class="comment">//函数上下文中的局部变量</span>
-    })();
-
-    alert(a);<span class="comment">// 10</span>
-    alert(b);<span class="comment">// b is not defined  </span>
-</code></pre><p>不仅如此，许多程序员也都知道，ECMAScript标准中指出独立的作用域只有通过”函数代码”才能创建。与C/C++不同的是，ECMAScript中的for循环代码块是无法创建本地上下文的:  </p>
-<pre><code>    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> {a:<span class="number">1</span>,b:<span class="number">2</span>}){
-        alert(k);
-    }
-
-    alert(k);<span class="comment">//尽管循环已经结束，但是变量"k"仍然在作用域中</span>
-</code></pre><h4 id="二、数据声明">二、数据声明</h4>
-<p>既然变量和执行上下文有关，那么它就该知道数据存储在哪里以及如何获取。这种机制就称作变量对象:<br>变量对象是一个特殊的对象，它与执行上下文息息相关。变量对象主要存储变量、函数声明、函数入参等<br>举个例子，可以用ECMAScript的对象来表示变量对象:  VO = {};<br>VO同时也是一个执行上下文的属性:  </p>
-<pre><code><span class="attribute">    activeExecutionContext </span>=<span class="string"> {
-        VO : {
-            //上下文中的数据(变量声明、函数声明、函数形参)
-        }
-    }  </span>
-</code></pre><p>声明新的变量和函数的过程其实就是在VO中创建新的变量以及函数名对应的属性和属性值的过程。<br>如下所示:  </p>
-<pre><code>    <span class="keyword">var</span> a = <span class="number">10</span>;
-
-    <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(x)</span>{</span>
-        <span class="keyword">var</span> b = <span class="number">20</span>;
-    }
-
-    test(<span class="number">30</span>);  
-</code></pre><p>上述代码对应的变量对象:  </p>
-<pre><code>      <span class="comment">//全局上下文中的变量对象</span>
-      VO(globalContext) = {
-          a : <span class="number">10</span>,
-          test : 
-      }  
-
-      <span class="comment">//test函数上下文中的变量对象</span>
-      VO(test functionContext) = {
-          x : <span class="number">30</span>,
-          b : <span class="number">20</span>
-      };
-</code></pre><p>但是，在实现层，变量对象只是一个抽象的概念。在实际执行上下文中，VO可能完全不叫VO，并且初始的结构也可能完全不同。  </p>
-<h4 id="三、全局上下文的变量对象">三、全局上下文的变量对象</h4>
-<p>全局对象是一个在进入任何执行上下文前就创建出来的对象，此对象以单例形式存在；它的属性在程序任何地方都可以访问，其声明周期随着程序的结束而终止。<br>全局对象在创建的时候，诸如Math、String、Date、parseInt等等属性也会被初始化，同时，其中一些对象会指向全局对象本身。比如，DOM中，全局对象上的window属性就是指向了全局对象。  </p>
-<pre><code> global = {
-     Math:&lt;<span class="keyword">...</span>&gt;,
-     String:&lt;<span class="keyword">...</span>&gt;
-     <span class="keyword">...</span>
-     <span class="keyword">...</span>
-     window: global
- };  
-</code></pre><p>在引用全局对象的属性时，前缀通常可以省略，因为全局对象是不能通过名字直接访问的。然而，通过全局对象上的this值，以及通过如DOM中的window对象这样递归引用的方式都可以访问到全局对象。  </p>
-<pre><code>    <span class="built_in">String</span>(<span class="number">10</span>);<span class="comment">//等同于 global.String(10);</span>
-
-    <span class="comment">//带前缀</span>
-    window.a = <span class="number">10</span>;<span class="comment">//global.window.a = 10 = global.a = 10;</span>
-    <span class="keyword">this</span>.b = <span class="number">20</span>;<span class="comment">//global.b = 20;</span>
-
-    <span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'test'</span>);
-
-    alert(a);<span class="comment">//直接访问，通过VO(globalContext)访问</span>
-
-    alert(window[<span class="string">'a'</span>]);<span class="comment">//间接访问</span>
-    alert(a === <span class="keyword">this</span>.a);<span class="comment">//true  </span>
-</code></pre><h4 id="四、函数上下文中的变量对象">四、函数上下文中的变量对象</h4>
-<p>在函数的执行上下文中，VO是不能直接访问的。它主要扮演被称作活跃对象(activation object)的角色。<br>VO(functionContext) === AO;<br>活跃对象会在进入函数上下文的时候创建出来，初始化的时候会创建一个argument属性，其值就是Argument对象:<br>Argument对象是活跃对象上的属性，它包含了如下属性:  </p>
-<ul>
-<li>callee—对当前函数的引用</li>
-<li>length—实参的个数</li>
-<li><p>argument对象的properties-index的值与当前(实际传递的)形参是共享的</p>
-<pre><code>  <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(x,y,z)</span>{</span>
-      <span class="comment">//定义的函数的参数个数</span>
-      alert(<span class="transposed_variable">foo.</span><span class="built_in">length</span>);<span class="comment">//3</span>
-
-      <span class="comment">//实际传递参数的个数</span>
-      alert(<span class="transposed_variable">argument.</span><span class="built_in">length</span>);<span class="comment">//2</span>
-
-      <span class="comment">//引用函数自身</span>
-      alert(<span class="transposed_variable">argument.</span>callee === foo);<span class="comment">//true</span>
-
-      <span class="comment">//参数共享</span>
-      alert(x === argument<span class="matrix">[<span class="number">0</span>]</span>);true
-      alert(x);<span class="comment">//10</span>
-
-      argument<span class="matrix">[<span class="number">0</span>]</span> = <span class="number">20</span>;
-      alert(x);<span class="comment">// 20</span>
-
-      x = <span class="number">30</span>;
-      alert(argument<span class="matrix">[<span class="number">0</span>]</span>);<span class="comment">//30</span>
-
-      <span class="comment">//然而对于没有传递的参数z</span>
-      <span class="comment">//相关的argument对象的properties-index是不共享的</span>
-
-      z = <span class="number">40</span>;
-      alert(argument<span class="matrix">[<span class="number">2</span>]</span>);<span class="comment">//undefined</span>
-
-      argument<span class="matrix">[<span class="number">2</span>]</span> = <span class="number">50</span>;
-      alert(z);<span class="comment">//40</span>
-  }  
-</code></pre></li>
-</ul>
-<p>处理上下文代码的几个阶段:<br>1、进入执行上下文<br>一旦进入执行上下文(在执行代码之前)，VO就会被一些属性填充:  </p>
-<ul>
-<li>函数的形参—-变量对象的属性，其属性名就是形参的名字，其值就是实参的值，对于没有传递的参数，其值为undefined</li>
-<li>函数声明—-变量对象的属性，其属性名和值都是函数对象创建出来的，如果变量对象已经包含了相同名字的属性，则进行替换  </li>
-<li><p>变量声明—-变量对象的一个属性，其属性名为变量名，其值为undefined，如果变量名和已声明的函数名或者函数参数名相同，则不会影响已存在的属性。  </p>
-<pre><code>   <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(a,b)</span>{</span>
-       <span class="keyword">var</span> c = <span class="number">10</span>;
-       <span class="function"><span class="keyword">function</span> <span class="title">d</span><span class="params">()</span>{</span>}
-       <span class="keyword">var</span> e = <span class="function"><span class="keyword">function</span> <span class="title">_e</span><span class="params">()</span>{</span>};
-       (<span class="function"><span class="keyword">function</span> <span class="title">x</span><span class="params">()</span>{</span>});
-   }
-
-   test(<span class="number">10</span>);<span class="comment">//函数调用</span>
-</code></pre><p>当以10为参数进入test函数上下文的时候，对应的AO如下所示:  </p>
-<pre><code>    A0(test) = {
-        a : <span class="number">10</span>,
-        b : <span class="literal">undefined</span>,
-        c : <span class="literal">undefined</span>,
-        e : <span class="literal">undefined</span>,
-        d : &lt;reference to FunctionDeclaration <span class="string">"d"</span>&gt;
-    }  
-</code></pre><p>上面的AO中并不包含函数x，这是因为这里的x并不是函数声明，而是函数表达式，函数表达式不会对VO造成影响。</p>
-</li>
-</ul>
-<p>2、执行代码<br>此时，AO/VO的属性已经填充好了。(尽管大部分的属性都还没有赋予真正的值，都只是初始化时候的undefined值)<br>继续以上面的例子为例，到了执行代码阶段，AO/VO就会修改成如下形式:  </p>
-<pre><code>    AO[<span class="string">'c'</span>] = <span class="number">10</span>;
-    AO[<span class="string">'e'</span>] = &lt;<span class="keyword">reference</span> <span class="keyword">to</span> FunctionExpress&gt;  
-</code></pre><p>以下是更加典型的例子:  </p>
-<pre><code>    alert(x);<span class="comment">//function</span>
-
-    <span class="keyword">var</span> x = <span class="number">10</span>;
-    alert(x);<span class="comment">// 10</span>
-
-    x = <span class="number">20</span>;
-
-    <span class="function"><span class="keyword">function</span> <span class="title">x</span><span class="params">()</span><span class="comment">{}</span>
-
-    <span class="title">alert</span><span class="params">(x)</span>;</span><span class="comment">// 20  </span>
-</code></pre><p>正如此前提到的，变量声明是在函数声明和函数形参之后，并且变量声明不会对已存在的同名的函数声明和函数形参发生冲突，因此，在进入上下文阶段，VO填充如下形式:  </p>
-<pre><code>    VO = {};
-
-    VO[<span class="attribute">'x</span>'] = &lt;reference <span class="keyword">to</span> FunctionDeclaration <span class="string">"x"</span>&gt;
-
-    <span class="comment">//发现var x = 10;</span>
-    <span class="comment">//如果函数"x"还未定义</span>
-    <span class="comment">//但是在我们的例子中变量声明并不会影响同名的函数值</span>
-
-    VO[<span class="attribute">'x</span>'] = &lt;值不受影响，仍是函数引用&gt;
-</code></pre><h4 id="关于变量">关于变量</h4>
-<p>大多数讲Javascript的文章甚至Javascript的书通常都会这么说:声明全局变量的方式有两种，一种是使用var关键字，另外一种是不用var关键字，而这样的描述是错误。要记住的是:使用var关键字是声明变量的唯一方式。<br>如下赋值语句:a = 10;仅仅只是在全局对象上创建了新的属性(而不是变量)。<br>不同点如下:  </p>
-<pre><code>    alert(a);<span class="regexp">//undefined</span>
-    alert(b);<span class="regexp">//</span><span class="string">"b"</span> is <span class="keyword">not</span> <span class="keyword">defined</span>
-
-    b = <span class="number">10</span>;
-    var a = <span class="number">20</span>;  
-</code></pre><p>接下来要谈到VO和不同阶段对VO的修改(进入上下文阶段和代码执行阶段):<br>进入上下文:  </p>
-<pre><code><span class="attribute">      VO </span>=<span class="string"> {
-          a : undefined
-      };</span>
-</code></pre><p>我们看到，这个阶段并没有任何”b”，因为它不是变量，b在执行阶段出现。<br>将上述代码稍作改动:  </p>
-<pre><code>    alert(a);<span class="comment">//undefined</span>
-
-    b = <span class="number">10</span>;
-    alert(b);<span class="comment">//10,代码执行阶段建立</span>
-
-    <span class="keyword">var</span> a = <span class="number">20</span>;
-    alert(a);<span class="comment">//20，代码执行阶段赋值   </span>
-</code></pre><p>关于变量还有非常重要的一点是:与简单属性不同的是，变量是不能删除的，这意味着想要通过delete操作符来删除一个变量是不可能的。  </p>
-<pre><code>    a = <span class="number">10</span>;
-    alert(<span class="keyword">window</span>.a);<span class="comment">// 10</span>
-    alert(<span class="keyword">delete</span> a);<span class="comment">//true</span>
-
-    alert(<span class="keyword">window</span>.a);<span class="comment">//undefined</span>
-
-    var b = <span class="number">20</span>;
-    alert(<span class="keyword">window</span>.b);<span class="comment">//20</span>
-
-    alert(<span class="keyword">delete</span> b);<span class="comment">//false</span>
-
-    alert(<span class="keyword">window</span>.b);<span class="comment">//仍然是20</span>
-</code></pre><p>但是，这里有一个例外，就是在eval执行上下文中，是可以删除变量的。  </p>
-<pre><code>    <span class="keyword">eval</span>(<span class="string">'var a = 10'</span>);
-    alert(<span class="keyword">window</span>.a); <span class="comment">// 10</span>
-
-    alert(<span class="keyword">delete</span> a); <span class="comment">// true</span>
-
-    alert(<span class="keyword">window</span>.a); <span class="comment">// undefined</span>
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/变量对象/" data-id="a0offu4key6u0l5n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/06/javascript函数/" class="article-date">
-  <time datetime="2014-05-06T10:09:26.000Z" itemprop="datePublished">5月 6 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/06/javascript函数/">Javascript函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、函数类型">一、函数类型</h4>
-<p>ECMAScript中包含三类函数，每一类都有各自的特性<br>1、函数声明:    </p>
-<ul>
-<li>拥有函数名</li>
-<li>代码位置:全局上下文或者另外一个函数体中</li>
-<li>创建时间:在进入上下文时创建</li>
-<li>会影响变量对象</li>
-<li><p>声明方式如下:  </p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span>{</span>
-   <span class="keyword">return</span> a + b;    
- }
-</code></pre><p>这类函数的主要特性是:只有它们可以影响变量对象(存储在上下文VO中)。<br>2、函数表达式:   </p>
-</li>
-<li>代码位置位于表达式的位置</li>
-<li>名字可有可无</li>
-<li>不会影响变量对象</li>
-<li><p>在代码执行阶段创建<br>这类函数的主要特性是:代码总是处于表达式的位置。最简单的示例如下:  </p>
-<pre><code>  <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span>{</span>
-        <span class="keyword">return</span> a + b;
-  }   
-</code></pre><p>3、函数声明 VS 函数表达式<br>当函数表达式有名字的时候，它很难和FD区分。不过如果仔细看这两者定义的话，要区分它们还是很容易的:<br>函数表达式总是处于表达式的位置。  </p>
-<pre><code>  <span class="comment">//在括号(分组操作符)只可能是表达式  </span>
-  (<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span>{</span>});  
-
-  <span class="comment">//数组初始化中,同样也只能是表达式  </span>
-  [<span class="function"><span class="keyword">function</span> <span class="title">bar</span><span class="params">()</span>{</span>}];  
-
-  <span class="comment">//逗号操作符也只能是表达式  </span>
-  <span class="number">1</span>,<span class="function"><span class="keyword">function</span> <span class="title">baz</span><span class="params">()</span>{</span>}  
-</code></pre><p>定义中还提到函数表达式是在执行代码阶段创建，并且不是存储在变量对象上。  </p>
-<pre><code>  <span class="comment">//不论是在定义前还是定义后,函数表达式都访问不到  </span>
-  <span class="comment">//(因为它在代码执行的阶段创建)  </span>
-
-  alert(foo);<span class="comment">//"foo" is not defined   </span>
-
-  (<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span>{</span>});  
-
-  <span class="comment">//后面也没有用,因为它根本不存在VO中  </span>
-
-  alert(foo);<span class="comment">//"foo" is not defined    </span>
-</code></pre><p>4、立即执行函数  </p>
-<pre><code>    方式一:  
-    (<span class="function"><span class="keyword">function</span> <span class="params">()</span><span class="comment">{}</span>)<span class="params">()</span>;</span>  
-    方式二:  
-    (<span class="function"><span class="keyword">function</span> <span class="params">()</span><span class="comment">{}</span><span class="params">()</span>);</span>  
-</code></pre><h4 id="二、函数创建的算法">二、函数创建的算法</h4>
-<p>如下所示使用伪代码表示函数创建的算法(不包含联合对象的步骤)。有助于理解ECMAScript中的函数对象，此算法对所有函数类型都是一样的。  </p>
-<pre><code>    F = new NativeObject();  
-
-    //属性<span class="string">[[Class]]</span> is <span class="string">"Function"</span>  
-    F.<span class="string">[[Class]]</span> = <span class="string">"Function"</span>  
-
-    //函数对象的原型  
-    F.<span class="string">[[Prototype]]</span> = Function.prototype  
-
-    //对函数自身引用  
-    //<span class="string">[[Call]]</span>在函数调用F()激活  
-    //同时创建一个新的执行上下文  
-    F.<span class="string">[[Call]]</span> = &lt;reference to <span class="function"><span class="keyword">function</span>&gt;  
-
-    //内置的构造器  
-    //[[<span class="title">Construct</span>]]会在使用"<span class="title">new</span>"关键字的时候激活  
-    //事实上，它会为新对象申请内存  
-    //然后调用<span class="title">F</span>.[[<span class="title">Call</span>]]来初始化创建的对象，将<span class="title">this</span>值设置为新创建的对象  
-    <span class="title">F</span>.[[<span class="title">Construct</span>]] = <span class="title">internalContructor</span>  
-
-    //当前上下文<span class="params">(创建函数F的上下文)</span></span>的作用域链  
-    F.<span class="string">[[Scope]]</span> = activeContext.Scope  
-    //如果是通过new Function()方式来创建，则  
-    F.<span class="string">[[Scope]]</span> = globalContext.Scope  
-
-    //形参个数  
-    F.length = countParameters  
-
-    //通过F创建出来的对象的原型  
-    __objectPrototype = new Object();  
-    __objectPrototype.constructor = F   
-
-    F.prototype = __objectPrototype  
-
-    <span class="keyword">return</span> F  
-</code></pre><p>要注意的是，F.[[Prototype]]是函数(构造器)的原型,而F.prototype是通过该函数创建出来的对象的原型。在有些文章中会将F.prototype叫做”构造器的原型”，这是错误的。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="61tf58jaipousutw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript中类型检测" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/02/javascript中类型检测/" class="article-date">
-  <time datetime="2014-05-02T09:04:30.000Z" itemprop="datePublished">5月 2 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/02/javascript中类型检测/">javascript中类型检测</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、Javascript语言定义的5种原始类型及6种基本数据类型">一、Javascript语言定义的5种原始类型及6种基本数据类型</h4>
-<p>1、javascript中定义的5种原始类型分别为:<br>   null、undefined、number、string、boolean<br>2、javascript中定义的6种基本数据类型分别为:<br>null、undefined、number、string、boolean、object  </p>
-<h4 id="二、检测原始值">二、检测原始值</h4>
-<p>如果你希望一个值是字符串、数字、布尔值或undefined，最佳选择是使用typeof运算符。typeof运算符会返回一个表示值的类型的字符串。  </p>
-<ul>
-<li>对于字符串，typeof返回”string”</li>
-<li>对于数字，typeof返回”number”</li>
-<li>对于布尔值，typeof返回”boolean”</li>
-<li>对于undefined，typeof返回”undefined”  </li>
-</ul>
-<p>typeof的基本语法是:<br>typeof variable<br>你也可以这样使用typeof:<br>typeof(variable)<br>尽管这是合法的javascript语法，但这种方法让typeof看起来像一个函数而非运算符。鉴于此，我们推荐无括号的写法。<br>使用typeof来检测以下4种原始值类型是非常安全的做法。  </p>
-<pre><code><span class="comment">//检测字符串</span>
-<span class="keyword">if</span>(<span class="keyword">typeof</span> name === <span class="string">"string"</span>){
-    anotherName = name.substring(<span class="number">3</span>);
-}
-
-<span class="comment">//检测数字</span>
-<span class="keyword">if</span>(<span class="keyword">typeof</span> count === <span class="string">"number"</span>){
-    updateCount(count);
-}
-
-<span class="comment">//检测布尔值</span>
-<span class="keyword">if</span>(<span class="keyword">typeof</span> found === <span class="string">"boolean"</span> &amp;&amp; found){
-    console.info(<span class="string">"Found!"</span>);
-}
-
-<span class="comment">//检测undefined</span>
-<span class="keyword">if</span>(<span class="keyword">typeof</span> MyApp === <span class="string">"undefined"</span>){
-    MyApp = {
-        <span class="comment">//相关代码</span>
-    };
-}  
-</code></pre><p>typeof运算符的独特之处在于，将其用于一个未声明的变量也不会报错。未定义的变量和值为undefined的变量通过typeof都将返回”undefined”。运行typeof null则返回”object”,这是一种低效的判断null的方法。如果需要检测null，则直接使用恒等运算(===)或非恒等运算(!==)。   </p>
-<h4 id="三、检测引用值">三、检测引用值</h4>
-<p>引用值也称作对象(object)。在Javascript中除了原始值之外的值都是引用。有以下几种内置的引用类型:Object、Array、Date、Error等。使用typeof运算符在判断这些引用类型时则会显得力不从心，因为所有对象都会返回”object”。typeof另外一种不推荐的用法是当检测null的类型时，typeof运算符用于null时将会返回”object”。<br>检测某个引用值的类型的最好方法是使用instanceof运算符。<br>instanceof的基本语法是:<br>value instanceof constructor  </p>
-<pre><code><span class="comment">//检测日期</span>
-<span class="keyword">if</span>(<span class="keyword">value</span> instanceof Date){
-    console.log(<span class="keyword">value</span>.getFullYear());
-}
-
-<span class="comment">//检测正则表达式</span>
-<span class="keyword">if</span>(<span class="keyword">value</span> instanceof RegExp){
-    <span class="keyword">if</span>(<span class="keyword">value</span>.test(anotherValue)){
-        console.log(<span class="string">"Matches"</span>);
-    }
-}  
-
-<span class="comment">//检测Error</span>
-<span class="keyword">if</span>(<span class="keyword">value</span> instanceof Error){
-    <span class="keyword">throw</span> <span class="keyword">value</span>;
-}  
-</code></pre><p>instanceof的一个特性是它不仅检测构造这个对象的构造器，还检测原型链。原型链包含了很多信息，包括定义对象所采用的继承模式。比如，默认情况下，每个对象都继承自Object，因此每个对象的value instanceof Object都会返回true。比如:  </p>
-<pre><code><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();
-console.log(now <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span>
-console.log(now <span class="keyword">instanceof</span> <span class="built_in">Date</span>);<span class="comment">//true</span>
-</code></pre><p>因此使用instanceof来判断对象是否属于某个特定类型的做法并非最佳选择。<br>instanceof运算符也可以检测自定义类型，比如:  </p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">(name)</span>{</span>
-    <span class="keyword">this</span>.name = name;
-} 
-<span class="keyword">var</span> me = <span class="keyword">new</span> Person(<span class="string">"sem"</span>);
-console.log(me <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span>
-console.log(me <span class="keyword">instanceof</span> Person);<span class="comment">//true  </span>
-</code></pre><p>在Javascript中检测自定义类型时，最好的做法就是使用instanceof运算符，这也是唯一的办法。假设一个浏览器帧(frame A)里的一个对象被传入到另一个帧(frame B)中。两个帧都定义了构造函数Person。如果来自帧A的对象是帧A的Person的实例。则如下规则成立。  </p>
-<pre><code><span class="comment">//true</span>
-frameAPersonInstance <span class="keyword">instanceof</span> frameAPerson
-
-<span class="comment">//false</span>
-frameAPersonInstance <span class="keyword">instanceof</span> frameBPerson  
-</code></pre><p>因为每个帧(frame)都拥有Person的一份拷贝，它被认为是该帧(frame)中的Person的拷贝的实例。  </p>
-<h4 id="四、检测函数">四、检测函数</h4>
-<p>从技术上讲，Javascript中的函数是引用类型，同样存在Function构造函数，每个函数都是实例，比如:  </p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span><span class="params">()</span>{</span>}
-<span class="comment">//不好的写法</span>
-console.log(myFunc <span class="keyword">instanceof</span> <span class="function"><span class="keyword">Function</span>);</span><span class="comment">//true</span>
-</code></pre><p>然而，这个方法不能跨帧使用，每个帧都有各自的Function构造函数。好在typeof运算符可以用于函数，返回”function”。  </p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span><span class="params">()</span>{</span>}
-<span class="comment">//好的写法</span>
-console.log(<span class="keyword">typeof</span> myFunc === <span class="string">"function"</span>);<span class="comment">//true  </span>
-</code></pre><p>检测函数最好的方法是使用typeof，因为它可以跨帧使用。用typeof来检测函数有一个限制。在IE8和更早版本的IE浏览器中，使用typeof来检测DOM节点(比如document.getElementById())中的函数都返回”object”而不是”function”。<br>之所以出现这种怪异的现象是因为浏览器对DOM的实现有差异。简而言之，这些早期版本的IE并没有将DOM实现为内置的Javascript方法，导致内置的typeof运算符将这些函数标识为对象。开发者往往通过in运算符来检测DOM的方法，比如:  </p>
-<pre><code><span class="regexp">//</span>检测DOM方法
-<span class="keyword">if</span>(<span class="string">"querySelectorAll"</span> <span class="keyword">in</span> <span class="built_in">document</span>){
-    images = <span class="built_in">document</span>.querySelectorAll(<span class="string">"img"</span>);
-}
-</code></pre><p>在其他所有的情形中，typeof运算符是检测javascript函数的最佳选择。  </p>
-<h4 id="五、检测数组">五、检测数组</h4>
-<p>关于如何在Javascript中检测数组类型已经有很多研究了，最终Kangax给出了一种优雅的解决方案。  </p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">isArray</span><span class="params">(value)</span>{</span>
-    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>;
-}
-</code></pre><p>Kangax发现调用某个值的内置toString()方法在所有浏览器中都会返回标准的字符串结果。对于数组来说，返回的字符串为”[object Array]”，也不用考虑数组实例是在哪个帧中被构造出来。这种方法在识别内置对象时往往十分有用，但对于自定义对象请不要用这种方法。  </p>
-<h4 id="六、检测属性">六、检测属性</h4>
-<p>另外一种用到null(以及undefined)的场景是当检测一个属性是否在对象中存在时，比如:  </p>
-<pre><code><span class="comment">//不好的写法:检测假值</span>
-<span class="keyword">if</span>(<span class="keyword">object</span>[propertyName]){
-    <span class="comment">//一些代码</span>
-}
-
-<span class="comment">//不好的写法:和null相比较</span>
-<span class="keyword">if</span>(<span class="keyword">object</span>[propertyName] != <span class="keyword">null</span>){
-    <span class="comment">//一些代码</span>
-}
-
-<span class="comment">//不好的写法:和undefined比较</span>
-<span class="keyword">if</span>(<span class="keyword">object</span>[propertyName] != undefined){
-    <span class="comment">//一些代码</span>
-}
-</code></pre><p>以上这段代码里的每个判断，实际上是通过给定的名字来检查属性的值，而非判断给定的名字所指的属性是否存在，因为当属性值为假值结果会出错，比如0、””、false、null、undefined。比如如果属性记录了一个数字，则这个值可以是零。这样的话，上段代码第一个判断就会导致错误。以此类推，如果属性值为null或者undefined时，三个判断都会导致错误。<br>判断属性是否存在最好的方法是使用in运算符。in运算符仅仅会简单地判断属性是否存在，而不会去读取属性的值，这样就避免了前文提到的有歧义的语句。如果实例对象的属性存在、或者继承自对象原型，in运算符都会返回true。比如:  </p>
-<pre><code><span class="keyword">var</span> <span class="keyword">object</span> = {
-    count:<span class="number">0</span>,
-    related : <span class="keyword">null</span>
-};
-
-<span class="comment">//好的写法</span>
-<span class="keyword">if</span>(<span class="string">"count"</span> <span class="keyword">in</span> <span class="keyword">object</span>){
-    <span class="comment">//这里的代码会执行</span>
-}
-
-<span class="comment">//不好的写法:检测假值</span>
-<span class="keyword">if</span>(<span class="keyword">object</span>[<span class="string">"count"</span>]){
-    <span class="comment">//这里的代码不会执行</span>
-}
-
-<span class="comment">//好的写法</span>
-<span class="keyword">if</span>(<span class="string">"related"</span> <span class="keyword">in</span> <span class="keyword">object</span>){
-    <span class="comment">//这里代码会执行</span>
-}
-
-<span class="comment">//不好的写法:检测是否为null</span>
-<span class="keyword">if</span>(<span class="keyword">object</span>[<span class="string">"related"</span>] != <span class="keyword">null</span>){
-    <span class="comment">//这里代码不会执行</span>
-}
-</code></pre><p>如果你只想检查实例对象的某个属性是否存在，则使用hasOwnProperty()方法。所有继承自Object的Javascript对象都有这个方法，如果实例中存在这个属性则返回true(如果这个属性只存在原型里，则返回false)。需要注意的是，在IE8以及更早版本的IE中，DOM对象并非继承自Object，因此也不会包含这个方法。也就是说，你在调用DOM对象的hasOwnProperty()方法之前应当先检测其是否存在。  </p>
-<pre><code><span class="comment">//对于所有非DOM对象来说，这是好的写法</span>
-<span class="keyword">if</span>(Object.hasOwnProperty(<span class="string">"related"</span>)){
-    <span class="comment">//执行这里的代码</span>
-}  
-
-<span class="comment">//如果你不确定为DOM对象，则这样来写</span>
-<span class="keyword">if</span>(<span class="string">"hasOwnProperty"</span> <span class="keyword">in</span> <span class="keyword">object</span> &amp;&amp; <span class="keyword">object</span>.hasOwnProperty(<span class="string">"related"</span>)){
-    <span class="comment">//执行这里的代码</span>
-}  
-</code></pre><p>不管你什么时候需要检测属性的存在性，请使用in运算符或者hasOwnProperty()，这样做可以避免很多Bug。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="9ethc698xwnrrvq3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript函数调用的四种方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/02/javascript函数调用的四种方式/" class="article-date">
-  <time datetime="2014-05-02T05:40:57.000Z" itemprop="datePublished">5月 2 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/02/javascript函数调用的四种方式/">Javascript函数调用的四种方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、Javascript函数的特点">一、Javascript函数的特点</h4>
-<p>Javascript中函数有两个主要特点使其显得比较特殊。第一个特点在于函数是第一类对象，第二个特点在于它们可以提供作用域。函数就是对象，其表现如下:  </p>
-<ul>
-<li>函数可以在运行时动态创建，还可以在程序执行过程中创建</li>
-<li>函数可以分配给变量，可以将它们的引用复制到其他变量，可以被扩展，此外除了少数特殊情况外，函数还可以被删除</li>
-<li>可以作为参数传递给其他函数，并且还可以由其他函数返回</li>
-<li>函数可以有自己的属性和方法</li>
-</ul>
-<h4 id="二、Javascript中函数定义方式">二、Javascript中函数定义方式</h4>
-<pre><code>方式一:
-<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数表达式</span>
-    <span class="keyword">return</span> a + b;
-};
-方式二:
-<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数声明</span>
-    <span class="keyword">return</span> a + b;
-}
-方式三:
-<span class="keyword">var</span> add = <span class="keyword">new</span> <span class="function"><span class="keyword">Function</span><span class="params">(<span class="string">'a,b'</span>,<span class="string">'return a + b'</span>)</span>;</span><span class="comment">//不推荐使用  </span>
-</code></pre><p>Javascript是一种解释性的语言，函数声明会在Javascript代码加载后、执行前被解释，而函数表达式只有在执行到这一行代码时才会被解释。函数声明中不需要分号结尾，但在函数表达式中需要分号，并且应该总是使用分号。  </p>
-<p>函数表达式VS函数声明:名称和变量声明提升  </p>
-<pre><code>alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//正常调用</span>
-<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span><span class="comment">{
-    return a + b;
-}</span>
-以上代码可以正常运行。因为在代码开始执行之前，解析器就已经读取函数声明并将其添加到执行环境中。  
-若下面例子所示，把上面的函数声明改为使用函数表达式方式，就会在执行期间导致错误:</span>  
-alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));  
-<span class="keyword">var</span> <span class="keyword">add</span> = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span><span class="comment">{
-    return a + b ;
-}</span>;</span>  
-</code></pre><h4 id="三、Javascript中四种调用方式">三、Javascript中四种调用方式</h4>
-<p>1、方法调用模式<br>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。如果调用表达式包含一个提取属性的动作(即包含一个.或[subscript]下标表达式)，那么它就当做一个方法来调用。  </p>
-<pre><code><span class="keyword">var</span> myObject = {
-    value : <span class="number">0</span>,
-    increment:<span class="function"><span class="keyword">function</span><span class="params">(inc)</span>{</span>
-        <span class="keyword">this</span>.value += <span class="keyword">typeof</span> inc === <span class="string">'number'</span> ? inc : <span class="number">1</span>;
-        console.log(inc);
-    }
- }  
-</code></pre><p>方法可以使用this访问自己所属的对象，所以它能从对象中取值或对对象进行修改。this到对象的绑定发生在调用的时候。这个延时绑定使得函数可以对this高度复用。<br>2、函数调用模式<br>当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用:<br>var sum = add(3,4);<br>以此模式调用函数时，this被绑定到全局对象。这是语言设计上的一个错误，倘若语言设计正确，那么当内部函数被调用时，this应该仍然绑定到外部函数的this变量。这个设计错误的后果就是方法不能利用内部函数来帮助它工作，因为内部函数的this被绑定了错误的值，所以不能共享方法对对象的访问权。如果该方法定义一个变量并给它赋值为this，那么内部函数就可以通过那个变量访问到this。按照约定我们把那个变量命名为that:  </p>
-<pre><code>myObject.double = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span><span class="comment">//给myObject增加一个double方法  </span>
-    <span class="keyword">var</span> that = <span class="keyword">this</span>;
-    <span class="keyword">var</span> helper = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
-        that.value = add(that.value,that.value);
-        console.log(<span class="keyword">this</span>);
-    };
-    helper();<span class="comment">//以函数的形式调用helper</span>
-};
-myObject.double();<span class="comment">//以方法的形式调用double  </span>
-</code></pre><p>3、构造器调用模式<br>当以new操作符调用构造函数时，函数内部将会发生以下情况:  </p>
-<ul>
-<li>创建一个空对象并且this变量引用了该对象，同时还继承了该函数的原型</li>
-<li>属性和方法被加入到this引用的对象中</li>
-<li><p>新创建的对象由this所引用，并且最后隐式地返回this(如果没有显式地返回其他对象)<br>以上情况看起来就像是在后台发生了如下事情:  </p>
-<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">(name)</span>{</span>
-    <span class="comment">//使用对象字面量创建一个新对象</span>
-    <span class="comment">//var this = {};          </span>
-    <span class="comment">//向this添加属性和方法</span>
-    <span class="keyword">this</span>.name = name;
-    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.name;
-    };
-    <span class="comment">//return this;          </span>
-}      
-</code></pre><p>4、Apply调用模式<br>因为Javascript是一门函数式的面向对象编程语言，所以函数可以拥有方法。apply方法让我们构建一个参数数组传递给调用函数，它允许我们选择this的值。apply方法接收两个参数，第一个要绑定给this的值，第二个就是参数数组。<br>对于apply和call两者作用上是相同的，但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数:apply传入的是一个参数数组，也就是将多个参数组合成一个数组传入，而call则作为call的参数传入(从第二个参数开始)。<br>如func.call(func1,var1,var2,var3)对应的apply写法为:func.apply(func1,[var1,var2,var3]); </p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="8r7wm6mv9ax8dyfk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-戏说json与jsonp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/30/戏说json与jsonp/" class="article-date">
-  <time datetime="2014-04-30T09:56:52.000Z" itemprop="datePublished">4月 30 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/30/戏说json与jsonp/">戏说JSON与JSONP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、什么是JSON">一、什么是JSON</h4>
-<ul>
-<li>JSON指的是Javascript对象表示法(Javascript Object Notation)</li>
-<li>JSON是轻量级的文本数据交换格式或数据描述格式</li>
-<li>JSON使用javascript语法来描述对象，但JSON仍然独立于语言和平台  </li>
-<li>JSON和文字对象唯一的语法差异在于，在JSON中，属性名称需要包装在引号中才能称为合法的JSON。而对象字面量中，仅当属性名称不是有效的标识符时才会需要引号。比如，字符之间有空格{“first name”,”Sem”}</li>
-</ul>
-<h4 id="二、JSON的优点">二、JSON的优点</h4>
-<ul>
-<li>基于纯文本，便于跨平台传递；</li>
-<li>Javascript原生支持，后台语言几乎全部支持；</li>
-<li>轻量级数据格式，占用字符数量极少，适合网络传输；</li>
-<li>容易编写和解析，格式化处理后可读性较强</li>
-</ul>
-<h4 id="三、使用JSON">三、使用JSON</h4>
-<pre><code><span class="number">1</span>、定义及使用
-<span class="comment">//描述一个人</span>
-<span class="keyword">var</span> person = {
-    <span class="string">"name"</span> : <span class="string">"Semlinker"</span>,
-    <span class="string">"age"</span> : <span class="string">"28"</span>    
-}
-<span class="comment">//获取这个人的姓名</span>
-<span class="keyword">var</span> name = person.name;
-<span class="number">2</span>、常用操作
-<span class="comment">//字符串转JSON</span>
-<span class="keyword">var</span> jsStr = <span class="string">'{"mykey" : "my value"}'</span>;
-<span class="keyword">var</span> data = <span class="built_in">JSON</span>.parse(jsStr);
-<span class="comment">//序列化为一个JSON字符串</span>
-<span class="keyword">var</span> mycar = {
-    name : <span class="string">"ferrari"</span>,
-    color : <span class="string">"yellow"</span>
-};
-<span class="keyword">var</span> jsonstr = <span class="built_in">JSON</span>.stringify(mycar);
-</code></pre><h4 id="四、什么是JSONP">四、什么是JSONP</h4>
-<ul>
-<li>Javascript出于安全方面的考虑，不允许跨域调用其他页面的对象</li>
-<li>Web中含有src属性的组件，都拥有跨域的能力，比如script、img、iframe组件</li>
-<li>当前阶段如果想通过纯web端跨域访问数据只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，以便供客户端进一步调用和处理</li>
-<li>恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据</li>
-<li>这样一来解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件，显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去</li>
-<li>客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样</li>
-<li>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了</li>
-</ul>
-<h4 id="五、JSONP的实现">五、JSONP的实现</h4>
-<pre><code>一、客户端实现
-<span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"zh-cn"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span>
-<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"X-UA-Compatible"</span> <span class="attribute">content</span>=<span class="value">"IE=edge,chrome=1"</span>/&gt;</span>
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
-        <span class="comment">// 获取航班信息查询结果后的回调函数</span>
-        <span class="keyword">var</span> flightHandler = <span class="function"><span class="keyword">function</span><span class="params">(data)</span>{</span>
-        console.info(<span class="string">'你查询的航班结果是：票价 '</span> + data.price + <span class="string">' 元，'</span> + <span class="string">'余票 '</span> + data.ticket + <span class="string">' 张。'</span>);
-        };
-        <span class="comment">// 提供jsonp服务的url地址（不管是什么类型的地址，最终的返回值都是一段javascript代码）</span>
-       <span class="keyword">var</span> url = <span class="string">"http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler"</span>;
-        <span class="comment">// 创建script标签，设置其属性</span>
-        <span class="keyword">var</span> script = document.createElement(<span class="string">'script'</span>);
-        script.setAttribute(<span class="string">'src'</span>, url);
-        <span class="comment">// 把script标签加入head，此时调用开始</span>
-       document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script); 
-   </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">body</span>&gt;</span><span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-二、服务端实现
-flightHandler({
-  "code": "CA1998",
-  "price": 1780,
-  "tickets": 5
-});
-</code></pre><h4 id="六、ajax与jsonp的区别">六、ajax与jsonp的区别</h4>
-<ul>
-<li>ajax和jsonp这两种技术在调用方式上很相似，都是请求一个url，然后对服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装</li>
-<li>ajax和jsonp其实本质上是不同的东西。ajax的核心是通过XmlHttpRequest获取远程内容，而jsonp的核心则是动态添加script标签来调用服务器提供的js脚本</li>
-<li>ajax与jsonp的区别不在于是否支持跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取</li>
-<li>jsonp是一种方式或者说非强制性协议，如同ajax一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用jsonp提供公开服务</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="4bwuqgwmgbmz0y5j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jquery插件设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/28/jquery插件设计模式/" class="article-date">
-  <time datetime="2014-04-28T09:26:54.000Z" itemprop="datePublished">4月 28 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/28/jquery插件设计模式/">jQuery插件设计模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="引言">引言</h4>
-<p>码农A:小C，你有用过jquery插件么？<br>小C:有，从工作到现在用过挺多的，如<br>jQuery插件</p>
-<h4 id="一、插件模式">一、插件模式</h4>
-<p>定义jQuery插件有多种多样的方法,最简单的方式是为</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="83vry6gb1e4bzk36" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-玩转Emmet" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/27/玩转Emmet/" class="article-date">
-  <time datetime="2014-04-27T10:17:31.000Z" itemprop="datePublished">4月 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tools skill/">tools skill</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/27/玩转Emmet/">玩转Emmet</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、Emmet是什么">一、Emmet是什么</h4>
-<p>Emmet是一组用于快速编写<strong>HTML</strong>和<strong>CSS</strong>的工具，它由两个核心组件组成:缩写扩展器和与上下文无关的HTML标签对匹配器。</p>
-<h4 id="二、Emmet能干嘛">二、Emmet能干嘛</h4>
-<p>亲，难道你是传说中的”闪电手”，编写下面这个HTML结构，你需要多长时间，一分钟 ? 两分钟 ? <a href="http://
-jsbin.com/">马上试试</a></p>
-<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"page"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"logo"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"navigation"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 4<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>Item 5<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>  
-</code></pre><p>努力地敲着键盘…..<br>见证奇迹的时刻到了，请睁大你的双眼，抬起你那高贵的双手，轻轻地键入</p>
-<pre><code><span class="symbol">#page</span>&gt;div.logo+ul<span class="symbol">#navigation</span>&gt;li*<span class="number">5</span>&gt;a{<span class="class">Item</span> <span class="char">$}</span>   ---------》革命尚未成功，请你迅速你按下<span class="class">Tab</span>键
-</code></pre><p>怎么样是不是已经有了恋爱的冲动，爱它就赶快行动吧    ——————-&gt; 继续往下看</p>
-<h4 id="三、更多示例">三、更多示例</h4>
-<pre><code>示例1:
-输入: div#header&gt;ul#nav&gt;li*4&gt;a
-输出:
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"nav"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-
-示例2:
-输入:div.item$*3
-输出:
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-
-示例3:
-输入:div#i$-test.class$$$*3
-输出:
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"i1-test"</span> <span class="attribute">class</span>=<span class="value">"class001"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"i2-test"</span> <span class="attribute">class</span>=<span class="value">"class002"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"i3-test"</span> <span class="attribute">class</span>=<span class="value">"class003"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-</code></pre><h4 id="四、常用缩写">四、常用缩写</h4>
-<ul>
-<li>html:5    (html5结构)</li>
-<li>link:css    (引入css)</li>
-<li>script:src    (引入js)    </li>
-<li>script    (html中插入js)</li>
-<li>ul+    (ul及一个li)</li>
-<li>a:link    (插入a标签)</li>
-<li>form:get    (get表单)</li>
-<li>input:hidden    (hidden输入框)</li>
-<li>div#name    (id:name)</li>
-<li>div.name    (class:name)</li>
-<li>head&gt;link:css    (head添加link)</li>
-<li>p+p    (添加2个p)</li>
-<li>p*3    (添加3个p)</li>
-<li>ul&gt;li.item$*6     (创建ul下有个li同时class分别为item1，item2)</li>
-</ul>
-<h4 id="五、展开缩写说明">五、展开缩写说明</h4>
-<p>展开缩写功能将类似CSS的选择器转换为XHTML代码。<br>以下是支持的属性和操作符列表  </p>
-<ul>
-<li>E (元素名称 div,p)</li>
-<li>E#id(使用id的元素div#content,p#intro)</li>
-<li>E.class(使用类的元素div.header)</li>
-<li>E &gt; N(子代元素div&gt;p)</li>
-<li>E + N(兄弟元素h1+p)</li>
-<li>E <em> N(元素倍增ul#nav&gt;li</em>5&gt;a)</li>
-<li>E$ * N(条目编号)</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/玩转Emmet/" data-id="x8kridoqjjh0z008" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript事件代理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/27/javascript事件代理/" class="article-date">
-  <time datetime="2014-04-27T06:20:56.000Z" itemprop="datePublished">4月 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/27/javascript事件代理/">Javascript事件代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、什么是事件代理">一、什么是事件代理</h4>
-<p>事件代理，也有人翻译为”事件委托”，是一种利用javascript事件冒泡特性的高级方法。当有多个子元素或者子元素经常变化时，通过事件代理可以只监听父级元素事件，这样就避免了把事件处理器添加到多个子级元素上。一般情况下这样做的效率更高，而且代码机构更加清晰，易于后续操作和管理。</p>
-<h4 id="二、事件代理的应用">二、事件代理的应用</h4>
-<p>假设有以下导航菜单，它由一个ul父节点和多个li子节点组成。  </p>
-<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"nav"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 4<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">""</span>&gt;</span>menu 5<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-</code></pre><p>当我们鼠标移动到li的时候，需要获取此li的相关信息并以悬浮框的形式显示详细信息，或者当li被点击的时候需要触发相应的处理事件。我们通常的做法是为每个li都添加一个onMouseOver或者onClick之类的事件监听()。  </p>
-<pre><code><span class="keyword">function</span> addListeners4Li(liNode){
-  liNode.onclick = <span class="keyword">function</span> clickHandler(){<span class="keyword">...</span>};
-  liNode.onmouseover = <span class="keyword">function</span> mouseOverHandler(){<span class="keyword">...</span>}
-}
-
-window.onload = <span class="keyword">function</span>(){
-  var ulNode = document.getElementById(<span class="string">"nav"</span>);
-  var liNodes = ulNode.getElementByTagName(<span class="string">"li"</span>);
-  <span class="keyword">for</span>(var i=<span class="number">0</span>, l = liNodes.length; i &lt; l; i++){
-    addListeners4Li(liNodes[i]);
-  }   
-}  
-</code></pre><p>如果该ul中的子元素li会频繁地添加或者删除，我们就需要在每次添加li的时候都调用addListeners4Li方法来为对应的li节点添加事件处理函数，这样就增加了工作的繁琐性和出错的可能性。<br>那我们该使用什么办法来解决这个问题呢?更简单的方式就是使用事件代理机制，当事件传递上层父节点的时候，我们通过检查事件的目标对象来判断并获取事件源li。具体代码如下:  </p>
-<pre><code><span class="comment">// 获取父节点，并为它添加一个click事件</span>
-document.getElementById(<span class="string">"nav"</span>).addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
-<span class="comment">// 检查事件源e.targe是否为Li</span>
-<span class="keyword">if</span>(e.target &amp;&amp; e.target.nodeName.toLowerCase() == <span class="string">"li"</span>) {
-<span class="comment">// 真正的处理过程在这里</span>
-    handle4Click();
-  }
-});  
-</code></pre><p>为父节点ul添加一个click事件，当子节点被点击的时候，click事件会从子节点开始向上冒泡。父节点捕获到事件之后，通过判断e.target.nodeName来判断是否为我们需要处理的节点，并且通过e.target拿到了被点击的li节点。从而可以获取到相应的信息，并作处理。</p>
-<h4 id="三、事件冒泡及捕获">三、事件冒泡及捕获</h4>
-<p>DOM2.0模型将事件处理流程分为三个阶段：一、事件捕获阶段，二、事件目标阶段，三、事件起泡阶段。如图：<br><img src="../dom_event.jpg" alt="image">  </p>
-<p>事件捕获：当某个元素触发某个事件（如onclick），顶层对象document就会发出一个事件流，随着DOM树的节点向目标元素节点流去，直到到达事件真正发生的目标元素。在这个过程中，事件相应的监听函数是不会被触发的。</p>
-<p>事件目标：当到达目标元素之后，执行目标元素该事件相应的处理函数。如果没有绑定监听函数，那就不执行。</p>
-<p>事件冒泡：从目标元素开始，往顶层元素传播。途中如果有节点绑定了相应的事件处理函数，这些函数都会被一次触发。如果想阻止事件起泡，可以使用e.stopPropagation()（Firefox）或者e.cancelBubble=true（IE）来组织事件的冒泡传播。</p>
-<h4 id="四、事件代理的优点">四、事件代理的优点</h4>
-<p>1、当遇到子元素非常多时，使用事件代理无疑大大的减少了浏览器在内存中创建的事件监听处理器，提高了性能，降低了内存消耗；</p>
-<p>2、当子元素可能会不断地被增加、删除或者替换时，使用事件代理就避免出现某些元素的事件没有被移除，造成内存泄露的风险；</p>
-<p>3、代码管理更加清晰，外层做统一的事件管理，易于修改和扩展。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="kb95vhmew6f4nr54" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -1420,7 +924,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1433,7 +937,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1445,23 +949,23 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
       <ul>
         
           <li>
-            <a href="/2014/05/11/javascript-array对象详解/">Javascript Array对象详解</a>
+            <a href="/2014/06/02/pro-javascript-performance/">Pro Javascript Performance</a>
           </li>
         
           <li>
-            <a href="/2014/05/11/柯里化与偏应用/">柯里化与偏应用</a>
+            <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
           </li>
         
           <li>
-            <a href="/2014/05/06/变量对象/">变量对象</a>
+            <a href="/2014/06/02/高性能javascript之dom编程/">高性能javascript之DOM编程</a>
           </li>
         
           <li>
-            <a href="/2014/05/06/javascript函数/">Javascript函数</a>
+            <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
           </li>
         
           <li>
-            <a href="/2014/05/02/javascript中类型检测/">javascript中类型检测</a>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
           </li>
         
       </ul>
