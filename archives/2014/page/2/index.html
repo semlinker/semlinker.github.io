@@ -63,113 +63,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-柯里化与偏应用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/11/柯里化与偏应用/" class="article-date">
-  <time datetime="2014-05-10T16:08:15.000Z" itemprop="datePublished">5月 11 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/11/柯里化与偏应用/">柯里化与偏应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、函数参数的个数">一、函数参数的个数</h4>
-<p>函数定义时会写明它所接收的参数个数。”一元参数”接收一个参数，”多元函数”接收多个参数。有些函数能够接收不定数量的参数，我们称之为”可变参数函数”。</p>
-<h4 id="二、偏应用">二、偏应用</h4>
-<p>作为铺垫，我们首先实现一个<strong>map</strong>函数，用来将某个函数应用到数组的每个元素上:  </p>
-<pre><code>    <span class="keyword">var</span> _map = [].map;
-
-    <span class="function"><span class="keyword">function</span> <span class="title">map</span><span class="params">(list,unaryFn)</span>{</span>
-        <span class="keyword">return</span> _map.call(<span class="keyword">list</span>,unaryFn);
-    }
-
-    <span class="function"><span class="keyword">function</span> <span class="title">square</span><span class="params">(n)</span>{</span>
-        <span class="keyword">return</span> n*n;
-    }
-
-    map([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],square);
-    <span class="comment">//=&gt; [1,4,9] </span>
-</code></pre><p>显然，map是二元函数，square是一元函数。当我们使用[1,2,3]和square作为参数调用map时，我们是将这两个参数应用到map函数，并获得结果。<br>由于map函数接收两个参数，我们也提供了两个参数，所以说这是一次完整的应用。那何谓偏应用(或部分应用)呢?其实就是提供少于指定数量的参数。如仅提供一个参数来调用map函数。<br>如果我们只提供一个函数来调用map会怎么样?我们无法得到所要的结果，只能得到一个新的一元函数，通过调用这个函数并传递缺失的参数后，才能获得结果。<br>假设现在我们只提供一个参数给map，这个参数是unaryFn。我们从后往前逐步实现，首先map函数创建一个包装函数*  </p>
-<pre><code>    <span class="built_in">var</span> mapWrapper(<span class="built_in">list</span>,unaryFn){
-        <span class="keyword">return</span> <span class="built_in">map</span>(<span class="built_in">list</span>,unaryFn);
-    }
-</code></pre><p>然后，我们将这个二元函数分割成两个嵌套的一元函数:  </p>
-<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">mapWrapper</span><span class="params">(unaryFn)</span>{</span>
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(list)</span>{</span>
-            <span class="keyword">return</span> map(<span class="keyword">list</span>,unaryFn);
-        }
-    }  
-</code></pre><p>这样一来，我们就能每次传递一个参数来进行调用:  </p>
-<pre><code>    <span class="function">mapWrapper(square)</span>(<span class="attr_selector">[1,2,3]</span>);
-    <span class="comment">//=&gt;[1,4,9]</span>
-</code></pre><p>和之前的map函数相较，新的函数mapWrapper是一元函数，它的返回值是另一个一元函数，需要再次调用它才能获得返回值。那么偏应用要从何体现?让我们从第二个一元函数着手:  </p>
-<pre><code>    <span class="reserved">var</span> squareAll = mapWrapper(square);
-    <span class="regexp">//</span><span class="function">=&gt;</span>[<span class="reserved">function</span>]
-
-    squareAll([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);
-    <span class="regexp">//</span><span class="function">=&gt;</span>[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>]  
-</code></pre><p>我们首先将square这个参数部分应用到了map函数，并获得一个一元函数squareAll,它能实现我们需要的功能。如果每次想要使用偏应用都需要手动编写这样一个包装函数，显然我们希望能自动化实现它。这就是下一节的内容:柯里化。  </p>
-<h4 id="三、柯里化">三、柯里化</h4>
-<p>首先，我们可以编写一个函数来返回包装器。我们仍以二元函数为例:  </p>
-<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">wrapper</span><span class="params">(unaryFn)</span>{</span>
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(list)</span>{</span>
-            <span class="keyword">return</span> map(<span class="keyword">list</span>,unaryFn);
-        }
-    }  
-</code></pre><p>将函数map和参数名称替换掉  </p>
-<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">wrapper</span><span class="params">(secondArg)</span>{</span>
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(firstArg)</span>{</span>
-            <span class="keyword">return</span> binaryFn(firstArg,secondArg);
-        }
-    }  
-</code></pre><p>最后，我们再包装一层:  </p>
-<pre><code>    <span class="function"><span class="keyword">function</span> <span class="title">rightmostCurry</span><span class="params">(binaryFn)</span>{</span>
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(secondArg)</span>{</span>
-            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(firstArg)</span>{</span>
-                <span class="keyword">return</span> binaryFn(firstArg,secondArg);
-            }
-        }
-    }  
-</code></pre><p>这样一来，我们之前使用的模式就抽象出来了。这个函数的用法是:  </p>
-<pre><code>    <span class="keyword">var</span> rightmostCurriedMap = rightmostCurry(<span class="keyword">map</span>);
-    <span class="keyword">var</span> squareAll = rightmostCurriedMap(square);
-
-    squareAll(<span class="number">[1</span><span class="number">,4</span><span class="number">,9</span>]);
-    <span class="comment">//=&gt;[1,4,9]  </span>
-</code></pre><p>将一个多元函数转换成一系列一元函数的嵌套调用，这种转换称之为柯里化。  </p>
-<h4 id="四、柯里化和偏应用的区别">四、柯里化和偏应用的区别</h4>
-<p>1、柯里化是将一个多元函数分解为一系列嵌套调用的一元函数。分解后，你可以部分应用一个或多个参数。柯里化过程不会向函数传递参数。  </p>
-<p>2、偏应用是为一个多元函数提供部分参数，从而在调用时可以省略这些参数。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/11/柯里化与偏应用/" data-id="8mk4piuxgqnoqg0c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-变量对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/05/06/变量对象/" class="article-date">
@@ -389,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/变量对象/" data-id="opk42cyc3b7zhewv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/06/变量对象/" data-id="ikn2kp9err1wzlkp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -513,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="hbpio03kw26qnir1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/06/javascript函数/" data-id="4ii806ih73tzfmxu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -695,7 +588,7 @@ console.log(<span class="keyword">typeof</span> myFunc === <span class="string">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="oyie4pxzscq9c347" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/02/javascript中类型检测/" data-id="lbhxv0vhgqd830z0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -803,7 +696,7 @@ myObject.double();<span class="comment">//以方法的形式调用double  </span
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="kzjm6yrhln23zv7t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="h5grsnntrodaxubt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -923,7 +816,7 @@ flightHandler({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="96wf0pt1cv6xmefi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="8hrbrv09s2rmgvfy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -967,7 +860,7 @@ flightHandler({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="jtok34zamwjqeb5z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="1x3xujldzih9mu8b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1079,7 +972,7 @@ jsbin.com/">马上试试</a></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/玩转Emmet/" data-id="aoqwvbwiobctsnit" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/玩转Emmet/" data-id="y1aoplszacaj9fqp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1162,7 +1055,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="uyt3q5auot21sloe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="zxc74gcdlsodx4rl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1185,7 +1078,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/resume/">resume</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/resume/">resume</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1198,7 +1091,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1208,10 +1101,6 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2014/06/24/effective-javascript/">Effective Javascript</a>
-          </li>
         
           <li>
             <a href="/2014/06/07/sems-resume-for-front-end-develop/">Sem&#39;s Resume For Front End Develop</a>
@@ -1227,6 +1116,10 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
         
           <li>
             <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
           </li>
         
       </ul>
