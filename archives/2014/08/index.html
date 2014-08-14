@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Archives: 2014/8 | Sem&#39;s Coder Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="website" property="og:type">
+<meta content="Sem's Coder Life" property="og:title">
+<meta content="http://yoursite.com/archives/2014/08/" property="og:url">
+<meta property="og:image">
+<meta content="Sem's Coder Life" property="og:site_name">
+<meta property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="Sem&#39;s Coder Life" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sem&#39;s Coder Life</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">程序是写给人读的，只是偶尔让计算机执行一下</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-浏览器JS异常处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/14/浏览器JS异常处理/" class="article-date">
+  <time datetime="2014-08-14T01:50:53.000Z" itemprop="datePublished">8月 14 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="浏览器JS异常处理和利用">浏览器JS异常处理和利用</h2>
+<p>一、简介<br>作为Web开发者，经常要跟JS打交道，可能由于网络超时、浏览器兼容性问题、缓存等原因，造成浏览器执行页面JS脚本时，会抛出异常。对Web开发者来说，JS异常很常见，但对于用户来说，JS异常却很陌生。因此如果能收集异常，提供统一的异常处理方式和友好的异常提示方式，将能大大提供用户体验。此外，如果能够及时的跟踪和统计页面的JS异常，对于开发者来说是一个福音，不仅能够快速地对异常进行响应还能对异常进行归档分析。  </p>
+<p>二、常见的JS异常  </p>
+<ul>
+<li>EvalError</li>
+<li>RangeError</li>
+<li>ReferenceError</li>
+<li>SyntaxError</li>
+<li>TypeError</li>
+<li>URIError  </li>
+</ul>
+<p>三、JS异常捕获  </p>
+<p>捕获浏览器中的JS运行时错误，主要通过监听window.onerror事件和try/catch来实现。  </p>
+<p>1、window.onerror : 对于不同的脚本执行方式以及不同的浏览器，捕获到的信息会有区别</p>
+<p>window.onerror 接收3个参数：</p>
+<ul>
+<li><code>msg</code>：错误描述，比如：a is not defined</li>
+<li><code>url</code>：出错脚本所在的url</li>
+<li><code>lineNumber</code>：出错脚本的行数  </li>
+</ul>
+<p>若使用window.addEventListener(‘error’,callback,false),callback的第一个参数并不是event对象而是Error对象。因此使用window.onerror是一个不错的选择，但使用.操作符进行事件监听是可以重载的，并且包含异常处理的脚本理论上要放在所有JS之前。</p>
+<p>2、try/catch : 可通过e.stack打印异常信息  </p>
+<pre><code>  <span class="keyword">try</span><span class="cell">{
+      fn()
+  }</span><span class="keyword">catch</span>(e)<span class="cell">{
+      alert(e.stack);
+  }</span>  
+</code></pre><p>本文将对不同浏览器和不同的脚本执行方式进行测试，并总结这些区别。</p>
+<p>首先对于脚本的执行主要有以下几种方式：</p>
+<ul>
+<li>页面内嵌的<code>&lt;script&gt;</code>，需要执行的代码在<code>&lt;script&gt;</code>标签内</li>
+<li>使用<code>&lt;script src=&quot;external.js&quot;&gt;</code>的方式引入外部脚本，脚本为同域地址</li>
+<li>使用<code>&lt;script src=&quot;external.js&quot;&gt;</code>的方式引入外部脚本，脚本为不同域地址</li>
+<li>使用<code>&lt;script src=&quot;external.js&quot;&gt;</code>的方式引入外部脚本，脚本为本地地址</li>
+<li>使用eval方法来执行脚本</li>
+<li>动态地创建内嵌的<code>&lt;script&gt;</code>并设置其innerHTML为需要执行的代码</li>
+</ul>
+<p>四、异常的利用  </p>
+<p>1、线上实际运行时，若出现JS错误，JS报错信息自动已邮件的方式发送至前端开发团队，团队成员每个人自己认领、解决问题。这种方式解决了最基本的问题，错误的及时跟踪和响应。不过也存在一个问题，如何避免同样的错误。  </p>
+<p>  解决思路如下:  </p>
+<ul>
+<li>以URL为单元，记录同一个页面的错误，方便统一解决  </li>
+<li>记录错误信息: PageURL、User Agent、Script URL、Error Message和Line Number</li>
+<li>每个错误解决后，统一对错误进行统计和归档，形成知识库 </li>
+</ul>
+<p>2、注意点  </p>
+<ul>
+<li>收集数据的时候使用POST方式: 有时候ErrorMessage可能会比较长，浏览器URL长度是有限制的，若错误信息不多的情况，可以使用GET发送，但通常来说POST可以把所有数据都发送到后台  </li>
+<li>何时发送数据: 建议在触发onerror的时候发送</li>
+<li>数据入库以哪个作为索引比较好: 通常来说使用URL可能会比较适合多数网站，也可以使用Error作为索引，具体根据实际场景进行选择</li>
+<li></li>
+</ul>
+<p>五、简单示例</p>
+<pre><code>   <span class="built_in">window</span>.onerror = <span class="reserved">function</span>(msg,url,lineNumber){
+        <span class="reserved">var</span> msgText = [<span class="string">'####异常行为号: '</span>+lineNumber,
+          <span class="string">'异常信息为: '</span>+msg,<span class="string">'异常发生的地址为: '</span>+url].join(<span class="string">'\n'</span>);
+        <span class="keyword">if</span> (<span class="built_in">window</span>.<span class="built_in">console</span> &amp;&amp; <span class="built_in">window</span>.<span class="built_in">console</span>.log){
+            <span class="built_in">window</span>.<span class="built_in">console</span>.log(msgText);
+        }<span class="keyword">else</span>{    
+            alert(msgText);
+        }
+    };
+</code></pre><p>六、附录   </p>
+<p>1、<a href="https://github.com/stacktracejs/stacktrace.js" target="_blank">兼容多数浏览器的实现库</a> </p>
+<p>2、以下是各浏览器执行各类脚本的异常捕获情况</p>
+<h2 id="Chrome_(23-0-1271-101)">Chrome (23.0.1271.101)</h2>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（only Script error）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（only Script error）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（””）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（””）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（0）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（0）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from code）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from its code）</span><br></td><br></tr><br></tbody><br></table>
+
+<h3 id="Firefox_(16-0-2)">Firefox (16.0.2)</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（only Script error）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（only Script error）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（file that call this eval）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page））</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（0）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（0）</span><br></td><br><td valign="top"><span style="text-align: -webkit-center; background-color: rgb(255, 255, 255);"><font face="Arial, Helvetica, sans-serif">✓（position that calls&nbsp;this&nbsp;eval）</font></span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from its code）</span><br></td><br></tr><br></tbody><br></table>
+
+<h3 id="Safari_(6-0-2_(8536-26-17))">Safari (6.0.2 (8536.26.17))</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（only Script error）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（undefined）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（0）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="text-align: -webkit-center; background-color: rgb(255, 255, 255);"><font face="Arial, Helvetica, sans-serif">✓（from code）</font></span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from its code）</span><br></td><br></tr><br></tbody><br></table>
+
+<h3 id="Opera_(12-11)">Opera (12.11)</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（only Script error）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（””）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（””）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✗（0）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from code）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from its code）</span><br></td><br></tr><br></tbody><br></table>
+
+<h3 id="IE9">IE9</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（file path that call this eval）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（position that calls&nbsp;this&nbsp;eval）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from its code）</span><br></td><br></tr><br></tbody><br></table>
+
+<h3 id="IE8">IE8</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script（not available）</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（file path that call this eval）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（position that calls&nbsp;this&nbsp;eval）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br></tbody><br></table>
+
+<h3 id="IE7">IE7</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script（not available）</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（file path that call this eval）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（position that calls&nbsp;this&nbsp;eval）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br></tbody><br></table>
+
+<h3 id="IE6">IE6</h3>
+<table border="1" width="100%" cellspacing="0" cellpadding="2"><br><tbody><br><tr><br><td valign="top"><br></td><br><td valign="top">page script</td><br><td valign="top">external script ( same origin )</td><br><td valign="top">external script ( cross domain )</td><br><td valign="top">external script ( local )</td><br><td valign="top">eval</td><br><td valign="top">dynamic page script（not available）</td><br></tr><br><tr><br><td valign="top">msg</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br><tr><br><td valign="top">url</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（current page）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br><tr><br><td valign="top">lineNumber</td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（from current page）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（line number start from 1）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（line number start from 1）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（line number start from 1）</span><br></td><br><td valign="top"><span style="font-family: Arial, Helvetica, sans-serif; text-align: -webkit-center; background-color: rgb(255, 255, 255);">✓（position that calls&nbsp;this&nbsp;eval，line number start from 1）</span><br></td><br><td valign="top" style="text-align: -webkit-center;"><font face="Arial, Helvetica, sans-serif">-</font></td><br></tr><br></tbody><br></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/08/14/浏览器JS异常处理/" data-id="1ih2wlo3a0q5tmxf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/08/14/浏览器JS异常处理/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之响应接口/">高性能javascript之响应接口</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascript之dom编程/">高性能javascript之DOM编程</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/02/高性能javascirpt/">高性能Javascirpt之数据访问</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/30/jquery内核详解和实战/">jQuery内核详解和实战</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 semlinker<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+  <a href="https://github.com/semlinker"><img style="position: absolute; top: 0; left: 0; border: 0;z-index:100;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+</body>
+</html>
