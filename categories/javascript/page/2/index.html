@@ -63,6 +63,114 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javascript函数调用的四种方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/02/javascript函数调用的四种方式/" class="article-date">
+  <time datetime="2014-05-02T05:40:57.000Z" itemprop="datePublished">5月 2 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/02/javascript函数调用的四种方式/">Javascript函数调用的四种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、Javascript函数的特点">一、Javascript函数的特点</h4>
+<p>Javascript中函数有两个主要特点使其显得比较特殊。第一个特点在于函数是第一类对象，第二个特点在于它们可以提供作用域。函数就是对象，其表现如下:  </p>
+<ul>
+<li>函数可以在运行时动态创建，还可以在程序执行过程中创建</li>
+<li>函数可以分配给变量，可以将它们的引用复制到其他变量，可以被扩展，此外除了少数特殊情况外，函数还可以被删除</li>
+<li>可以作为参数传递给其他函数，并且还可以由其他函数返回</li>
+<li>函数可以有自己的属性和方法</li>
+</ul>
+<h4 id="二、Javascript中函数定义方式">二、Javascript中函数定义方式</h4>
+<pre><code>方式一:
+<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数表达式</span>
+    <span class="keyword">return</span> a + b;
+};
+方式二:
+<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span>{</span> <span class="comment">//函数声明</span>
+    <span class="keyword">return</span> a + b;
+}
+方式三:
+<span class="keyword">var</span> add = <span class="keyword">new</span> <span class="function"><span class="keyword">Function</span><span class="params">(<span class="string">'a,b'</span>,<span class="string">'return a + b'</span>)</span>;</span><span class="comment">//不推荐使用  </span>
+</code></pre><p>Javascript是一种解释性的语言，函数声明会在Javascript代码加载后、执行前被解释，而函数表达式只有在执行到这一行代码时才会被解释。函数声明中不需要分号结尾，但在函数表达式中需要分号，并且应该总是使用分号。  </p>
+<p>函数表达式VS函数声明:名称和变量声明提升  </p>
+<pre><code>alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//正常调用</span>
+<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span><span class="comment">{
+    return a + b;
+}</span>
+以上代码可以正常运行。因为在代码开始执行之前，解析器就已经读取函数声明并将其添加到执行环境中。  
+若下面例子所示，把上面的函数声明改为使用函数表达式方式，就会在执行期间导致错误:</span>  
+alert(<span class="keyword">add</span>(<span class="number">10</span>,<span class="number">10</span>));  
+<span class="keyword">var</span> <span class="keyword">add</span> = <span class="function"><span class="keyword">function</span><span class="params">(a,b)</span><span class="comment">{
+    return a + b ;
+}</span>;</span>  
+</code></pre><h4 id="三、Javascript中四种调用方式">三、Javascript中四种调用方式</h4>
+<p>1、方法调用模式<br>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。如果调用表达式包含一个提取属性的动作(即包含一个.或[subscript]下标表达式)，那么它就当做一个方法来调用。  </p>
+<pre><code><span class="keyword">var</span> myObject = {
+    value : <span class="number">0</span>,
+    increment:<span class="function"><span class="keyword">function</span><span class="params">(inc)</span>{</span>
+        <span class="keyword">this</span>.value += <span class="keyword">typeof</span> inc === <span class="string">'number'</span> ? inc : <span class="number">1</span>;
+        console.log(inc);
+    }
+ }  
+</code></pre><p>方法可以使用this访问自己所属的对象，所以它能从对象中取值或对对象进行修改。this到对象的绑定发生在调用的时候。这个延时绑定使得函数可以对this高度复用。<br>2、函数调用模式<br>当一个函数并非一个对象的属性时，那么它就是被当做一个函数来调用:<br>var sum = add(3,4);<br>以此模式调用函数时，this被绑定到全局对象。这是语言设计上的一个错误，倘若语言设计正确，那么当内部函数被调用时，this应该仍然绑定到外部函数的this变量。这个设计错误的后果就是方法不能利用内部函数来帮助它工作，因为内部函数的this被绑定了错误的值，所以不能共享方法对对象的访问权。如果该方法定义一个变量并给它赋值为this，那么内部函数就可以通过那个变量访问到this。按照约定我们把那个变量命名为that:  </p>
+<pre><code>myObject.double = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span><span class="comment">//给myObject增加一个double方法  </span>
+    <span class="keyword">var</span> that = <span class="keyword">this</span>;
+    <span class="keyword">var</span> helper = <span class="function"><span class="keyword">function</span> <span class="params">()</span>{</span>
+        that.value = add(that.value,that.value);
+        console.log(<span class="keyword">this</span>);
+    };
+    helper();<span class="comment">//以函数的形式调用helper</span>
+};
+myObject.double();<span class="comment">//以方法的形式调用double  </span>
+</code></pre><p>3、构造器调用模式<br>当以new操作符调用构造函数时，函数内部将会发生以下情况:  </p>
+<ul>
+<li>创建一个空对象并且this变量引用了该对象，同时还继承了该函数的原型</li>
+<li>属性和方法被加入到this引用的对象中</li>
+<li><p>新创建的对象由this所引用，并且最后隐式地返回this(如果没有显式地返回其他对象)<br>以上情况看起来就像是在后台发生了如下事情:  </p>
+<pre><code><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span><span class="params">(name)</span>{</span>
+    <span class="comment">//使用对象字面量创建一个新对象</span>
+    <span class="comment">//var this = {};          </span>
+    <span class="comment">//向this添加属性和方法</span>
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.name;
+    };
+    <span class="comment">//return this;          </span>
+}      
+</code></pre><p>4、Apply调用模式<br>因为Javascript是一门函数式的面向对象编程语言，所以函数可以拥有方法。apply方法让我们构建一个参数数组传递给调用函数，它允许我们选择this的值。apply方法接收两个参数，第一个要绑定给this的值，第二个就是参数数组。<br>对于apply和call两者作用上是相同的，但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数:apply传入的是一个参数数组，也就是将多个参数组合成一个数组传入，而call则作为call的参数传入(从第二个参数开始)。<br>如func.call(func1,var1,var2,var3)对应的apply写法为:func.apply(func1,[var1,var2,var3]); </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/02/javascript函数调用的四种方式/" data-id="pzfycojjg9yradkr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-戏说json与jsonp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/04/30/戏说json与jsonp/" class="article-date">
@@ -173,7 +281,7 @@ flightHandler({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="3lu06ql1bbhr3rah" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/30/戏说json与jsonp/" data-id="fzdj60r0v9gk1xh7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +325,7 @@ flightHandler({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="oc10ut4hlsvfsptt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/28/jquery插件设计模式/" data-id="czbet0p0xvpeqwyc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +408,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="incphfhuw9vdaehb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/04/27/javascript事件代理/" data-id="y6l0u4sbko1jiptj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +431,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools skill/">tools skill</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -348,7 +456,7 @@ document.getElementById(<span class="string">"nav"</span>).addEventListener(<spa
       <ul>
         
           <li>
-            <a href="/2014/08/14/浏览器JS异常处理/">(no title)</a>
+            <a href="/2014/08/14/js异常处理与应用/">JS异常处理与应用</a>
           </li>
         
           <li>
