@@ -1,0 +1,1102 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Angular Provider 作用域 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ng-meta-service.html" />
+    
+    
+    <link rel="prev" href="ng-app-initializer.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tool/ng-compodoc-intro.html">
+            
+                <a href="../tool/ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tool/ng-verson-manage.html">
+            
+                <a href="../tool/ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tool/ng-vsc-debugger.html">
+            
+                <a href="../tool/ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/ng-storybook.html">
+            
+                <a href="../tool/ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tool/ng-translate-and-extract.html">
+            
+                <a href="../tool/ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tool/ng-npx-and-ghpages.html">
+            
+                <a href="../tool/ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../tool/ng-bundle-analyzer.html">
+            
+                <a href="../tool/ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="ng-di.html">
+            
+                <a href="ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="ng-app-initializer.html">
+            
+                <a href="ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.3" data-path="ng-provider-scope.html">
+            
+                <a href="ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="ng-meta-service.html">
+            
+                <a href="ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="ng-title-service.html">
+            
+                <a href="ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ng-custom-pipe.html">
+            
+                <a href="ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="ng-http-interceptor.html">
+            
+                <a href="ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="ng-jsonp-detail.html">
+            
+                <a href="ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Angular Provider 作用域</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>Services &#x662F;&#x6BCF;&#x4E2A; Angular &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x57FA;&#x672C;&#x5757;&#x4E4B;&#x4E00;&#x3002;Service &#x662F;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684; TypeScript &#x7C7B;&#xFF0C;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x6CA1;&#x6709;&#x4F7F;&#x7528; <strong>@Injectable</strong> &#x88C5;&#x9970;&#x5668;&#x3002; &#x6BD4;&#x5982;&#x4E0B;&#x9762;&#x662F;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; UserService &#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserService {}
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x5B8C; UserService &#x7C7B;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; <code>NgModule</code> &#x4E2D;&#x6CE8;&#x518C;&#x5B83;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { UserService } from <span class="hljs-string">&apos;./user.service&apos;</span>;
+...
+@NgModule({
+  imports:      [ BrowserModule],
+  declarations: [ AppComponent],
+  bootstrap:    [ AppComponent],
+  providers: [UserService]
+})
+</code></pre>
+<p>&#x5728; Angular 6 &#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528; <code>@Injectable</code> &#x7684;&#x5143;&#x6570;&#x636E;&#x6765;&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x7C7B;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Injectable } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Injectable({   
+  providedIn: <span class="hljs-string">&apos;root&apos;</span>, 
+}) 
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserService { }
+</code></pre>
+<p>&#x793A;&#x4F8B;&#x4E2D; <code>providedIn</code> &#x7684;&#x5C5E;&#x6027;&#x503C; <code>root</code> &#x8868;&#x793A;&#x670D;&#x52A1;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x8303;&#x56F4;&#x662F;&#x6839;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;&#xFF08;AppModule&#xFF09;&#x3002;</p>
+<blockquote>
+<p>&#x5F53;&#x4F60;&#x6CE8;&#x518C;&#x6839;&#x7EA7;&#x522B;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;Angular &#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5171;&#x4EAB;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;&#x5982;&#x679C;&#x5728; <code>@Injectable</code> &#x5143;&#x6570;&#x636E;&#x4E2D;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#xFF0C;Angular &#x4F1A;&#x5728;&#x6784;&#x5EFA;&#x9636;&#x6BB5;&#x81EA;&#x52A8;&#x5254;&#x9664;&#x65E0;&#x7528;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x8FDB;&#x800C;&#x4F18;&#x5316;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
+</blockquote>
+<p>&#x56E0;&#x6B64;&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x8DDF;&#x6A21;&#x5757;&#x4E2D;&#x914D;&#x7F6E;&#x67D0;&#x4E2A;&#x670D;&#x52A1;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x5C06;&#x5728;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x53EF;&#x7528;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5728;&#x975E;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x7279;&#x6027;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E5F;&#x6CE8;&#x518C;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x3002;&#x5728;&#x6839;&#x6A21;&#x5757;&#x548C;&#x7279;&#x6027;&#x6A21;&#x5757;&#x4E2D;&#x662F;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#xFF0C;&#x5373;&#x670D;&#x52A1;&#x662F;&#x5355;&#x4F8B;&#x7684;&#x3002;</p>
+<blockquote>
+<p>&#x201C;Talk is cheap&#xFF0C;show me your code&#x201D;&#x3002;</p>
+</blockquote>
+<h3 id="&#x975E;&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;">&#x975E;&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;</h3>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; UserModule &#x6A21;&#x5757;&#xFF0C;&#x7136;&#x540E;&#x5206;&#x522B;&#x5B9A;&#x4E49; UserService &#x670D;&#x52A1;&#x548C; UserComponent &#x7EC4;&#x4EF6;&#xFF1A; </p>
+<p>user.module.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { CommonModule } from <span class="hljs-string">&apos;@angular/common&apos;</span>;
+<span class="hljs-keyword">import</span> { UserService } from <span class="hljs-string">&apos;./user.service&apos;</span>;
+<span class="hljs-keyword">import</span> { UserComponent } from <span class="hljs-string">&apos;./user.component&apos;</span>;
+
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  declarations: [UserComponent],
+  providers: [UserService],
+  exports: [UserComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserModule { }
+</code></pre>
+<p>user.service.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Injectable } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Injectable({
+  providedIn: <span class="hljs-string">&quot;root&quot;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserService {
+  name = <span class="hljs-string">&quot;semlinker&quot;</span>;
+
+  changeName() {
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">&apos;Lolo&apos;</span>;
+  }
+}
+</code></pre>
+<p>user.component.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { UserService } from <span class="hljs-string">&apos;./user.service&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&apos;app-user&apos;</span>,
+  template: <span class="hljs-string">`
+  &lt;div class=&quot;border&quot;&gt;
+    &lt;p&gt;
+        &#x6211;&#x662F; {{userService.name}} &#x2014;&#x2014;&#xFF08;UserModule&#xFF09;
+    &lt;/p&gt;
+    &lt;button (click)=&quot;userService.changeName()&quot;&gt;&#x6539;&#x540D;&lt;/button&gt;
+  &lt;/div&gt;
+  `</span>,
+  styles: [<span class="hljs-string">`.border {border: 1px dashed red; padding: 5px;}`</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserComponent {
+  <span class="hljs-keyword">constructor</span>(private userService: UserService) { }
+}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x5B9A;&#x4E49; AppModule &#x4E0E; AppComponent&#xFF1A;</p>
+<p>app.module.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&apos;@angular/platform-browser&apos;</span>;
+<span class="hljs-keyword">import</span> { UserModule } from <span class="hljs-string">&apos;./user/user.module&apos;</span>;
+
+<span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&apos;./app.component&apos;</span>;
+
+@NgModule({
+  imports: [BrowserModule, UserModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+<p>app.component.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { UserService } from <span class="hljs-string">&apos;./user/user.service&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+   &lt;p&gt; &#x6211;&#x662F; {{userName}} &#x2014;&#x2014;&#xFF08;AppModule&#xFF09;&lt;/p&gt;
+   &lt;app-user&gt;&lt;/app-user&gt;
+   `</span>
+   ,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  <span class="hljs-keyword">constructor</span>(private userService: UserService) { }
+
+   <span class="hljs-keyword">get</span> userName() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.userService.name;
+  }
+}
+</code></pre>
+<p>&#x5728;&#x4EE5;&#x4E0A;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>providedIn: &quot;root&quot;</code> &#x8BBE;&#x7F6E; UserService &#x7684;&#x4F5C;&#x7528;&#x57DF;&#x8303;&#x56F4;&#xFF0C;&#x6B64;&#x5916;&#x5728; UserModule &#x4E2D;&#x901A;&#x8FC7; <code>providers: [UserService]</code> &#x6765;&#x6CE8;&#x518C; UserService &#x670D;&#x52A1;&#x3002;&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x6210;&#x529F;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x9875;&#x9762;&#x7684;&#x663E;&#x793A;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://cdn.semlinker.com/ng-provider-scope.jpg" alt="ng-provider-scope"></p>
+<p>&#x5F53;&#x70B9;&#x51FB; &#x201C;&#x6539;&#x540D;&#x201D; &#x6309;&#x94AE;&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x540D;&#x5B57;&#x4ECE; semlinker &#x53D8;&#x5316;&#x6210; lolo&#x3002;&#x8FD9;&#x8868;&#x793A;&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x662F;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x4E2A; UserService &#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x8FD9;&#x6837;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#xFF0C;&#x975E;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x7279;&#x6027;&#x6A21;&#x5757; UserModule &#x4E2D;&#x914D;&#x7F6E;&#x7684; providers &#x4F1A;&#x4E0E; AppModule &#x4E2D;&#x914D;&#x7F6E;&#x7684; providers &#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x5F53;&#x53D1;&#x73B0;&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684; Token &#x65F6;&#xFF0C;AppModule &#x4E2D;&#x914D;&#x7F6E;&#x7684; provider &#x4F1A;&#x751F;&#x6548;&#xFF0C;&#x6B64;&#x540E; Angular &#x4F1A;&#x6839;&#x636E;&#x5408;&#x5E76;&#x7684; providers &#x521B;&#x5EFA;&#x6839;&#x7EA7;&#x6CE8;&#x5165;&#x5668;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5BFC;&#x5165;&#x7684;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x5171;&#x7528;&#x540C;&#x4E00;&#x4E2A; Token &#x6765;&#x914D;&#x7F6E; provider&#xFF0C; &#x540E;&#x9762;&#x5BFC;&#x5165;&#x7684;&#x6A21;&#x5757;&#x5C06;&#x4F1A;&#x751F;&#x6548;&#x3002;</p>
+<h3 id="&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;">&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;</h3>
+<p>&#x4F30;&#x8BA1;&#x6709;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x5DF2;&#x7ECF;&#x6CE8;&#x610F;&#x5230;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4ECB;&#x7ECD;&#x524D;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x65F6;&#xFF0C;&#x6709;&#x5F3A;&#x8C03;<strong>&#x975E;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x7279;&#x6027;&#x6A21;&#x5757;</strong>&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x6A21;&#x5757;&#x4F1A;&#x662F;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x9A6C;&#x4E0A;&#x5148;&#x6765;&#x66F4;&#x65B0;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x628A; UserModule &#x6539;&#x4E3A;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x7279;&#x6027;&#x6A21;&#x5757;&#x3002;</p>
+<p>app.module.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {RouterModule} from <span class="hljs-string">&apos;@angular/router&apos;</span>;
+
+@NgModule({
+  imports: [BrowserModule, RouterModule.forRoot([{
+      path: <span class="hljs-string">&apos;user&apos;</span>, 
+      loadChildren : <span class="hljs-string">&apos;./user/user.module#UserModule&apos;</span>
+    }])
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+<p>app.component.ts</p>
+<pre><code class="lang-typescript">@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+   &lt;p&gt;
+       &#x6211;&#x662F; {{userName}} &#x2014;&#x2014;&#xFF08;AppModule&#xFF09;
+   &lt;/p&gt;
+   &lt;button routerLink=&apos;user&apos;&gt;&#x52A0;&#x8F7D;&#x7528;&#x6237;&#x6A21;&#x5757;&lt;/button&gt;
+   &lt;router-outlet&gt;&lt;/router-outlet&gt;
+   `</span>
+   ,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  <span class="hljs-keyword">constructor</span>(private userService: UserService) { }
+
+   <span class="hljs-keyword">get</span> userName() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.userService.name;
+  }
+}
+</code></pre>
+<p>user.module.ts</p>
+<pre><code class="lang-typescript">@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild([{ 
+      path:<span class="hljs-string">&apos;&apos;</span>,component: UserComponent 
+    }])
+  ],
+  declarations: [UserComponent],
+  providers: [UserService],
+  exports: []
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserModule { }
+</code></pre>
+<p>&#x5728;&#x9875;&#x9762;&#x6210;&#x529F;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x70B9;&#x51FB; &#x201C;&#x6539;&#x540D;&#x201D; &#x540E;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0; AppModule &#x5185;&#x7684;&#x540D;&#x5B57;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="http://cdn.semlinker.com/ng-provider-scope-lazy.jpg" alt="ng-provider-scope-lazy"></p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x6A21;&#x5757;&#x4E0E;&#x975E;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x6A21;&#x5757;&#x4F1A;&#x4EA7;&#x751F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x7ED3;&#x679C;&#x5462;&#xFF1F;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x6A21;&#x5757;&#x6765;&#x8BF4;&#xFF0C;&#x5B83;&#x4F1A;&#x57FA;&#x4E8E;&#x6A21;&#x5757;&#x5185;&#x914D;&#x7F6E;&#x7684; providers &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B50;&#x6CE8;&#x5165;&#x5668;&#xFF0C;&#x4EE5;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x5728; UserModule &#x4E2D;&#x83B7;&#x53D6; UserService &#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;  UserService &#x5B9E;&#x4F8B;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x7684; UserService &#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x6709;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6D4F;&#x89C8;&#x7EBF;&#x4E0A;&#x7684;&#x793A;&#x4F8B; <a href="https://stackblitz.com/edit/sm-angular-provider-scope" target="_blank">angular-provider-scope</a>&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<ol>
+<li>&#x5982;&#x679C;&#x5728;&#x591A;&#x4E2A;&#x7279;&#x6027;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A; token &#x6CE8;&#x518C; provider&#xFF0C;&#x53EA;&#x6709;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x6CE8;&#x518C;&#x7684; provider &#x624D;&#x4F1A;&#x751F;&#x6548;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5728;&#x591A;&#x4E2A;&#x7279;&#x6027;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A; token &#x6CE8;&#x518C; provider&#xFF0C;&#x6B64;&#x5916;&#x5728;&#x6839;&#x6A21;&#x5757;&#x4E2D;&#x540C;&#x6837;&#x4E5F;&#x6CE8;&#x518C;&#x4E86;&#x76F8;&#x540C;&#x7684; provider&#xFF0C;&#x53EA;&#x6709;&#x6839;&#x6A21;&#x5757;&#x4E2D;&#x6CE8;&#x518C;&#x7684; provider &#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x6839;&#x6CE8;&#x5165;&#x5668;&#x4E2D;&#xFF0C;&#x6B64;&#x540E;&#x6240;&#x6709;&#x7684;&#x7279;&#x6027;&#x6A21;&#x5757;&#x5C06;&#x4F1A;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</li>
+<li>&#x5F53;&#x5728;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#x4F7F;&#x7528;&#x6A21;&#x5757;&#x5916;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x5B83;&#x5C06;&#x4F7F;&#x7528;&#x6839;&#x6CE8;&#x5165;&#x5668;&#x521B;&#x5EFA;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;&#x4F46;&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x5728;&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#x4E2D;&#x6CE8;&#x518C;&#x4E86; provider&#xFF0C;&#x5728;&#x6A21;&#x5757;&#x5185;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x5B83;&#x5C06;&#x4ECE;&#x6A21;&#x5757;&#x7684;&#x5B50;&#x6CE8;&#x5165;&#x5668;&#x4E2D;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;</li>
+<li>&#x9664;&#x4E86;&#x5728; NgModule &#x4E2D;&#x914D;&#x7F6E; provider &#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>@Component</code> metadata &#x5BF9;&#x8C61;&#x7684; providers &#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x72EC;&#x7ACB;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ng-app-initializer.html" class="navigation navigation-prev " aria-label="Previous page: Angular Multi Providers 和 APP_INITIALIZER">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ng-meta-service.html" class="navigation navigation-next " aria-label="Next page: Angular Meta Service 详解">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Angular Provider 作用域","level":"1.4.3","depth":2,"next":{"title":"Angular Meta Service 详解","level":"1.4.4","depth":2,"path":"service/ng-meta-service.md","ref":"service/ng-meta-service.md","articles":[]},"previous":{"title":"Angular Multi Providers 和 APP_INITIALIZER","level":"1.4.2","depth":2,"path":"service/ng-app-initializer.md","ref":"service/ng-app-initializer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"service/ng-provider-scope.md","mtime":"2018-10-07T15:26:19.119Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

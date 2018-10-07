@@ -1,0 +1,1551 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TypeScript 简介及编码规范 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ts-resource-list.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tool/ng-compodoc-intro.html">
+            
+                <a href="../tool/ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tool/ng-verson-manage.html">
+            
+                <a href="../tool/ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tool/ng-vsc-debugger.html">
+            
+                <a href="../tool/ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/ng-storybook.html">
+            
+                <a href="../tool/ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tool/ng-translate-and-extract.html">
+            
+                <a href="../tool/ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tool/ng-npx-and-ghpages.html">
+            
+                <a href="../tool/ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../tool/ng-bundle-analyzer.html">
+            
+                <a href="../tool/ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../service/ng-di.html">
+            
+                <a href="../service/ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../service/ng-app-initializer.html">
+            
+                <a href="../service/ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../service/ng-provider-scope.html">
+            
+                <a href="../service/ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../service/ng-meta-service.html">
+            
+                <a href="../service/ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../service/ng-title-service.html">
+            
+                <a href="../service/ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../service/ng-custom-pipe.html">
+            
+                <a href="../service/ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../service/ng-http-interceptor.html">
+            
+                <a href="../service/ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../service/ng-jsonp-detail.html">
+            
+                <a href="../service/ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.1" data-path="ts-intro-and-guide.html">
+            
+                <a href="ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="ts-resource-list.html">
+            
+                <a href="ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TypeScript 简介及编码规范</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="typescript-&#x662F;&#x4EC0;&#x4E48;">TypeScript &#x662F;&#x4EC0;&#x4E48;</h3>
+<p><a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> &#x662F;&#x4E00;&#x79CD;&#x7531;&#x5FAE;&#x8F6F;&#x5F00;&#x53D1;&#x7684;&#x81EA;&#x7531;&#x548C;&#x5F00;&#x6E90;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;&#x5B83;&#x662F; JavaScript &#x7684;&#x4E00;&#x4E2A;&#x8D85;&#x96C6;&#xFF0C;&#x800C;&#x4E14;&#x672C;&#x8D28;&#x4E0A;&#x5411;&#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x6DFB;&#x52A0;&#x4E86;&#x53EF;&#x9009;&#x7684;&#x9759;&#x6001;&#x7C7B;&#x578B;&#x548C;&#x57FA;&#x4E8E;&#x7C7B;&#x7684;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x3002;  </p>
+<p>TypeScript &#x6269;&#x5C55;&#x4E86; JavaScript &#x7684;&#x53E5;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x4EFB;&#x4F55;&#x73B0;&#x6709;&#x7684; JavaScript &#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x4E0D;&#x52A0;&#x6539;&#x53D8;&#x7684;&#x5728; TypeScript &#x4E0B;&#x5DE5;&#x4F5C;&#x3002;TypeScript &#x662F;&#x4E3A;&#x5927;&#x578B;&#x5E94;&#x7528;&#x4E4B;&#x5F00;&#x53D1;&#x800C;&#x8BBE;&#x8BA1;&#xFF0C;&#x800C;&#x7F16;&#x8BD1;&#x65F6;&#x5B83;&#x4EA7;&#x751F; JavaScript &#x4EE5;&#x786E;&#x4FDD;&#x517C;&#x5BB9;&#x6027;&#x3002;</p>
+<p><img src="http://cdn.semlinker.com/typescript-scope.png?imageView2/0/h/300" alt="typescript-scope"></p>
+<ol>
+<li>&#x5B89;&#x88C5; TypeScript</li>
+</ol>
+<pre><code class="lang-shell">$ npm install -g typescript
+</code></pre>
+<ol>
+<li>&#x7F16;&#x8BD1; TypeScript &#x6587;&#x4EF6;</li>
+</ol>
+<pre><code class="lang-shell">$ tsc app.ts # app.ts =&gt; app.js
+</code></pre>
+<h3 id="typescript-&#x57FA;&#x7840;&#x7C7B;&#x578B;">TypeScript &#x57FA;&#x7840;&#x7C7B;&#x578B;</h3>
+<h4 id="boolean-&#x7C7B;&#x578B;">Boolean &#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> isDone: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>; <span class="hljs-comment">// tsc =&gt; var isDone = false;</span>
+</code></pre>
+<h4 id="number-&#x7C7B;&#x578B;">Number &#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> count: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;  <span class="hljs-comment">// tsc =&gt; var count = 10</span>
+</code></pre>
+<h4 id="string-&#x7C7B;&#x578B;">String &#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> name: <span class="hljs-built_in">string</span> = <span class="hljs-string">&apos;Semliker&apos;</span>; <span class="hljs-comment">// tsc =&gt; var name = &apos;Semlinker&apos;</span>
+</code></pre>
+<h4 id="array-&#x7C7B;&#x578B;">Array &#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> list: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]; <span class="hljs-comment">// tsc =&gt; var list = [1,2,3];   </span>
+
+<span class="hljs-keyword">let</span> list: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]; 
+<span class="hljs-comment">// tsc =&gt; var list = [1,2,3];</span>
+</code></pre>
+<h4 id="enum-&#x7C7B;&#x578B;">Enum &#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> Direction {
+    NORTH,
+    SOUTH,
+    EAST,
+    WEST
+};
+
+<span class="hljs-keyword">let</span> dir: Direction = Direction.NORTH;
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;NORTH &#x7684;&#x521D;&#x59CB;&#x503C;&#x4E3A; 0&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x6210;&#x5458;&#x4F1A;&#x4ECE; 1 &#x5F00;&#x59CB;&#x81EA;&#x52A8;&#x589E;&#x957F;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;Direction.SOUTH &#x7684;&#x503C;&#x4E3A; 1&#xFF0C;Direction.EAST &#x7684;&#x503C;&#x4E3A; 2&#xFF0C;Direction.WEST &#x7684;&#x503C;&#x4E3A; 3&#x3002;</p>
+<p>&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E; NORTH &#x7684;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> Direction {
+    NORTH = <span class="hljs-number">3</span>,
+  SOUTH,
+  EAST,
+  WEST
+};
+</code></pre>
+<p>&#x5728; TypeScript 2.4 &#x7248;&#x672C;&#xFF0C;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x679A;&#x4E3E;&#x3002;&#x5728;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x679A;&#x4E3E;&#x91CC;&#xFF0C;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x90FD;&#x5FC5;&#x987B;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x91CF;&#xFF0C;&#x6216;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x679A;&#x4E3E;&#x6210;&#x5458;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> Direction {
+  NORTH = <span class="hljs-string">&apos;NORTH&apos;</span>,
+  SOUTH = <span class="hljs-string">&apos;SOUTH&apos;</span>,
+  EAST = <span class="hljs-string">&apos;EAST&apos;</span>,
+  WEST = <span class="hljs-string">&apos;WEST&apos;</span>,
+}
+</code></pre>
+<h4 id="any-&#x52A8;&#x6001;&#x7C7B;&#x578B;">Any (&#x52A8;&#x6001;&#x7C7B;&#x578B;)</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> notSure: <span class="hljs-built_in">any</span> = <span class="hljs-number">4</span>;
+notSure = <span class="hljs-string">&quot;maybe a string instead&quot;</span>;
+notSure = <span class="hljs-literal">false</span>; 
+
+=&gt; tsc =&gt;  
+
+<span class="hljs-keyword">var</span> notSure = <span class="hljs-number">4</span>;
+notSure = <span class="hljs-string">&quot;maybe a string instead&quot;</span>;
+notSure = <span class="hljs-literal">false</span>;
+</code></pre>
+<h4 id="tuple">Tuple</h4>
+<p>&#x5143;&#x7EC4;&#x7C7B;&#x578B;&#x5141;&#x8BB8;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5DF2;&#x77E5;&#x5143;&#x7D20;&#x6570;&#x91CF;&#x548C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5404;&#x5143;&#x7D20;&#x7684;&#x7C7B;&#x578B;&#x4E0D;&#x5FC5;&#x76F8;&#x540C;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E00;&#x5BF9;&#x503C;&#x5206;&#x522B;&#x4E3A; <code>string</code> &#x548C; <code>number</code> &#x7C7B;&#x578B;&#x7684;&#x5143;&#x7EC4;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> x: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];
+
+x = [<span class="hljs-string">&apos;semlinker&apos;</span>, <span class="hljs-number">10</span>]; <span class="hljs-comment">// &#x6B63;&#x5E38;&#x8D4B;&#x503C;</span>
+
+x = [<span class="hljs-number">10</span>, <span class="hljs-string">&apos;semlinker&apos;</span>]; <span class="hljs-comment">// &#x7C7B;&#x578B;&#x4E0D;&#x5339;&#x914D;</span>
+</code></pre>
+<p>&#x5F53;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x5DF2;&#x77E5;&#x7D22;&#x5F15;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x7684;&#x7C7B;&#x578B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-built_in">console</span>.log(x[<span class="hljs-number">0</span>].substr(<span class="hljs-number">1</span>)); <span class="hljs-comment">// OK</span>
+
+<span class="hljs-comment">// Error, &apos;number&apos; does not have &apos;substr&apos; method</span>
+<span class="hljs-built_in">console</span>.log(x[<span class="hljs-number">1</span>].substr(<span class="hljs-number">1</span>));
+</code></pre>
+<p>&#x5F53;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;&#x8D8A;&#x754C;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x4F1A;&#x4F7F;&#x7528;&#x8054;&#x5408;&#x7C7B;&#x578B;&#x66FF;&#x4EE3;&#xFF1A;</p>
+<pre><code class="lang-typescript">x[<span class="hljs-number">3</span>] = <span class="hljs-string">&apos;world&apos;</span>; <span class="hljs-comment">// OK, &#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x8D4B;&#x503C;&#x7ED9;(string | number) &#x7C7B;&#x578B;</span>
+
+<span class="hljs-built_in">console</span>.log(x[<span class="hljs-number">5</span>].toString()); <span class="hljs-comment">// OK, &apos;string&apos; &#x548C; &apos;number&apos; &#x90FD;&#x6709; toString &#x65B9;&#x6CD5;</span>
+
+x[<span class="hljs-number">6</span>] = <span class="hljs-literal">true</span>; <span class="hljs-comment">// Error, &#x5E03;&#x5C14;&#x4E0D;&#x662F;(string | number) &#x7C7B;&#x578B;</span>
+</code></pre>
+<h4 id="void">Void</h4>
+<p>&#x67D0;&#x79CD;&#x7A0B;&#x5EA6;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;void &#x7C7B;&#x578B;&#x50CF;&#x662F;&#x4E0E; any &#x7C7B;&#x578B;&#x76F8;&#x53CD;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x65F6;&#xFF0C;&#x4F60;&#x901A;&#x5E38;&#x4F1A;&#x89C1;&#x5230;&#x5176;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x662F; void&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-comment">// &#x58F0;&#x660E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;void</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">warnUser</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span> </span>{ 
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;This is my warning message&quot;</span>);
+}
+
+=&gt; tsc =&gt;  
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">warnUser</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;This is my warning message&quot;</span>);
+}
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x58F0;&#x660E;&#x4E00;&#x4E2A; void &#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4F5C;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;&#x503C;&#x53EA;&#x80FD;&#x4E3A; <code>undefined</code> &#x6216; <code>null</code>&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> unusable: <span class="hljs-built_in">void</span> = <span class="hljs-literal">undefined</span>;
+</code></pre>
+<h4 id="null-and-undefined">Null and Undefined</h4>
+<p>TypeScript &#x91CC;&#xFF0C;<code>undefined</code> &#x548C;<code>null</code> &#x4E24;&#x8005;&#x5404;&#x81EA;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x7C7B;&#x578B;&#x5206;&#x522B;&#x53EB;&#x505A; <code>undefined</code> &#x548C;<code>null</code>&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> u: <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span>;
+<span class="hljs-keyword">let</span> n: <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; <code>null</code> &#x548C; <code>undefined</code> &#x662F;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x7C7B;&#x578B;&#x3002; &#x5C31;&#x662F;&#x8BF4;&#x4F60;&#x53EF;&#x4EE5;&#x628A; <code>null</code> &#x548C; <code>undefined</code> &#x8D4B;&#x503C;&#x7ED9; <code>number</code> &#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5F53;&#x4F60;&#x6307;&#x5B9A;&#x4E86;<code>--strictNullChecks</code> &#x6807;&#x8BB0;&#xFF0C;<code>null</code> &#x548C; <code>undefined</code> &#x53EA;&#x80FD;&#x8D4B;&#x503C;&#x7ED9; <code>void</code> &#x548C;&#x5B83;&#x4EEC;&#x5404;&#x81EA;&#x3002;</p>
+<h4 id="never">Never</h4>
+<p><code>never</code> &#x7C7B;&#x578B;&#x8868;&#x793A;&#x7684;&#x662F;&#x90A3;&#x4E9B;&#x6C38;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x3002; &#x4F8B;&#x5982;&#xFF0C;<code>never</code> &#x7C7B;&#x578B;&#x662F;&#x90A3;&#x4E9B;&#x603B;&#x662F;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x6216;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x4F1A;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x6216;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-comment">// &#x8FD4;&#x56DE;never&#x7684;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#x65E0;&#x6CD5;&#x8FBE;&#x5230;&#x7684;&#x7EC8;&#x70B9;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">error</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">never</span> </span>{
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(message);
+}
+
+<span class="hljs-comment">// &#x8FD4;&#x56DE;never&#x7684;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#x65E0;&#x6CD5;&#x8FBE;&#x5230;&#x7684;&#x7EC8;&#x70B9;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">infiniteLoop</span>(<span class="hljs-params"></span>): <span class="hljs-title">never</span> </span>{
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {}
+}
+</code></pre>
+<h3 id="typescript-assertion">TypeScript Assertion</h3>
+<p>&#x6709;&#x65F6;&#x5019;&#x4F60;&#x4F1A;&#x9047;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F60;&#x4F1A;&#x6BD4; TypeScript &#x66F4;&#x4E86;&#x89E3;&#x67D0;&#x4E2A;&#x503C;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;&#x901A;&#x5E38;&#x8FD9;&#x4F1A;&#x53D1;&#x751F;&#x5728;&#x4F60;&#x6E05;&#x695A;&#x5730;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x5177;&#x6709;&#x6BD4;&#x5B83;&#x73B0;&#x6709;&#x7C7B;&#x578B;&#x66F4;&#x786E;&#x5207;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x7C7B;&#x578B;&#x65AD;&#x8A00;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&quot;&#x76F8;&#x4FE1;&#x6211;&#xFF0C;&#x6211;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x5728;&#x5E72;&#x4EC0;&#x4E48;&quot;&#x3002;&#x7C7B;&#x578B;&#x65AD;&#x8A00;&#x597D;&#x6BD4;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x91CC;&#x7684;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x8FDB;&#x884C;&#x7279;&#x6B8A;&#x7684;&#x6570;&#x636E;&#x68C0;&#x67E5;&#x548C;&#x89E3;&#x6784;&#x3002;&#x5B83;&#x6CA1;&#x6709;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<p>&#x7C7B;&#x578B;&#x65AD;&#x8A00;&#x6709;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&quot;&#x5C16;&#x62EC;&#x53F7;&quot;&#x8BED;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> someValue: <span class="hljs-built_in">any</span> = <span class="hljs-string">&quot;this is a string&quot;</span>;
+<span class="hljs-keyword">let</span> strLength: <span class="hljs-built_in">number</span> = (&lt;<span class="hljs-built_in">string</span>&gt;someValue).length;
+</code></pre>
+<ul>
+<li>as &#x8BED;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> someValue: <span class="hljs-built_in">any</span> = <span class="hljs-string">&quot;this is a string&quot;</span>;
+<span class="hljs-keyword">let</span> strLength: <span class="hljs-built_in">number</span> = (someValue as <span class="hljs-built_in">string</span>).length;
+</code></pre>
+<h3 id="typescript-union-types-and-type-aliases">TypeScript Union Types and Type Aliases</h3>
+<h4 id="union-types">Union Types</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> greet = (message: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]) =&gt; {
+  <span class="hljs-keyword">if</span>(message <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) {
+    <span class="hljs-keyword">let</span> messages = <span class="hljs-string">&quot;&quot;</span>;
+    message.forEach((msg) =&gt; {
+      messages += <span class="hljs-string">` <span class="hljs-subst">${msg}</span>`</span>;
+    });
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Received messages &quot;</span>, messages);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Received message = &quot;</span>, message);
+  }
+};
+
+greet(<span class="hljs-string">&apos;semlinker&apos;</span>);
+greet([<span class="hljs-string">&apos;Hello&apos;</span>, <span class="hljs-string">&apos;Angular&apos;</span>]);
+</code></pre>
+<h4 id="type-aliases">Type Aliases</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">type</span> Message = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[];
+<span class="hljs-keyword">let</span> greet = (message: Message) =&gt; { 
+  <span class="hljs-comment">// ... </span>
+};
+</code></pre>
+<h3 id="typescript-function">TypeScript Function</h3>
+<h4 id="typescript-&#x51FD;&#x6570;&#x4E0E;-javascript-&#x51FD;&#x6570;&#x7684;&#x533A;&#x522B;">TypeScript &#x51FD;&#x6570;&#x4E0E; JavaScript &#x51FD;&#x6570;&#x7684;&#x533A;&#x522B;</h4>
+<table>
+<thead>
+<tr>
+<th>TypeScript</th>
+<th>JavaScript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Types</td>
+<td>No types</td>
+</tr>
+<tr>
+<td>Arrow function</td>
+<td>Arrow function (ES2015)</td>
+</tr>
+<tr>
+<td>Function types</td>
+<td>No Function types</td>
+</tr>
+<tr>
+<td>Required and Optional parameters</td>
+<td>All parameters are optional</td>
+</tr>
+<tr>
+<td>Default parameters</td>
+<td>Default parameters</td>
+</tr>
+<tr>
+<td>Rest parameters</td>
+<td>Rest parameters</td>
+</tr>
+<tr>
+<td>Overloaded function</td>
+<td>No overloaded functions</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x7BAD;&#x5934;&#x51FD;&#x6570;">&#x7BAD;&#x5934;&#x51FD;&#x6570;</h4>
+<ul>
+<li>&#x5E38;&#x89C1;&#x8BED;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-typescript">myBooks.forEach(() =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Done reading&apos;</span>));
+
+myBooks.forEach(title =&gt; <span class="hljs-built_in">console</span>.log(title));
+
+myBooks.forEach((title, idx, arr) =&gt; 
+  <span class="hljs-built_in">console</span>.log(idx + <span class="hljs-string">&apos;-&apos;</span> + title);
+);
+
+myBooks.forEach((title, idx, arr) =&gt; {
+  <span class="hljs-built_in">console</span>.log(idx + <span class="hljs-string">&apos;-&apos;</span> + title);
+});
+</code></pre>
+<ul>
+<li>&#x4F7F;&#x7528;&#x793A;&#x4F8B;</li>
+</ul>
+<pre><code class="lang-typescript"><span class="hljs-comment">// &#x672A;&#x4F7F;&#x7528;&#x7BAD;&#x5934;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Book</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
+  self.publishDate = <span class="hljs-number">2016</span>;
+  setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(self.publishDate);
+  }, <span class="hljs-number">1000</span>);
+}
+
+<span class="hljs-comment">// &#x4F7F;&#x7528;&#x7BAD;&#x5934;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Book</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">this</span>.publishDate = <span class="hljs-number">2016</span>;
+  setInterval(() =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.publishDate);
+  }, <span class="hljs-number">1000</span>);
+}
+</code></pre>
+<h4 id="&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x548C;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;">&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x548C;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createUserId</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span>, id: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">string</span> </span>{
+  <span class="hljs-keyword">return</span> name + id;
+}
+</code></pre>
+<h4 id="&#x51FD;&#x6570;&#x7C7B;&#x578B;">&#x51FD;&#x6570;&#x7C7B;&#x578B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> IdGenerator: (chars: <span class="hljs-built_in">string</span>, nums: <span class="hljs-built_in">number</span>) =&gt; <span class="hljs-built_in">string</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createUserId</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span>, id: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">string</span> </span>{
+  <span class="hljs-keyword">return</span> name + id;
+}
+
+IdGenerator = createUserId;
+</code></pre>
+<h4 id="&#x53EF;&#x9009;&#x53C2;&#x6570;&#x53CA;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;">&#x53EF;&#x9009;&#x53C2;&#x6570;&#x53CA;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;</h4>
+<pre><code class="lang-typescript">// &#x53EF;&#x9009;&#x53C2;&#x6570;
+function createUserId(name: string, age?: number, 
+  id: number): string {
+    return name + id;
+}
+
+// &#x9ED8;&#x8BA4;&#x53C2;&#x6570;
+function createUserId(name: string = &apos;Semlinker&apos;, age?: number, 
+  id: number): string {
+    return name + id;
+}
+</code></pre>
+<h4 id="&#x5269;&#x4F59;&#x53C2;&#x6570;">&#x5269;&#x4F59;&#x53C2;&#x6570;</h4>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">push</span>(<span class="hljs-params">array, ...items</span>) </span>{
+  items.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
+    array.push(item);
+  });
+}
+
+<span class="hljs-keyword">let</span> a = [];
+push(a, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+</code></pre>
+<h3 id="typescript-array">TypeScript Array</h3>
+<h4 id="&#x6570;&#x7EC4;&#x89E3;&#x6784;">&#x6570;&#x7EC4;&#x89E3;&#x6784;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> x: <span class="hljs-built_in">number</span>, <span class="hljs-keyword">let</span> y: <span class="hljs-built_in">number</span> ,<span class="hljs-keyword">let</span> z: <span class="hljs-built_in">number</span>;
+<span class="hljs-keyword">let</span> five_array = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];
+[x,y,z] = five_array;
+</code></pre>
+<h4 id="&#x6570;&#x7EC4;&#x5C55;&#x5F00;&#x8FD0;&#x7B97;&#x7B26;">&#x6570;&#x7EC4;&#x5C55;&#x5F00;&#x8FD0;&#x7B97;&#x7B26;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> two_array = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>];
+<span class="hljs-keyword">let</span> five_array = [...two_array,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];
+</code></pre>
+<h4 id="&#x6570;&#x7EC4;&#x5FAA;&#x73AF;">&#x6570;&#x7EC4;&#x5FAA;&#x73AF;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> colors: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;green&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> colors) {
+  <span class="hljs-built_in">console</span>.log(i);
+}
+</code></pre>
+<h3 id="typescript-object">TypeScript Object</h3>
+<h4 id="&#x5BF9;&#x8C61;&#x89E3;&#x6784;">&#x5BF9;&#x8C61;&#x89E3;&#x6784;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> person = {
+  name: <span class="hljs-string">&apos;Semlinker&apos;</span>,
+  gender: <span class="hljs-string">&apos;male&apos;</span>
+};
+
+<span class="hljs-keyword">let</span> {name, gender} = person;
+</code></pre>
+<h4 id="&#x5BF9;&#x8C61;&#x5C55;&#x5F00;&#x8FD0;&#x7B97;&#x7B26;">&#x5BF9;&#x8C61;&#x5C55;&#x5F00;&#x8FD0;&#x7B97;&#x7B26;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> person = {
+  name: <span class="hljs-string">&apos;Semlinker&apos;</span>,
+  gender: <span class="hljs-string">&apos;male&apos;</span>,
+  address: <span class="hljs-string">&apos;Xiamen&apos;</span>
+};
+
+<span class="hljs-comment">// &#x7EC4;&#x88C5;&#x5BF9;&#x8C61;</span>
+<span class="hljs-keyword">let</span> personWithAge = {...person, age: <span class="hljs-number">31</span>};
+
+<span class="hljs-comment">// &#x83B7;&#x53D6;&#x9664;&#x4E86;&#x67D0;&#x4E9B;&#x9879;&#x5916;&#x7684;&#x5176;&#x5B83;&#x9879;</span>
+<span class="hljs-keyword">let</span> {name, ...rest} = person;
+</code></pre>
+<h3 id="typescript-interface">TypeScript Interface</h3>
+<p>&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x63A5;&#x53E3;&#xFF08;Interfaces&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5B83;&#x662F;&#x5BF9;&#x884C;&#x4E3A;&#x7684;&#x62BD;&#x8C61;&#xFF0C;&#x800C;&#x5177;&#x4F53;&#x5982;&#x4F55;&#x884C;&#x52A8;&#x9700;&#x8981;&#x7531;&#x7C7B;&#xFF08;classes&#xFF09;&#x53BB;&#x5B9E;&#x73B0;&#xFF08;implements&#xFF09;&#x3002;</p>
+<p>TypeScript &#x4E2D;&#x7684;&#x63A5;&#x53E3;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x9664;&#x4E86;&#x53EF;&#x7528;&#x4E8E;<a href="https://ts.xcatliu.com/advanced/class-and-interfaces.html#%E7%B1%BB%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3" target="_blank">&#x5BF9;&#x7C7B;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x884C;&#x4E3A;&#x8FDB;&#x884C;&#x62BD;&#x8C61;</a>&#x4EE5;&#x5916;&#xFF0C;&#x4E5F;&#x5E38;&#x7528;&#x4E8E;&#x5BF9;&#x300C;&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x72B6;&#xFF08;Shape&#xFF09;&#x300D;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#x3002;</p>
+<h4 id="&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x72B6;">&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x72B6;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Person {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">let</span> semlinker: Person = {
+  name: <span class="hljs-string">&apos;Semlinker&apos;</span>,
+  age: <span class="hljs-number">31</span>
+};
+</code></pre>
+<h4 id="&#x53EF;&#x9009;--&#x53EA;&#x8BFB;&#x5C5E;&#x6027;">&#x53EF;&#x9009; | &#x53EA;&#x8BFB;&#x5C5E;&#x6027;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Person {
+  readonly name: <span class="hljs-built_in">string</span>;
+  age?: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+<p>&#x53EA;&#x8BFB;&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x9650;&#x5236;&#x53EA;&#x80FD;&#x5728;&#x5BF9;&#x8C61;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x4FEE;&#x6539;&#x5176;&#x503C;&#x3002;&#x6B64;&#x5916; TypeScript &#x8FD8;&#x63D0;&#x4F9B;&#x4E86; <code>ReadonlyArray&lt;T&gt;</code> &#x7C7B;&#x578B;&#xFF0C;&#x5B83;&#x4E0E; <code>Array&lt;T&gt;</code> &#x76F8;&#x4F3C;&#xFF0C;&#x53EA;&#x662F;&#x628A;&#x6240;&#x6709;&#x53EF;&#x53D8;&#x65B9;&#x6CD5;&#x53BB;&#x6389;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x6570;&#x7EC4;&#x521B;&#x5EFA;&#x540E;&#x518D;&#x4E5F;&#x4E0D;&#x80FD;&#x88AB;&#x4FEE;&#x6539;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> a: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+<span class="hljs-keyword">let</span> ro: ReadonlyArray&lt;<span class="hljs-built_in">number</span>&gt; = a;
+ro[<span class="hljs-number">0</span>] = <span class="hljs-number">12</span>; <span class="hljs-comment">// error!</span>
+ro.push(<span class="hljs-number">5</span>); <span class="hljs-comment">// error!</span>
+ro.length = <span class="hljs-number">100</span>; <span class="hljs-comment">// error!</span>
+a = ro; <span class="hljs-comment">// error!</span>
+</code></pre>
+<h3 id="typescript-class">TypeScript Class</h3>
+<p>&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x7C7B;&#x662F;&#x4E00;&#x79CD;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BA1;&#x7B97;&#x673A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;&#x6784;&#x9020;&#xFF0C;&#x662F;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x84DD;&#x56FE;&#xFF0C;&#x63CF;&#x8FF0;&#x4E86;&#x6240;&#x521B;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x5171;&#x540C;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x5728; TypeScript &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>Class</code> &#x5173;&#x952E;&#x5B57;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> Greeter {
+   <span class="hljs-keyword">static</span> cname: <span class="hljs-built_in">string</span> = <span class="hljs-string">&apos;Greeter&apos;</span>; <span class="hljs-comment">// &#x9759;&#x6001;&#x5C5E;&#x6027;</span>
+   greeting: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// &#x6210;&#x5458;&#x5C5E;&#x884C;</span>
+
+   <span class="hljs-keyword">constructor</span>(message: string) { <span class="hljs-comment">// &#x6784;&#x9020;&#x51FD;&#x6570; - &#x6267;&#x884C;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;</span>
+     <span class="hljs-keyword">this</span>.greeting = message;
+   }
+
+    <span class="hljs-keyword">static</span> getClassName() { <span class="hljs-comment">// &#x9759;&#x6001;&#x65B9;&#x6CD5;</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Class name is Greeter&apos;</span>;
+    }
+
+    greet() { <span class="hljs-comment">// &#x6210;&#x5458;&#x65B9;&#x6CD5;</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello, &quot;</span> + <span class="hljs-keyword">this</span>.greeting;
+    }
+}
+
+<span class="hljs-keyword">let</span> greeter = <span class="hljs-keyword">new</span> Greeter(<span class="hljs-string">&quot;world&quot;</span>);
+</code></pre>
+<h3 id="typescript-accessors">TypeScript Accessors</h3>
+<p>&#x5728; TypeScript &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>getter</code> &#x548C; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7684;&#x5C01;&#x88C5;&#x548C;&#x6709;&#x6548;&#x6027;&#x6821;&#x9A8C;&#xFF0C;&#x9632;&#x6B62;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x6570;&#x636E;&#x3002; </p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> passcode = <span class="hljs-string">&quot;hello angular 5&quot;</span>;
+
+<span class="hljs-keyword">class</span> Employee {
+    <span class="hljs-keyword">private</span> _fullName: <span class="hljs-built_in">string</span>;
+
+    <span class="hljs-keyword">get</span> fullName(): <span class="hljs-built_in">string</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._fullName;
+    }
+
+    <span class="hljs-keyword">set</span> fullName(newName: <span class="hljs-built_in">string</span>) {
+        <span class="hljs-keyword">if</span> (passcode &amp;&amp; passcode == <span class="hljs-string">&quot;hello angular 5&quot;</span>) {
+            <span class="hljs-keyword">this</span>._fullName = newName;
+        }
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Error: Unauthorized update of employee!&quot;</span>);
+        }
+    }
+}
+
+<span class="hljs-keyword">let</span> employee = <span class="hljs-keyword">new</span> Employee();
+employee.fullName = <span class="hljs-string">&quot;Bob Smith&quot;</span>;
+<span class="hljs-keyword">if</span> (employee.fullName) {
+    <span class="hljs-built_in">console</span>.log(employee.fullName);
+}
+</code></pre>
+<h3 id="typescript-inheritance">TypeScript Inheritance</h3>
+<p>&#x7EE7;&#x627F; (Inheritance) &#x662F;&#x4E00;&#x79CD;&#x8054;&#x7ED3;&#x7C7B;&#x4E0E;&#x7C7B;&#x7684;&#x5C42;&#x6B21;&#x6A21;&#x578B;&#x3002;&#x6307;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x7C7B; (&#x79F0;&#x4E3A;&#x5B50;&#x7C7B;&#x3001;&#x5B50;&#x63A5;&#x53E3;) &#x7EE7;&#x627F;&#x53E6;&#x5916;&#x7684;&#x4E00;&#x4E2A;&#x7C7B; (&#x79F0;&#x4E3A;&#x7236;&#x7C7B;&#x3001;&#x7236;&#x63A5;&#x53E3;) &#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x65B0;&#x529F;&#x80FD;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x7EE7;&#x627F;&#x662F;&#x7C7B;&#x4E0E;&#x7C7B;&#x6216;&#x8005;&#x63A5;&#x53E3;&#x4E0E;&#x63A5;&#x53E3;&#x4E4B;&#x95F4;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5173;&#x7CFB;&#xFF1B;&#x7EE7;&#x627F;&#x662F;&#x4E00;&#x79CD; <a href="https://zh.wikipedia.org/wiki/Is-a" target="_blank">is-a </a>&#x5173;&#x7CFB;&#x3002;</p>
+<p><img src="https://camo.githubusercontent.com/4321ff71038b66bff7ab3f1affe8cb96a88e8487/68747470733a2f2f7365676d656e746661756c742e636f6d2f2f696d672f62564c50756e3f773d32393326683d323034" alt="class-inheritance"></p>
+<p>&#x5728; TypeScripe &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>extends</code> &#x5173;&#x952E;&#x5B57;&#x6765;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> Animal {
+    name: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">constructor</span>(theName: string) { <span class="hljs-keyword">this</span>.name = theName; }
+    move(distanceInMeters: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${this.name}</span> moved <span class="hljs-subst">${distanceInMeters}</span>m.`</span>);
+    }
+}
+
+<span class="hljs-keyword">class</span> Snake extends Animal {
+    <span class="hljs-keyword">constructor</span>(name: string) { <span class="hljs-keyword">super</span>(name); }
+    move(distanceInMeters = <span class="hljs-number">5</span>) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Slithering...&quot;</span>);
+        <span class="hljs-keyword">super</span>.move(distanceInMeters);
+    }
+}
+
+<span class="hljs-keyword">let</span> sam = <span class="hljs-keyword">new</span> Snake(<span class="hljs-string">&quot;Sammy the Python&quot;</span>);
+sam.move();
+</code></pre>
+<h3 id="typescript-generics">TypeScript Generics</h3>
+<p>&#x6CDB;&#x578B;&#xFF08;Generics&#xFF09;&#x662F;&#x5141;&#x8BB8;&#x540C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x7684;&#x4E00;&#x79CD;&#x6A21;&#x677F;&#x3002;&#x76F8;&#x6BD4;&#x4E8E;&#x4F7F;&#x7528; any &#x7C7B;&#x578B;&#xFF0C;&#x4F7F;&#x7528;&#x6CDB;&#x578B;&#x6765;&#x521B;&#x5EFA;&#x53EF;&#x590D;&#x7528;&#x7684;&#x7EC4;&#x4EF6;&#x8981;&#x66F4;&#x597D;&#xFF0C;&#x56E0;&#x4E3A;&#x6CDB;&#x578B;&#x4F1A;&#x4FDD;&#x7559;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;</p>
+<h4 id="&#x6CDB;&#x578B;&#x63A5;&#x53E3;">&#x6CDB;&#x578B;&#x63A5;&#x53E3;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> GenericIdentityFn&lt;T&gt; {
+    (arg: T): T;
+}
+</code></pre>
+<h4 id="&#x6CDB;&#x578B;&#x7C7B;">&#x6CDB;&#x578B;&#x7C7B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> GenericNumber&lt;T&gt; {
+    zeroValue: T;
+    add: (x: T, y: T) =&gt; T;
+}
+
+<span class="hljs-keyword">let</span> myGenericNumber = <span class="hljs-keyword">new</span> GenericNumber&lt;<span class="hljs-built_in">number</span>&gt;();
+myGenericNumber.zeroValue = <span class="hljs-number">0</span>;
+myGenericNumber.add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x, y</span>) </span>{ <span class="hljs-keyword">return</span> x + y; };
+</code></pre>
+<h4 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;">&#x4F7F;&#x7528;&#x793A;&#x4F8B;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Hero { <span class="hljs-comment">// Hero &#x63A5;&#x53E3;</span>
+    id: <span class="hljs-built_in">number</span>;
+    name: <span class="hljs-built_in">string</span>;
+}
+
+getHeroes(): Observable&lt;Hero[]&gt; {
+  <span class="hljs-keyword">return</span> Observable.of([
+     { id: <span class="hljs-number">1</span>, name: <span class="hljs-string">&apos;Windstorm&apos;</span> },
+     { id: <span class="hljs-number">13</span>, name: <span class="hljs-string">&apos;Bombasto&apos;</span> },
+     { id: <span class="hljs-number">15</span>, name: <span class="hljs-string">&apos;Magneta&apos;</span> },
+     { id: <span class="hljs-number">20</span>, name: <span class="hljs-string">&apos;Tornado&apos;</span> }
+  ]);
+}
+</code></pre>
+<p>&#x4E0A;&#x9762; <code>getHeroes(): Observable&lt;Hero[]&gt;</code> &#x8868;&#x793A;&#x8C03;&#x7528; <code>getHeroes()</code> &#x65B9;&#x6CD5;&#x540E;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A; Observable &#x5BF9;&#x8C61;&#xFF0C;<code>&lt;Hero[]&gt;</code> &#x7528;&#x4E8E;&#x8868;&#x793A;&#x8BE5; Observable &#x5BF9;&#x8C61;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x5C06;&#x4F1A;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x793A;&#x4F8B;&#x4E2D;&#x8868;&#x793A;&#x5C06;&#x4F1A;&#x8FD4;&#x56DE; <code>&lt;Hero[]&gt;</code> &#x82F1;&#x96C4;&#x5217;&#x8868;&#x3002;</p>
+<h3 id="tsconfigjson-&#x7B80;&#x4ECB;">tsconfig.json &#x7B80;&#x4ECB;</h3>
+<h4 id="tsconfigjson-&#x7684;&#x4F5C;&#x7528;">tsconfig.json &#x7684;&#x4F5C;&#x7528;</h4>
+<ul>
+<li>&#x7528;&#x4E8E;&#x6807;&#x8BC6; TypeScript &#x9879;&#x76EE;&#x7684;&#x6839;&#x8DEF;&#x5F84;&#xFF1B;</li>
+<li>&#x7528;&#x4E8E;&#x914D;&#x7F6E; TypeScript &#x7F16;&#x8BD1;&#x5668;&#xFF1B;</li>
+<li>&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x7F16;&#x8BD1;&#x7684;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<h4 id="tsconfigjson-&#x91CD;&#x8981;&#x5B57;&#x6BB5;">tsconfig.json &#x91CD;&#x8981;&#x5B57;&#x6BB5;</h4>
+<ul>
+<li>files - &#x8BBE;&#x7F6E;&#x8981;&#x7F16;&#x8BD1;&#x7684;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#xFF1B;</li>
+<li>include - &#x8BBE;&#x7F6E;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301;&#x8DEF;&#x5F84;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#xFF1B;</li>
+<li>exclude - &#x8BBE;&#x7F6E;&#x65E0;&#x9700;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x652F;&#x6301;&#x8DEF;&#x5F84;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#xFF1B;</li>
+<li>compilerOptions - &#x8BBE;&#x7F6E;&#x4E0E;&#x7F16;&#x8BD1;&#x6D41;&#x7A0B;&#x76F8;&#x5173;&#x7684;&#x9009;&#x9879;&#x3002;</li>
+</ul>
+<p>compilerOptions &#x652F;&#x6301;&#x5F88;&#x591A;&#x9009;&#x9879;&#xFF0C;&#x5E38;&#x89C1;&#x7684;&#x6709; <code>baseUrl</code>&#x3001; <code>target</code>&#x3001;<code>baseUrl</code>&#x3001; <code>moduleResolution</code>  &#x548C; <code>lib</code> &#x7B49;&#x3002;&#x82E5;&#x60F3;&#x8FDB;&#x4E00;&#x6B65;&#x4E86;&#x89E3;&#x66F4;&#x591A;&#x9009;&#x9879;&#x8BF4;&#x660E;&#xFF0C;&#x53EF;&#x6D4F;&#x89C8; <a href="https://www.tslang.cn/docs/handbook/compiler-options.html" target="_blank">handbook - &#x7F16;&#x8BD1;&#x9009;&#x9879;</a> &#x3002;</p>
+<h4 id="tsconfigjson-&#x793A;&#x4F8B;">tsconfig.json &#x793A;&#x4F8B;</h4>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;compileOnSave&quot;</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-string">&quot;compilerOptions&quot;</span>: {
+    <span class="hljs-string">&quot;baseUrl&quot;</span>: <span class="hljs-string">&quot;./&quot;</span>,
+    <span class="hljs-string">&quot;outDir&quot;</span>: <span class="hljs-string">&quot;./dist/out-tsc&quot;</span>,
+    <span class="hljs-string">&quot;sourceMap&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;declaration&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;moduleResolution&quot;</span>: <span class="hljs-string">&quot;node&quot;</span>,
+    <span class="hljs-string">&quot;emitDecoratorMetadata&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;experimentalDecorators&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;target&quot;</span>: <span class="hljs-string">&quot;es5&quot;</span>,
+    <span class="hljs-string">&quot;typeRoots&quot;</span>: [
+      <span class="hljs-string">&quot;node_modules/@types&quot;</span>
+    ],
+    <span class="hljs-string">&quot;lib&quot;</span>: [
+      <span class="hljs-string">&quot;es2017&quot;</span>,
+      <span class="hljs-string">&quot;dom&quot;</span>
+    ],
+    <span class="hljs-string">&quot;paths&quot;</span>: {
+      <span class="hljs-string">&quot;ngx-example-library&quot;</span>: [
+        <span class="hljs-string">&quot;dist/ngx-example-library&quot;</span>
+      ]
+    }
+  },
+  <span class="hljs-string">&quot;angularCompilerOptions&quot;</span>: {
+    <span class="hljs-string">&quot;preserveWhitespaces&quot;</span>: <span class="hljs-literal">false</span>
+  }
+}
+</code></pre>
+<p>&#xFF08;&#x793A;&#x4F8B;&#x6765;&#x6E90; - <a href="https://github.com/Ismaestro/angular6-example-app" target="_blank">angular6-example-app</a>&#xFF09;</p>
+<h3 id="&#x7F16;&#x7801;&#x89C4;&#x8303;">&#x7F16;&#x7801;&#x89C4;&#x8303;</h3>
+<h4 id="&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;">&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;</h4>
+<p>&#x4F7F;&#x7528;&#x9A7C;&#x5CF0;&#xFF08;camelCase&#xFF09;&#x547D;&#x540D;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;&#x540D;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">var</span> FooVar;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BarFunc</span>(<span class="hljs-params"></span>) </span>{ }
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">var</span> fooVar;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">barFunc</span>(<span class="hljs-params"></span>) </span>{ }
+</code></pre>
+<h4 id="&#x7C7B;">&#x7C7B;</h4>
+<p>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;&#x7C7B;&#x540D;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> foo { }
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> Foo { }
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;&#x7C7B;&#x6210;&#x5458;&#x4E0E;&#x65B9;&#x6CD5;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> Foo {
+    Bar: <span class="hljs-built_in">number</span>;
+    Baz() { }
+}
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> Foo {
+    bar: <span class="hljs-built_in">number</span>;
+    baz() { }
+}
+</code></pre>
+<h4 id="&#x63A5;&#x53E3;">&#x63A5;&#x53E3;</h4>
+<ul>
+<li>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;&#x63A5;&#x53E3;</li>
+<li>&#x4F7F;&#x7528;&#x9A7C;&#x5CF0;&#xFF08;camelCase&#xFF09;&#x547D;&#x4EE4;&#x6210;&#x5458;</li>
+<li>&#x8BEF;&#x4F7F;&#x7528; <code>I</code> &#x524D;&#x7F00;</li>
+</ul>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> IFoo { }
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Foo { }
+</code></pre>
+<h4 id="&#x7C7B;&#x578B;">&#x7C7B;&#x578B;</h4>
+<ul>
+<li>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;</li>
+<li>&#x4F7F;&#x7528;&#x9A7C;&#x5CF0;&#xFF08;camelCase&#xFF09;&#x547D;&#x4EE4;&#x6210;&#x5458;</li>
+</ul>
+<h4 id="&#x547D;&#x540D;&#x7A7A;&#x95F4;">&#x547D;&#x540D;&#x7A7A;&#x95F4;</h4>
+<p>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">namespace</span> foo { }
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">namespace</span> Foo { }
+</code></pre>
+<h4 id="&#x679A;&#x4E3E;">&#x679A;&#x4E3E;</h4>
+<p>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;&#x679A;&#x4E3E;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> color { }
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> Color { }
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x5E15;&#x65AF;&#x5361;&#xFF08;PascalCase&#xFF09;&#x547D;&#x540D;&#x679A;&#x4E3E;&#x6210;&#x5458;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> Color {
+    red
+}
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">enum</span> Color {
+    Red
+}
+</code></pre>
+<h4 id="null-vs-undefined">Null vs Undefined</h4>
+<p>&#x6700;&#x597D;&#x4E0D;&#x597D;&#x663E;&#x5F0F;&#x4F7F;&#x7528;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x503C;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> foo = { x:<span class="hljs-number">123</span>, y:<span class="hljs-literal">undefined</span> };
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">let</span> foo: { x:<span class="hljs-built_in">number</span>, y?:<span class="hljs-built_in">number</span> } = { x:<span class="hljs-number">123</span> };
+</code></pre>
+<p>&#x901A;&#x5E38;&#x4F7F;&#x7528; undefined&#xFF08; &#x800C;&#x4E0D;&#x662F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x4E8E; { valid:boolean, value?:Foo } &#x7684;&#x5BF9;&#x8C61; &#xFF09;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>;
+</code></pre>
+<p>&#x53C2;&#x8003; Node.js &#x56DE;&#x8C03;&#x51FD;&#x6570; Error First &#x98CE;&#x683C;&#xFF08;&#x82E5;&#x672A;&#x53D1;&#x751F;&#x5F02;&#x5E38;&#xFF0C;error &#x53C2;&#x6570;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; null&#xFF09;</p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript">cb(<span class="hljs-literal">undefined</span>)
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript">cb(<span class="hljs-literal">null</span>)
+</code></pre>
+<p>&#x907F;&#x514D;&#x4F7F;&#x7528;&#x503C;&#x6BD4;&#x8F83;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A; null &#x6216; undefined </p>
+<p><strong>Bad</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">if</span> (error === <span class="hljs-literal">null</span>)
+</code></pre>
+<p><strong>Good</strong></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">if</span> (error)
+</code></pre>
+<h4 id="&#x6570;&#x7EC4;">&#x6570;&#x7EC4;</h4>
+<p>&#x58F0;&#x660E;&#x6570;&#x7EC4;&#x65F6;&#x4F7F;&#x7528; <code>foos:Foo[]</code> &#x800C;&#x4E0D;&#x662F; <code>foos:Array&lt;Foo&gt;</code>&#xFF0C;&#x4FBF;&#x4E8E;&#x9605;&#x8BFB;</p>
+<h4 id="&#x7C7B;&#x578B;-vs-&#x63A5;&#x53E3;">&#x7C7B;&#x578B; vs &#x63A5;&#x53E3;</h4>
+<p>&#x5F53;&#x4F60;&#x9700;&#x8981;&#x590D;&#x5408;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x4F7F;&#x7528; type</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">type</span> Foo = <span class="hljs-built_in">number</span> | { someProperty: <span class="hljs-built_in">number</span> }
+</code></pre>
+<p>&#x5F53;&#x4F60;&#x9700;&#x8981;&#x7EE7;&#x627F;&#x6216;&#x5B9E;&#x73B0;&#x65F6;&#xFF0C;&#x4F7F;&#x7528; interface</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Foo {
+  foo: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> FooBar <span class="hljs-keyword">extends</span> Foo {
+  bar: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">class</span> X <span class="hljs-keyword">implements</span> FooBar {
+  foo: <span class="hljs-built_in">string</span>;
+  bar: <span class="hljs-built_in">string</span>;
+}
+</code></pre>
+<h3 id="&#x98CE;&#x683C;&#x6307;&#x5357;">&#x98CE;&#x683C;&#x6307;&#x5357;</h3>
+<ol>
+<li>&#x4F7F;&#x7528;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x4EE3;&#x66FF;&#x533F;&#x540D;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</li>
+<li>&#x53EA;&#x8981;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x624D;&#x628A;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x62EC;&#x8D77;&#x6765;&#x3002;&#x6BD4;&#x5982;&#xFF0C;<code>(x) =&gt; x + x</code> &#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x6B63;&#x786E;&#x7684;&#x505A;&#x6CD5;&#xFF1A;<ul>
+<li><code>x =&gt; x + x</code></li>
+<li><code>(x,y) =&gt; x + y</code></li>
+<li><code>&lt;T&gt;(x: T, y: T) =&gt; x === y</code></li>
+</ul>
+</li>
+<li>&#x603B;&#x662F;&#x4F7F;&#x7528; <code>{}</code> &#x628A;&#x5FAA;&#x73AF;&#x4F53;&#x548C;&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x62EC;&#x8D77;&#x6765;&#x3002;</li>
+<li>&#x5C0F;&#x62EC;&#x53F7;&#x91CC;&#x5F00;&#x59CB;&#x4E0D;&#x8981;&#x6709;&#x7A7A;&#x767D;&#x3002;&#x9017;&#x53F7;&#xFF0C;&#x5192;&#x53F7;&#xFF0C;&#x5206;&#x53F7;&#x540E;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x7A7A;&#x683C;&#x3002;&#x6BD4;&#x5982;&#xFF1A;<ul>
+<li><code>for (let i = 0, n = str.length; i &lt; 10; i++) { }</code></li>
+<li><code>if (x &lt; 10) { }</code></li>
+<li><code>function f(x: number, y: string): void { }</code></li>
+</ul>
+</li>
+<li>&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#x53EA;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x53D8;&#x91CF; &#x3002;&#x6BD4;&#x5982;&#xFF1A;&#x4F7F;&#x7528; <code>let x = 1; var y = 2;</code>  &#x800C;&#x4E0D;&#x662F; <code>let x = 1, y = 2;</code>&#xFF09;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6700;&#x597D;&#x4F7F;&#x7528; <code>void</code></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="ts-resource-list.html" class="navigation navigation-next navigation-unique" aria-label="Next page: TypeScript 学习资源合集">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"TypeScript 简介及编码规范","level":"1.8.1","depth":2,"next":{"title":"TypeScript 学习资源合集","level":"1.8.2","depth":2,"path":"ts/ts-resource-list.md","ref":"ts/ts-resource-list.md","articles":[]},"previous":{"title":"TypeScript","level":"1.8","depth":1,"ref":"","articles":[{"title":"TypeScript 简介及编码规范","level":"1.8.1","depth":2,"path":"ts/ts-intro-and-guide.md","ref":"ts/ts-intro-and-guide.md","articles":[]},{"title":"TypeScript 学习资源合集","level":"1.8.2","depth":2,"path":"ts/ts-resource-list.md","ref":"ts/ts-resource-list.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ts/ts-intro-and-guide.md","mtime":"2018-10-07T15:45:19.411Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1191 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title> Angular JSONP 详解 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="ng-http-interceptor.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tool/ng-compodoc-intro.html">
+            
+                <a href="../tool/ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tool/ng-verson-manage.html">
+            
+                <a href="../tool/ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tool/ng-vsc-debugger.html">
+            
+                <a href="../tool/ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/ng-storybook.html">
+            
+                <a href="../tool/ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tool/ng-translate-and-extract.html">
+            
+                <a href="../tool/ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tool/ng-npx-and-ghpages.html">
+            
+                <a href="../tool/ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../tool/ng-bundle-analyzer.html">
+            
+                <a href="../tool/ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="ng-di.html">
+            
+                <a href="ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="ng-app-initializer.html">
+            
+                <a href="ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="ng-provider-scope.html">
+            
+                <a href="ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="ng-meta-service.html">
+            
+                <a href="ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="ng-title-service.html">
+            
+                <a href="ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ng-custom-pipe.html">
+            
+                <a href="ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="ng-http-interceptor.html">
+            
+                <a href="ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.8" data-path="ng-jsonp-detail.html">
+            
+                <a href="ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." > Angular JSONP 详解</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x4E00;&#x3001;&#x4EC0;&#x4E48;&#x662F;-jsonp">&#x4E00;&#x3001;&#x4EC0;&#x4E48;&#x662F; JSONP</h3>
+<p><strong>JSONP</strong>&#xFF08;<strong>JSON with Padding</strong>&#xFF09;&#x662F;&#x6570;&#x636E;&#x683C;&#x5F0F;<a href="https://zh.wikipedia.org/wiki/JSON" target="_blank">JSON</a>&#x7684;&#x4E00;&#x79CD; &#x201C;&#x4F7F;&#x7528;&#x6A21;&#x5F0F;&#x201D;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x7F51;&#x9875;&#x4ECE;&#x522B;&#x7684;&#x7F51;&#x57DF;&#x8981;&#x6570;&#x636E;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x65B0;&#x65B9;&#x6CD5;&#x662F;<a href="https://zh.wikipedia.org/wiki/%E8%B7%A8%E4%BE%86%E6%BA%90%E8%B3%87%E6%BA%90%E5%85%B1%E4%BA%AB" target="_blank">&#x8DE8;&#x6765;&#x6E90;&#x8D44;&#x6E90;&#x5171;&#x4EAB;</a>&#x3002;</p>
+<p>&#x7531;&#x4E8E;<a href="https://zh.wikipedia.org/w/index.php?title=%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5&amp;action=edit&amp;redlink=1" target="_blank">&#x540C;&#x6E90;&#x7B56;&#x7565;</a>&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x4F4D;&#x4E8E; server1.example.com &#x7684;&#x7F51;&#x9875;&#x65E0;&#x6CD5;&#x4E0E; server2.example.com &#x7684;&#x670D;&#x52A1;&#x5668;&#x6C9F;&#x901A;&#xFF0C;&#x800C;<a href="https://zh.wikipedia.org/wiki/HTML" target="_blank">HTML</a>&#x7684; <code>script</code> &#x5143;&#x7D20;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5916;&#x3002;&#x5229;&#x7528; <code>script</code> &#x5143;&#x7D20;&#x7684;&#x8FD9;&#x4E2A;&#x5F00;&#x653E;&#x7B56;&#x7565;&#xFF0C;&#x7F51;&#x9875;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4ECE;&#x5176;&#x4ED6;&#x6765;&#x6E90;&#x52A8;&#x6001;&#x4EA7;&#x751F;&#x7684; JSON &#x6570;&#x636E;&#xFF0C;&#x800C;&#x8FD9;&#x79CD;&#x4F7F;&#x7528;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684; JSONP&#x3002;&#x7528; JSONP &#x6293;&#x5230;&#x7684;&#x6570;&#x636E;&#x5E76;&#x4E0D;&#x662F; JSON&#xFF0C;&#x800C;&#x662F;&#x4EFB;&#x610F;&#x7684; JavaScript&#xFF0C;&#x7528; JavaScript &#x89E3;&#x91CA;&#x5668;&#x8FD0;&#x884C;&#x800C;&#x4E0D;&#x662F;&#x7528; JSON &#x89E3;&#x6790;&#x5668;&#x89E3;&#x6790;&#x3002; &#x2014;&#x2014; &#x7EF4;&#x57FA;&#x767E;&#x79D1;</p>
+<h3 id="&#x4E8C;&#x3001;jsonp-&#x8DE8;&#x57DF;&#x539F;&#x7406;">&#x4E8C;&#x3001;JSONP &#x8DE8;&#x57DF;&#x539F;&#x7406;</h3>
+<p>AJAX &#x65E0;&#x6CD5;&#x8DE8;&#x57DF;&#x662F;&#x53D7;&#x5230; &#x201C;&#x540C;&#x6E90;&#x7B56;&#x7565;&#x201D; &#x7684;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x662F;&#x5E26;&#x6709; src &#x5C5E;&#x6027;&#x7684;&#x6807;&#x7B7E;&#xFF08;&#x4F8B;&#x5982; <code>&lt;script&gt;&#x3001;&lt;img&gt;&#x3001;&lt;iframe&gt;</code>&#xFF09;&#x662F;&#x4E0D;&#x53D7;&#x8BE5;&#x7B56;&#x7565;&#x9650;&#x5236;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x9875;&#x9762;&#x4E2D;&#x52A8;&#x6001;&#x6DFB;&#x52A0; <code>&lt;script&gt;</code> &#x6807;&#x7B7E;&#x6765;&#x5B8C;&#x6210;&#x5BF9;&#x8DE8;&#x57DF;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F; JSONP &#x65B9;&#x6848;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x539F;&#x7406;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>&lt;script&gt;</code> &#x90FD;&#x662F;&#x5F15;&#x7528;&#x7684;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF0C;&#x5176;&#x5B9E;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5F15;&#x7528;&#x52A8;&#x6001;&#x8D44;&#x6E90;&#xFF08;php&#x3001;jsp&#x3001;aspx &#x7B49;&#xFF09;&#xFF0C;&#x540E;&#x53F0;&#x670D;&#x52A1;&#x88AB;&#x8BBF;&#x95EE;&#x540E;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; <code>callback(data)</code>  &#x5F62;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7531;&#x4E8E;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x540E;&#x53F0;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x4F1A;&#x8D77;&#x5230;&#x4EFB;&#x4F55;&#x4F5C;&#x7528;&#xFF0C;&#x4F46;&#x8FD4;&#x56DE;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#xFF0C;&#x653E;&#x5165; <code>&lt;script&gt;</code> &#x6807;&#x7B7E;&#x4E4B;&#x5185;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x5B9E;&#x53C2;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>JSONP &#x6700;&#x5927;&#x7684;&#x4F18;&#x70B9;&#x5C31;&#x662F;&#x517C;&#x5BB9;&#x6027;&#x975E;&#x5E38;&#x597D;&#xFF0C;&#x5176;&#x539F;&#x7406;&#x51B3;&#x5B9A;&#x4E86;&#x5373;&#x4FBF;&#x5728;&#x975E;&#x5E38;&#x53E4;&#x8001;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x4E5F;&#x80FD;&#x591F;&#x5F88;&#x597D;&#x7684;&#x88AB;&#x5B9E;&#x73B0;&#x3002;&#x4F46;&#x5B83;&#x4E5F;&#x6709;&#x7F3A;&#x70B9;&#xFF0C;&#x5373;&#x53EA;&#x652F;&#x6301; Get &#x8BF7;&#x6C42;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x901A;&#x8FC7; <code>&lt;script&gt;</code> &#x65B9;&#x5F0F;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x663E;&#x5F0F;&#x7684;&#x5305;&#x542B;&#x5728; URL &#x4E2D;&#x3002;</p>
+<h3 id="&#x4E09;&#x3001;angular-jsonp-&#x793A;&#x4F8B;">&#x4E09;&#x3001;Angular JSONP &#x793A;&#x4F8B;</h3>
+<p>&#x5728; Angular &#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x8981;&#x4F7F;&#x7528; JSONP &#x5B9E;&#x73B0;&#x8DE8;&#x57DF;&#x8D44;&#x6E90;&#x8BBF;&#x95EE;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BFC;&#x5165; <code>HttpClientModule</code> &#x548C; <code>HttpClientJsonpModule</code> &#x6A21;&#x5757;&#xFF1A;</p>
+<p>app.module.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&quot;@angular/platform-browser&quot;</span>;
+<span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { HttpClientModule, HttpClientJsonpModule } from <span class="hljs-string">&quot;@angular/common/http&quot;</span>;
+
+<span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&quot;./app.component&quot;</span>;
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, HttpClientModule, HttpClientJsonpModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {}
+</code></pre>
+<p>&#x5728;&#x5BFC;&#x5165; <code>HttpClientModule</code> &#x548C; <code>HttpClientJsonpModule</code> &#x6A21;&#x5757;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5229;&#x7528; HttpClient &#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<p>app.component.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { HttpClient } from <span class="hljs-string">&quot;@angular/common/http&quot;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;app-root&quot;</span>,
+  template: <span class="hljs-string">`
+    &lt;button (click)=&quot;search(&apos;Photo&apos;)&quot;&gt;Search photo in itunes&lt;/button&gt;
+ `</span>,
+  styles: [
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  baseUrl: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;https://itunes.apple.com/search&quot;</span>;
+
+  <span class="hljs-keyword">constructor</span>(public http: HttpClient) {}
+
+  search(term: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">let</span> searchUrl = <span class="hljs-string">`<span class="hljs-subst">${
+      this.baseUrl
+    }</span>?term=<span class="hljs-subst">${term}</span>&amp;media=music&amp;limit=20`</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.jsonp&lt;<span class="hljs-built_in">any</span>&gt;(searchUrl, <span class="hljs-string">&quot;callback&quot;</span>).subscribe(<span class="hljs-built_in">console</span>.dir);
+  }
+}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5728;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6253;&#x5F00;&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#xFF0C;&#x5207;&#x6362;&#x5230; Network Tab &#x680F;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x9875;&#x9762;&#x4E0A;&#x7684; </p>
+<p><code>Search photo in itunes</code> &#x6309;&#x94AE;&#xFF0C;&#x8FD9;&#x65F6;&#x4F60;&#x4F1A;&#x770B;&#x5230;&#x4EE5;&#x4E0B;&#x7684;&#x8BF7;&#x6C42;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>https://itunes.apple.com/search?term=Photo&amp;media=music&amp;limit=20&amp;callback=ng_jsonp_callback_0
+</code></pre><p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x8C03;&#x7528; <code>this.http.jsonp()</code> &#x65B9;&#x6CD5;&#x540E;&#xFF0C;Angular &#x81EA;&#x52A8;&#x5728;&#x8BF7;&#x6C42;&#x7684; URL &#x5730;&#x5740;&#x540E;&#x9762;&#x6DFB;&#x52A0; <code>callback=ng_jsonp_callback_0</code> &#x7684;&#x67E5;&#x8BE2;&#x53C2;&#x6570;&#x3002;&#x63A5;&#x7740;&#x5728;&#x7ECF;&#x8FC7;&#x4E00;&#x5C0F;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x4E86;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<h3 id="&#x56DB;&#x3001;angular-jsonp-&#x539F;&#x7406;&#x7B80;&#x6790;">&#x56DB;&#x3001;Angular JSONP &#x539F;&#x7406;&#x7B80;&#x6790;</h3>
+<p>&#x5728;&#x4E86;&#x89E3; JSONP &#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x770B; Angular &#x7684;&#x6E90;&#x7801;&#x5C31;&#x6E05;&#x6670;&#x7B80;&#x5355;&#x5F88;&#x591A;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C06;&#x4EE5; <code>this.http.jsonp()</code> &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x6D41;&#x7A0B;&#x4E3A;&#x4E3B;&#x7EBF;&#xFF0C;&#x7B80;&#x5355;&#x5206;&#x6790;&#x4E00;&#x4E0B; Angular JSONP &#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<ol>
+<li>this.http.jsonp(searchUrl, &quot;callback&quot;)</li>
+</ol>
+<pre><code class="lang-typescript">jsonp&lt;T&gt;(url: <span class="hljs-built_in">string</span>, callbackParam: <span class="hljs-built_in">string</span>): Observable&lt;T&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.request&lt;<span class="hljs-built_in">any</span>&gt;(<span class="hljs-string">&apos;JSONP&apos;</span>, url, {
+      params: <span class="hljs-keyword">new</span> HttpParams().append(callbackParam, <span class="hljs-string">&apos;JSONP_CALLBACK&apos;</span>),
+      observe: <span class="hljs-string">&apos;body&apos;</span>,
+      responseType: <span class="hljs-string">&apos;json&apos;</span>,
+    });
+}
+</code></pre>
+<ol>
+<li>this.request(&apos;JSONP&apos;, url, {...})</li>
+</ol>
+<pre><code class="lang-typescript">request(first: <span class="hljs-built_in">string</span>|HttpRequest&lt;<span class="hljs-built_in">any</span>&gt;, url?: <span class="hljs-built_in">string</span>, options: {
+    body?: <span class="hljs-built_in">any</span>,
+    headers?: HttpHeaders|{[header: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]},
+    observe?: HttpObserve,
+    params?: HttpParams|{[param: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]},
+    reportProgress?: <span class="hljs-built_in">boolean</span>,
+    responseType?: <span class="hljs-string">&apos;arraybuffer&apos;</span>|<span class="hljs-string">&apos;blob&apos;</span>|<span class="hljs-string">&apos;json&apos;</span>|<span class="hljs-string">&apos;text&apos;</span>,
+    withCredentials?: <span class="hljs-built_in">boolean</span>,
+  } = {}): Observable&lt;<span class="hljs-built_in">any</span>&gt; {
+      ....
+}
+</code></pre>
+<p> &#x901A;&#x8FC7;&#x67E5;&#x770B; <a href="https://github.com/angular/angular/blob/master/packages/common/http/src/client.ts#L336" target="_blank">request()</a> &#x65B9;&#x6CD5;&#xFF0C;&#x4F60;&#x4F1A;&#x89C9;&#x5F97;&#x5947;&#x602A;&#xFF0C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x4EFB;&#x4F55;&#x4E0E; <code>jsonp</code> &#x76F8;&#x5173;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x9A6C;&#x4E0A;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x95EE;&#x9898;&#xFF0C;&#x5927;&#x5BB6;&#x5E94;&#x8BE5;&#x8FD8;&#x8BB0;&#x5F97;&#x5728; <strong>&#x201C;JSONP &#x793A;&#x4F8B;&#x201D;</strong> &#x7AE0;&#x8282;&#x6211;&#x4EEC;&#x9664;&#x4E86;&#x5BFC;&#x5165; <code>HttpClientModule</code> &#x6A21;&#x5757;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5BFC;&#x5165;&#x4E86; <code>HttpClientJsonpModule</code> &#x6A21;&#x5757;&#xFF0C;&#x8BE5;&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-typescript">@NgModule({
+  providers: [
+    JsonpClientBackend,
+    {provide: JsonpCallbackContext, useFactory: jsonpCallbackContext},
+    {provide: HTTP_INTERCEPTORS, useClass: JsonpInterceptor, multi: <span class="hljs-literal">true</span>},
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> HttpClientJsonpModule {}
+</code></pre>
+<p>HttpClientJsonpModule &#x6A21;&#x5757;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x6A21;&#x5757;&#x53EA;&#x58F0;&#x660E;&#x4E86; 3 &#x4E2A; provider&#xFF1A;</p>
+<ul>
+<li>JsonpClientBackend&#xFF1A;JSONP &#x670D;&#x52A1;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#xFF1B;</li>
+<li>JsonpCallbackContext&#xFF1A;&#x56DE;&#x8C03;&#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;&#xFF1B;</li>
+<li>JsonpInterceptor&#xFF1A;JSONP &#x62E6;&#x622A;&#x5668;&#x3002;</li>
+</ul>
+<p>&#x5728; <a href="https://semlinker.com/ng-http-interceptor/" target="_blank">Angular HttpClient &#x62E6;&#x622A;&#x5668;</a> &#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x4E86;&#x62E6;&#x622A;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x4E0E;&#x4F7F;&#x7528;&#x3002;&#x90A3;&#x662F;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x901A;&#x8FC7; HttpClient &#x670D;&#x52A1;&#x53D1;&#x9001;&#x7684; JSONP &#x8BF7;&#x6C42;&#x88AB; JsonpInterceptor &#x62E6;&#x622A;&#x5668;&#x5904;&#x7406;&#x4E86;&#x3002;&#x773C;&#x89C1;&#x4E3A;&#x5B9E;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B; JsonpInterceptor &#x62E6;&#x622A;&#x5668;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-typescript">@Injectable()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> JsonpInterceptor {
+  <span class="hljs-keyword">constructor</span>(private jsonp: JsonpClientBackend) {}
+
+  intercept(req: HttpRequest&lt;<span class="hljs-built_in">any</span>&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt; {
+    <span class="hljs-keyword">if</span> (req.method === <span class="hljs-string">&apos;JSONP&apos;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.jsonp.handle(req as HttpRequest&lt;never&gt;);
+    }
+    <span class="hljs-comment">// Fall through for normal HTTP requests.</span>
+    <span class="hljs-keyword">return</span> next.handle(req);
+  }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5173;&#x952E;&#x7684;&#x90E8;&#x5206;&#x5C31;&#x662F; <code>req.method === &apos;JSONP&apos;</code>  &#x8FD9;&#x4E2A;&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x4E2D;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;&#x5F53;&#x53D1;&#x73B0;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x4E3A; <code>&apos;JSONP&apos;</code> &#x65F6;&#xFF0C;&#x5219;&#x4F1A;&#x628A;&#x8BF7;&#x6C42;&#x4EE3;&#x7406;&#x7ED9; JsonpClientBackend &#x670D;&#x52A1;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<h4 id="jsonpclientbackend-&#x7C7B;&#x53CA;&#x6784;&#x9020;&#x51FD;&#x6570;">JsonpClientBackend &#x7C7B;&#x53CA;&#x6784;&#x9020;&#x51FD;&#x6570;</h4>
+<pre><code class="lang-typescript">@Injectable()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> JsonpClientBackend <span class="hljs-keyword">implements</span> HttpBackend {
+  <span class="hljs-keyword">constructor</span>(
+    private callbackMap: JsonpCallbackContext, 
+    @Inject(DOCUMENT) private document: any) {}
+}
+</code></pre>
+<p>&#x5176;&#x4E2D; HttpBackend &#x63A5;&#x53E3;&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> HttpBackend <span class="hljs-keyword">implements</span> HttpHandler {
+  <span class="hljs-keyword">abstract</span> handle(req: HttpRequest&lt;<span class="hljs-built_in">any</span>&gt;): Observable&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt;;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> HttpHandler {
+  <span class="hljs-keyword">abstract</span> handle(req: HttpRequest&lt;<span class="hljs-built_in">any</span>&gt;): Observable&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt;;
+}
+</code></pre>
+<p>&#x5728; JsonpClientBackend &#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6CE8;&#x5165;&#x4E86; JsonpCallbackContext &#x548C; document &#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x4E2D; JsonpCallbackContext Provider &#x7684;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">{ provide: JsonpCallbackContext, useFactory: jsonpCallbackContext },
+</code></pre>
+<p>&#x5373;&#x4F7F;&#x7528;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x6765;&#x6784;&#x9020; JsonpCallbackContext &#x5BF9;&#x8C61;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonpCallbackContext</span>(<span class="hljs-params"></span>): <span class="hljs-title">Object</span> </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> === <span class="hljs-string">&apos;object&apos;</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>;
+  }
+  <span class="hljs-keyword">return</span> {};
+}
+</code></pre>
+<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E86; JSONP &#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x518D;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x76F8;&#x5173;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li>&#x751F;&#x6210;&#x552F;&#x4E00;&#x7684; callback &#x540D;&#x79F0;&#xFF0C;&#x6784;&#x9020;&#x8BF7;&#x6C42;&#x7684; URL &#x5730;&#x5740;&#xFF0C;&#x6BD4;&#x5982; <code>https://itunes.apple.com/search?term=Photo&amp;media=music&amp;limit=20&amp;callback=ng_jsonp_callback_0</code>&#xFF1B;</li>
+<li>&#x52A8;&#x6001;&#x521B;&#x5EFA; <code>script</code> &#x6807;&#x7B7E;&#x5E76;&#x4E3A;&#x8BE5;&#x5143;&#x7D20;&#x7ED1;&#x5B9A; load &#x548C; error &#x4E8B;&#x4EF6;&#xFF1B;</li>
+<li>&#x628A;&#x65B0;&#x5EFA;&#x7684; <code>script</code> &#x6807;&#x7B7E;&#x6DFB;&#x52A0;&#x5230;&#x9875;&#x9762;&#x4E0A;&#x3002;</li>
+</ol>
+<p>&#x597D;&#x7684;&#x57FA;&#x672C;&#x7684;&#x6D41;&#x7A0B;&#x5DF2;&#x7ECF;&#x68B3;&#x7406;&#x6E05;&#x695A;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-typescript">handle(req: HttpRequest&lt;never&gt;): Observable&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt; {
+    <span class="hljs-comment">// &#x786E;&#x4FDD;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x662F;&apos;JSONP&apos;&#x548C;&#x671F;&#x671B;&#x7684;&#x54CD;&#x5E94;&#x7C7B;&#x578B;&#x662F;JSON</span>
+    <span class="hljs-keyword">if</span> (req.method !== <span class="hljs-string">&apos;JSONP&apos;</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(JSONP_ERR_WRONG_METHOD);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (req.responseType !== <span class="hljs-string">&apos;json&apos;</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(JSONP_ERR_WRONG_RESPONSE_TYPE);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Observable&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt;((observer: Observer&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt;) =&gt; {...}
+}
+</code></pre>
+<h4 id="&#x521B;&#x5EFA;script&#x5E76;&#x8BBE;&#x7F6E;&#x56DE;&#x8C03;&#x51FD;&#x6570;">&#x521B;&#x5EFA;script&#x5E76;&#x8BBE;&#x7F6E;&#x56DE;&#x8C03;&#x51FD;&#x6570;</h4>
+<pre><code class="lang-typescript"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Observable&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt;((observer: Observer&lt;HttpEvent&lt;<span class="hljs-built_in">any</span>&gt;&gt;) =&gt; {
+     <span class="hljs-comment">// let nextRequestId: number = 0;</span>
+     <span class="hljs-comment">// private nextCallback(): string { return `ng_jsonp_callback_${nextRequestId++}`; }</span>
+      <span class="hljs-keyword">const</span> callback = <span class="hljs-keyword">this</span>.nextCallback();    <span class="hljs-comment">// &#x751F;&#x6210;&#x552F;&#x4E00;&#x7684;callback&#x540D;&#x79F0;</span>
+     <span class="hljs-comment">// callback=JSONP_CALLBACK &#x8F6C;&#x6362;&#x4E3A; callback=ng_jsonp_callback_0</span>
+      <span class="hljs-keyword">const</span> url = req.urlWithParams.replace(<span class="hljs-regexp">/=JSONP_CALLBACK(&amp;|$)/</span>, <span class="hljs-string">`=<span class="hljs-subst">${callback}</span>$1`</span>);
+
+      <span class="hljs-comment">// &#x521B;&#x5EFA;script&#x5143;&#x7D20;&#x5E76;&#x8BBE;&#x5B9A;&#x8BF7;&#x6C42;&#x7684;URL&#x5730;&#x5740;</span>
+      <span class="hljs-keyword">const</span> node = <span class="hljs-keyword">this</span>.document.createElement(<span class="hljs-string">&apos;script&apos;</span>);
+      node.src = url;
+
+      <span class="hljs-comment">// The response object, if one has been received, or null otherwise.</span>
+      <span class="hljs-keyword">let</span> body: <span class="hljs-built_in">any</span>|<span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+
+      <span class="hljs-comment">// Whether the response callback has been called.</span>
+      <span class="hljs-keyword">let</span> finished: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+
+      <span class="hljs-comment">// Whether the request has been cancelled (and thus any other callbacks)</span>
+      <span class="hljs-comment">// should be ignored.</span>
+      <span class="hljs-keyword">let</span> cancelled: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+
+      <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x54CD;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x73AF;&#x5883;&#x5219;&#x662F;window&#x5BF9;&#x8C61;</span>
+      <span class="hljs-keyword">this</span>.callbackMap[callback] = (data?: <span class="hljs-built_in">any</span>) =&gt; {
+        <span class="hljs-comment">// Data has been received from the JSONP script. Firstly, delete this callback.</span>
+        <span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>.callbackMap[callback];
+
+        <span class="hljs-comment">// Next, make sure the request wasn&apos;t cancelled in the meantime.</span>
+        <span class="hljs-keyword">if</span> (cancelled) {
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Set state to indicate data was received.</span>
+        body = data;
+        finished = <span class="hljs-literal">true</span>;
+      };
+}
+</code></pre>
+<h4 id="load-&#x548C;-error-&#x56DE;&#x8C03;&#x51FD;&#x6570;">load &#x548C; error &#x56DE;&#x8C03;&#x51FD;&#x6570;</h4>
+<p>onLoad &#x56DE;&#x8C03;&#x51FD;&#x6570;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> onLoad = (event: Event) =&gt; {
+        <span class="hljs-comment">// Do nothing if the request has been cancelled.</span>
+        <span class="hljs-keyword">if</span> (cancelled) {
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Cleanup the page.</span>
+        cleanup();
+
+        <span class="hljs-comment">// &#x8BF7;&#x6C42;&#x5931;&#x8D25;&#x6784;&#x9020;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;</span>
+        <span class="hljs-keyword">if</span> (!finished) {
+          <span class="hljs-comment">// It hasn&apos;t, something went wrong with the request. Return an error via</span>
+          <span class="hljs-comment">// the Observable error path. All JSONP errors have status 0.</span>
+          observer.error(<span class="hljs-keyword">new</span> HttpErrorResponse({
+            url,
+            status: <span class="hljs-number">0</span>,
+            statusText: <span class="hljs-string">&apos;JSONP Error&apos;</span>,
+            error: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(JSONP_ERR_NO_CALLBACK),
+          }));
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// &#x8BF7;&#x6C42;&#x6210;&#x529F;&#x6784;&#x9020;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;</span>
+        observer.next(<span class="hljs-keyword">new</span> HttpResponse({
+          body,
+          status: <span class="hljs-number">200</span>,
+          statusText: <span class="hljs-string">&apos;OK&apos;</span>, 
+          url,
+        }));
+
+        <span class="hljs-comment">// Complete the stream, the response is over.</span>
+        observer.complete();
+};
+</code></pre>
+<p>onError &#x56DE;&#x8C03;&#x51FD;&#x6570;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> onError: <span class="hljs-built_in">any</span> = (error: <span class="hljs-built_in">Error</span>) =&gt; {
+        <span class="hljs-comment">// If the request was already cancelled, no need to emit anything.</span>
+        <span class="hljs-keyword">if</span> (cancelled) {
+          <span class="hljs-keyword">return</span>;
+        }
+        cleanup();
+
+        <span class="hljs-comment">// Wrap the error in a HttpErrorResponse.</span>
+        observer.error(<span class="hljs-keyword">new</span> HttpErrorResponse({
+          error,
+          status: <span class="hljs-number">0</span>,
+          statusText: <span class="hljs-string">&apos;JSONP Error&apos;</span>, url,
+        }));
+};
+</code></pre>
+<p>&#x5728; onLoad &#x548C; onError &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x90FD;&#x8C03;&#x7528; cleanup() &#x51FD;&#x6570;&#x6267;&#x884C;&#x6E05;&#x7406;&#x64CD;&#x4F5C;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> cleanup = () =&gt; {
+   <span class="hljs-comment">// Remove the &lt;script&gt; tag if it&apos;s still on the page.</span>
+      <span class="hljs-keyword">if</span> (node.parentNode) {
+        node.parentNode.removeChild(node);
+      }
+
+      <span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>.callbackMap[callback];
+};
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x5B8C;&#x6210;&#x529F;&#x4E0E;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x4E3A;&#x65B0;&#x5EFA;&#x7684; script &#x5143;&#x7D20;&#x7ED1;&#x5B9A;&#x5BF9;&#x5E94;&#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x52A8;&#x6001;&#x5730;&#x6DFB;&#x52A0;&#x8BE5; script &#x5143;&#x7D20;&#xFF1A;</p>
+<pre><code class="lang-typescript">node.addEventListener(<span class="hljs-string">&apos;load&apos;</span>, onLoad);
+node.addEventListener(<span class="hljs-string">&apos;error&apos;</span>, onError);
+<span class="hljs-keyword">this</span>.document.body.appendChild(node);
+
+<span class="hljs-comment">// The request has now been successfully sent.</span>
+observer.next({<span class="hljs-keyword">type</span>: HttpEventType.Sent});
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x5230;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x7684;&#x6D41;&#x7A0B;&#x90FD;&#x5206;&#x6790;&#x5B8C;&#x4E86;&#xFF0C;&#x5176;&#x5B9E;&#x8FD8;&#x5DEE;&#x4E00;&#x6B65;&#xFF0C;&#x4E86;&#x89E3; Observable &#x5BF9;&#x8C61;&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x4F30;&#x8BA1;&#x5DF2;&#x7ECF;&#x731C;&#x5230;&#x4E86;&#x3002;&#x662F;&#x7684;&#xFF0C;&#x6CA1;&#x9519;&#x6211;&#x4EEC;&#x8FD8;&#x5DEE;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x53D6;&#x6D88;&#x8BA2;&#x9605;&#x7684;&#x903B;&#x8F91;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">return</span> () =&gt; {
+  cancelled = <span class="hljs-literal">true</span>;
+  <span class="hljs-comment">// Remove the event listeners so they won&apos;t run if the events later fire.</span>
+  node.removeEventListener(<span class="hljs-string">&apos;load&apos;</span>, onLoad);
+  node.removeEventListener(<span class="hljs-string">&apos;error&apos;</span>, onError);
+  <span class="hljs-comment">// And finally, clean up the page.</span>
+  cleanup();
+};
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ng-http-interceptor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Angular HttpClient 拦截器">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":" Angular JSONP 详解","level":"1.4.8","depth":2,"next":{"title":"元素篇","level":"1.5","depth":1,"ref":"","articles":[{"title":"Angular ElementRef 简介","level":"1.5.1","depth":2,"path":"element/ng-element-ref.md","ref":"element/ng-element-ref.md","articles":[]},{"title":"Angular ViewChild 和 ViewChildren","level":"1.5.2","depth":2,"path":"element/viewchild-and-viewchildren.md","ref":"element/viewchild-and-viewchildren.md","articles":[]},{"title":"Angular ng-template vs ng-container","level":"1.5.3","depth":2,"path":"element/ng-template-vs-ng-container.md","ref":"element/ng-template-vs-ng-container.md","articles":[]},{"title":"Angular 内容投影","level":"1.5.4","depth":2,"path":"element/ng-content-projection.md","ref":"element/ng-content-projection.md","articles":[]},{"title":"ng-content 中隐藏的内容","level":"1.5.5","depth":2,"path":"element/ng-content-projection-hidden-docs.md","ref":"element/ng-content-projection-hidden-docs.md","articles":[]},{"title":"Angular 自定义属性指令","level":"1.5.6","depth":2,"path":"element/ng-custom-attr-directive.md","ref":"element/ng-custom-attr-directive.md","articles":[]}]},"previous":{"title":"Angular HttpClient 拦截器","level":"1.4.7","depth":2,"path":"service/ng-http-interceptor.md","ref":"service/ng-http-interceptor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"service/ng-jsonp-detail.md","mtime":"2018-10-07T15:25:30.914Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

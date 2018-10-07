@@ -1,0 +1,1290 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Angular 工具篇之国际化处理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ng-npx-and-ghpages.html" />
+    
+    
+    <link rel="prev" href="ng-storybook.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="ng-compodoc-intro.html">
+            
+                <a href="ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="ng-verson-manage.html">
+            
+                <a href="ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="ng-vsc-debugger.html">
+            
+                <a href="ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="ng-storybook.html">
+            
+                <a href="ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.5" data-path="ng-translate-and-extract.html">
+            
+                <a href="ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="ng-npx-and-ghpages.html">
+            
+                <a href="ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="ng-bundle-analyzer.html">
+            
+                <a href="ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../service/ng-di.html">
+            
+                <a href="../service/ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../service/ng-app-initializer.html">
+            
+                <a href="../service/ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../service/ng-provider-scope.html">
+            
+                <a href="../service/ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../service/ng-meta-service.html">
+            
+                <a href="../service/ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../service/ng-title-service.html">
+            
+                <a href="../service/ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../service/ng-custom-pipe.html">
+            
+                <a href="../service/ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../service/ng-http-interceptor.html">
+            
+                <a href="../service/ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../service/ng-jsonp-detail.html">
+            
+                <a href="../service/ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Angular 工具篇之国际化处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x5728;&#x65E5;&#x5E38;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x67D0;&#x4E9B;&#x9879;&#x76EE;&#x4F1A;&#x8981;&#x6C42;&#x652F;&#x6301;&#x56FD;&#x9645;&#x5316;&#x3002;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; Angular &#x6846;&#x67B6;&#x7684;&#x9879;&#x76EE;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x4EE5;&#x4E0B;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF0C;&#x5FEB;&#x901F;&#x652F;&#x6301;&#x56FD;&#x9645;&#x5316;&#xFF1A;</p>
+<ul>
+<li><a href="https://github.com/ngx-translate/core" target="_blank">ngx-translate/core</a></li>
+<li><a href="https://github.com/ngx-translate/http-loader" target="_blank">ngx-translate/http-loader</a></li>
+<li><a href="https://github.com/biesbjerg/ngx-translate-extract" target="_blank">ngx-translate-extract</a></li>
+</ul>
+<h3 id="&#x73AF;&#x5883;&#x914D;&#x7F6E;">&#x73AF;&#x5883;&#x914D;&#x7F6E;</h3>
+<p>&#x672C;&#x6587;&#x5C06;&#x57FA;&#x4E8E;&#x4E0A;&#x8FF0;&#x4E09;&#x4E2A;&#x5E93;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x56FD;&#x9645;&#x5316;&#x7684;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x3002;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x6765;&#x4F7F;&#x7528; Angular CLI &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9879;&#x76EE;&#xFF1A;</p>
+<pre><code class="lang-shell">$ ng new ngx-translate-demo
+</code></pre>
+<blockquote>
+<p>&#x5F53;&#x524D;&#x73AF;&#x5883;&#xFF1A; Angular CLI: 6.1.4&#x3001;Node: 9.11.0&#x3001;OS: darwin x64</p>
+</blockquote>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x6765;&#x5B89;&#x88C5;&#x4E0A;&#x9762;&#x7684;&#x4E09;&#x4E2A;&#x5E93;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm install @ngx-translate/core @ngx-translate/http-loader --save
+$ npm install @biesbjerg/ngx-translate-extract --save-dev
+</code></pre>
+<h3 id="ngx-translate-&#x5E94;&#x7528;">ngx-translate &#x5E94;&#x7528;</h3>
+<p>&#x5B89;&#x88C5;&#x5B8C;&#x4E0A;&#x8FF0;&#x7684;&#x5E93;&#x4E4B;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5728;&#x6839;&#x6A21;&#x5757; AppModule &#x4E2D;&#x5BFC;&#x5165; TranslateModule &#x6A21;&#x5757;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&quot;@angular/platform-browser&quot;</span>;
+<span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { HttpClient, HttpClientModule } from <span class="hljs-string">&quot;@angular/common/http&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateModule, TranslateLoader } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateHttpLoader } from <span class="hljs-string">&quot;@ngx-translate/http-loader&quot;</span>;
+
+<span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&quot;./app.component&quot;</span>;
+
+<span class="hljs-comment">// &#x652F;&#x6301;AOT</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createTranslateLoader</span>(<span class="hljs-params">http: HttpClient</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TranslateHttpLoader(http, <span class="hljs-string">&quot;./assets/i18n/&quot;</span>, <span class="hljs-string">&quot;.json&quot;</span>);
+}
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {}
+</code></pre>
+<p>&#x5728;&#x5BFC;&#x5165; TranslateModule &#x6A21;&#x5757;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x6839;&#x7EC4;&#x4EF6; AppComponent &#x4E2D;&#x521D;&#x59CB;&#x5316; TranslateService &#x670D;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateService } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;app-root&quot;</span>,
+  template: <span class="hljs-string">&quot;./app.component.html&quot;</span>,
+  styleUrls: [<span class="hljs-string">&quot;./app.component.css&quot;</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  title = <span class="hljs-string">&quot;ngx-translate-demo&quot;</span>;
+
+  <span class="hljs-keyword">constructor</span>(translate: TranslateService) {
+    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x7684;&#x8BED;&#x8A00;</span>
+    translate.setDefaultLang(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+    translate.use(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+  }
+}
+</code></pre>
+<p>&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5728; app.component.html &#x6A21;&#x677F;&#x4E2D;&#x4F7F;&#x7528; TranslateModule &#x6A21;&#x5757;&#x5185;&#x63D0;&#x4F9B;&#x7684;&#x7BA1;&#x9053;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align:center&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+    Welcome to {{ title }}!
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{&quot;home&quot; | translate}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="ngx-translate-extract-&#x5E94;&#x7528;">ngx-translate-extract &#x5E94;&#x7528;</h3>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x4F7F;&#x7528; <a href="https://github.com/biesbjerg/ngx-translate-extract" target="_blank">ngx-translate-extract</a> &#x8FD9;&#x4E2A;&#x5E93;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x62BD;&#x53D6;&#x6A21;&#x677F;&#x4E2D;&#x4F7F;&#x7528; TranslatePipe &#x8F6C;&#x6362;&#x7684;&#x952E;&#x3002;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; npm script&#xFF1A;</p>
+<pre><code class="lang-json"><span class="hljs-string">&quot;extract&quot;</span>: <span class="hljs-string">&quot;ngx-translate-extract --input ./src/app --output ./src/assets/i18n/{zh-cn,zh-hk,en}.json --sort --format namespaced-json --format-indentation &apos; &apos;&quot;</span>,
+</code></pre>
+<p>&#x4E0A;&#x8FF0; ngx-translate-extract &#x547D;&#x4EE4;&#x4E2D;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<ul>
+<li>--input&#xFF1A;&#x62BD;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x76EE;&#x5F55;&#xFF1B;</li>
+<li>--output&#xFF1A;&#x62BD;&#x53D6;&#x7ED3;&#x679C;&#x7684;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#xFF1B;</li>
+<li>--sort&#xFF1A;&#x4FDD;&#x5B58;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x65F6;&#xFF0C; &#x6309;&#x7167;&#x5B57;&#x6BCD;&#x987A;&#x5E8F;&#x5BF9;&#x952E;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF1B;</li>
+<li>--format&#xFF1A;&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x652F;&#x6301; json&#x3001;namespaced-json &#x53CA; pot&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; json&#xFF1B;</li>
+<li>--format-indentation&#xFF1A;&#x8BBE;&#x7F6E;&#x8F93;&#x51FA;&#x7684;&#x7F29;&#x8FDB;&#x683C;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; <code>\t</code>&#x3002;</li>
+</ul>
+<p>&#x5728;&#x5B9A;&#x4E49;&#x5B8C; extract &#x811A;&#x672C;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x81EA;&#x52A8;&#x62BD;&#x53D6;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm run extract
+</code></pre>
+<p>&#x547D;&#x4EE4;&#x6210;&#x529F;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x5728; <code>src/assets</code> &#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x751F;&#x6210; 3 &#x4E2A; JSON &#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>&#x2514;&#x2500;&#x2500; i18n
+    &#x251C;&#x2500;&#x2500; en.json
+    &#x251C;&#x2500;&#x2500; zh-cn.json
+    &#x2514;&#x2500;&#x2500; zh-hk.json
+</code></pre><p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x5206;&#x522B;&#x66F4;&#x65B0;&#x4E00;&#x4E0B; 3 &#x4E2A;&#x6587;&#x4EF6;&#xFF1A;</p>
+<ol>
+<li>zh-cn.json</li>
+</ol>
+<pre><code class="lang-json">{<span class="hljs-string">&quot;home&quot;</span>: <span class="hljs-string">&quot;&#x9996;&#x9875;&quot;</span>}
+</code></pre>
+<ol>
+<li>zh-hk.json</li>
+</ol>
+<pre><code class="lang-json">{<span class="hljs-string">&quot;home&quot;</span>: <span class="hljs-string">&quot;&#x9996;&#x9801;&quot;</span>}
+</code></pre>
+<ol>
+<li>en.json</li>
+</ol>
+<pre><code class="lang-json">{<span class="hljs-string">&quot;home&quot;</span>: <span class="hljs-string">&quot;Home&quot;</span>}
+</code></pre>
+<p>&#x66F4;&#x65B0;&#x5B8C;&#x4E0A;&#x8FF0;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x8FD0;&#x884C; <code>npm start</code> &#x542F;&#x52A8;&#x5E94;&#x7528;&#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;&#x7B80;&#x4F53;&#x4E2D;&#x6587;&#xFF0C;&#x6240;&#x4EE5;&#x4EE5;&#x4E0B;&#x7684;&#x6A21;&#x677F;&#x7684;&#x663E;&#x793A;&#x7ED3;&#x679C;&#x4E3A; &#x201C;&#x9996;&#x9875;&#x201D;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{&quot;home&quot; | translate}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x751F;&#x6210;&#x4E86; <code>zh-cn.json</code>&#x3001;<code>zh-hk.json</code> &#x548C; <code>en.json</code> &#x4E09;&#x4E2A;&#x8BED;&#x8A00;&#x6587;&#x4EF6;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x5207;&#x6362;&#x8BED;&#x8A00;&#xFF0C;&#x9996;&#x5148;&#x66F4;&#x65B0;&#x4E00;&#x4E0B;&#x6A21;&#x677F;&#xFF0C;&#x65B0;&#x589E;&#x4E09;&#x4E2A;&#x6309;&#x94AE;&#xFF1A;</p>
+<pre><code class="lang-html"> <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;useZhCn()&quot;</span>&gt;</span>&#x4E2D;&#x6587;&#x7B80;&#x4F53;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;useZhHk()&quot;</span>&gt;</span>&#x4E2D;&#x6587;&#x7E41;&#x4F53;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;useEn()&quot;</span>&gt;</span>&#x82F1;&#x8BED;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p>&#x7136;&#x540E;&#x66F4;&#x65B0;&#x4E00;&#x4E0B; app.component.ts &#x6587;&#x4EF6;&#xFF0C;&#x6DFB;&#x52A0;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-typescript">useZhCn() {
+  <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+}
+
+useZhHk() {
+  <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;zh-hk&quot;</span>);
+}
+
+useEn() {
+  <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;en&quot;</span>);
+}
+</code></pre>
+<p><a href="https://github.com/biesbjerg/ngx-translate-extract" target="_blank">ngx-translate-extract</a> &#x8FD9;&#x4E2A;&#x5E93;&#xFF0C;&#x9664;&#x4E86;&#x80FD;&#x81EA;&#x52A8;&#x62BD;&#x53D6;&#x6A21;&#x677F;&#x4E2D;&#x7684;&#x4F7F;&#x7528; TranslatePipe &#x7684;&#x5B57;&#x6BB5;&#x4E4B;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x62BD;&#x53D6;&#x9879;&#x76EE;&#x4E2D;&#x5E94;&#x7528;TranslateDirective &#x548C; TranslateService &#x8FDB;&#x884C;&#x56FD;&#x9645;&#x5316;&#x5904;&#x7406;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<ol>
+<li>TranslateService &#x4F7F;&#x7528;&#x793A;&#x4F8B;</li>
+</ol>
+<pre><code class="lang-typescript">translate.get(<span class="hljs-string">&apos;HELLO&apos;</span>, {value: <span class="hljs-string">&apos;world&apos;</span>}).subscribe((res: <span class="hljs-built_in">string</span>) =&gt; {
+    <span class="hljs-built_in">console</span>.log(res);
+    <span class="hljs-comment">//=&gt; &apos;hello world&apos;</span>
+});
+</code></pre>
+<ol>
+<li>TranslateDirective &#x4F7F;&#x7528;&#x793A;&#x4F8B;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">translate</span>]=<span class="hljs-string">&quot;&apos;HELLO&apos;&quot;</span> [<span class="hljs-attr">translateParams</span>]=<span class="hljs-string">&quot;{value: &apos;world&apos;}&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x9A8C;&#x8BC1;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528; TranslateService &#x670D;&#x52A1;&#xFF0C;&#x80FD;&#x5426;&#x6B63;&#x5E38;&#x62BD;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x5148;&#x66F4;&#x65B0;&#x4E00;&#x4E0B; app.component.ts &#x6587;&#x4EF6;&#xFF0C;&#x65B0;&#x589E;&#x4E00;&#x4E2A; init() &#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-typescript">init() {
+  <span class="hljs-keyword">this</span>.translate
+    .get(<span class="hljs-string">&quot;hello&quot;</span>, { value: <span class="hljs-string">&quot;world&quot;</span> })
+    .subscribe((res: <span class="hljs-built_in">string</span>) =&gt; {
+        <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//=&gt; &apos;hello world&apos;</span>
+    });
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6F14;&#x793A;&#x4E86; TranslateService &#x670D;&#x52A1;&#x652F;&#x6301;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7684;&#x7279;&#x6027;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x6267;&#x884C;&#x62BD;&#x53D6;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm run extract
+</code></pre>
+<p>&#x547D;&#x4EE4;&#x8FD0;&#x884C;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x539F;&#x5148;&#x751F;&#x6210;&#x7684; 3 &#x4E2A; JSON &#x6587;&#x4EF6;&#x90FD;&#x4F1A;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5; <code>zh-cn.json</code> &#x6587;&#x4EF6;&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-json">{
+ <span class="hljs-string">&quot;hello&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+ <span class="hljs-string">&quot;home&quot;</span>: <span class="hljs-string">&quot;&#x9996;&#x9875;&quot;</span>
+}
+</code></pre>
+<p>&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5206;&#x522B;&#x66F4;&#x65B0; zh-cn.json&#x3001;zh-hk.json &#x548C; en.json &#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-json">{
+ <span class="hljs-string">&quot;hello&quot;</span>: <span class="hljs-string">&quot;hello {{value}}&quot;</span>,
+ <span class="hljs-string">&quot;home&quot;</span>: <span class="hljs-string">&quot;&#x9996;&#x9875;&quot;</span>
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x5728;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x5728;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#x542F;&#x7528;&#x56FD;&#x9645;&#x5316;&#x3002;</p>
+<h3 id="&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#x56FD;&#x9645;&#x5316;">&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#x56FD;&#x9645;&#x5316;</h3>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A; UserModule &#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#xFF0C;&#x8BE5;&#x6A21;&#x5757;&#x5185;&#x5305;&#x542B;&#x4E00;&#x4E2A; UserComponent &#x7EC4;&#x4EF6;&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>user.module.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { CommonModule } from <span class="hljs-string">&quot;@angular/common&quot;</span>;
+<span class="hljs-keyword">import</span> { RouterModule, Route } from <span class="hljs-string">&quot;@angular/router&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateModule, TranslateLoader } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+<span class="hljs-keyword">import</span> { HttpClient } from <span class="hljs-string">&quot;@angular/common/http&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateHttpLoader } from <span class="hljs-string">&quot;@ngx-translate/http-loader&quot;</span>;
+
+<span class="hljs-keyword">import</span> { UserComponent } from <span class="hljs-string">&quot;./user.component&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createTranslateLoader</span>(<span class="hljs-params">http: HttpClient</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TranslateHttpLoader(http, <span class="hljs-string">&quot;./assets/i18n/user/&quot;</span>, <span class="hljs-string">&quot;.json&quot;</span>);
+}
+
+<span class="hljs-keyword">const</span> routes: Route[] = [
+  {
+    path: <span class="hljs-string">&quot;&quot;</span>,
+    component: UserComponent
+  }
+];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: <span class="hljs-literal">true</span>
+    })
+  ],
+  declarations: [UserComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserModule {}
+</code></pre>
+<p>&#x4E0E; RouterModule &#x6A21;&#x5757;&#x7C7B;&#x4F3C;&#xFF0C;TranslateModule &#x6A21;&#x5757;&#x4E5F;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86; <code>forChild()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x8BBE;&#x7F6E; <code>isolate: true</code> &#x53C2;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x5B8C;&#x5168;&#x72EC;&#x7ACB;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>user.component.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateService } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;app-user&quot;</span>,
+  template: <span class="hljs-string">`
+   &lt;div&gt;
+      &lt;h3&gt;User Module&lt;/h3&gt;
+      &lt;p&gt;{{&quot;myNameIs&quot; | translate}} semlinker&lt;/p&gt;
+      &lt;button (click)=&quot;useZhCn()&quot;&gt;&#x4E2D;&#x6587;&#x7B80;&#x4F53;&lt;/button&gt;
+      &lt;button (click)=&quot;useEn()&quot;&gt;&#x82F1;&#x8BED;&lt;/button&gt;
+   &lt;/div&gt;
+  `</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> UserComponent {
+  <span class="hljs-keyword">constructor</span>(public translate: TranslateService) {}
+
+  useZhCn() {
+    <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+  }
+
+  useEn() {
+    <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;en&quot;</span>);
+  }
+}
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x5B8C; UserModule &#x61D2;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://github.com/biesbjerg/ngx-translate-extract" target="_blank">ngx-translate-extract</a> &#x8FD9;&#x4E2A;&#x5E93;&#xFF0C;&#x5355;&#x72EC;&#x62BD;&#x53D6;&#x8BE5;&#x6A21;&#x5757;&#x5185;&#x7684;&#x56FD;&#x9645;&#x5316;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E5F;&#x540C;&#x6837;&#x5728; npm scripts &#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-json"><span class="hljs-string">&quot;extract-user&quot;</span>: <span class="hljs-string">&quot;ngx-translate-extract --input ./src/app/user --output ./src/assets/i18n/user/{zh-cn,zh-hk,en}.json --sort --format namespaced-json --format-indentation &apos; &apos;&quot;</span>,
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; ngx-translate-extract &#x9664;&#x4E86;&#x652F;&#x6301;&#x4E0A;&#x8FF0;&#x7684;&#x53C2;&#x6570;&#x5916;&#xFF0C;&#x8FD8;&#x652F;&#x6301; <code>--replace</code>&#x3001;<code>--clean</code> &#x548C; <code>--verbose</code> &#x7B49;&#x53C2;&#x6570;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x9605;&#x8BFB; <a href="https://github.com/biesbjerg/ngx-translate-extract" target="_blank">ngx-translate-extract</a> &#x8BF4;&#x660E;&#x6587;&#x6863;&#x3002;&#x6700;&#x540E;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x6D4F;&#x89C8;&#x4E00;&#x4E0B;&#x6839;&#x6A21;&#x5757;&#x7684;&#x76F8;&#x5173;&#x6587;&#x4EF6;&#xFF1A;</p>
+<p>app.module.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&quot;@angular/platform-browser&quot;</span>;
+<span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { RouterModule, Route } from <span class="hljs-string">&quot;@angular/router&quot;</span>;
+<span class="hljs-keyword">import</span> { HttpClient, HttpClientModule } from <span class="hljs-string">&quot;@angular/common/http&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateModule, TranslateLoader } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateHttpLoader } from <span class="hljs-string">&quot;@ngx-translate/http-loader&quot;</span>;
+
+<span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&quot;./app.component&quot;</span>;
+<span class="hljs-keyword">import</span> { HomeComponent } from <span class="hljs-string">&quot;./home.component&quot;</span>;
+
+<span class="hljs-keyword">const</span> routes: Route[] = [
+  {
+    path: <span class="hljs-string">&quot;&quot;</span>,
+    pathMatch: <span class="hljs-string">&quot;full&quot;</span>,
+    redirectTo: <span class="hljs-string">&quot;home&quot;</span>
+  },
+  {
+    path: <span class="hljs-string">&quot;home&quot;</span>,
+    component: HomeComponent
+  },
+  {
+    path: <span class="hljs-string">&quot;user&quot;</span>,
+    loadChildren: <span class="hljs-string">&quot;./user/user.module#UserModule&quot;</span>
+  }
+];
+
+<span class="hljs-comment">// &#x652F;&#x6301;AOT</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createTranslateLoader</span>(<span class="hljs-params">http: HttpClient</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TranslateHttpLoader(http, <span class="hljs-string">&quot;./assets/i18n/&quot;</span>, <span class="hljs-string">&quot;.json&quot;</span>);
+}
+
+@NgModule({
+  declarations: [AppComponent, HomeComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {}
+</code></pre>
+<p>app.component.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateService } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;app-root&quot;</span>,
+  template: <span class="hljs-string">`
+    &lt;div class=&quot;app&quot;&gt;
+      &lt;nav&gt;
+        &lt;a routerLink=&quot;/&quot;&gt;&#x9996;&#x9875;&lt;/a&gt;
+        &lt;a routerLink=&quot;/user&quot;&gt;&#x6211;&#x7684;&lt;/a&gt;
+      &lt;/nav&gt;
+      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/div&gt;
+  `</span>,
+  styleUrls: [<span class="hljs-string">&quot;./app.component.css&quot;</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  title = <span class="hljs-string">&quot;ngx-translate-demo&quot;</span>;
+}
+</code></pre>
+<p>home.component.ts</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">&quot;@angular/core&quot;</span>;
+<span class="hljs-keyword">import</span> { TranslateService } from <span class="hljs-string">&quot;@ngx-translate/core&quot;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;app-home&quot;</span>,
+  template: <span class="hljs-string">`
+  &lt;div style=&quot;text-align:center&quot;&gt;
+    &lt;h1&gt;
+        Welcome to {{ title }}!
+    &lt;/h1&gt;
+    &lt;p&gt;{{&quot;home&quot; | translate}}&lt;/p&gt;
+    &lt;p&gt;
+      &lt;button (click)=&quot;useZhCn()&quot;&gt;&#x4E2D;&#x6587;&#x7B80;&#x4F53;&lt;/button&gt;
+      &lt;button (click)=&quot;useZhHk()&quot;&gt;&#x4E2D;&#x6587;&#x7E41;&#x4F53;&lt;/button&gt;
+      &lt;button (click)=&quot;useEn()&quot;&gt;&#x82F1;&#x8BED;&lt;/button&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+  `</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> HomeComponent <span class="hljs-keyword">implements</span> OnInit {
+
+  title = <span class="hljs-string">&quot;ngx-translate-demo&quot;</span>;
+  <span class="hljs-keyword">constructor</span>(public translate: TranslateService) {
+    <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x7684;&#x8BED;&#x8A00;</span>
+    translate.setDefaultLang(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+    translate.use(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+  }
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.translate.get(<span class="hljs-string">&quot;hello&quot;</span>, { value: <span class="hljs-string">&quot;world&quot;</span> }).subscribe((res: <span class="hljs-built_in">string</span>) =&gt; {
+      <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//=&gt; &apos;hello world&apos;</span>
+    });
+  }
+
+  useZhCn() {
+    <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;zh-cn&quot;</span>);
+  }
+
+  useZhHk() {
+    <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;zh-hk&quot;</span>);
+  }
+
+  useEn() {
+    <span class="hljs-keyword">this</span>.translate.use(<span class="hljs-string">&quot;en&quot;</span>);
+  }
+}
+</code></pre>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x672C;&#x6587;&#x901A;&#x8FC7;&#x51E0;&#x4E2A;&#x793A;&#x4F8B;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E86; @ngx-translate/core&#x3001;@ngx-translate/http-loader &#x53CA; @biesbjerg/ngx-translate-extract &#x8FD9;&#x4E09;&#x4E2A;&#x5E93;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x5F00;&#x53D1;&#x4E2D;&#x8FD8;&#x4F1A;&#x9047;&#x5230;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x5927;&#x5BB6;&#x8BA4;&#x771F;&#x9605;&#x8BFB;&#x4E0A;&#x8FF0;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x8BF4;&#x660E;&#x6587;&#x6863;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ng-storybook.html" class="navigation navigation-prev " aria-label="Previous page: Angular 工具篇之Storybook">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ng-npx-and-ghpages.html" class="navigation navigation-next " aria-label="Next page: Angular 工具篇之npx及angular-cli-ghpages">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Angular 工具篇之国际化处理","level":"1.3.5","depth":2,"next":{"title":"Angular 工具篇之npx及angular-cli-ghpages","level":"1.3.6","depth":2,"path":"tool/ng-npx-and-ghpages.md","ref":"tool/ng-npx-and-ghpages.md","articles":[]},"previous":{"title":"Angular 工具篇之Storybook","level":"1.3.4","depth":2,"path":"tool/ng-storybook.md","ref":"tool/ng-storybook.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/ng-translate-and-extract.md","mtime":"2018-10-07T15:19:05.268Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

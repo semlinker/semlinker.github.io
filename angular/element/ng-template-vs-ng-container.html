@@ -1,0 +1,1014 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Angular ng-template vs ng-container · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ng-content-projection.html" />
+    
+    
+    <link rel="prev" href="viewchild-and-viewchildren.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tool/ng-compodoc-intro.html">
+            
+                <a href="../tool/ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tool/ng-verson-manage.html">
+            
+                <a href="../tool/ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tool/ng-vsc-debugger.html">
+            
+                <a href="../tool/ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/ng-storybook.html">
+            
+                <a href="../tool/ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tool/ng-translate-and-extract.html">
+            
+                <a href="../tool/ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tool/ng-npx-and-ghpages.html">
+            
+                <a href="../tool/ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../tool/ng-bundle-analyzer.html">
+            
+                <a href="../tool/ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../service/ng-di.html">
+            
+                <a href="../service/ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../service/ng-app-initializer.html">
+            
+                <a href="../service/ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../service/ng-provider-scope.html">
+            
+                <a href="../service/ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../service/ng-meta-service.html">
+            
+                <a href="../service/ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../service/ng-title-service.html">
+            
+                <a href="../service/ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../service/ng-custom-pipe.html">
+            
+                <a href="../service/ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../service/ng-http-interceptor.html">
+            
+                <a href="../service/ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../service/ng-jsonp-detail.html">
+            
+                <a href="../service/ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="ng-element-ref.html">
+            
+                <a href="ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="viewchild-and-viewchildren.html">
+            
+                <a href="viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.3" data-path="ng-template-vs-ng-container.html">
+            
+                <a href="ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="ng-content-projection.html">
+            
+                <a href="ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="ng-content-projection-hidden-docs.html">
+            
+                <a href="ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="ng-custom-attr-directive.html">
+            
+                <a href="ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Angular ng-template vs ng-container</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x6307;&#x4EE4;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684;&#x6807;&#x7B7E;&#x6765;&#x5C01;&#x88C5;&#x5185;&#x5BB9;&#xFF0C;&#x5982;&#x4F7F;&#x7528; <code>*ngIf</code> &#x6307;&#x4EE4;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;show&quot;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Div one<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Div two<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5728; <code>section</code> &#x6807;&#x7B7E;&#x4E0A;&#x5E94;&#x7528;&#x4E86; <code>ngIf</code> &#x6307;&#x4EE4;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0; <code>section</code> &#x6807;&#x7B7E;&#x5185;&#x5BB9;&#x7684;&#x52A8;&#x6001;&#x663E;&#x793A;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6709;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684; DOM &#x5143;&#x7D20;&#x3002;&#x8981;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>&lt;ng-template&gt;</code> &#x7684;&#x6807;&#x51C6;&#x8BED;&#x6CD5; &#xFF08;&#x975E;*ngIf &#x8BED;&#x6CD5;&#x7CD6;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> [<span class="hljs-attr">ngIf</span>]=<span class="hljs-string">&quot;show&quot;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Div one<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Div two<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+</code></pre>
+<p>&#x95EE;&#x9898;&#x662F;&#x89E3;&#x51B3;&#x4E86;&#x4F46;&#x6211;&#x4EEC;&#x4E0D;&#x518D;&#x4F7F;&#x7528; <code>*</code> &#x8BED;&#x6CD5;&#x7CD6;&#x8BED;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x5BFC;&#x81F4;&#x6211;&#x4EEC;&#x4EE3;&#x7801;&#x7684;&#x4E0D;&#x7EDF;&#x4E00;&#x3002;&#x867D;&#x7136;&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x53C8;&#x5E26;&#x6765;&#x4E86;&#x65B0;&#x95EE;&#x9898;&#x3002;&#x90A3;&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x5176;&#x5B83;&#x7684;&#x65B9;&#x6848;&#x4E48;&#xFF1F;&#x7B54;&#x6848;&#x662F;&#x6709;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>ng-container</code> &#x6307;&#x4EE4;&#x3002;</p>
+<h3 id="ng-container">ng-container</h3>
+<p><code>&lt;ng-container&gt;</code> &#x662F;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x5BB9;&#x5668;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x5BF9;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x5B83;&#x5C06;&#x88AB;&#x6E32;&#x67D3;&#x4E3A; HTML&#x4E2D;&#x7684; <code>comment</code> &#x5143;&#x7D20;&#x3002;&#x5177;&#x4F53;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;show&quot;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Div one<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Div two<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+</code></pre>
+<p>&#x6709;&#x65F6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6839;&#x636E; <code>switch</code> &#x8BED;&#x53E5;&#xFF0C;&#x52A8;&#x6001;&#x663E;&#x793A;&#x6587;&#x672C;&#xFF0C;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x6807;&#x7B7E;&#x5982; <code>&lt;span&gt;</code> &#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">ngSwitch</span>]=<span class="hljs-string">&quot;value&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Text one<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>Text two<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x6211;&#x4EEC;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684; <code>&lt;span&gt;</code> &#x6807;&#x7B7E;&#xFF0C;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>ng-container</code> &#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">ngSwitch</span>]=<span class="hljs-string">&quot;value&quot;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>Text one<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngSwitchCase</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>Text two<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x6B64;&#x5916; Angular &#x7684;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x67D0;&#x4E2A;&#x6807;&#x7B7E;&#x4E0A;&#x540C;&#x65F6;&#x4F7F;&#x7528; <code>*ngIf</code> &#x6216; <code>*ngFor</code> &#x6307;&#x4EE4;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;lesson&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;lessons&quot;</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let lesson of lessons&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;lesson-detail&quot;</span>&gt;</span>
+        {{lesson | json}}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x5F53;&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x4F60;&#x5C06;&#x4F1A;&#x770B;&#x5230;&#x4EE5;&#x4E0B;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>Uncaught Error: Template parse errors:
+Can&apos;t have multiple template bindings on one element. Use only one attribute 
+named &apos;template&apos; or prefixed with *
+</code></pre><p>&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4E0D;&#x53EF;&#x80FD;&#x5C06;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x6307;&#x4EE4;&#x5E94;&#x7528;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x5C31;&#x5229;&#x7528; <code>ng-container</code> &#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;lessons&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;lesson&quot;</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let lesson of lessons&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;lesson-detail&quot;</span>&gt;</span>
+            {{lesson | json}}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+</code></pre>
+<h3 id="ng-template-vs-ng-container">ng-template vs ng-container</h3>
+<p>&#x4ECB;&#x7ECD;&#x5B8C; <code>ng-container</code> &#x6307;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x5B83;&#x8DDF; <code>ng-template</code> &#x6307;&#x4EE4;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;&#x6211;&#x4EEC;&#x5148;&#x770B;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> In template, no attributes. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> In ng-container, no attributes. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
+<pre><code>In ng-container, no attributes.
+</code></pre><p>&#x5373; <code>&lt;ng-template&gt;</code> &#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#x3002;&#x5F53;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x6A21;&#x677F;&#x4E2D;&#x5E94;&#x7528; <code>ngIf</code> &#x6307;&#x4EE4;&#xFF1A;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> [<span class="hljs-attr">ngIf</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> ngIf with a template.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> ngIf with an ng-container.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
+<pre><code>ngIf with a template.
+ngIf with an ng-container.
+</code></pre><p>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x6765;&#x603B;&#x7ED3;&#x4E00;&#x4E0B; <code>&lt;ng-template&gt;</code> &#x548C; <code>&lt;ng-container&gt;</code> &#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<ul>
+<li><code>&lt;ng-template&gt;</code> &#xFF1A;&#x4F7F;&#x7528; <code>*</code> &#x8BED;&#x6CD5;&#x7CD6;&#x7684;&#x7ED3;&#x6784;&#x6307;&#x4EE4;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x8F6C;&#x6362;&#x4E3A; <code>&lt;ng-template&gt;</code> &#x6216; <code>&lt;template&gt;</code> &#x6A21;&#x677F;&#x6307;&#x4EE4;&#xFF0C;&#x6A21;&#x677F;&#x5185;&#x7684;&#x5185;&#x5BB9;&#x5982;&#x679C;&#x4E0D;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x662F;&#x4E0D;&#x4F1A;&#x5728;&#x9875;&#x9762;&#x4E2D;&#x663E;&#x793A;&#x7684;&#x3002;</li>
+<li><code>&lt;ng-container&gt;</code>&#xFF1A;&#x662F;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x5BB9;&#x5668;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x5BF9;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x5B83;&#x5C06;&#x88AB;&#x6E32;&#x67D3;&#x4E3A; HTML&#x4E2D;&#x7684; <code>comment</code> &#x5143;&#x7D20;&#xFF0C;&#x5B83;&#x53EF;&#x7528;&#x4E8E;&#x907F;&#x514D;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684;&#x5143;&#x7D20;&#x6765;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x6307;&#x4EE4;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="viewchild-and-viewchildren.html" class="navigation navigation-prev " aria-label="Previous page: Angular ViewChild 和 ViewChildren">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ng-content-projection.html" class="navigation navigation-next " aria-label="Next page: Angular 内容投影">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Angular ng-template vs ng-container","level":"1.5.3","depth":2,"next":{"title":"Angular 内容投影","level":"1.5.4","depth":2,"path":"element/ng-content-projection.md","ref":"element/ng-content-projection.md","articles":[]},"previous":{"title":"Angular ViewChild 和 ViewChildren","level":"1.5.2","depth":2,"path":"element/viewchild-and-viewchildren.md","ref":"element/viewchild-and-viewchildren.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"element/ng-template-vs-ng-container.md","mtime":"2018-10-07T15:28:57.090Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

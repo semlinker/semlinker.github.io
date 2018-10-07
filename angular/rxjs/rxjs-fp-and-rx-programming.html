@@ -1,0 +1,1047 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>RxJS 函数式与响应式编程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="rxjs-create-observable.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tool/ng-compodoc-intro.html">
+            
+                <a href="../tool/ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tool/ng-verson-manage.html">
+            
+                <a href="../tool/ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tool/ng-vsc-debugger.html">
+            
+                <a href="../tool/ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/ng-storybook.html">
+            
+                <a href="../tool/ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tool/ng-translate-and-extract.html">
+            
+                <a href="../tool/ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tool/ng-npx-and-ghpages.html">
+            
+                <a href="../tool/ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../tool/ng-bundle-analyzer.html">
+            
+                <a href="../tool/ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../service/ng-di.html">
+            
+                <a href="../service/ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../service/ng-app-initializer.html">
+            
+                <a href="../service/ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../service/ng-provider-scope.html">
+            
+                <a href="../service/ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../service/ng-meta-service.html">
+            
+                <a href="../service/ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../service/ng-title-service.html">
+            
+                <a href="../service/ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../service/ng-custom-pipe.html">
+            
+                <a href="../service/ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../service/ng-http-interceptor.html">
+            
+                <a href="../service/ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../service/ng-jsonp-detail.html">
+            
+                <a href="../service/ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.1" data-path="rxjs-fp-and-rx-programming.html">
+            
+                <a href="rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="rxjs-create-observable.html">
+            
+                <a href="rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="rxjs-observable.html">
+            
+                <a href="rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="rxjs-subject.html">
+            
+                <a href="rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="rxjs-merge-map-and-switch-map.html">
+            
+                <a href="rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="rxjs-handle-multi-http-request.html">
+            
+                <a href="rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >RxJS 函数式与响应式编程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x4EC0;&#x4E48;&#x662F;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;">&#x4EC0;&#x4E48;&#x662F;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h3>
+<p>&#x7B80;&#x5355;&#x8BF4;&#xFF0C;&quot;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&quot;&#x662F;&#x4E00;&#x79CD; <a href="http://en.wikipedia.org/wiki/Programming_paradigm" target="_blank">&quot;&#x7F16;&#x7A0B;&#x8303;&#x5F0F;&quot;</a>&#xFF08;programming paradigm&#xFF09;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x7684;&#x65B9;&#x6CD5;&#x8BBA;&#x3002;</p>
+<h4 id="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x57FA;&#x672C;&#x8981;&#x7D20;">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x57FA;&#x672C;&#x8981;&#x7D20;</h4>
+<p>&#x6240;&#x8C13; <a href="http://en.wikipedia.org/wiki/First-class_function" target="_blank">&quot;&#x4E00;&#x7B49;&#x516C;&#x6C11;&quot;</a>&#xFF08;first class&#xFF09;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x51FD;&#x6570;&#x4E0E;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E00;&#x6837;&#xFF0C;&#x5904;&#x4E8E;&#x5E73;&#x7B49;&#x5730;&#x4F4D;&#xFF0C;&#x53EF;&#x4EE5;&#x8D4B;&#x503C;&#x7ED9;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x4F20;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x4F5C;&#x4E3A;&#x5176;&#x5B83;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<p>&#x51FD;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> greet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg</span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hello <span class="hljs-subst">${msg}</span>`</span>); }
+greet(<span class="hljs-string">&apos;Semlinker&apos;</span>); <span class="hljs-comment">// Output: &apos;Hello Semlinker&apos;</span>
+</code></pre>
+<p>&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> logger = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg</span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hello <span class="hljs-subst">${msg}</span>`</span>); };
+<span class="hljs-keyword">const</span> greet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg, print</span>) </span>{ print(msg); };
+greet(<span class="hljs-string">&apos;Semlinker&apos;</span>, logger);
+</code></pre>
+<p>&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> a = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">b</span>) </span>{
+    <span class="hljs-keyword">return</span> a + b;
+  };
+};
+
+<span class="hljs-keyword">const</span> add5 = a(<span class="hljs-number">5</span>);
+add5(<span class="hljs-number">10</span>); <span class="hljs-comment">// Output: 15</span>
+</code></pre>
+<h4 id="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x91CD;&#x8981;&#x7279;&#x6027;">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x91CD;&#x8981;&#x7279;&#x6027;</h4>
+<ol>
+<li>&#x53EA;&#x7528;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4E0D;&#x7528;&#x8BED;&#x53E5;</li>
+</ol>
+<p>&quot;&#x8868;&#x8FBE;&#x5F0F;&quot;&#xFF08;expression&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x7EAF;&#x7684;&#x8FD0;&#x7B97;&#x8FC7;&#x7A0B;&#xFF0C;&#x603B;&#x662F;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF1B;&quot;&#x8BED;&#x53E5;&quot;&#xFF08;statement&#xFF09;&#x662F;&#x6267;&#x884C;&#x67D0;&#x79CD;&#x64CD;&#x4F5C;&#xFF0C;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x8981;&#x6C42;&#xFF0C;&#x53EA;&#x4F7F;&#x7528;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x8BED;&#x53E5;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6BCF;&#x4E00;&#x6B65;&#x90FD;&#x662F;&#x5355;&#x7EAF;&#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x800C;&#x4E14;&#x90FD;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<ol>
+<li>&#x7EAF;&#x51FD;&#x6570;</li>
+</ol>
+<p>&#x7EAF;&#x51FD;&#x6570;&#x7684;&#x7279;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x7ED9;&#x5B9A;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF0C;&#x603B;&#x662F;&#x8FD4;&#x56DE;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;</li>
+<li>&#x6CA1;&#x6709;&#x4F9D;&#x8D56;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</li>
+<li>&#x6CA1;&#x6709;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x526F;&#x4F5C;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x7EAF;&#x51FD;&#x6570;&#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> double = (number) =&gt; number * <span class="hljs-number">2</span>;
+double(<span class="hljs-number">5</span>);
+</code></pre>
+<p>&#x975E;&#x7EAF;&#x51FD;&#x6570;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">Math</span>.random(); <span class="hljs-comment">// =&gt; 0.3384159509502669</span>
+<span class="hljs-built_in">Math</span>.random(); <span class="hljs-comment">// =&gt; 0.9498302571942787</span>
+<span class="hljs-built_in">Math</span>.random(); <span class="hljs-comment">// =&gt; 0.9860841663478281</span>
+</code></pre>
+<p>&#x6240;&#x8C13; <a href="http://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank">&quot;&#x526F;&#x4F5C;&#x7528;&quot;</a>)&#xFF08;side effect&#xFF09;&#xFF0C;&#x662F;&#x6307;&#x51FD;&#x6570;&#x5185;&#x505A;&#x4E86;&#x4E0E;&#x672C;&#x8EAB;&#x8FD0;&#x7B97;&#x65E0;&#x5173;&#x7684;&#x4E8B;&#xFF0C;&#x6BD4;&#x5982;&#x4FEE;&#x6539;&#x67D0;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x6216;&#x53D1;&#x9001; HTTP &#x8BF7;&#x6C42;&#xFF0C;&#x751A;&#x81F3;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x6267;&#x884C; <code>console.log</code> &#x90FD;&#x7B97;&#x662F;&#x526F;&#x4F5C;&#x7528;&#x3002;<strong>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5F3A;&#x8C03;&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x6709;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x51FD;&#x6570;&#x8981;&#x4FDD;&#x6301;&#x7EAF;&#x7CB9;&#xFF0C;&#x53EA;&#x6267;&#x884C;&#x76F8;&#x5173;&#x8FD0;&#x7B97;&#x5E76;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x989D;&#x5916;&#x7684;&#x884C;&#x4E3A;</strong>&#x3002;</p>
+<h4 id="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x4F18;&#x52BF;">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x4F18;&#x52BF;</h4>
+<ol>
+<li>&#x4EE3;&#x7801;&#x7B80;&#x6D01;&#xFF0C;&#x5F00;&#x53D1;&#x5FEB;&#x901F;</li>
+</ol>
+<p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5927;&#x91CF;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x4EE3;&#x7801;&#x7684;&#x91CD;&#x590D;&#xFF0C;&#x56E0;&#x6B64;&#x7A0B;&#x5E8F;&#x6BD4;&#x8F83;&#x77ED;&#xFF0C;&#x5F00;&#x53D1;&#x901F;&#x5EA6;&#x8F83;&#x5FEB;&#x3002;</p>
+<ol>
+<li>&#x63A5;&#x8FD1;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#xFF0C;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x9AD8;</li>
+</ol>
+<p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x81EA;&#x7531;&#x5EA6;&#x5F88;&#x9AD8;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x51FA;&#x5F88;&#x63A5;&#x8FD1;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5C01;&#x88C5;&#x6570;&#x636E;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x4EE3;&#x7801;&#x4F1A;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x7B80;&#x6D01;&#x4E14;&#x53EF;&#x8BFB;&#x6027;&#x9AD8;&#xFF0C;&#x5177;&#x4F53;&#x53C2;&#x8003;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code>[1,2,3,4,5].map(x =&gt; x * 2).filter(x =&gt; x &gt; 5).reduce((p,n) =&gt; p + n);
+</code></pre><ol>
+<li>&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x9AD8;&#x3001;&#x65B9;&#x4FBF;&#x4EE3;&#x7801;&#x7BA1;&#x7406;</li>
+</ol>
+<p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x4E0D;&#x4F9D;&#x8D56;&#x3001;&#x4E5F;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5916;&#x754C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x53EA;&#x8981;&#x7ED9;&#x5B9A;&#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x5FC5;&#x5B9A;&#x76F8;&#x540C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x770B;&#x505A;&#x72EC;&#x7ACB;&#x5355;&#x5143;&#xFF0C;&#x5F88;&#x6709;&#x5229;&#x4E8E;&#x8FDB;&#x884C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF08;unit testing&#xFF09;&#x548C;&#x9664;&#x9519;&#xFF08;debugging&#xFF09;&#xFF0C;&#x4EE5;&#x53CA;&#x6A21;&#x5757;&#x5316;&#x7EC4;&#x5408;&#x3002;</p>
+<ol>
+<li>&#x6613;&#x4E8E; &quot;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&quot;</li>
+</ol>
+<p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x8651;&quot;&#x6B7B;&#x9501;&quot;&#xFF08;deadlock&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x4EE5;&#x6839;&#x672C;&#x4E0D;&#x5B58;&#x5728;&quot;&#x9501;&quot;&#x7EBF;&#x7A0B;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E0D;&#x5FC5;&#x62C5;&#x5FC3;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x88AB;&#x53E6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5F88;&#x653E;&#x5FC3;&#x5730;&#x628A;&#x5DE5;&#x4F5C;&#x5206;&#x644A;&#x5230;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x90E8;&#x7F72;&quot;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&quot;&#xFF08;concurrency&#xFF09;&#x3002;</p>
+<h3 id="javascript-&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5E38;&#x7528;&#x65B9;&#x6CD5;">JavaScript &#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h3>
+<ol>
+<li>forEach</li>
+</ol>
+<p>&#x5728; ES 5 &#x7248;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x901A;&#x8FC7; for &#x5FAA;&#x73AF;&#x904D;&#x5386;&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> heroes = [<span class="hljs-string">&apos;Windstorm&apos;</span>, <span class="hljs-string">&apos;Bombasto&apos;</span>, <span class="hljs-string">&apos;Magneta&apos;</span>, <span class="hljs-string">&apos;Tornado&apos;</span>];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span>, len = heroes.length; i &lt; len; i++) {
+  <span class="hljs-built_in">console</span>.log(heroes[i]);
+}
+</code></pre>
+<p>&#x5728; ES 5 &#x7248;&#x672C;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; forEach &#x65B9;&#x6CD5;&#xFF0C;&#x5B9E;&#x73B0;&#x4E0A;&#x9762;&#x7684;&#x529F;&#x80FD;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> heroes = [<span class="hljs-string">&apos;Windstorm&apos;</span>, <span class="hljs-string">&apos;Bombasto&apos;</span>, <span class="hljs-string">&apos;Magneta&apos;</span>, <span class="hljs-string">&apos;Tornado&apos;</span>];
+heroes.forEach(name =&gt; <span class="hljs-built_in">console</span>.log(name));
+</code></pre>
+<ol>
+<li>map</li>
+</ol>
+<p>&#x5728; ES 5 &#x7248;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x7ED9;&#x6BCF;&#x4E2A;&#x82F1;&#x96C4;&#x7684;&#x540D;&#x5B57;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x524D;&#x7F00;&#xFF0C;&#x4F46;&#x4E0D;&#x6539;&#x53D8;&#x539F;&#x6765;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> heroes = [<span class="hljs-string">&apos;Windstorm&apos;</span>, <span class="hljs-string">&apos;Bombasto&apos;</span>, <span class="hljs-string">&apos;Magneta&apos;</span>, <span class="hljs-string">&apos;Tornado&apos;</span>];
+<span class="hljs-keyword">var</span> prefixedHeroes = [];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span>, len = heroes.length; i &lt; len; i++) {
+  prefixedHeroes.push(<span class="hljs-string">&apos;Super_&apos;</span> + heroes[i]);
+}
+</code></pre>
+<p>&#x5728; ES 5 &#x7248;&#x672C;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; map &#x65B9;&#x6CD5;&#xFF0C;&#x65B9;&#x4FBF;&#x5730;&#x5B9E;&#x73B0;&#x4E0A;&#x9762;&#x7684;&#x529F;&#x80FD;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> heroes = [<span class="hljs-string">&apos;Windstorm&apos;</span>, <span class="hljs-string">&apos;Bombasto&apos;</span>, <span class="hljs-string">&apos;Magneta&apos;</span>, <span class="hljs-string">&apos;Tornado&apos;</span>];
+<span class="hljs-keyword">var</span> prefixedHeroes = heroes.map(name =&gt; <span class="hljs-string">&apos;Super_&apos;</span> + name);
+</code></pre>
+<ol>
+<li>filter</li>
+</ol>
+<p>&#x5728; ES 5 &#x7248;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x5BF9;&#x4E8E; heroes &#x6570;&#x7EC4;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x83B7;&#x53D6;&#x540D;&#x5B57;&#x4E2D;&#x5305;&#x542B; <code>m</code> &#x5B57;&#x6BCD;&#x7684;&#x82F1;&#x96C4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> heroes = [<span class="hljs-string">&apos;Windstorm&apos;</span>, <span class="hljs-string">&apos;Bombasto&apos;</span>, <span class="hljs-string">&apos;Magneta&apos;</span>, <span class="hljs-string">&apos;Tornado&apos;</span>];
+<span class="hljs-keyword">var</span> filterHeroes = [];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span>, len = heroes.length; i &lt; len; i++) {
+  <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/m/i</span>.test(heroes[i])) {
+    filterHeroes.push(heroes[i]);
+  }
+}
+</code></pre>
+<p>&#x5728; ES 5 &#x7248;&#x672C;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; filter &#x65B9;&#x6CD5;&#xFF0C;&#x65B9;&#x4FBF;&#x5730;&#x5B9E;&#x73B0;&#x4E0A;&#x9762;&#x7684;&#x529F;&#x80FD;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> heroes = [<span class="hljs-string">&apos;Windstorm&apos;</span>, <span class="hljs-string">&apos;Bombasto&apos;</span>, <span class="hljs-string">&apos;Magneta&apos;</span>, <span class="hljs-string">&apos;Tornado&apos;</span>];
+<span class="hljs-keyword">var</span> filterRe = <span class="hljs-regexp">/m/i</span>;
+<span class="hljs-keyword">var</span> filterHeroes = heroes.filter(name =&gt; filterRe.test(name));
+</code></pre>
+<h3 id="&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;">&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;</h3>
+<h4 id="&#x4EC0;&#x4E48;&#x662F;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;">&#x4EC0;&#x4E48;&#x662F;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;</h4>
+<p>&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x5C31;&#x662F;&#x7528;&#x5F02;&#x6B65;&#x6570;&#x636E;&#x6D41;&#x8FDB;&#x884C;&#x7F16;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E0D;&#x662F;&#x65B0;&#x7406;&#x5FF5;&#x3002;&#x5373;&#x4F7F;&#x662F;&#x6700;&#x5178;&#x578B;&#x7684;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x4E8B;&#x4EF6;&#x6D41;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4FA6;&#x6D4B;&#xFF08;observe&#xFF09;&#x5E76;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x6D41;&#x3002;&#x6D41;&#x975E;&#x5E38;&#x8F7B;&#x4FBF;&#xFF0C;&#x5E76;&#x4E14;&#x65E0;&#x5904;&#x4E0D;&#x5728;&#xFF0C;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#x90FD;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x6D41;&#xFF1A;&#x7528;&#x6237;&#x8F93;&#x5165;&#x3001;&#x7F13;&#x5B58;&#x3001;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7B49;&#x7B49;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#x5FAE;&#x535A;&#x63A8;&#x6587;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x548C;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x4E00;&#x6837;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4FA6;&#x542C;&#xFF0C;&#x5E76;&#x4F5C;&#x76F8;&#x5E94;&#x53CD;&#x5E94;&#x3002;</p>
+<h4 id="reactive-extension">Reactive Extension</h4>
+<p>Rx&#xFF08;Reactive Extension&#xFF09;&#x7684;&#x6982;&#x5FF5;&#x6700;&#x521D;&#x7531;&#x5FAE;&#x8F6F;&#x516C;&#x53F8;&#x5B9E;&#x73B0;&#x5E76;&#x5F00;&#x6E90;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; Rx.NET&#xFF0C;&#x56E0;&#x4E3A; Rx &#x5E26;&#x6765;&#x7684;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x5927;&#x5927;&#x6539;&#x8FDB;&#x4E86;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#xFF0C;&#x5728; .NET &#x4E4B;&#x540E;&#xFF0C;&#x4F17;&#x591A;&#x5F00;&#x53D1;&#x8005;&#x5728;&#x5176;&#x4ED6;&#x5E73;&#x53F0;&#x548C;&#x8BED;&#x8A00;&#x4E0A;&#x4E5F;&#x5B9E;&#x73B0;&#x4E86; Rx &#x7684;&#x7C7B;&#x5E93;&#x3002;&#x6BD4;&#x5982;&#x6709; Java &#x5B9E;&#x73B0;&#x7684; RxJava&#xFF0C;C++ &#x5B9E;&#x73B0;&#x7684; RxCpp&#xFF0C;&#x7528; Python &#x5B9E;&#x73B0;&#x7684; RXPy&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x5305;&#x62EC;&#x6211;&#x4EEC;&#x540E;&#x9762;&#x8981;&#x5B66;&#x4E60;&#x7684; JavaScript &#x5B9E;&#x73B0;&#x7684; RxJS&#x3002;</p>
+<p>&#x867D;&#x7136; Rx &#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x89E3;&#x51B3;&#x5F02;&#x6B65;&#x95EE;&#x9898;&#xFF0C;&#x6309;&#x5E76;&#x4E0D;&#x8868;&#x793A; Rx &#x4E0D;&#x9002;&#x5408;&#x540C;&#x6B65;&#x5904;&#x7406;&#x6570;&#x636E;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5728;&#x4F7F;&#x7528; Rx &#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5173;&#x5FC3;&#x4EE3;&#x7801;&#x662F;&#x88AB;&#x540C;&#x6B65;&#x6267;&#x884C;&#x8FD8;&#x662F;&#x5F02;&#x6B65;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x5904;&#x7406;&#x8D77;&#x6765;&#x4F1A;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x3002;</p>
+<h4 id="&#x975E;&#x54CD;&#x5E94;&#x5F0F;&#x4E0E;&#x54CD;&#x5E94;&#x5F0F;">&#x975E;&#x54CD;&#x5E94;&#x5F0F;&#x4E0E;&#x54CD;&#x5E94;&#x5F0F;</h4>
+<p>&#x8BF4;&#x4E86;&#x90A3;&#x4E48;&#x591A;&#x54CD;&#x5E94;&#x5F0F;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x975E;&#x54CD;&#x5E94;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> a1 = <span class="hljs-number">6</span>;
+<span class="hljs-keyword">let</span> b1 = <span class="hljs-number">6</span>;
+<span class="hljs-keyword">let</span> c1 = a1 + b1;
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5F88;&#x660E;&#x663E; c1 &#x7684;&#x503C;&#x4E3A; 12&#x3002;&#x4F46;&#x5F53;&#x6211;&#x6539;&#x53D8; a1 &#x7684;&#x503C;&#xFF0C;&#x6BD4;&#x5982;&#x6539;&#x4E3A; 3 &#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0; c1 &#x7684;&#x503C;&#x5E76;&#x4E0D;&#x4F1A;&#x66F4;&#x65B0;&#x3002;&#x540C;&#x7406;&#xFF0C;&#x5355;&#x72EC;&#x6539;&#x53D8; b1 &#x7684;&#x503C;&#xFF0C;c1 &#x7684;&#x503C;&#x4E5F;&#x4E0D;&#x4F1A;&#x66F4;&#x65B0;&#x3002;&#x5982;&#x679C;&#x8981;&#x83B7;&#x53D6;&#x65B0;&#x7684;&#x503C;&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#xFF0C;&#x5728;&#x751F;&#x6D3B;&#x4E2D;&#x4E5F;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x573A;&#x666F;&#x3002;&#x6BD4;&#x5982;&#x5546;&#x57CE;&#x8D2D;&#x7269;&#x8F66;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6539;&#x53D8;&#x8D2D;&#x7269;&#x8F66;&#x7684;&#x5546;&#x54C1;&#x6570;&#x91CF;&#x6216;&#x8005;&#x5220;&#x9664;&#x67D0;&#x4E2A;&#x5546;&#x54C1;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x80FD;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x8BA2;&#x5355;&#x91D1;&#x989D;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x7528;&#x6237;&#x505A;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x800C;&#x751F;&#x6D3B;&#x4E2D;&#x54CD;&#x5E94;&#x5F0F;&#x7684;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x4F8B;&#x5B50;&#x5C31;&#x662F; Excel &#x8868;&#x683C;&#xFF0C;&#x4EE5;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E3A;&#x4F8B;&#xFF0C;A1 &#x5355;&#x5143;&#x683C;&#x7684;&#x503C;&#x4E3A; 6&#xFF0C;B1 &#x5355;&#x5143;&#x683C;&#x7684;&#x503C;&#x4E5F;&#x4E3A; 6&#xFF0C;C1 &#x5355;&#x5143;&#x683C;&#x7684;&#x503C;&#x4E3A; <code>a1 + b1</code>&#x3002; &#x5F53;&#x6211;&#x4EEC;&#x6539;&#x53D8; A1 &#x5355;&#x5143;&#x683C;&#x6216; B1 &#x5355;&#x5143;&#x683C;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0; C1 &#x5355;&#x5143;&#x683C;&#x5185;&#x7684;&#x503C;&#x4F1A;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x6267;&#x884C;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x54CD;&#x5E94;&#x5F0F;&#x3002;</p>
+<p>&#x5728;&#x524D;&#x7AEF;&#x9886;&#x57DF;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x8981;&#x8DDF;&#x5F02;&#x6B65;&#x573A;&#x666F;&#x6253;&#x4EA4;&#x9053;&#x3002;&#x6BD4;&#x5982; DOM &#x4E8B;&#x4EF6;&#x3001;AJAX&#x3001;WebSocket&#x3001;&#x5B9A;&#x65F6;&#x5668;&#x7B49;&#x3002;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F02;&#x6B65;&#x7684;&#x573A;&#x666F;&#x4F1A;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x3002;&#x4E0D;&#x8FC7;&#x503C;&#x5F97;&#x5E86;&#x5E78;&#x5730;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x62E5;&#x6709; RxJS &#x8FD9;&#x4E2A;&#x5229;&#x5668;&#x3002;RxJS &#x64C5;&#x957F;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5BF9;&#x6570;&#x636E;&#x91C7;&#x7528; &#x201C;Push&#x201D;&#xFF08;&#x76F8;&#x8F83;&#x4E8E; &#x201C;Pull&#x201D; &#x65B9;&#x5F0F;&#xFF09;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x4EA7;&#x751F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x88AB;&#x4E3B;&#x52A8;&#x5730;&#x63A8;&#x7ED9;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E0D;&#x7528;&#x5173;&#x5FC3;&#x6570;&#x636E;&#x662F;&#x540C;&#x6B65;&#x6216;&#x8005;&#x5F02;&#x6B65;&#x4EA7;&#x751F;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x4ECE;&#x5F02;&#x6B65;&#x5904;&#x7406;&#x7684;&#x5883;&#x9047;&#x4E2D;&#x89E3;&#x6551;&#x51FA;&#x6765;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6E90;">&#x53C2;&#x8003;&#x8D44;&#x6E90;</h3>
+<ul>
+<li><a href="http://www.atjiang.com/intro-reactive-programming/" target="_blank">&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x5165;&#x95E8;</a></li>
+<li>&#x6DF1;&#x5165;&#x6D45;&#x51FA; RxJS</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="rxjs-create-observable.html" class="navigation navigation-next navigation-unique" aria-label="Next page: RxJS 创建 Observable ">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"RxJS 函数式与响应式编程","level":"1.7.1","depth":2,"next":{"title":"RxJS 创建 Observable ","level":"1.7.2","depth":2,"path":"rxjs/rxjs-create-observable.md","ref":"rxjs/rxjs-create-observable.md","articles":[]},"previous":{"title":"RxJS","level":"1.7","depth":1,"ref":"","articles":[{"title":"RxJS 函数式与响应式编程","level":"1.7.1","depth":2,"path":"rxjs/rxjs-fp-and-rx-programming.md","ref":"rxjs/rxjs-fp-and-rx-programming.md","articles":[]},{"title":"RxJS 创建 Observable ","level":"1.7.2","depth":2,"path":"rxjs/rxjs-create-observable.md","ref":"rxjs/rxjs-create-observable.md","articles":[]},{"title":"RxJS Observable","level":"1.7.3","depth":2,"path":"rxjs/rxjs-observable.md","ref":"rxjs/rxjs-observable.md","articles":[]},{"title":"RxJS Subject","level":"1.7.4","depth":2,"path":"rxjs/rxjs-subject.md","ref":"rxjs/rxjs-subject.md","articles":[]},{"title":"RxJS mergeMap和switchMap","level":"1.7.5","depth":2,"path":"rxjs/rxjs-merge-map-and-switch-map.md","ref":"rxjs/rxjs-merge-map-and-switch-map.md","articles":[]},{"title":"RxJS 处理多个Http请求","level":"1.7.6","depth":2,"path":"rxjs/rxjs-handle-multi-http-request.md","ref":"rxjs/rxjs-handle-multi-http-request.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"rxjs/rxjs-fp-and-rx-programming.md","mtime":"2018-10-07T15:41:25.264Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1165 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Angular 动态创建组件 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ng-environment-variable.html" />
+    
+    
+    <link rel="prev" href="ng-comp-style.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tool/ng-compodoc-intro.html">
+            
+                <a href="../tool/ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tool/ng-verson-manage.html">
+            
+                <a href="../tool/ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tool/ng-vsc-debugger.html">
+            
+                <a href="../tool/ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tool/ng-storybook.html">
+            
+                <a href="../tool/ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tool/ng-translate-and-extract.html">
+            
+                <a href="../tool/ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tool/ng-npx-and-ghpages.html">
+            
+                <a href="../tool/ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../tool/ng-bundle-analyzer.html">
+            
+                <a href="../tool/ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../service/ng-di.html">
+            
+                <a href="../service/ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../service/ng-app-initializer.html">
+            
+                <a href="../service/ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../service/ng-provider-scope.html">
+            
+                <a href="../service/ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../service/ng-meta-service.html">
+            
+                <a href="../service/ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../service/ng-title-service.html">
+            
+                <a href="../service/ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../service/ng-custom-pipe.html">
+            
+                <a href="../service/ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../service/ng-http-interceptor.html">
+            
+                <a href="../service/ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../service/ng-jsonp-detail.html">
+            
+                <a href="../service/ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="ng-ctor-oninit.html">
+            
+                <a href="ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="ng-input-and-output.html">
+            
+                <a href="ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="ng-dom-abstract.html">
+            
+                <a href="ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="ng-comp-style.html">
+            
+                <a href="ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.5" data-path="ng-dynamic-component.html">
+            
+                <a href="ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="ng-environment-variable.html">
+            
+                <a href="ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="ng-error-handler.html">
+            
+                <a href="ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Angular 动态创建组件</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x672C;&#x6587;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x5728; Angular &#x4E2D;&#x5982;&#x4F55;&#x52A8;&#x6001;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x3002;</p>
+<h3 id="&#x5B9A;&#x4E49;-alertcomponent-&#x7EC4;&#x4EF6;">&#x5B9A;&#x4E49; AlertComponent &#x7EC4;&#x4EF6;</h3>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; AlertComponent &#x7EC4;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, EventEmitter, Input, Output } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;alert&quot;</span>,
+  template: <span class="hljs-string">`
+    &lt;h1 (click)=&quot;output.next(&apos;output&apos;)&quot;&gt;Alert {{ type }}&lt;/h1&gt;
+  `</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AlertComponent {
+  @Input() <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;success&quot;</span>;
+  @Output() output = <span class="hljs-keyword">new</span> EventEmitter();
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; AlertComponent &#x7EC4;&#x4EF6;&#xFF0C;&#x8BE5;&#x7EC4;&#x4EF6;&#x6709;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x5C5E;&#x6027;  <code>type</code> &#xFF0C;&#x7528;&#x4E8E;&#x8BA9;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x63D0;&#x793A;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x6B64;&#x5916;&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x8F93;&#x51FA;&#x5C5E;&#x6027; output&#xFF0C;&#x7528;&#x4E8E;&#x5411;&#x5916;&#x90E8;&#x7EC4;&#x4EF6;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x3002;&#x6211;&#x4EEC;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x6700;&#x7EC8;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684; DOM &#x5143;&#x7D20;&#xFF0C;&#x56E0;&#x6B64;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x9875;&#x9762;&#x4E2D;&#x63D2;&#x5165;&#x8BE5;&#x5143;&#x7D20;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x8003;&#x8651;&#x5728;&#x54EA;&#x91CC;&#x653E;&#x7F6E;&#x8BE5;&#x5143;&#x7D20;&#x3002;</p>
+<h3 id="&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x5BB9;&#x5668;">&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x5BB9;&#x5668;</h3>
+<p>&#x5728; Angular &#x4E2D;&#x653E;&#x7F6E;&#x7EC4;&#x4EF6;&#x7684;&#x5730;&#x65B9;&#x79F0;&#x4E3A;&#x5BB9;&#x5668;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x6839;&#x7EC4;&#x4EF6;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x5143;&#x7D20;&#xFF0C;&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x53D8;&#x91CF;&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x53D8;&#x91CF;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6A21;&#x677F;&#x5143;&#x7D20; <code>&lt;ng-template&gt;</code> &#x5C06;&#x4F1A;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x7EC4;&#x4EF6;&#x5BB9;&#x5668;&#xFF0C;&#x5177;&#x4F53;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+    &lt;ng-template #alertContainer&gt;&lt;/ng-template&gt;
+  `</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent { }
+</code></pre>
+<p>&#x5728; AppComponent &#x7EC4;&#x4EF6;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; ViewChild &#x88C5;&#x9970;&#x5668;&#x6765;&#x83B7;&#x53D6;&#x89C6;&#x56FE;&#x4E2D;&#x7684;&#x6A21;&#x677F;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x7B2C;&#x4E8C;&#x4E2A;&#x67E5;&#x8BE2;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;&#x7684; ElementRef &#x5B9E;&#x4F8B;&#xFF0C;&#x4F46;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x83B7;&#x53D6; ViewContainerRef &#x5B9E;&#x4F8B;&#x3002;</p>
+<blockquote>
+<p>ViewContainerRef &#x7528;&#x4E8E;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x5BB9;&#x5668;&#xFF0C;&#x53EF;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x89C6;&#x56FE;&#x3002;&#x901A;&#x8FC7;  ViewContainerRef &#x5B9E;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E; TemplateRef &#x5B9E;&#x4F8B;&#x521B;&#x5EFA;&#x5185;&#x5D4C;&#x89C6;&#x56FE;&#xFF0C;&#x5E76;&#x80FD;&#x6307;&#x5B9A;&#x5185;&#x5D4C;&#x89C6;&#x56FE;&#x7684;&#x63D2;&#x5165;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5BF9;&#x89C6;&#x56FE;&#x5BB9;&#x5668;&#x4E2D;&#x5DF2;&#x6709;&#x7684;&#x89C6;&#x56FE;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;ViewContainerRef &#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x521B;&#x5EFA;&#x548C;&#x7BA1;&#x7406;&#x5185;&#x5D4C;&#x89C6;&#x56FE;&#x6216;&#x7EC4;&#x4EF6;&#x89C6;&#x56FE;&#x3002;</p>
+</blockquote>
+<p>&#x6839;&#x636E;&#x4EE5;&#x4E0A;&#x9700;&#x6C42;&#xFF0C;&#x66F4;&#x65B0;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, ViewChild, ViewContainerRef } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+    &lt;ng-template #alertContainer&gt;&lt;/ng-template&gt;
+  `</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  @ViewChild(<span class="hljs-string">&quot;alertContainer&quot;</span>, { read: ViewContainerRef }) container: ViewContainerRef;
+}
+</code></pre>
+<h3 id="&#x52A8;&#x6001;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;">&#x52A8;&#x6001;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;</h3>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5728; AppComponent &#x7EC4;&#x4EF6;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x6DFB;&#x52A0;&#x4E24;&#x4E2A;&#x6309;&#x94AE;&#xFF0C;&#x7528;&#x4E8E;&#x521B;&#x5EFA; AlertComponent &#x7EC4;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, ViewChild, ViewContainerRef } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+    &lt;ng-template #alertContainer&gt;&lt;/ng-template&gt;
+    &lt;button (click)=&quot;createComponent(&apos;success&apos;)&quot;&gt;Create success alert&lt;/button&gt;
+    &lt;button (click)=&quot;createComponent(&apos;danger&apos;)&quot;&gt;Create danger alert&lt;/button&gt;
+  `</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+  @ViewChild(<span class="hljs-string">&quot;alertContainer&quot;</span>, { read: ViewContainerRef }) container: ViewContainerRef;
+}
+</code></pre>
+<p>&#x5728;&#x6211;&#x4EEC;&#x5B9A;&#x4E49; <code>createComponent()</code> &#x65B9;&#x6CD5;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6CE8;&#x5165; <code>ComponentFactoryResolver</code> &#x670D;&#x52A1;&#x5BF9;&#x8C61;&#x3002;&#x8BE5; <code>ComponentFactoryResolver</code> &#x670D;&#x52A1;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x65B9;&#x6CD5; &#x2014;&#x2014; <code>resolveComponentFactory()</code> &#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x7C7B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE; <code>ComponentFactory</code> &#x5B9E;&#x4F8B; &#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5728; AppComponent &#x7EC4;&#x4EF6;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x6CE8;&#x5165; ComponentFactoryResolver &#x670D;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">constructor</span>(private resolver: ComponentFactoryResolver) {}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B; ComponentFactory &#x62BD;&#x8C61;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> ComponentFactory&lt;C&gt; {
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">get</span> selector(): <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">get</span> componentType(): Type&lt;<span class="hljs-built_in">any</span>&gt;;
+
+  <span class="hljs-comment">// selector for all &lt;ng-content&gt; elements in the component.</span>
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">get</span> ngContentSelectors(): <span class="hljs-built_in">string</span>[];
+  <span class="hljs-comment">// the inputs of the component.</span>
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">get</span> inputs(): {propName: <span class="hljs-built_in">string</span>, templateName: <span class="hljs-built_in">string</span>}[];
+  <span class="hljs-comment">// the outputs of the component.</span>
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">get</span> outputs(): {propName: <span class="hljs-built_in">string</span>, templateName: <span class="hljs-built_in">string</span>}[];
+  <span class="hljs-comment">// Creates a new component.</span>
+  <span class="hljs-keyword">abstract</span> create(
+      injector: Injector, projectableNodes?: <span class="hljs-built_in">any</span>[][], rootSelectorOrNode?: <span class="hljs-built_in">string</span>|<span class="hljs-built_in">any</span>,
+      ngModule?: NgModuleRef&lt;<span class="hljs-built_in">any</span>&gt;): ComponentRef&lt;C&gt;;
+}
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x89C2;&#x5BDF; ComponentFactory &#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528; ComponentFactory &#x5B9E;&#x4F8B;&#x7684; <code>create()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x6765;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x3002;&#x4ECB;&#x7ECD;&#x5B8C;&#x4E0A;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0; AppComponent &#x7EC4;&#x4EF6;&#x7684; <code>createComponent()</code> &#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-typescript">createComponent(<span class="hljs-keyword">type</span>) {
+  <span class="hljs-keyword">this</span>.container.clear();
+  <span class="hljs-keyword">const</span> factory: ComponentFactory&lt;AlertComponent&gt; =
+    <span class="hljs-keyword">this</span>.resolver.resolveComponentFactory(AlertComponent);
+  <span class="hljs-keyword">this</span>.componentRef = <span class="hljs-keyword">this</span>.container.createComponent(factory);
+}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x5206;&#x6BB5;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.container.clear();
+</code></pre>
+<p>&#x6BCF;&#x6B21;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5220;&#x9664;&#x4E4B;&#x524D;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x5426;&#x5219;&#x7EC4;&#x4EF6;&#x5BB9;&#x5668;&#x4E2D;&#x4F1A;&#x51FA;&#x73B0;&#x591A;&#x4E2A;&#x89C6;&#x56FE;&#xFF08;&#x5982;&#x679C;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C;&#x6E05;&#x9664;&#x64CD;&#x4F5C;&#xFF09;&#x3002;</p>
+<pre><code class="lang-typescript"> <span class="hljs-keyword">const</span> factory: ComponentFactory&lt;AlertComponent&gt; =
+    <span class="hljs-keyword">this</span>.resolver.resolveComponentFactory(AlertComponent);
+</code></pre>
+<p>&#x6B63;&#x5982;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x6240;&#x8BF4;&#x7684;&#xFF0C;<code>resolveComponentFactory()</code> &#x65B9;&#x6CD5;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5E76;&#x8FD4;&#x56DE; ComponentFactory &#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.componentRef = <span class="hljs-keyword">this</span>.container.createComponent(factory);
+</code></pre>
+<p>&#x5728;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x5BB9;&#x5668;&#x5BF9;&#x8C61;&#x7684; <code>createComponent()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x5C06;&#x8C03;&#x7528; <code>ComponentFactory</code> &#x5B9E;&#x4F8B;&#x7684; create() &#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x5E76;&#x5C06;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x65B0;&#x7EC4;&#x4EF6;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x7EC4;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x7C7B;&#x578B;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.componentRef.instance.type = <span class="hljs-keyword">type</span>;
+</code></pre>
+<p>&#x540C;&#x6837;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8BA2;&#x9605;&#x7EC4;&#x4EF6;&#x7684;&#x8F93;&#x51FA;&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.componentRef.instance.output.subscribe(event =&gt; <span class="hljs-built_in">console</span>.log(event));
+</code></pre>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x5DF2;&#x521B;&#x5EFA;&#x7684;&#x7EC4;&#x4EF6;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528; <code>destroy()</code> &#x65B9;&#x6CD5;&#x9500;&#x6BC1;&#x7EC4;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-typescript">ngOnDestroy() {
+  <span class="hljs-keyword">this</span>.componentRef.destroy(); 
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x52A8;&#x6001;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230; NgModule &#x7684; entryComponents &#x5C5E;&#x6027;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-typescript">@NgModule({
+  ...,
+  declarations: [AppComponent, AlertComponent],
+  bootstrap: [AppComponent],
+  entryComponents: [AlertComponent],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+<h3 id="&#x5B8C;&#x6574;&#x793A;&#x4F8B;">&#x5B8C;&#x6574;&#x793A;&#x4F8B;</h3>
+<ol>
+<li>alert.component.ts</li>
+</ol>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, EventEmitter, Input, Output } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&quot;alert&quot;</span>,
+  template: <span class="hljs-string">`
+    &lt;h1 (click)=&quot;output.next(&apos;output&apos;)&quot;&gt;Alert {{ type }}&lt;/h1&gt;
+  `</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AlertComponent {
+  @Input() <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;success&quot;</span>;
+  @Output() output = <span class="hljs-keyword">new</span> EventEmitter();
+}
+</code></pre>
+<ol>
+<li>app.component.ts</li>
+</ol>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentFactory, ComponentRef, OnDestroy } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { AlertComponent } from <span class="hljs-string">&apos;./alert.component&apos;</span>;
+
+@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+    &lt;ng-template #alertContainer&gt;&lt;/ng-template&gt;
+    &lt;button (click)=&quot;createComponent(&apos;success&apos;)&quot;&gt;Create success alert&lt;/button&gt;
+    &lt;button (click)=&quot;createComponent(&apos;danger&apos;)&quot;&gt;Create danger alert&lt;/button&gt;
+  `</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent <span class="hljs-keyword">implements</span> OnDestroy {
+  componentRef: ComponentRef&lt;AlertComponent&gt;;
+  @ViewChild(<span class="hljs-string">&quot;alertContainer&quot;</span>, { read: ViewContainerRef }) container: ViewContainerRef;
+
+  <span class="hljs-keyword">constructor</span>(private resolver: ComponentFactoryResolver) { }
+
+  createComponent(<span class="hljs-keyword">type</span>) {
+    <span class="hljs-keyword">this</span>.container.clear();
+    <span class="hljs-keyword">const</span> factory: ComponentFactory&lt;AlertComponent&gt; =
+      <span class="hljs-keyword">this</span>.resolver.resolveComponentFactory(AlertComponent);
+    <span class="hljs-keyword">this</span>.componentRef = <span class="hljs-keyword">this</span>.container.createComponent(factory);
+    <span class="hljs-keyword">this</span>.componentRef.instance.type = <span class="hljs-keyword">type</span>;
+    <span class="hljs-keyword">this</span>.componentRef.instance.output.subscribe((msg: <span class="hljs-built_in">string</span>) =&gt; <span class="hljs-built_in">console</span>.log(msg));
+  }
+
+  ngOnDestroy() {
+    <span class="hljs-keyword">this</span>.componentRef.destroy()
+  }
+}
+</code></pre>
+<ol>
+<li>app.module.ts</li>
+</ol>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { NgModule } from <span class="hljs-string">&apos;@angular/core&apos;</span>;
+<span class="hljs-keyword">import</span> { BrowserModule } from <span class="hljs-string">&apos;@angular/platform-browser&apos;</span>;
+
+<span class="hljs-keyword">import</span> { AppComponent } from <span class="hljs-string">&apos;./app.component&apos;</span>;
+<span class="hljs-keyword">import</span> { AlertComponent } from <span class="hljs-string">&apos;./alert.component&apos;</span>;
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [AppComponent, AlertComponent],
+  entryComponents: [AlertComponent],
+  bootstrap: [AppComponent]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x7EC4;&#x4EF6;&#x7684;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>&#x83B7;&#x53D6;&#x88C5;&#x8F7D;&#x52A8;&#x6001;&#x7EC4;&#x4EF6;&#x7684;&#x5BB9;&#x5668;&#x3002;</li>
+<li>&#x5728;&#x7EC4;&#x4EF6;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x6CE8;&#x5165; <code>ComponentFactoryResolver</code> &#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x8C03;&#x7528; <code>ComponentFactoryResolver</code> &#x5BF9;&#x8C61;&#x7684; <code>resolveComponentFactory()</code> &#x65B9;&#x6CD5;&#x521B;&#x5EFA; <code>ComponentFactory</code> &#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x8C03;&#x7528;&#x7EC4;&#x4EF6;&#x5BB9;&#x5668;&#x5BF9;&#x8C61;&#x7684; <code>createComponent()</code> &#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x5E76;&#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x52A8;&#x6001;&#x7EC4;&#x4EF6;&#x5230;&#x7EC4;&#x4EF6;&#x5BB9;&#x5668;&#x4E2D;&#x3002;</li>
+<li>&#x57FA;&#x4E8E;&#x8FD4;&#x56DE;&#x7684; <code>ComponentRef</code> &#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#xFF0C;&#x914D;&#x7F6E;&#x7EC4;&#x4EF6;&#x76F8;&#x5173;&#x5C5E;&#x6027;&#xFF08;&#x53EF;&#x9009;&#xFF09;&#x3002;</li>
+<li>&#x5728;&#x6A21;&#x5757; Metadata &#x5BF9;&#x8C61;&#x7684; entryComponents &#x5C5E;&#x6027;&#x4E2D;&#x6DFB;&#x52A0;&#x52A8;&#x6001;&#x7EC4;&#x4EF6;&#xFF1A;<ul>
+<li>declarations &#x2014;&#x2014; &#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x5C5E;&#x4E8E;&#x8BE5;&#x6A21;&#x5757;&#x7684;&#x6307;&#x4EE4;&#x548C;&#x7BA1;&#x9053;&#x5217;&#x8868;&#x3002;</li>
+<li>entryComponents &#x2014;&#x2014; &#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x5728;&#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x7F16;&#x8BD1;&#x7684;&#x7EC4;&#x4EF6;&#x5217;&#x8868;&#x3002;&#x5BF9;&#x4E8E;&#x5217;&#x8868;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;Angular &#x5C06;&#x4F1A;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x4E00;&#x4E2A; ComponentFactory &#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x5B58;&#x50A8;&#x5728; ComponentFactoryResolver &#x5BF9;&#x8C61;&#x4E2D;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<p>&#x901A;&#x8FC7; ComponentFactoryResolver &#x5BF9;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E86;&#x52A8;&#x6001;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4F46;&#x521B;&#x5EFA;&#x7684;&#x8FC7;&#x7A0B;&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x7E41;&#x7410;&#xFF0C;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x5F00;&#x53D1;&#x8005;&#x4F53;&#x9A8C;&#x548C;&#x5F00;&#x53D1;&#x6548;&#x7387;&#xFF0C;Angular &#x5F15;&#x5165;&#x4E86; ngComponentOutlet &#x6307;&#x4EE4;&#x3002; &#x597D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9A6C;&#x4E0A;&#x6765;&#x611F;&#x53D7;&#x4E00;&#x4E0B; ngComponentOutlet &#x6307;&#x4EE4;&#x5E26;&#x6765;&#x7684;&#x4FBF;&#x5229;&#x3002;</p>
+<blockquote>
+<p>&#x611F;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x7EBF;&#x67E5;&#x770B; <a href="https://stackblitz.com/edit/sl-dynamic-component" target="_blank">Stackblitz</a> &#x5B8C;&#x6574;&#x793A;&#x4F8B;&#x3002;</p>
+</blockquote>
+<h3 id="ngcomponentoutlet">ngComponentOutlet</h3>
+<ol>
+<li>&#x66F4;&#x65B0;&#x6839;&#x7EC4;&#x4EF6; AppComponent &#x6A21;&#x677F;&#xFF0C;&#x5E94;&#x7528; ngComponentOutlet &#x6307;&#x4EE4;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-html">@Component({
+  selector: &apos;my-app&apos;,
+  template: `
+    ...
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngComponentOutlet</span>=<span class="hljs-string">&quot;alertComponent&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+  `
+})
+</code></pre>
+<ol>
+<li>&#x66F4;&#x65B0; AppComponent &#x7EC4;&#x4EF6;&#x7C7B;&#xFF0C;&#x65B0;&#x589E; alertComponent &#x5C5E;&#x6027;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { AlertComponent } from <span class="hljs-string">&apos;./alert.component&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent <span class="hljs-keyword">implements</span> OnDestroy {
+  alertComponent = AlertComponent;
+  <span class="hljs-comment">//...</span>
+}
+</code></pre>
+<p>&#x5176;&#x5B9E; ngComponentOutlet &#x6307;&#x4EE4;&#x9664;&#x4E86;&#x5305;&#x542B; ngComponentOutlet &#x8F93;&#x5165;&#x5C5E;&#x6027;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x5305;&#x542B; ngComponentOutletInjector&#x3001;ngComponentOutletContent &#x548C; ngComponentOutletNgModuleFactory &#x8F93;&#x5165;&#x5C5E;&#x6027;&#xFF0C;&#x60F3;&#x6DF1;&#x5165;&#x4E86;&#x89E3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E00;&#x4E0B; Angular &#x5B98;&#x65B9;&#x7684;&#x8BF4;&#x660E;&#x6587;&#x6863;&#x3002;</p>
+<pre><code class="lang-typescript">@Component({
+  selector: <span class="hljs-string">&apos;my-app&apos;</span>,
+  template: <span class="hljs-string">`
+    &lt;ng-template #alertContainer&gt;&lt;/ng-template&gt;
+    &lt;button (click)=&quot;createComponent(&apos;success&apos;)&quot;&gt;Create success alert&lt;/button&gt;
+    &lt;button (click)=&quot;createComponent(&apos;danger&apos;)&quot;&gt;Create danger alert&lt;/button&gt;
+    &lt;div *ngComponentOutlet=&quot;alertComponent&quot;&gt;&lt;/div&gt;
+  `</span>
+})
+</code></pre>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6E90;">&#x53C2;&#x8003;&#x8D44;&#x6E90;</h3>
+<ul>
+<li><a href="https://netbasal.com/dynamically-creating-components-with-angular-a7346f4a982d" target="_blank">Dynamically Creating Components With Angular</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ng-comp-style.html" class="navigation navigation-prev " aria-label="Previous page: Angular 组件样式">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ng-environment-variable.html" class="navigation navigation-next " aria-label="Next page: Angular 环境变量">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Angular 动态创建组件","level":"1.6.5","depth":2,"next":{"title":"Angular 环境变量","level":"1.6.6","depth":2,"path":"other/ng-environment-variable.md","ref":"other/ng-environment-variable.md","articles":[]},"previous":{"title":"Angular 组件样式","level":"1.6.4","depth":2,"path":"other/ng-comp-style.md","ref":"other/ng-comp-style.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"other/ng-dynamic-component.md","mtime":"2018-10-07T15:37:44.374Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

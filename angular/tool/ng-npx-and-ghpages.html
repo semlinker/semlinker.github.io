@@ -1,0 +1,987 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Angular 工具篇之npx及angular-cli-ghpages · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ng-bundle-analyzer.html" />
+    
+    
+    <link rel="prev" href="ng-translate-and-extract.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    入门篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../quickstart/ng-quickstart.html">
+            
+                <a href="../quickstart/ng-quickstart.html">
+            
+                    
+                    Angular 6 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../quickstart/ng-base-tutorial.html">
+            
+                <a href="../quickstart/ng-base-tutorial.html">
+            
+                    
+                    Angular 6 基础教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../quickstart/ng-pipe-quickstart.html">
+            
+                <a href="../quickstart/ng-pipe-quickstart.html">
+            
+                    
+                    Angular 6 管道快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../quickstart/ng-form-quickstart.html">
+            
+                <a href="../quickstart/ng-form-quickstart.html">
+            
+                    
+                    Angular 6 表单快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../quickstart/ng-directive-quickstart.html">
+            
+                <a href="../quickstart/ng-directive-quickstart.html">
+            
+                    
+                    Angular 6 指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../quickstart/ng-http-client-quickstart.html">
+            
+                <a href="../quickstart/ng-http-client-quickstart.html">
+            
+                    
+                    Angular 6 HttpClient 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../quickstart/ng-library-quickstart.html">
+            
+                <a href="../quickstart/ng-library-quickstart.html">
+            
+                    
+                    Angular Library 快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    工具篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="ng-compodoc-intro.html">
+            
+                <a href="ng-compodoc-intro.html">
+            
+                    
+                    Angular 工具篇之文档管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="ng-verson-manage.html">
+            
+                <a href="ng-verson-manage.html">
+            
+                    
+                    Angular 工具篇之规范化Git版本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="ng-vsc-debugger.html">
+            
+                <a href="ng-vsc-debugger.html">
+            
+                    
+                    Angular 工具篇之VSCode调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="ng-storybook.html">
+            
+                <a href="ng-storybook.html">
+            
+                    
+                    Angular 工具篇之Storybook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="ng-translate-and-extract.html">
+            
+                <a href="ng-translate-and-extract.html">
+            
+                    
+                    Angular 工具篇之国际化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.6" data-path="ng-npx-and-ghpages.html">
+            
+                <a href="ng-npx-and-ghpages.html">
+            
+                    
+                    Angular 工具篇之npx及angular-cli-ghpages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="ng-bundle-analyzer.html">
+            
+                <a href="ng-bundle-analyzer.html">
+            
+                    
+                    Angular 工具篇之分析包的大小
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    服务篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../service/ng-di.html">
+            
+                <a href="../service/ng-di.html">
+            
+                    
+                    Angular 依赖注入简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../service/ng-app-initializer.html">
+            
+                <a href="../service/ng-app-initializer.html">
+            
+                    
+                    Angular Multi Providers 和 APP_INITIALIZER
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../service/ng-provider-scope.html">
+            
+                <a href="../service/ng-provider-scope.html">
+            
+                    
+                    Angular Provider 作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../service/ng-meta-service.html">
+            
+                <a href="../service/ng-meta-service.html">
+            
+                    
+                    Angular Meta Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../service/ng-title-service.html">
+            
+                <a href="../service/ng-title-service.html">
+            
+                    
+                    Angular Title Service 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../service/ng-custom-pipe.html">
+            
+                <a href="../service/ng-custom-pipe.html">
+            
+                    
+                    Angular 自定义管道
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../service/ng-http-interceptor.html">
+            
+                <a href="../service/ng-http-interceptor.html">
+            
+                    
+                    Angular HttpClient 拦截器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../service/ng-jsonp-detail.html">
+            
+                <a href="../service/ng-jsonp-detail.html">
+            
+                    
+                     Angular JSONP 详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    元素篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../element/ng-element-ref.html">
+            
+                <a href="../element/ng-element-ref.html">
+            
+                    
+                    Angular ElementRef 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../element/viewchild-and-viewchildren.html">
+            
+                <a href="../element/viewchild-and-viewchildren.html">
+            
+                    
+                    Angular ViewChild 和 ViewChildren
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../element/ng-template-vs-ng-container.html">
+            
+                <a href="../element/ng-template-vs-ng-container.html">
+            
+                    
+                    Angular ng-template vs ng-container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../element/ng-content-projection.html">
+            
+                <a href="../element/ng-content-projection.html">
+            
+                    
+                    Angular 内容投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../element/ng-content-projection-hidden-docs.html">
+            
+                <a href="../element/ng-content-projection-hidden-docs.html">
+            
+                    
+                    ng-content 中隐藏的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../element/ng-custom-attr-directive.html">
+            
+                <a href="../element/ng-custom-attr-directive.html">
+            
+                    
+                    Angular 自定义属性指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    其它
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../other/ng-ctor-oninit.html">
+            
+                <a href="../other/ng-ctor-oninit.html">
+            
+                    
+                    Angular constructor vs ngOnInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../other/ng-input-and-output.html">
+            
+                <a href="../other/ng-input-and-output.html">
+            
+                    
+                    Angular Input 和 Output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../other/ng-dom-abstract.html">
+            
+                <a href="../other/ng-dom-abstract.html">
+            
+                    
+                    Angular DOM 抽象概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../other/ng-comp-style.html">
+            
+                <a href="../other/ng-comp-style.html">
+            
+                    
+                    Angular 组件样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../other/ng-dynamic-component.html">
+            
+                <a href="../other/ng-dynamic-component.html">
+            
+                    
+                    Angular 动态创建组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../other/ng-environment-variable.html">
+            
+                <a href="../other/ng-environment-variable.html">
+            
+                    
+                    Angular 环境变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../other/ng-error-handler.html">
+            
+                <a href="../other/ng-error-handler.html">
+            
+                    
+                    Angular 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    RxJS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                <a href="../rxjs/rxjs-fp-and-rx-programming.html">
+            
+                    
+                    RxJS 函数式与响应式编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../rxjs/rxjs-create-observable.html">
+            
+                <a href="../rxjs/rxjs-create-observable.html">
+            
+                    
+                    RxJS 创建 Observable 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../rxjs/rxjs-observable.html">
+            
+                <a href="../rxjs/rxjs-observable.html">
+            
+                    
+                    RxJS Observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../rxjs/rxjs-subject.html">
+            
+                <a href="../rxjs/rxjs-subject.html">
+            
+                    
+                    RxJS Subject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                <a href="../rxjs/rxjs-merge-map-and-switch-map.html">
+            
+                    
+                    RxJS mergeMap和switchMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                <a href="../rxjs/rxjs-handle-multi-http-request.html">
+            
+                    
+                    RxJS 处理多个Http请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    TypeScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../ts/ts-intro-and-guide.html">
+            
+                <a href="../ts/ts-intro-and-guide.html">
+            
+                    
+                    TypeScript 简介及编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../ts/ts-resource-list.html">
+            
+                <a href="../ts/ts-resource-list.html">
+            
+                    
+                    TypeScript 学习资源合集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Angular 工具篇之npx及angular-cli-ghpages</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x4ECA;&#x5929;&#x672C;&#x6587;&#x7684;&#x4E24;&#x4E2A;&#x4E3B;&#x89D2;&#x662F; <a href="https://www.npmjs.com/package/npx" target="_blank">npx</a> &#x53CA; <a href="https://www.npmjs.com/package/angular-cli-ghpages" target="_blank">angular-cli-ghpages</a>&#xFF0C;npx &#x662F; npm 5.2 &#x5F15;&#x5165;&#x4E86;&#x7684;&#x65B0;&#x7684;&#x5DE5;&#x5177;&#xFF0C; &#x7528;&#x4E8E;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x6267;&#x884C; npm &#x4E8C;&#x8FDB;&#x5236;&#x4EFB;&#x52A1;&#x548C;&#x52A0;&#x901F;&#x6211;&#x4EEC;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x3002;&#x800C; angular-cli-ghpages &#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x662F;&#x7528;&#x4E8E;&#x5E2E;&#x52A9; Angular CLI &#x7684;&#x7528;&#x6237;&#x5FEB;&#x901F;&#x53D1;&#x5E03; Angular &#x5E94;&#x7528;&#x5230; Github Page&#x3002;</p>
+<h3 id="npx">npx</h3>
+<h4 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h4>
+<p>&#x9996;&#x5148;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x5F53;&#x524D; npm &#x7684;&#x7248;&#x672C;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm --version
+</code></pre>
+<p>&#x5728;&#x6211;&#x1F4BB;&#x4E0A;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm --version
+6.1.0
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x672C;&#x5730;&#x5F53;&#x524D; npm &#x7684;&#x7248;&#x672C;&#x5927;&#x4E8E; 5.2&#xFF0C;&#x90A3;&#x4E48; npx &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x786E;&#x8BA4;&#xFF1A;</p>
+<pre><code class="lang-shell">$ which npx
+/Users/fer/.nvm/versions/node/v9.11.0/bin/npx
+</code></pre>
+<p>&#x5982;&#x679C;&#x53D1;&#x73B0;&#x672C;&#x5730;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; npx&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4EE5;&#x5168;&#x5C40;&#x7684;&#x65B9;&#x5F0F;&#x5B89;&#x88C5;&#x4E00;&#x4E0B; npx&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm install -g npx
+</code></pre>
+<h4 id="&#x7B80;&#x5316;&#x672C;&#x5730;&#x5E93;&#x7684;&#x8C03;&#x7528;">&#x7B80;&#x5316;&#x672C;&#x5730;&#x5E93;&#x7684;&#x8C03;&#x7528;</h4>
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x8FD0;&#x884C;&#x672C;&#x5730;&#x9879;&#x76EE;&#x975E;&#x5168;&#x5C40;&#x5B89;&#x88C5;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x5E93;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code class="lang-shell">$ node_modules/.bin/source-map-explorer dist/main.d72e9d91fd17f9fe7b8c.js
+</code></pre>
+<p>&#xFF08;&#x793A;&#x4F8B;&#x6765;&#x6E90; &#x2014;&#x2014; <a href="https://semlinker.com/ng-bundle-analyzer/" target="_blank">Angular &#x5DE5;&#x5177;&#x7BC7;&#x4E4B;&#x5206;&#x6790;&#x5305;&#x7684;&#x5927;&#x5C0F;</a>)</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528; npx &#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x4E0A;&#x8FF0;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx source-map-explorer dist/main.d72e9d91fd17f9fe7b8c.js
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5C06;&#x4F1A;&#x8FD0;&#x884C;&#x672C;&#x5730;&#x9879;&#x76EE;&#x4E2D;&#x5B89;&#x88C5;&#x7684; source-map-explorer &#x8FD9;&#x4E2A;&#x5E93;&#x3002;</p>
+<h4 id="&#x4E00;&#x6B21;&#x6027;&#x6267;&#x884C;&#x5916;&#x90E8;&#x5E93;">&#x4E00;&#x6B21;&#x6027;&#x6267;&#x884C;&#x5916;&#x90E8;&#x5E93;</h4>
+<p>&#x5BF9;&#x4E8E;&#x4E0D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x5168;&#x5C40;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4E0D;&#x5728;&#x672C;&#x673A;&#x4E0A;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x5B89;&#x88C5;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x9700;&#x8981;&#x65F6;&#x4F7F;&#x7528; npx &#x5373;&#x65F6;&#x4E0B;&#x8F7D;&#x5E76;&#x6267;&#x884C;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x662F;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF08;&#x5982; Create React App &#x6216; webpack CLI&#xFF09;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x5B83;&#x786E;&#x4FDD;&#x4F60;&#x59CB;&#x7EC8;&#x4F7F;&#x7528;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684;&#x751F;&#x6210;&#x5668;&#x6216;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x5728;&#x6BCF;&#x6B21;&#x4F7F;&#x7528;&#x5B83;&#x65F6;&#x8FDB;&#x884C;&#x5347;&#x7EA7;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4F7F;&#x7528; <code>create-react-app</code> &#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x65B0;&#x7684; React &#x9879;&#x76EE;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;  <code>create-react-app</code>  &#x53EF;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5728;&#x672C;&#x673A;&#x4E0A;&#x5B89;&#x88C5;&#x8FC7;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx create-react-app best-todo-app-ever
+</code></pre>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x662F;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x542F;&#x52A8;&#x4E00;&#x4E2A; <a href="https://github.com/indexzero/http-server" target="_blank">http-server</a> &#x670D;&#x52A1;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx http-server
+</code></pre>
+<h4 id="&#x8FD0;&#x884C;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;&#x5305;">&#x8FD0;&#x884C;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;&#x5305;</h4>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6700;&#x65B0;&#x7248;&#x7684; <code>uglify-js</code>&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx uglify-js --version
+</code></pre>
+<p>&#x6B64;&#x5916;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4F7F;&#x7528;&#x5305;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx uglify-js@2.8.29 --version
+</code></pre>
+<p>&#x56E0;&#x6B64;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5730;&#x5B8C;&#x6210;&#x7279;&#x5B9A;&#x7684;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx uglify-js@3.1.0 main.js -o ./dist/main.js
+</code></pre>
+<h3 id="angular-cli-ghpages">angular-cli-ghpages</h3>
+<p>&#x5728;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/angular-cli-ghpages" target="_blank">angular-cli-ghpages</a> &#x524D;&#xFF0C;&#x8BF7;&#x786E;&#x4FDD;&#x672C;&#x5730;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x4E86; Node.js &#x53CA; Angular CLI&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Angular CLI &#x521B;&#x5EFA;&#x65B0;&#x7684;&#x9879;&#x76EE;&#x6216;&#x5728;&#x60F3;&#x8981;&#x90E8;&#x7F72;&#x5230; Github Pages &#x4E0A;&#x7684; Angular &#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528; angular-cli-ghpages&#x3002;</p>
+<p>&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x4E00;&#x4E0B;&#x547D;&#x4EE4;&#x5B89;&#x88C5; angular-cli-ghpages&#xFF1A;</p>
+<pre><code class="lang-shell">$ npm i angular-cli-ghpages --save-dev
+</code></pre>
+<p>&#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x9879;&#x76EE;&#x7684;&#x5F00;&#x53D1;&#xFF0C;&#x5728;&#x53D1;&#x5E03;&#x5230; Github Pages &#x524D;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x9879;&#x76EE;&#x6784;&#x5EFA;&#xFF0C;&#x8FD9;&#x65F6;&#x4F60;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code class="lang-shell">$ ng build --prod --base-href &quot;https://USERNAME.github.io/REPOSITORY_NAME/&quot;
+</code></pre>
+<p>&#x6216;&#x8005;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code class="lang-shell">$ ng build --prod --base-href &quot;/REPOSITORY_NAME/&quot;
+</code></pre>
+<p>&#x5728;&#x9879;&#x76EE;&#x6784;&#x5EFA;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#x81EA;&#x52A8;&#x5730;&#x628A;&#x672C;&#x5730;&#x9879;&#x76EE;&#x53D1;&#x5E03;&#x5230; Github Pages &#x4E0A;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx ngh [OPTIONS]
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; Angular CLI 6 &#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x7684;&#x7528;&#x6237;&#x6765;&#x8BF4;&#xFF0C;&#x5728;&#x90E8;&#x7F72;&#x65F6;&#x4F60;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x90E8;&#x7F72;&#x7684;&#x76EE;&#x5F55;&#xFF1A;</p>
+<pre><code class="lang-shell">$ npx ngh --dir=dist/[PROJECTNAME]
+</code></pre>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;[PROJECTNAME] &#x7684;&#x53C2;&#x6570;&#x503C;&#x53EF;&#x4EE5;&#x5728; <code>angular.json</code> &#x6587;&#x4EF6;&#x4E2D;&#x627E;&#x5230;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6E90;">&#x53C2;&#x8003;&#x8D44;&#x6E90;</h3>
+<ul>
+<li><a href="https://alligator.io/workflow/npx/" target="_blank">Speed Up Your npm Workflow With npx</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ng-translate-and-extract.html" class="navigation navigation-prev " aria-label="Previous page: Angular 工具篇之国际化处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ng-bundle-analyzer.html" class="navigation navigation-next " aria-label="Next page: Angular 工具篇之分析包的大小">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Angular 工具篇之npx及angular-cli-ghpages","level":"1.3.6","depth":2,"next":{"title":"Angular 工具篇之分析包的大小","level":"1.3.7","depth":2,"path":"tool/ng-bundle-analyzer.md","ref":"tool/ng-bundle-analyzer.md","articles":[]},"previous":{"title":"Angular 工具篇之国际化处理","level":"1.3.5","depth":2,"path":"tool/ng-translate-and-extract.md","ref":"tool/ng-translate-and-extract.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tool/ng-npx-and-ghpages.md","mtime":"2018-10-07T15:18:44.147Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-10-07T16:27:08.180Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
